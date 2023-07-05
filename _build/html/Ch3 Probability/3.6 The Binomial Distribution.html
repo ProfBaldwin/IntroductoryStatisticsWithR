@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3.6. The Binomial Distribution &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch3 Probability/3.6 The Binomial Distribution';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.7. Continuous Probability Distributions" href="3.7%20Continuous%20Probability%20Distributions.html" />
+    <link rel="prev" title="3.5. Discrete Probability Distributions" href="3.5%20Discrete%20Probability%20Distributions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="3.0%20Probability.html">3. Probability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch3 Probability/3.6 The Binomial Distribution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Binomial Distribution</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">The Binomial Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-6-1">Example 3.6.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-6-2">Example 3.6.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation-and-calculation">Notation and Calculation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-6-3">Example 3.6.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Part 3</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4">Part 4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-6-4">Example 3.6.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-binomial-distribution">
+<h1><span class="section-number">3.6. </span>The Binomial Distribution<a class="headerlink" href="#the-binomial-distribution" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Identify experiments that fit a binomial probability distribution.</p></li>
+<li><p>Calculate the expected value and standard deviation for a binomial distribution.</p></li>
+<li><p>Calculate probabilities using a binomial distribution.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>The Binomial Distribution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>There are three characteristics of a <strong>binomial experiment</strong>.</p>
+<ul class="simple">
+<li><p>There are a fixed number of trials. Think of trials as repetitions of an experiment. The letter <span class="math notranslate nohighlight">\(n\)</span> denotes the number of trials. <br/><br/> For example, if we conduct a binomial experiment by rolling a six-sided die ten times, then the binomial experiment has <span class="math notranslate nohighlight">\(n = 10\)</span> trials.<br/><br/></p></li>
+<li><p>There are only two possible outcomes, called “success” and “failure,” for each trial. The letter <span class="math notranslate nohighlight">\(p\)</span> denotes the probability of a success for one trial, and <span class="math notranslate nohighlight">\(q\)</span> denotes the probability of a failure for one trial. Since “success” and “failure” are complementary outcomes, <span class="math notranslate nohighlight">\(p + q = 1\)</span>. <br/><br/> Imagine we roll a six-sided die ten times, and we want to know many twos we roll. Then each of the <span class="math notranslate nohighlight">\(n = 10\)</span> trials is counted a “success” when we roll a two and is a “failure” when we roll anything that isn’t a two. In this case, the probability a trial is a success is <span class="math notranslate nohighlight">\(p = \frac{1}{6}\)</span>, and the probability a trial is a failure is <span class="math notranslate nohighlight">\(q = \frac{5}{6}\)</span>. (Note, <span class="math notranslate nohighlight">\(p + q = \frac{1}{6} + \frac{5}{6} = 1\)</span>.)<br/><br/></p></li>
+<li><p>The <span class="math notranslate nohighlight">\(n\)</span> trials of a binomial experiment are independent and are repeated using identical conditions. Because the <span class="math notranslate nohighlight">\(n\)</span> trials are independent and identical, the probability of success <span class="math notranslate nohighlight">\(p\)</span> and probability of failure <span class="math notranslate nohighlight">\(q\)</span> are the same for each trial. <br/><br/> In our binomial experiment of <span class="math notranslate nohighlight">\(n = 10\)</span> die rolls, we have a probabiliy of <span class="math notranslate nohighlight">\(p = \frac{1}{6}\)</span> of rolling a two on the second trial no matter what happened during the first trial. The probability of success and the probability of failure is the same for every roll of the die.</p></li>
+</ul>
+<p>The outcomes of a binomial experiment fit a <strong>binomial probability distribution</strong>, which is a special kind of discrete probability distribution. A binomial distribution is a formula that gives the probability that there were exactly <span class="math notranslate nohighlight">\(x\)</span> successes in the <span class="math notranslate nohighlight">\(n\)</span> trials, where we can choose any whole number <span class="math notranslate nohighlight">\(x\)</span>  between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>The expected value of a binomial distribution is</p>
+<div class="math notranslate nohighlight">
+\[ \mu = n \cdot p. \]</div>
+<p>The standard deviation of a binomial distribution is</p>
+<div class="math notranslate nohighlight">
+\[ \sigma = \sqrt{n \cdot p \cdot q}. \]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be aware that the success of a trial in a binomial experiment isn’t necessarily good, and the failure of a trial isn’t necessarily bad. Rather, we call the outcome we are trying to measure a success regardless of whether it is good or bad.</p>
+<p>For example, we may consider a test for cancer a success if cancer is detected since that is what we are trying to measure, even though a cancer diagnosis is definitely bad.</p>
+</div>
+<hr class="docutils" />
+<section id="example-3-6-1">
+<h3>Example 3.6.1<a class="headerlink" href="#example-3-6-1" title="Permalink to this headline">#</a></h3>
+<p>At ABC College, the withdrawal rate from an elementary physics course is <span class="math notranslate nohighlight">\(30\%\)</span> for any given term. This implies that, for any given term, <span class="math notranslate nohighlight">\(70\%\)</span> of the students stay in the class for the entire term. We track <span class="math notranslate nohighlight">\(20\)</span> students in an elementary physics course to see if they withdraw from the course. Assume the probability that each student withdraws is independent from the other students.</p>
+<ol class="arabic simple">
+<li><p>Is this a binomial experiment? Why or why not?</p></li>
+<li><p>How many students are expected to withdraw from the course?</p></li>
+<li><p>What is the standard deviation?</p></li>
+</ol>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<section id="part-1">
+<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<p>There are three conditions an experiment must satisfy to be a binomial experiment.</p>
+<ol class="arabic simple">
+<li><p>Are there are a fixed number of trials? Yes. In this case, we are looking to see if each of the <span class="math notranslate nohighlight">\(20\)</span> students withdraws from the course, so the experiment consists of <span class="math notranslate nohighlight">\(n = 20\)</span> trials.</p></li>
+<li><p>Does each trial only have two possible outcomes? Yes. Each student will either withdraw or not withdraw from the course.</p></li>
+<li><p>Are the trials independent and identical? Yes. We are told in the prompt to assume that the probability that each student withdraws is independent from the other students, so the probability that a student will withdraw is identical for each student.</p></li>
+</ol>
+<p>Since these three conditions are met, this is a binomial experiment.</p>
+</section>
+<section id="part-2">
+<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<p>To find how many students are expected to withdraw from the course, we need to find the expected value. Since there are <span class="math notranslate nohighlight">\(20\)</span> students, the experiment consists of <span class="math notranslate nohighlight">\(n = 20\)</span> trials. Since we are interested in how many students will withdraw from the course, we will call a trial a success if the student withdraws from the course. So the probability of success is <span class="math notranslate nohighlight">\(p = 0.30\)</span>. So the expected value is</p>
+<div class="math notranslate nohighlight">
+\[ \mu = n \cdot p = 20 \cdot 0.30 = 6. \]</div>
+<p>We expect <span class="math notranslate nohighlight">\(6\)</span> of the <span class="math notranslate nohighlight">\(20\)</span> students to drop the course.</p>
+</section>
+<section id="part-3">
+<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<p>Since the probability of success of any one trial is <span class="math notranslate nohighlight">\(p = 0.30\)</span>, the probability of failure is <span class="math notranslate nohighlight">\(q = 0.70\)</span>. Then the standard deviation of the binomial distribution is</p>
+<div class="math notranslate nohighlight">
+\[ \sigma = \sqrt{n \cdot p \cdot q} = \sqrt{20 \cdot 0.30 \cdot 0.70} = 2.0494. \]</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-3-6-2">
+<h3>Example 3.6.2<a class="headerlink" href="#example-3-6-2" title="Permalink to this headline">#</a></h3>
+<p>Suppose you play a game where you draw a single card from a well-shuffled <span class="math notranslate nohighlight">\(52\)</span>-card deck. You win the game if you draw a Spade. If you do not draw a spade, you lose. You play the game <span class="math notranslate nohighlight">\(50\)</span> times.</p>
+<ol class="arabic simple">
+<li><p>Is this a binomial experiment? Why or why not?</p></li>
+<li><p>How many times do you expect to win the game?</p></li>
+<li><p>What is the standard deviation?</p></li>
+</ol>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<section id="step-1">
+<h5>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">#</a></h5>
+<p>There are three conditions an experiment must satisfy to be a binomial experiment.</p>
+<ol class="arabic simple">
+<li><p>Are there are a fixed number of trials? Yes. In this case, you play the game <span class="math notranslate nohighlight">\(50\)</span> times, so the experiment has <span class="math notranslate nohighlight">\(n = 50\)</span> trials.</p></li>
+<li><p>Does each trial only have two possible outcomes? Yes. Each time you play the game, you can either win or lose.</p></li>
+<li><p>Are the trials independent and identical? Yes. Each time you play the game, you are drawing from a full deck of <span class="math notranslate nohighlight">\(52\)</span> cards. Since you play with the full deck each game, the games are independent and identical.</p></li>
+</ol>
+<p>Since these three conditions are met, this is a binomial experiment.</p>
+</section>
+<section id="step-2">
+<h5>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">#</a></h5>
+<p>We want to find the expected value. There are <span class="math notranslate nohighlight">\(n = 50\)</span> trials since you play the game <span class="math notranslate nohighlight">\(50\)</span> times. Since we are interested in how many times you win the game, a trail is a success if you win. Since there are <span class="math notranslate nohighlight">\(13\)</span> spades in a deck of <span class="math notranslate nohighlight">\(52\)</span> cards, the probability of success is <span class="math notranslate nohighlight">\(p = \frac{13}{52} = 0.25\)</span>. Then the expected value is</p>
+<div class="math notranslate nohighlight">
+\[ \mu = n \cdot p = 50 \cdot 0.25 = 12.5. \]</div>
+<p>We expect you to win <span class="math notranslate nohighlight">\(12.5\)</span> of the <span class="math notranslate nohighlight">\(50\)</span> games.</p>
+</section>
+<section id="step-3">
+<h5>Step 3<a class="headerlink" href="#step-3" title="Permalink to this headline">#</a></h5>
+<p>Since the probability of success is <span class="math notranslate nohighlight">\(p = 0.25\)</span> and <span class="math notranslate nohighlight">\(p + q = 1\)</span>, the probability of failure must be <span class="math notranslate nohighlight">\(q = 0.75\)</span>. Then the standard deviation is</p>
+<div class="math notranslate nohighlight">
+\[ \sigma = \sqrt{n \cdot p \cdot q} = \sqrt{50 \cdot 0.25 \cdot 0.75} = 3.0619. \]</div>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="notation-and-calculation">
+<h2>Notation and Calculation<a class="headerlink" href="#notation-and-calculation" title="Permalink to this headline">#</a></h2>
+<p>When we want to say that <span class="math notranslate nohighlight">\(X\)</span> is a random variable with a binomial distribution, we write</p>
+<div class="math notranslate nohighlight">
+\[ X \sim B(n, p) \]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of trials and <span class="math notranslate nohighlight">\(p\)</span> is the probability of success of any one trial.</p>
+<p>We can calculate the the probability of a binomial distribution using the R function</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code>x</code> is the number of successes we want to calculate the probability of obtaining, <code>size</code> is the number of trials <span class="math notranslate nohighlight">\(n\)</span>, and <code>prob</code> is the probability of success <span class="math notranslate nohighlight">\(p\)</span> of one trial. Alternatively, <code>x</code> could be a list of values, in which case the function will return a list of probabilities, one for each value in <code>x</code>.</p>
+<hr class="docutils" />
+<section id="example-3-6-3">
+<h3>Example 3.6.3<a class="headerlink" href="#example-3-6-3" title="Permalink to this headline">#</a></h3>
+<p>It has been stated that about <span class="math notranslate nohighlight">\(41\%\)</span> of adult workers have a high school diploma but do not pursue any further education. Suppose <span class="math notranslate nohighlight">\(20\)</span> adult workers are randomly selected.</p>
+<ol class="arabic simple">
+<li><p>Find the probability that exactly 7 of the 20 workers have a high school diploma but do not pursue further education.</p></li>
+<li><p>Find the probability that at most 4 workers have a high school diploma but do not pursue further education.</p></li>
+<li><p>Find the probability that more than 15 workers have a high school diploma but do not pursue further education.</p></li>
+<li><p>Find the probability that more than 8 but less than 18 workers have a high school diploma but do not pursue further education.</p></li>
+</ol>
+<section id="id3">
+<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<p>For this problem, <span class="math notranslate nohighlight">\(X =\)</span> the number of workers, of the <span class="math notranslate nohighlight">\(20\)</span> selected, that have a high school diploma but do not pursue further education. The number of trials is <span class="math notranslate nohighlight">\(n = 20\)</span>, and the probability of “success” is <span class="math notranslate nohighlight">\(p = 0.41\)</span>. So</p>
+<div class="math notranslate nohighlight">
+\[ X \sim B(20, 0.41) \]</div>
+<section id="id4">
+<h5>Part 1<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<p>We want to find <span class="math notranslate nohighlight">\(P(X = 7)\)</span>. We will use the <code>dbinom</code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.41</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.158480894003918</div></div>
+</div>
+<p>The probability that exactly <span class="math notranslate nohighlight">\(7\)</span> of the <span class="math notranslate nohighlight">\(20\)</span> adults have a high school diploma but do not pursue further education is <span class="math notranslate nohighlight">\(P(X = 7) = 0.1585\)</span>, or <span class="math notranslate nohighlight">\(15.85\%\)</span>.</p>
+</section>
+<section id="id5">
+<h5>Part 2<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h5>
+<p>We want to find <span class="math notranslate nohighlight">\(P(X \leq 4)\)</span>. In other words, we want to know the probability that <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(2\)</span> or <span class="math notranslate nohighlight">\(3\)</span> or <span class="math notranslate nohighlight">\(4\)</span>. We will again use the <code>dbinom</code> function, but instead of passing a single value, we will pass a list of values. Let’s first see how this works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+<span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.41</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>2.6124033550459e-05</li>
+	<li>0.000363079788328412</li>
+	<li>0.00239694199243926</li>
+	<li>0.00999402932440777</li>
+	<li>0.0295162645725093</li>
+</ol>
+</div></div>
+</div>
+<p>This gives us a list of <span class="math notranslate nohighlight">\(5\)</span> probabilities, one for each value we passed. For example, we can see from the list that <span class="math notranslate nohighlight">\(P(X = 4) = 0.0295\)</span>.</p>
+<p>But these values are all mutually exclusive (because, for example, we can’t have at the same time <span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(3\)</span> adults with a high school diploma but who do not pursue higher education; it can be either <span class="math notranslate nohighlight">\(2\)</span>, or <span class="math notranslate nohighlight">\(3\)</span>, not both). So</p>
+<div class="math notranslate nohighlight">
+\[ P(X \leq 4) = P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3) + P(X = 4); \]</div>
+<p>that is, we just need to add up these probabilities. We can do this quickly using the <code>sum</code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.41</span><span class="p">)</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0422964397112352</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(X \leq 4) = 0.0423\)</span>. That is, there is a <span class="math notranslate nohighlight">\(4.23\%\)</span> chance that no more than <span class="math notranslate nohighlight">\(4\)</span> adults of the <span class="math notranslate nohighlight">\(20\)</span> selected have a high school diploma but do not pursue higher education.</p>
+</section>
+<section id="id6">
+<h5>Part 3<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h5>
+<p>We want <span class="math notranslate nohighlight">\(P(X &gt; 15)\)</span>. “More than <span class="math notranslate nohighlight">\(15\)</span>” means that <span class="math notranslate nohighlight">\(16\)</span> or <span class="math notranslate nohighlight">\(17\)</span> or <span class="math notranslate nohighlight">\(18\)</span> or <span class="math notranslate nohighlight">\(19\)</span> or <span class="math notranslate nohighlight">\(20\)</span> of the adults have a high school diploma but do not pursue further education. (Note, we stop at <span class="math notranslate nohighlight">\(20\)</span> because that’s the total number of adults. We can’t have more successes than we have trials.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">16</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.41</span><span class="p">)</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.000443150625878507</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(x &gt; 15) = 0.0004\)</span>. There is only a <span class="math notranslate nohighlight">\(0.04\%\)</span> chance that more than <span class="math notranslate nohighlight">\(15\)</span> of the <span class="math notranslate nohighlight">\(20\)</span> adults selected have a high school diploma but do not pursue further education.</p>
+</section>
+<section id="part-4">
+<h5>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">#</a></h5>
+<p>We want <span class="math notranslate nohighlight">\(P(8 &lt; x &lt; 18)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">17</span><span class="p">)</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.41</span><span class="p">)</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.440587402134619</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(8 &lt; x &lt; 18) = 0.4406\)</span>. There is a <span class="math notranslate nohighlight">\(44.06\%\)</span> chance that between <span class="math notranslate nohighlight">\(8\)</span> and <span class="math notranslate nohighlight">\(18\)</span> adults of the <span class="math notranslate nohighlight">\(20\)</span> selected have a high school diploma but do not pursue futher education.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-3-6-4">
+<h3>Example 3.6.4<a class="headerlink" href="#example-3-6-4" title="Permalink to this headline">#</a></h3>
+<p>The lifetime risk of developing pancreatic cancer is about <span class="math notranslate nohighlight">\(1.28\%\)</span>. Suppose we randomly sample <span class="math notranslate nohighlight">\(200\)</span> people. Let <span class="math notranslate nohighlight">\(X =\)</span> the number of people who will develop pancreatic cancer.</p>
+<ol class="arabic simple">
+<li><p>Is it more likely that five people or six people of the <span class="math notranslate nohighlight">\(200\)</span> people in the sample will develop pancreatic cancer? Justify your answer numerically.</p></li>
+<li><p>Find the probability that less than eight people develop pancreatic cancer.</p></li>
+</ol>
+<section id="id7">
+<h4>Solution<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h4>
+<p>For this problem, <span class="math notranslate nohighlight">\(X \sim B(200, 0.0128)\)</span>.</p>
+<section id="id8">
+<h5>Part 1<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h5>
+<p>We need to find <span class="math notranslate nohighlight">\(P(X = 5)\)</span> and <span class="math notranslate nohighlight">\(P(X = 6)\)</span> and see which probability is greater.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">)</span>
+<span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">200</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.0128</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>0.0706549781513899</li>
+	<li>0.0297735726407802</li>
+</ol>
+</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(x = 5) = 0.0707\)</span> and <span class="math notranslate nohighlight">\(P(x = 6) = 0.0298\)</span>. Since the probability is greater when <span class="math notranslate nohighlight">\(x = 5\)</span> than when <span class="math notranslate nohighlight">\(x = 6\)</span>, it is more likely that <span class="math notranslate nohighlight">\(5\)</span> of the <span class="math notranslate nohighlight">\(200\)</span> people develop pancreatic cancer than it is for <span class="math notranslate nohighlight">\(6\)</span> of the <span class="math notranslate nohighlight">\(200\)</span> people to develop pancreatic cancer.</p>
+</section>
+<section id="id9">
+<h5>Part 2<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h5>
+<p>We want to find <span class="math notranslate nohighlight">\(P(X &lt; 8)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">7</span><span class="p">)</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">200</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.0128</span><span class="p">)</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.995434178943854</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(x &lt; 8) = 0.9954\)</span>. There is a 99.54% chance that fewer than <span class="math notranslate nohighlight">\(8\)</span> of the <span class="math notranslate nohighlight">\(200\)</span> people sampled develop pancreatic cancer.</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch3 Probability"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3.5%20Discrete%20Probability%20Distributions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3.5. </span>Discrete Probability Distributions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3.7%20Continuous%20Probability%20Distributions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.7. </span>Continuous Probability Distributions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">The Binomial Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-6-1">Example 3.6.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-6-2">Example 3.6.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation-and-calculation">Notation and Calculation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-6-3">Example 3.6.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Part 3</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4">Part 4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-6-4">Example 3.6.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

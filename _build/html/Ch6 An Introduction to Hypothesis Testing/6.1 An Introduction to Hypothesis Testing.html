@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6.1. An Introduction to Hypothesis Testing &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch6 An Introduction to Hypothesis Testing/6.1 An Introduction to Hypothesis Testing';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.2. Hypotheses and Errors" href="6.2%20Hypotheses%20and%20Errors.html" />
+    <link rel="prev" title="6. An Introduction to Hypothesis Testing" href="6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch6 An Introduction to Hypothesis Testing/6.1 An Introduction to Hypothesis Testing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>An Introduction to Hypothesis Testing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-hypothesis-testing">Introduction to Hypothesis Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-1">Example 6.1.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-hypothesis">Step 1: State the Hypothesis</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-determine-the-features-of-the-distribution-of-point-estimates-using-the-central-limit-theorem">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-assuming-the-claim-is-true-find-the-probability-of-obtaining-the-point-estimate">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-make-a-conclusion-about-the-claim">Step 4: Make a Conclusion About the Claim</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-2">Example 6.1.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 1: State the Hypothesis</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 4: Make a Conclusion About the Claim</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-3">Example 6.1.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Step 1: State the Hypothesis</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Step 4: Make a Conclusion About the Claim</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="an-introduction-to-hypothesis-testing">
+<h1><span class="section-number">6.1. </span>An Introduction to Hypothesis Testing<a class="headerlink" href="#an-introduction-to-hypothesis-testing" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Understand the fundamentals of hypothesis testing.</p></li>
+</ul>
+</section>
+<section id="introduction-to-hypothesis-testing">
+<h2>Introduction to Hypothesis Testing<a class="headerlink" href="#introduction-to-hypothesis-testing" title="Permalink to this headline">#</a></h2>
+<p>Sometimes we want to test whether a claim made about a population parameter is true or not. For instance, a car dealer advertises that its new small truck averages <span class="math notranslate nohighlight">\(35\)</span> miles per gallon. A tutoring service claims that <span class="math notranslate nohighlight">\(90\%\)</span> of its students get an A or a B. A company says that women managers in their company earn an average of <span class="math notranslate nohighlight">\(\$53{,}000\)</span> per year.</p>
+<p>It’s often impractical to survey every member of a population to confirm a claim or <strong>hypothesis</strong>. Instead, statisticians sample a few members of the population and calculate a point estimate of the parameter they are interested in. Then they use the central limit theorem to determine how likely it is to randomly select a sample with that particular point estimate <em>assuming the hypothesis is true</em>. If it is exceptionally unlikely to get the point estimate that actually obtained if the hypothesis were true, we can conclude with some confidence that the claim is probably not true.</p>
+<p>In summary, the fundamental components to a <strong>hypothesis test</strong> are as follows:</p>
+<ol class="arabic simple">
+<li><p>We want to test if a claim about a population parameter is true.</p></li>
+<li><p>We randomly sample members of the population to find a point estimate of the population parameter.</p></li>
+<li><p>Assuming the claim about the population parameter <em>is</em> true, we use the central limit theorem to determine the probability of obtaining the point estimate of our random sample.</p></li>
+<li><p>If the probability of obtaining the point estimate is exceptionally small, we reject the claim.</p></li>
+</ol>
+<p>We will formalize these ideas in the coming chapter and return to them throughout the rest of the course. For now, let’s go over a few examples focusing on the big idea and the fundamental components.</p>
+<hr class="docutils" />
+<section id="example-6-1-1">
+<h3>Example 6.1.1<a class="headerlink" href="#example-6-1-1" title="Permalink to this headline">#</a></h3>
+<p>A company says that women managers in their company earn an average of <span class="math notranslate nohighlight">\(\$53{,}000\)</span> per year with a standard deviation of <span class="math notranslate nohighlight">\(\$5{,}000\)</span>. Janice wants to test the claim. She surveys <span class="math notranslate nohighlight">\(25\)</span> women managers and obtains the following data on income per year:</p>
+<p>48230, 53491, 52926, 54832, 48080, 47101, 50126, 47433, 57753, 55107, 57205, 46297, 61249, 66936, 5463, 44429, 52696, 51243, 49008, 51522, 46658, 51788, 60244, 46164, 51103</p>
+<p>Assume the population is normally distributed. What do you think Janice should conclude about the claim?</p>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<section id="step-1-state-the-hypothesis">
+<h5>Step 1: State the Hypothesis<a class="headerlink" href="#step-1-state-the-hypothesis" title="Permalink to this headline">#</a></h5>
+<p>The claim or hypothesis is that the average annual income of women managers at the company is <span class="math notranslate nohighlight">\(\$53,000\)</span>. Written mathematically, the hypothesis is that</p>
+<div class="math notranslate nohighlight">
+\[ \mu = 53{,}000. \]</div>
+</section>
+<section id="step-2-determine-the-features-of-the-distribution-of-point-estimates-using-the-central-limit-theorem">
+<h5>Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem<a class="headerlink" href="#step-2-determine-the-features-of-the-distribution-of-point-estimates-using-the-central-limit-theorem" title="Permalink to this headline">#</a></h5>
+<p>We are testing the mean <span class="math notranslate nohighlight">\(\mu\)</span>, and we are told what the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> is. Then by the central limit theorem, sample means follow a  normal distribution with mean</p>
+<div class="math notranslate nohighlight">
+\[ \mu = 53{,}000 \]</div>
+<p>and standard error</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\sigma}{\sqrt{n}} = \frac{5000}{\sqrt{25}} = 1000. \]</div>
+<p>That is, <span class="math notranslate nohighlight">\(\bar{X} \sim N(53000, 1000)\)</span>.</p>
+</section>
+<section id="step-3-assuming-the-claim-is-true-find-the-probability-of-obtaining-the-point-estimate">
+<h5>Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate<a class="headerlink" href="#step-3-assuming-the-claim-is-true-find-the-probability-of-obtaining-the-point-estimate" title="Permalink to this headline">#</a></h5>
+<p>First, we calculate the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>, which is the point estimate of the population mean <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">48230</span><span class="p">,</span> <span class="m">53491</span><span class="p">,</span> <span class="m">52926</span><span class="p">,</span> <span class="m">54832</span><span class="p">,</span> <span class="m">48080</span><span class="p">,</span> <span class="m">47101</span><span class="p">,</span> <span class="m">50126</span><span class="p">,</span> <span class="m">47433</span><span class="p">,</span> <span class="m">57753</span><span class="p">,</span> <span class="m">55107</span><span class="p">,</span> <span class="m">57205</span><span class="p">,</span> <span class="m">46297</span><span class="p">,</span> <span class="m">61249</span><span class="p">,</span> <span class="m">66936</span><span class="p">,</span> <span class="m">5463</span><span class="p">,</span> <span class="m">44429</span><span class="p">,</span> <span class="m">52696</span><span class="p">,</span> <span class="m">51243</span><span class="p">,</span> <span class="m">49008</span><span class="p">,</span> <span class="m">51522</span><span class="p">,</span> <span class="m">46658</span><span class="p">,</span> <span class="m">51788</span><span class="p">,</span> <span class="m">60244</span><span class="p">,</span> <span class="m">46164</span><span class="p">,</span> <span class="m">51103</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">50283.36</div></div>
+</div>
+<p>The sample mean is <span class="math notranslate nohighlight">\(\bar{x} = 50283.36\)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\(z\)</span>-score associated with the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}} = \frac{50283.36 - 53000}{1000} = -2.7166. \]</div>
+<p>To test the claim, we want to find the probability that a randomly selected sample will have a sample mean at least as far away from the hypothesized population mean as the sample mean we actually got. This means we want to find <span class="math notranslate nohighlight">\(P(\bar{X} \leq 50283.36) = P(Z \leq -2.7166)\)</span>$. Let’s use R to find this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.7166</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.00329781334352045</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(\bar{X} \leq 50283.36) = P(Z \leq -2.7166) = 0.00330\)</span>. That is, if the claim were true, there would only be a <span class="math notranslate nohighlight">\(0.33\%\)</span> chance that a random sample of women managers would yield a sample mean salary of <span class="math notranslate nohighlight">\(\$50{,}283.36\)</span> or less.</p>
+</section>
+<section id="step-4-make-a-conclusion-about-the-claim">
+<h5>Step 4: Make a Conclusion About the Claim<a class="headerlink" href="#step-4-make-a-conclusion-about-the-claim" title="Permalink to this headline">#</a></h5>
+<p>In this case, it is very unlikely that we would obtain the point estimate we did if the claim were true. In fact, it is so unlikely (less than a 1% chance) that we feel confident in concluding that the claim is not true.</p>
+<p>We conclude that the average salary of women managers at the company is not <span class="math notranslate nohighlight">\(\$53,000\)</span>.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-6-1-2">
+<h3>Example 6.1.2<a class="headerlink" href="#example-6-1-2" title="Permalink to this headline">#</a></h3>
+<p>A tutoring service claims that <span class="math notranslate nohighlight">\(90\%\)</span> of its students get an A or a B. Mike wants to test the claim. He surveys <span class="math notranslate nohighlight">\(45\)</span> students who utilized the tutoring service and found that <span class="math notranslate nohighlight">\(37\)</span> students got an A or a B. Do you think Mike should reject the claim?</p>
+<section id="id1">
+<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<section id="id2">
+<h5>Step 1: State the Hypothesis<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
+<p>The claim we are testing is that the proportion of students of the tutoring service who get an A or a B is <span class="math notranslate nohighlight">\(90\%\)</span>. Mathematically, the hypothesis is</p>
+<div class="math notranslate nohighlight">
+\[p = 0.90. \]</div>
+</section>
+<section id="id3">
+<h5>Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<p>Assuming the hypothesis is true, we know by the central limit theorem that the sampling distribution of sample proportions is normally distributed with mean</p>
+<div class="math notranslate nohighlight">
+\[ p = 0.90 \]</div>
+<p>and standard error</p>
+<div class="math notranslate nohighlight">
+\[ \sqrt{\frac{p(1 - p)}{n}} = \sqrt{\frac{0.90(1 - 0.90)}{45}} = 0.0447. \]</div>
+<p>So <span class="math notranslate nohighlight">\(\hat{P} \sim N(0.90, 0.0447)\)</span>.</p>
+</section>
+<section id="id4">
+<h5>Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<p>First note that the sample proportion, the point estimate of the population proportion, is</p>
+<div class="math notranslate nohighlight">
+\[ \hat{p} = \frac{x}{n} = \frac{37}{45} = 0.8222. \]</div>
+<p>The <span class="math notranslate nohighlight">\(z\)</span>-score associated with the sample proportion <span class="math notranslate nohighlight">\(\hat{p}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[z = \frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} = \frac{0.8222 - 0.90}{0.0447} = -1.7405.\]</div>
+<p>We want to find the probability We want to find <span class="math notranslate nohighlight">\(P(\hat{p} \leq 0.8222) = P(z \leq -1.7405)\)</span>. We calculate this using R.</p>
+<p>To test the claim, we want to find the probability that a randomly selected sample will have a sample proportion at least as far away from the hypothesized population proportion as the sample proportion we actually got. This means we want to find <span class="math notranslate nohighlight">\(P(\hat{P} \leq 0.8222) = P(Z \leq -1.7405)\)</span>$. Let’s use R to find this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-1.7405</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0408856300354386</div></div>
+</div>
+<p>Then <span class="math notranslate nohighlight">\(P(\hat{P} \leq 0.8222) = P(Z \leq -1.7405) = 0.0409\)</span>. So if the population proportion is actually <span class="math notranslate nohighlight">\(p = 0.90\)</span>, there is a <span class="math notranslate nohighlight">\(4.09\%\)</span> chance that a random sample gives a sample proportion of <span class="math notranslate nohighlight">\(\hat{p} = 0.8222\)</span> or less.</p>
+</section>
+<section id="id5">
+<h5>Step 4: Make a Conclusion About the Claim<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h5>
+<p>There is about a <span class="math notranslate nohighlight">\(4\%\)</span> chance of obtaining a sample proportion of <span class="math notranslate nohighlight">\(\hat{p} \leq 0.8222\)</span> if the claim were true. This is somewhat unlikely, but it wouldn’t be outlandish.</p>
+<p>Ultimately, whether we reject a hypothesis or not is a choice. Would you reject the hypothesis if there is only a <span class="math notranslate nohighlight">\(1\%\)</span> chance that we get a point estimate as extreme as the point estimate we actually get from our sample? What if it was a <span class="math notranslate nohighlight">\(4\%\)</span> chance? An <span class="math notranslate nohighlight">\(8\%\)</span> chance? The choice ultimately must be made by the statistician where to draw the line. In a later section, we will cover some guidelines on making this choice.</p>
+<p>So what do you think? In this particular case, do you think the evidence is sufficient to reject the claim that <span class="math notranslate nohighlight">\(90\%\)</span> of students of the tutoring service get an A or a B? Or do you think the evidence isn’t strong enough to make that conclusion?</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-6-1-3">
+<h3>Example 6.1.3<a class="headerlink" href="#example-6-1-3" title="Permalink to this headline">#</a></h3>
+<p>A statistics instructor claims that the class average on an exam is <span class="math notranslate nohighlight">\(65\)</span> points. Richard thinks the class average is higher. He collects the following scores from 9 students in the class:</p>
+<p>84, 67, 60, 55, 51, 64, 66, 70, 83</p>
+<p>Richard assumes the scores in the class are normally distributed. Should Richard reject his instructor’s claim?</p>
+<section id="id6">
+<h4>Solution<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<section id="id7">
+<h5>Step 1: State the Hypothesis<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<p>The hypothesis is that the class average is <span class="math notranslate nohighlight">\(65\)</span> points. Mathematically, we write</p>
+<div class="math notranslate nohighlight">
+\[ \mu = 65. \]</div>
+</section>
+<section id="id8">
+<h5>Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h5>
+<p>We want to test the population mean <span class="math notranslate nohighlight">\(\mu\)</span>, but we are <em>not</em> given the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. We will need to use the sample standard deviation <span class="math notranslate nohighlight">\(s\)</span> and a <span class="math notranslate nohighlight">\(t\)</span>-distribution with <span class="math notranslate nohighlight">\(df = n - 1 = 9 - 1 = 8\)</span> degrees of freedom.</p>
+<p>To find the <span class="math notranslate nohighlight">\(t\)</span>-score, we need the mean of the sampling distribution,</p>
+<div class="math notranslate nohighlight">
+\[ \mu = 65. \]</div>
+<p>The standard error is given by the formula <span class="math notranslate nohighlight">\(\frac{s}{\sqrt{n}}\)</span>, so we will need to find the sample standard deviation <span class="math notranslate nohighlight">\(s\)</span> first.</p>
+<p>To find the sample standard deviation <span class="math notranslate nohighlight">\(s\)</span>, we first find the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">84</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">60</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">51</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">83</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">66.6666666666667</div></div>
+</div>
+<p>The sample mean is <span class="math notranslate nohighlight">\(\bar{x} = 66.6667\)</span>.</p>
+<p>Next, we find the sample standard deviation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="m">1</span><span class="p">))</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">11.247221879202</div></div>
+</div>
+<p>So the sample standard deviation is <span class="math notranslate nohighlight">\(s = 11.2472\)</span>. We can now calculate the standard deviation of the distribution of sample means:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{s}{\sqrt{n}} = \frac{11.2472}{\sqrt{9}} = 3.7491. \]</div>
+</section>
+<section id="id9">
+<h5>Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h5>
+<p>We calculated the point estimate in step 2: the sample mean is <span class="math notranslate nohighlight">\(\bar{x} =  66.6667\)</span>. The <span class="math notranslate nohighlight">\(t\)</span>-score associated with <span class="math notranslate nohighlight">\(\bar{x} = 66.6667\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} = \frac{66.6667 - 65}{3.7491} = 0.4446. \]</div>
+<p>To test the claim, we want to find the probability that a randomly selected sample will have a sample mean at least as far away from the hypothesized population mean as the sample mean we actually got. This means we want to find <span class="math notranslate nohighlight">\(P(\bar{X} \geq 66.6667) = P(T \geq -0.4446)\)</span>. We calculate this using R.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pt</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">0.4446</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="m">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.334195519428358</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(\bar{X} \geq 66.6667) = P(T \geq 0.4446) = 0.3342\)</span>. That is, assuming the claim is true, there is a <span class="math notranslate nohighlight">\(33.42\%\)</span> chance that our sample would have a sample mean of <span class="math notranslate nohighlight">\(66.6667\)</span> or greater.</p>
+</section>
+<section id="id10">
+<h5>Step 4: Make a Conclusion About the Claim<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h5>
+<p>If the claim is true, there is a <span class="math notranslate nohighlight">\(33.42\%\)</span> chance that a random sample of the population has a sample mean as extreme as <span class="math notranslate nohighlight">\(\bar{x} = 66.6667\)</span>. This isn’t a small probability; there is a fairly large chance that we obtain a sample with the sample mean we do given that the claim is true. We usually don’t reject a claim unless we obtain at a probability of at least less than <span class="math notranslate nohighlight">\(10\%\)</span>. So we do not have enough evidence to conclude that the mean exam score is greater than <span class="math notranslate nohighlight">\(65\)</span> points.</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch6 An Introduction to Hypothesis Testing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>An Introduction to Hypothesis Testing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6.2%20Hypotheses%20and%20Errors.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>Hypotheses and Errors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-hypothesis-testing">Introduction to Hypothesis Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-1">Example 6.1.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-hypothesis">Step 1: State the Hypothesis</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-determine-the-features-of-the-distribution-of-point-estimates-using-the-central-limit-theorem">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-assuming-the-claim-is-true-find-the-probability-of-obtaining-the-point-estimate">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-make-a-conclusion-about-the-claim">Step 4: Make a Conclusion About the Claim</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-2">Example 6.1.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 1: State the Hypothesis</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 4: Make a Conclusion About the Claim</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-3">Example 6.1.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Step 1: State the Hypothesis</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Step 4: Make a Conclusion About the Claim</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

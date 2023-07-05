@@ -1,0 +1,16 @@
+\documentclass{standalone}
+
+\usepackage{venndiagram}
+\usepackage{mathtools}
+\usepackage{anyfontsize}
+
+\begin{document}
+
+\begin{venndiagram2sets}
+\fillACapB
+\setpostvennhook{
+    \node at (2.5, 0.2) {$A\text{ AND }B$};
+}
+\end{venndiagram2sets}
+
+\end{document}

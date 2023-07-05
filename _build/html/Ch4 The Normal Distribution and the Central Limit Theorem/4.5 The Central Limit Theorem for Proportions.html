@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4.5. The Central Limit Theorem for Proportions &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch4 The Normal Distribution and the Central Limit Theorem/4.5 The Central Limit Theorem for Proportions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Confidence Intervals" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html" />
+    <link rel="prev" title="4.4. The Central Limit Theorem for Means" href="4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch4 The Normal Distribution and the Central Limit Theorem/4.5 The Central Limit Theorem for Proportions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Central Limit Theorem for Proportions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-proportions">Population Proportions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">The Central Limit Theorem for Proportions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-1">Example 4.4.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-2">Example 4.4.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-central-limit-theorem-for-proportions">
+<h1><span class="section-number">4.5. </span>The Central Limit Theorem for Proportions<a class="headerlink" href="#the-central-limit-theorem-for-proportions" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Apply the central limit theorem for proportions to identify sampling distributions of sample proportions.</p></li>
+<li><p>Computer probabilities involving sampling distributions of proportions.</p></li>
+</ul>
+</section>
+<section id="population-proportions">
+<h2>Population Proportions<a class="headerlink" href="#population-proportions" title="Permalink to this headline">#</a></h2>
+<p>A <strong>population proportion</strong> is the fraction, ratio, or percentage of the population that possesses a certain characteristic. For example, in 2006, the <strong>proportion</strong> of adult Americans that were married was <span class="math notranslate nohighlight">\(55.7\%\)</span>. Note a few important properties about proportions:</p>
+<ul class="simple">
+<li><p>For each member of the population, there are only two options: either the member possesses the characteristic or the member doesn’t possess the characteristic. In the above example, since <span class="math notranslate nohighlight">\(55.7\%\)</span> of U.S. adults were married in 2006, we can conclude that <span class="math notranslate nohighlight">\(100\% - 55.7\% = 44.3\%\)</span> of U.S. adults were not married in 2006.</p></li>
+<li><p>The value of a proportion is always between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>. In the above example, the proportion <span class="math notranslate nohighlight">\(55.7\% = 0.557\)</span> lies between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p>A proportion is the probability that, if we randomly select a member of the population, that the selected member will possess the characteristic. In the example above, if we were to randomly select an adult in the year 2006, there is a <span class="math notranslate nohighlight">\(55.7\%\)</span> chance that the selected adult would be married.</p></li>
+</ul>
+<p>A population proportion <span class="math notranslate nohighlight">\(p\)</span> is calculated using the formula</p>
+<div class="math notranslate nohighlight">
+\[ p = \frac{X}{N}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is the number of individuals in the population with the desired characteristic and <span class="math notranslate nohighlight">\(N\)</span> is the size of the population.</p>
+<p>For example, if we know that Menifee High School has a population of <span class="math notranslate nohighlight">\(4{,}582\)</span> students, of whom <span class="math notranslate nohighlight">\(1{,}231\)</span> are freshman, the proportion of Menifee High School students that are freshmen is</p>
+<div class="math notranslate nohighlight">
+\[p = \frac{X}{N} = \frac{1{,}231}{4{,}582} = 0.2687.\]</div>
+<p>So <span class="math notranslate nohighlight">\(26.87\%\)</span> of all Menifee High School students are freshmen.</p>
+</section>
+<section id="id1">
+<h2>The Central Limit Theorem for Proportions<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>We can also find the proportion of a sample, denoted by <span class="math notranslate nohighlight">\(\hat{p}\)</span> (which is read “<em>p</em>-hat”). The formula for a sample proportion is</p>
+<div class="math notranslate nohighlight">
+\[ \hat{p} = \frac{x}{n}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the number of individuals in the <em>sample</em> with the desired characteristic, and <span class="math notranslate nohighlight">\(n\)</span> is the size of the <em>sample</em>.</p>
+<p>Recall from the central limit theorem for sample means says that, if the size of a sample is large enough, we can generally expect the mean of a sample to approximate the mean of the population. We might naturally ask the same question of proportions: if we take a large enough sample from a population, can we expect the sample proportion to be close to the population proportion?</p>
+<p>The answer is “Yes”. This is the idea of the <strong>central limit theorem</strong> for sample proportions.</p>
+<div class="math notranslate nohighlight">
+\[ \mu_{P'} = p \]</div>
+<p>and distribution standard deviation</p>
+<div class="math notranslate nohighlight">
+\[ \sigma_{P'} = \sqrt{\frac{p(1 - p)}{n}}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is the population proportion. That is <span class="math notranslate nohighlight">\(P' \sim N\left(p, \sqrt{\frac{p(1 - p)}{n}}\right)\)</span>.</p>
+<p>As usual, we can calculate the <span class="math notranslate nohighlight">\(z\)</span>-score for a value <span class="math notranslate nohighlight">\(p'\)</span> in the distribution with the formula</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{p' - \mu_{P'}}{\sigma_{P'}}. \]</div>
+<div class="proof theorem admonition" id="theorem-0">
+<p class="admonition-title"><span class="caption-number">Theorem 4.5.1 </span> (The Central Limit Theorem for Sample Proportions)</p>
+<section class="theorem-content" id="proof-content">
+<p>Consider a population, and let <span class="math notranslate nohighlight">\(p\)</span> be the proportion of the population that possesses some characteristic. Let <span class="math notranslate nohighlight">\(\hat{P}\)</span> be the random variable of the sampling distribution of the sample proportions for this population, where the samples are of size <span class="math notranslate nohighlight">\(n\)</span>. If the sample size <span class="math notranslate nohighlight">\(n\)</span> is big enough (so that <span class="math notranslate nohighlight">\(np \geq 5\)</span> and <span class="math notranslate nohighlight">\(n(1-p) \geq 5\)</span>), then the sampling distribution is roughly a normal distribution with mean <span class="math notranslate nohighlight">\(p\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sqrt{\frac{p(1-p)}{n}}\)</span>. That is,</p>
+<div class="math notranslate nohighlight">
+\[ \hat{P} \sim N\left(p, \sqrt{\frac{p(1-p)}{n}} \right). \]</div>
+</section>
+</div><p>We reiterate the observations about the central limit theorem that we made in the previous section:</p>
+<ul class="simple">
+<li><p>The central limit theorem does not make any requirements on how the population is distributed. This is why the central limit theorem is so powerful. The population can have any distribution. We do not even need to know <em>how</em> the population is distributed. No matter how the population is distributed, the sampling distribution of sample proportions (with <span class="math notranslate nohighlight">\(np \geq 5\)</span> and <span class="math notranslate nohighlight">\(n(1-p) \geq 5\)</span>) will approximate a normal distribution.</p></li>
+<li><p>The theorem states that the distribution of sample proportions <span class="math notranslate nohighlight">\(\hat{P}\)</span> only <em>approximates</em> a normal distribution. But in practice, as long as the sample size <span class="math notranslate nohighlight">\(n\)</span> is large enough so that <span class="math notranslate nohighlight">\(np \geq 5\)</span> and <span class="math notranslate nohighlight">\(n(1-p) \geq 5\)</span>, the distribution of sample proportions approximates the normal distribution so closely that we can treat the distribution as if it is normally distributed.</p></li>
+<li><p>We call the standard deviation of the sampling distribution, <span class="math notranslate nohighlight">\(\sqrt{\frac{p(1-p)}{n}}\)</span>, the <strong>standard error</strong> to distinguish it from the standard deviation of a population.</p></li>
+<li><p>Note that the larger the sample size <span class="math notranslate nohighlight">\(n\)</span> is, the smaller the standard error <span class="math notranslate nohighlight">\(\sqrt{\frac{p(1-p)}{n}}\)</span> becomes. That is, sample proportions from larger samples will tend to better approximate the population proportion than sample proportions from smaller samples.</p></li>
+<li><p>The central limit theorem only applies for samples that are randomly selected. If a sample is not selected randomly, the central limit theorem may not apply.</p></li>
+</ul>
+<p>As in the previous section, we need to adjust our formulas</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{x - \mu}{\sigma}, \hspace{0.5in} x = \mu + z\sigma,\]</div>
+<p>which allow us to calculate a <span class="math notranslate nohighlight">\(z\)</span>-score from an <span class="math notranslate nohighlight">\(x\)</span>-value or and <span class="math notranslate nohighlight">\(x\)</span>-value from a <span class="math notranslate nohighlight">\(z\)</span>-score, to use the appropriate symbols for the sampling distribution of sample proportions. We use <span class="math notranslate nohighlight">\(\hat{p}\)</span> instead of <span class="math notranslate nohighlight">\(x\)</span> (since we are dealing with the distribution of sample proportions, not particular values of the population); we use the mean of the sampling distribution, which is the population proportion <span class="math notranslate nohighlight">\(p\)</span>, instead of <span class="math notranslate nohighlight">\(\mu\)</span>; and we use the standard error <span class="math notranslate nohighlight">\(\sqrt{\frac{p(1-p)}{n}}\)</span> instead of the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> (since the standard error is the standard deviation of the sampling distribution). Making these substitutions, the formulas above become</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}}, \hspace{0.5in} \hat{p} = p + z\sqrt{\frac{p(1-p)}{n}}. \]</div>
+<hr class="docutils" />
+<section id="example-4-4-1">
+<h3>Example 4.4.1<a class="headerlink" href="#example-4-4-1" title="Permalink to this headline">#</a></h3>
+<p>A poll is conducted of <span class="math notranslate nohighlight">\(1{,}000\)</span> Americans to determine whether or not they approve of the President of the United States. Suppose that, in reality, <span class="math notranslate nohighlight">\(54\%\)</span> of all Americans approve of the President.</p>
+<ol class="arabic simple">
+<li><p>What is the probability that fewer than <span class="math notranslate nohighlight">\(50\%\)</span> of those polled approve of the President?</p></li>
+<li><p>What is the probability that more than <span class="math notranslate nohighlight">\(56\%\)</span> of those polled approve of the President?</p></li>
+<li><p>What is the probability that between <span class="math notranslate nohighlight">\(50\%\)</span> and <span class="math notranslate nohighlight">\(56\%\)</span> of those polled approve of the President?</p></li>
+</ol>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>First, note that the sample size is <span class="math notranslate nohighlight">\(n = 1{,}000\)</span> and the population proportion is <span class="math notranslate nohighlight">\(p = 0.54\)</span>. Then by the central limit theorem, we know that the sample proportions are normally distributed with mean</p>
+<div class="math notranslate nohighlight">
+\[ p = 0.54 \]</div>
+<p>and standard error</p>
+<div class="math notranslate nohighlight">
+\[ \sqrt{\frac{p(1 - p)}{n}} = \sqrt{\frac{0.54(1 - 0.54)}{1000}} = 0.0158. \]</div>
+<p>So <span class="math notranslate nohighlight">\(\hat{P} \sim N(0.54, 0.0158)\)</span>.</p>
+<section id="part-1">
+<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<p>We want to find <span class="math notranslate nohighlight">\(P(\hat{p} &lt; 0.50)\)</span>. First find the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(\hat{p} = 0.50\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} = \frac{0.50 - 0.54}{0.0158} = -2.5316. \]</div>
+<p>So <span class="math notranslate nohighlight">\(P(\hat{p} &lt; 0.50) = P(z &lt; -2.5316)\)</span>. Let’s use R to calculate the probability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.5316</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0056771717907339</div></div>
+</div>
+<p>Then <span class="math notranslate nohighlight">\(P(\hat{p} &lt; 0.50) = P(z &lt; -2.5316) = 0.0057\)</span>. There is a <span class="math notranslate nohighlight">\(0.57\%\)</span> chance that a sample of <span class="math notranslate nohighlight">\(1{,}000\)</span> Americans will yield a sample proportion less than <span class="math notranslate nohighlight">\(50\%\)</span>.</p>
+</section>
+<section id="part-2">
+<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<p>We want to find <span class="math notranslate nohighlight">\(P(\hat{p} &gt; 0.56)\)</span>. First find the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(\hat{p} = 0.56\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} = \frac{0.56 - 0.54}{0.0158} = 1.2658. \]</div>
+<p>So <span class="math notranslate nohighlight">\(P(\hat{p} &gt; 0.56) = P(z &gt; 1.2658)\)</span>. Let’s use R to calculate the probability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">1.2658</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.102792347555097</div></div>
+</div>
+<p>Then <span class="math notranslate nohighlight">\(P(\hat{p} &gt; 0.56) = P(z &gt; 1.2658) = 0.1028\)</span>. There is a <span class="math notranslate nohighlight">\(10.28\%\)</span> chance that a sample of <span class="math notranslate nohighlight">\(1{,}000\)</span> Americans will yield a sample proportion more than <span class="math notranslate nohighlight">\(56\%\)</span>.</p>
+</section>
+<section id="part-3">
+<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<p>We want <span class="math notranslate nohighlight">\(P(0.50 &lt; \hat{p} &lt; 0.56)\)</span>. We know from parts 1 and 2 that the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(\hat{p} = 0.50\)</span> is <span class="math notranslate nohighlight">\(z = -2.5316\)</span> and the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(\hat{p} = 0.56\)</span> is <span class="math notranslate nohighlight">\(z = 1.2658\)</span>. So <span class="math notranslate nohighlight">\(P(0.50 &lt; p' &lt; 0.56) = P(-2.5316 &lt; z &lt; 1.2658)\)</span>.</p>
+<p>The probability is the entire area under the normal density function between <span class="math notranslate nohighlight">\(z = -2.5316\)</span> and <span class="math notranslate nohighlight">\(z = 1.2658\)</span>. To find this, we will use R to first find all the area to the left of the larger <span class="math notranslate nohighlight">\(z\)</span>-score, <span class="math notranslate nohighlight">\(z = 1.2658\)</span>, then subtract off the excess area to the left of the smaller <span class="math notranslate nohighlight">\(z\)</span>-score, <span class="math notranslate nohighlight">\(z = -2.5316\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">1.2658</span><span class="p">)</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.5316</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.891530480654169</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(0.50 &lt; \hat{p} &lt; 0.56) = P(-2.5316 &lt; z &lt; 1.2658) = 0.8915\)</span>. There is an <span class="math notranslate nohighlight">\(89.15\%\)</span> chance that a sample of <span class="math notranslate nohighlight">\(1{,}000\)</span> Americans will have a sample proportion of between <span class="math notranslate nohighlight">\(50\%\)</span> and <span class="math notranslate nohighlight">\(56\%\)</span>.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-4-4-2">
+<h3>Example 4.4.2<a class="headerlink" href="#example-4-4-2" title="Permalink to this headline">#</a></h3>
+<p>Apparently having nothing better to do, Yan flips <span class="math notranslate nohighlight">\(20\)</span> coins, calculates the proportion of heads that come up, then repeats the process. We would expect <span class="math notranslate nohighlight">\(25\%\)</span> of the time the proportion of heads Yan gets will be smaller than what value?</p>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>Let’s start by calculating the properties of the sampling distribution according to the central limit theorem. We know the mean of the sampling distribution is the population proportion. We are not directly told what the population proportion is, but we know coins come up heads <span class="math notranslate nohighlight">\(50\%\)</span> of the time, so the proportion of heads in the population is</p>
+<div class="math notranslate nohighlight">
+\[ p = 0.50. \]</div>
+<p>We can use <span class="math notranslate nohighlight">\(p\)</span> to calculate the standard error:</p>
+<div class="math notranslate nohighlight">
+\[ \sqrt{\frac{p(1-p)}{n}} = \sqrt{\frac{0.5(1 - 0.5)}{20}} = 0.11180. \]</div>
+<p>So <span class="math notranslate nohighlight">\(\hat{P} \sim N(0.50, 0.11180)\)</span>.</p>
+<p>Now we need to find the <span class="math notranslate nohighlight">\(\hat{p}\)</span>-value so that <span class="math notranslate nohighlight">\(25\%\)</span> of possible sample proportions will be smaller than that <span class="math notranslate nohighlight">\(\hat{p}\)</span>-value.</p>
+<p>We start by using R to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with the probability we are given.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">-0.674489750196082</div></div>
+</div>
+<p>This means <span class="math notranslate nohighlight">\(P(z &lt; -0.67449) = 0.25\)</span>.</p>
+<p>Now we use this <span class="math notranslate nohighlight">\(z\)</span>-score to calculate</p>
+<div class="math notranslate nohighlight">
+\[ \hat{p} = p + z\sqrt{\frac{p(1-p)}{n}} = 0.50 + 0.67449(0.11180) = 0.42459. \]</div>
+<p>So <span class="math notranslate nohighlight">\(P(\hat{p} &lt; 0.42459) = 0.25\)</span>. That is, when Yan tosses his <span class="math notranslate nohighlight">\(20\)</span> coins, we expect the proportion of heads among the <span class="math notranslate nohighlight">\(20\)</span> coins to be smaller than <span class="math notranslate nohighlight">\(\hat{p} = 0.42459 = 42.459\%\)</span> only <span class="math notranslate nohighlight">\(25\%\)</span> of the time.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch4 The Normal Distribution and the Central Limit Theorem"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>The Central Limit Theorem for Means</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Confidence Intervals</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-proportions">Population Proportions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">The Central Limit Theorem for Proportions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-1">Example 4.4.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-2">Example 4.4.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>9.2. Hypothesis Testing Two Population Variances &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch9 Hypothesis Tests of Two or More Populations/9.2 Hypothesis Testing Two Population Variances';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9.3. ANOVA" href="9.3%20ANOVA.html" />
+    <link rel="prev" title="9.1. Hypothesis Testing: Two Population Means" href="9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch9 Hypothesis Tests of Two or More Populations/9.2 Hypothesis Testing Two Population Variances.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hypothesis Testing Two Population Variances</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-f-distribution">The <span class="math notranslate nohighlight">\(F\)</span>-Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-two-population-variances">Testing Two Population Variances</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-2-1">Example 9.2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-null-and-alternative-hypotheses">Step 1: State the null and alternative hypotheses.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">Step 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-p-value">Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-draw-a-conclusion">Step 4: Draw a conclusion.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing-two-population-variances">
+<h1><span class="section-number">9.2. </span>Hypothesis Testing Two Population Variances<a class="headerlink" href="#hypothesis-testing-two-population-variances" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Calculate probabilities using the <span class="math notranslate nohighlight">\(F\)</span>-distribution.</p></li>
+<li><p>Conduct hypothesis tests comparing the variances of two populations.</p></li>
+</ul>
+</section>
+<section id="the-f-distribution">
+<h2>The <span class="math notranslate nohighlight">\(F\)</span>-Distribution<a class="headerlink" href="#the-f-distribution" title="Permalink to this headline">#</a></h2>
+<p>We can compare two independent <span class="math notranslate nohighlight">\(\chi^2\)</span>-distributed random variables by considering a fraction involving the two random variables. This fraction is a new random variable, and we say that it has an <span class="math notranslate nohighlight">\(F\)</span>-distribution. The shape of an <span class="math notranslate nohighlight">\(F\)</span>-distribution is determined by the degrees of freedom of the <span class="math notranslate nohighlight">\(\chi^2\)</span>-distribution of the numerator <span class="math notranslate nohighlight">\(df_1\)</span> and the degrees of freedom of the <span class="math notranslate nohighlight">\(\chi^2\)</span>-distribution of the denominator <span class="math notranslate nohighlight">\(df_2\)</span>.</p>
+<figure class="align-default" id="f-dist">
+<a class="reference internal image-reference" href="../_images/f_dist.png"><img alt="The plots of F-distributions with different values for df1 and df2." src="../_images/f_dist.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.2.1 </span><span class="caption-text">The plots of <span class="math notranslate nohighlight">\(F\)</span>-distributions with various values for <span class="math notranslate nohighlight">\(df_1\)</span> and <span class="math notranslate nohighlight">\(df_2\)</span>.</span><a class="headerlink" href="#f-dist" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To find the probability to the left of a value when using the <span class="math notranslate nohighlight">\(F\)</span>-distribution, we will use the R function</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">pf</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where we want the probability to the left of <code>q</code>, the numerator degrees of freedom is <code>df1</code>, and the denominator degrees of freedom is <code>df2</code>.</p>
+</section>
+<section id="testing-two-population-variances">
+<h2>Testing Two Population Variances<a class="headerlink" href="#testing-two-population-variances" title="Permalink to this headline">#</a></h2>
+<p>You may recall that we use a <span class="math notranslate nohighlight">\(\chi^2\)</span>-distribution when performing a hypothesis test on the variance of a population. When comparing two population variances, we have one <span class="math notranslate nohighlight">\(\chi^2\)</span>-distribution for each of the two populations, so we compare the population variances using an <span class="math notranslate nohighlight">\(F\)</span>-distribution. When the populations are independent from each other and normally distributed, the test statistic for the hypothesis test is given by</p>
+<div class="math notranslate nohighlight">
+\[ F = \frac{s_1^2}{s_2^2}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(s_1\)</span> is the sample standard deviation of the sample taken from population <span class="math notranslate nohighlight">\(1\)</span>, and <span class="math notranslate nohighlight">\(s_2\)</span> is the sample standard deviation of the sample taken from population <span class="math notranslate nohighlight">\(2\)</span>. If the size of sample <span class="math notranslate nohighlight">\(1\)</span> is <span class="math notranslate nohighlight">\(n_1\)</span> and the size of sample <span class="math notranslate nohighlight">\(2\)</span> is <span class="math notranslate nohighlight">\(n_2\)</span>, then the numerator degrees of freedom is <span class="math notranslate nohighlight">\(df_1 = n_1 - 1\)</span> and the denominator degrees of freedom is <span class="math notranslate nohighlight">\(df_2 = n_2 - 1\)</span>.</p>
+<p>The general steps for completing a hypothesis test have not changed:</p>
+<ol class="arabic simple">
+<li><p>State the null and alternative hypotheses.</p></li>
+<li><p>Assuming the null hypothesis is true, identify the sampling distribution.</p></li>
+<li><p>Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</p></li>
+<li><p>Draw a conclusion.</p></li>
+</ol>
+<hr class="docutils" />
+<section id="example-9-2-1">
+<h3>Example 9.2.1<a class="headerlink" href="#example-9-2-1" title="Permalink to this headline">#</a></h3>
+<p>A researcher believes that there is less variance in the heights of <span class="math notranslate nohighlight">\(10\)</span>-year-old males compared to adult males. She measures the heights of <span class="math notranslate nohighlight">\(22\)</span> <span class="math notranslate nohighlight">\(10\)</span>-year-old males and <span class="math notranslate nohighlight">\(27\)</span> adult males with the following results (in centimeters):</p>
+<p><span class="math notranslate nohighlight">\(10\)</span> Year-Old Males (Sample A):</p>
+<p>148.8, 141.4, 144.9, 140.2, 140.7, 139.6, 148.5, 136.9, 147.5, 148.5, 131.8, 127.9, 132.2, 138.6, 148.5, 141.1, 130.9, 139.2, 137.5, 151.9, 135, 142.6</p>
+<p>Adult Males (Sample B):</p>
+<p>168.8, 186.4, 172.1, 180.1, 163.7, 185.2, 173.2, 174, 165.9, 169.2, 175.7, 181.3, 172.7, 172.1, 168.3, 171.8, 195, 186.4, 179, 168.3, 171.3, 182.9, 164.4, 169, 186.8, 178.3, 191.1</p>
+<p>Conduct a hypothesis test with a <span class="math notranslate nohighlight">\(7\%\)</span> level of significance to test her claim.</p>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<section id="step-1-state-the-null-and-alternative-hypotheses">
+<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#step-1-state-the-null-and-alternative-hypotheses" title="Permalink to this headline">#</a></h5>
+<p>We want to test if the heights of 10 year-old males has a smaller variance than the heights of adult males. Written mathematically, this means that one of our hypotheses is that <span class="math notranslate nohighlight">\(\sigma_A^2 &lt; \sigma_B^2\)</span>. We can rewrite this in a form that is consistent with the sampling distribution by dividing both sides by <span class="math notranslate nohighlight">\(\sigma_B^2\)</span> to get
+$<span class="math notranslate nohighlight">\(\frac{\sigma_A^2}{\sigma_B^2} &lt; 1.\)</span>$
+Since this inequality uses the less-than symbol, this is the alternative hypothesis. Using the opposite symbol for the null hypothesis, we obtain our hypotheses:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+H_0:&amp; \frac{\sigma_A^2}{\sigma_B^2} \geq 1, \\
+H_a:&amp; \frac{\sigma_A^2}{\sigma_B^2} &lt; 1.
+\end{align*}\]</div>
+</section>
+<section id="step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">
+<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Permalink to this headline">#</a></h5>
+<p>Since we are testing two population variances, we will find the <span class="math notranslate nohighlight">\(p\)</span>-value using an <span class="math notranslate nohighlight">\(F\)</span>-distribution. The numerator degrees of freedom is <span class="math notranslate nohighlight">\(df_A = n_A - 1 = 22 - 1 = 21\)</span> and the denominator degrees of freedom is <span class="math notranslate nohighlight">\(df_B = n_B - 1 = 27 - 1 = 26\)</span>.</p>
+</section>
+<section id="step-3-find-the-p-value">
+<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#step-3-find-the-p-value" title="Permalink to this headline">#</a></h5>
+<p>Our test statistic is <span class="math notranslate nohighlight">\(F = \frac{s_A^2}{s_B^2}\)</span>, so we need to find the standard deviation <span class="math notranslate nohighlight">\(s_A\)</span> of sample A and the standard deviation <span class="math notranslate nohighlight">\(s_B\)</span> of sample B. Let’s start by finding <span class="math notranslate nohighlight">\(s_A\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xA</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">148.8</span><span class="p">,</span> <span class="m">141.4</span><span class="p">,</span> <span class="m">144.9</span><span class="p">,</span> <span class="m">140.2</span><span class="p">,</span> <span class="m">140.7</span><span class="p">,</span> <span class="m">139.6</span><span class="p">,</span> <span class="m">148.5</span><span class="p">,</span> <span class="m">136.9</span><span class="p">,</span> <span class="m">147.5</span><span class="p">,</span> <span class="m">148.5</span><span class="p">,</span> <span class="m">131.8</span><span class="p">,</span> <span class="m">127.9</span><span class="p">,</span> <span class="m">132.2</span><span class="p">,</span> <span class="m">138.6</span><span class="p">,</span> <span class="m">148.5</span><span class="p">,</span> <span class="m">141.1</span><span class="p">,</span> <span class="m">130.9</span><span class="p">,</span> <span class="m">139.2</span><span class="p">,</span> <span class="m">137.5</span><span class="p">,</span> <span class="m">151.9</span><span class="p">,</span> <span class="m">135</span><span class="p">,</span> <span class="m">142.6</span><span class="p">)</span>
+<span class="n">nA</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">xA</span><span class="p">)</span>
+
+<span class="n">xbarA</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">xA</span><span class="p">)</span><span class="o">/</span><span class="n">nA</span>
+
+<span class="n">sA</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">xA</span> <span class="o">-</span> <span class="n">xbarA</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">nA</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">sA</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">6.61266658068886</div></div>
+</div>
+<p>So the standard deviation of sample A is <span class="math notranslate nohighlight">\(s_A = 6.613\)</span>. The process is the same to find <span class="math notranslate nohighlight">\(s_B\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xB</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">168.8</span><span class="p">,</span> <span class="m">186.4</span><span class="p">,</span> <span class="m">172.1</span><span class="p">,</span> <span class="m">180.1</span><span class="p">,</span> <span class="m">163.7</span><span class="p">,</span> <span class="m">185.2</span><span class="p">,</span> <span class="m">173.2</span><span class="p">,</span> <span class="m">174</span><span class="p">,</span> <span class="m">165.9</span><span class="p">,</span> <span class="m">169.2</span><span class="p">,</span> <span class="m">175.7</span><span class="p">,</span> <span class="m">181.3</span><span class="p">,</span> <span class="m">172.7</span><span class="p">,</span> <span class="m">172.1</span><span class="p">,</span> <span class="m">168.3</span><span class="p">,</span> <span class="m">171.8</span><span class="p">,</span> <span class="m">195</span><span class="p">,</span> <span class="m">186.4</span><span class="p">,</span> <span class="m">179</span><span class="p">,</span> <span class="m">168.3</span><span class="p">,</span> <span class="m">171.3</span><span class="p">,</span> <span class="m">182.9</span><span class="p">,</span> <span class="m">164.4</span><span class="p">,</span> <span class="m">169</span><span class="p">,</span> <span class="m">186.8</span><span class="p">,</span> <span class="m">178.3</span><span class="p">,</span> <span class="m">191.1</span><span class="p">)</span>
+<span class="n">nB</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">xB</span><span class="p">)</span>
+
+<span class="n">xbarB</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">xB</span><span class="p">)</span><span class="o">/</span><span class="n">nB</span>
+
+<span class="n">sB</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">xB</span> <span class="o">-</span> <span class="n">xbarB</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">nB</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">sB</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">8.45772965299736</div></div>
+</div>
+<p>The standard deviation of sample B is <span class="math notranslate nohighlight">\(s_B = 8.458\)</span>.</p>
+<p>We can now calculate our test statistic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Fscore</span> <span class="o">=</span> <span class="n">sA</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="n">sB</span><span class="o">^</span><span class="m">2</span>
+<span class="n">Fscore</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.611287694110602</div></div>
+</div>
+<p>Our test statistic is
+$<span class="math notranslate nohighlight">\( F = \frac{s_A^2}{s_B^2} = \frac{6.613^2}{8.458^2} = 0.611. \)</span>$</p>
+<p>We are now prepared to calculate the <span class="math notranslate nohighlight">\(p\)</span>-value using the numerator degrees of freedom and denominator degrees of freedom we calculated in step 2. Since the alternative hypothesis uses a “less-than” symbol, we perform a left-tailed test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pf</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="n">Fscore</span><span class="p">,</span> <span class="n">df1</span> <span class="o">=</span> <span class="m">21</span><span class="p">,</span> <span class="n">df2</span> <span class="o">=</span> <span class="m">26</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.12648514626268</div></div>
+</div>
+<p>So the <span class="math notranslate nohighlight">\(p\)</span>-value is <span class="math notranslate nohighlight">\(P(F &lt; 0.611) = 0.126\)</span>. In other words, assuming the null hypothesis is true, there is a <span class="math notranslate nohighlight">\(12.6\%\)</span> chance of the variance from a sample from population A being at least as small as the variance we actually obtained relative to the variance from a sample from population B.</p>
+</section>
+<section id="step-4-draw-a-conclusion">
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Permalink to this headline">#</a></h5>
+<p>Since <span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(= 0.126 \geq 0.07 = \alpha\)</span>, we do <em>not</em> reject the null hypothesis. There is not enough evidence to conclude that the variance of heights of <span class="math notranslate nohighlight">\(10\)</span> year-old males is lower than the variance of heights of adult males.</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch9 Hypothesis Tests of Two or More Populations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.1. </span>Hypothesis Testing: Two Population Means</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="9.3%20ANOVA.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9.3. </span>ANOVA</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-f-distribution">The <span class="math notranslate nohighlight">\(F\)</span>-Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-two-population-variances">Testing Two Population Variances</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-2-1">Example 9.2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-null-and-alternative-hypotheses">Step 1: State the null and alternative hypotheses.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">Step 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-p-value">Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-draw-a-conclusion">Step 4: Draw a conclusion.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

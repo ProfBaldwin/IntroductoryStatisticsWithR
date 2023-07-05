@@ -1,0 +1,35 @@
+title: "Introductory Statistics with R"
+author: Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+copyright: "2023"
+
+execute:
+  execute_notebooks: "off"
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+
+sphinx:
+  config:
+    language: en
+    highlight_language: none
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    numfig_secnum_depth: 2
+    html_theme_options:
+      launch_buttons: {}
+  extra_extensions:
+    - sphinx_proof
+  local_extensions:
+    helloworld: ./_ext
+    examplenum: ./_ext
+
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - linkify
+    - substitution
+    - colon_fence
+    - amsmath
+
+
+
+only_build_toc_files: true

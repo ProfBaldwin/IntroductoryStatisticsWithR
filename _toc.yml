@@ -1,0 +1,61 @@
+format: jb-book
+root: README
+options:
+    numbered: 2
+chapters:
+- file: Ch1 Sampling and Data/1.0 Sampling and Data
+  sections:
+  - file: Ch1 Sampling and Data/1.1 Key Terms in Statistics
+  - file: Ch1 Sampling and Data/1.2 Scales of Measurement
+  - file: Ch1 Sampling and Data/1.3 Sampling Techniques
+  - file: Ch1 Sampling and Data/1.4 Tables and Charts
+- file: Ch2 Descriptive Statistics/2.0 Descriptive Statistics
+  sections:
+  - file: Ch2 Descriptive Statistics/2.1 Measures of Position
+  - file: Ch2 Descriptive Statistics/2.2 Measures of Central Tendency
+  - file: Ch2 Descriptive Statistics/2.3 Measures of Dispersion
+- file: Ch3 Probability/3.0 Probability
+  sections:
+    - file: Ch3 Probability/3.1 Introduction to Probability
+    - file: Ch3 Probability/3.2 Conditional Probability
+    - file: Ch3 Probability/3.3 Multiplication Rules and Independent Events
+    - file: Ch3 Probability/3.4 Addition Rules and Mutually Exclusive Events
+    - file: Ch3 Probability/3.5 Discrete Probability Distributions
+    - file: Ch3 Probability/3.6 The Binomial Distribution
+    - file: Ch3 Probability/3.7 Continuous Probability Distributions
+- file: Ch4 The Normal Distribution and the Central Limit Theorem/4.0 The Normal Distribution and the Central Limit Theorem
+  sections:
+    - file: Ch4 The Normal Distribution and the Central Limit Theorem/4.1 Properties of the Normal Distribution
+    - file: Ch4 The Normal Distribution and the Central Limit Theorem/4.2 The Standard Normal Distribution
+    - file: Ch4 The Normal Distribution and the Central Limit Theorem/4.3 The Normal Distribution and z-scores
+    - file: Ch4 The Normal Distribution and the Central Limit Theorem/4.4 The Central Limit Theorem for Means
+    - file: Ch4 The Normal Distribution and the Central Limit Theorem/4.5 The Central Limit Theorem for Proportions
+- file: Ch5 Confidence Intervals/5.0 Confidence Intervals
+  sections:
+    - file: Ch5 Confidence Intervals/5.1 Estimating Population Means (Sigma Known)
+    - file: Ch5 Confidence Intervals/5.2 Estimating Population Proportions
+    - file: Ch5 Confidence Intervals/5.3 Student's t-Distribution
+    - file: Ch5 Confidence Intervals/5.4 Estimating Population Means (Sigma Unknown)
+- file: Ch6 An Introduction to Hypothesis Testing/6.0 An Introduction to Hypothesis Testing
+  sections:
+    - file: Ch6 An Introduction to Hypothesis Testing/6.1 An Introduction to Hypothesis Testing
+    - file: Ch6 An Introduction to Hypothesis Testing/6.2 Hypotheses and Errors
+    - file: Ch6 An Introduction to Hypothesis Testing/6.3 Drawing a Conclusion
+    - file: Ch6 An Introduction to Hypothesis Testing/6.4 Hypothesis Tests of One Population
+- file: Ch7 The Chi-Square Distribution/7.0 The Chi-Square Distribution
+  sections:
+    - file: Ch7 The Chi-Square Distribution/7.1 The Chi-Square Distribution
+    - file: Ch7 The Chi-Square Distribution/7.2 Hypothesis Testing for the Population Variance
+    - file: Ch7 The Chi-Square Distribution/7.3 Goodness-of-Fit Test
+- file: Ch8 Correlation and Linear Regression/8.0 Correlation and Linear Regression
+  sections:
+    - file: Ch8 Correlation and Linear Regression/8.1 Scatter Plots
+    - file: Ch8 Correlation and Linear Regression/8.2 Linear Equations
+    - file: Ch8 Correlation and Linear Regression/8.3 The Regression Equation
+    - file: Ch8 Correlation and Linear Regression/8.4 The Correlation Coefficient
+- file: Ch9 Hypothesis Tests of Two or More Populations/9.0 Hypothesis Tests of Two or More Populations
+  sections:
+    - file: Ch9 Hypothesis Tests of Two or More Populations/9.1 Hypothesis Testing Two Population Means
+    - file: Ch9 Hypothesis Tests of Two or More Populations/9.2 Hypothesis Testing Two Population Variances
+    - file: Ch9 Hypothesis Tests of Two or More Populations/9.3 ANOVA
+        

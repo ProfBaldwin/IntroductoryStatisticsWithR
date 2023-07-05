@@ -1,0 +1,53 @@
+table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: fit-content !important;
+}
+
+
+
+div.incorrect {
+    border-left-color: var(--sd-color-danger) !important;
+}
+div.incorrect .admonition-title:before {
+    background-color: var(--sd-color-danger) !important;
+    opacity: 0.1 !important;
+}
+div.incorrect .admonition-title:after {
+    color: var(--sd-color-danger) !important;
+    content: '\f057' !important;
+}
+
+
+
+div.correct {
+    border-left-color: var(--sd-color-success) !important;
+}
+div.correct .admonition-title:before {
+    background-color: var(--sd-color-success) !important;
+    opacity: 0.1 !important;
+}
+div.correct .admonition-title:after {
+    color: var(--sd-color-success) !important;
+    content: '\f058' !important;
+}
+
+
+div.example {
+    border-left-color: var(--sd-color-primary) !important;
+}
+
+
+div.proof .admonition-title:after {
+    content: '' !important;
+}
+
+
+.sd-test div[class*="highlight-"],
+.sd-test div.highlight,
+.sd-test pre {
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: .25rem;
+}

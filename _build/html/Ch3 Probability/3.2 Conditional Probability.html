@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3.2. Conditional Probability &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch3 Probability/3.2 Conditional Probability';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.3. Multiplication Rules and Independent Events" href="3.3%20Multiplication%20Rules%20and%20Independent%20Events.html" />
+    <link rel="prev" title="3.1. Introduction to Probability" href="3.1%20Introduction%20to%20Probability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="3.0%20Probability.html">3. Probability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch3 Probability/3.2 Conditional Probability.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Conditional Probability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-and-and-text-or-events"><span class="math notranslate nohighlight">\(\text{AND}\)</span> and <span class="math notranslate nohighlight">\(\text{OR}\)</span> Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-2-1">Example 3.2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability-when-outcomes-are-equally-likely">Conditional Probability When Outcomes are Equally Likely</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-2-2">Example 3.2.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability-when-outcomes-are-not-equally-likely">Conditional Probability When Outcomes are Not Equally Likely</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-2-3">Example 3.2.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conditional-probability">
+<h1><span class="section-number">3.2. </span>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Construct composite events using <span class="math notranslate nohighlight">\(\text{AND}\)</span> and <span class="math notranslate nohighlight">\(\text{OR}\)</span> and calculate their probability.</p></li>
+<li><p>Calculate conditional probability.</p></li>
+</ul>
+</section>
+<section id="text-and-and-text-or-events">
+<h2><span class="math notranslate nohighlight">\(\text{AND}\)</span> and <span class="math notranslate nohighlight">\(\text{OR}\)</span> Events<a class="headerlink" href="#text-and-and-text-or-events" title="Permalink to this headline">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be any two events. Then <span class="math notranslate nohighlight">\(A \text{ AND } B\)</span> is an event with all the outcomes that are both in <span class="math notranslate nohighlight">\(A\)</span> and in <span class="math notranslate nohighlight">\(B\)</span>. For example, suppose <span class="math notranslate nohighlight">\(A = \{1, 2, 3, 4\}\)</span> and <span class="math notranslate nohighlight">\(B = \{3, 4, 5, 6\}\)</span>. Then event <span class="math notranslate nohighlight">\(A \text{ AND } B = \{3, 4\}\)</span> since those two outcomes are the only outcomes in both event <span class="math notranslate nohighlight">\(A\)</span> and event <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<figure class="align-default" id="vennand">
+<a class="reference internal image-reference" href="../_images/vennAND.svg"><img alt="A venn diagram of two events A and B. The intersection of the two events is shaded representing the composite event (A AND B)." src="../_images/vennAND.svg" width="40%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2.1 </span><span class="caption-text">A venn diagram of two events A and B. The shaded portion of the diagram represents event <span class="math notranslate nohighlight">\(A \text{ AND } B\)</span>. It is the portion of the diagram that is both in <span class="math notranslate nohighlight">\(A\)</span> and in <span class="math notranslate nohighlight">\(B\)</span>.</span><a class="headerlink" href="#vennand" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Similarly, <span class="math notranslate nohighlight">\(A \text{ OR } B\)</span> is an event with all outcomes that are either in <span class="math notranslate nohighlight">\(A\)</span> or in <span class="math notranslate nohighlight">\(B\)</span> (or both). If <span class="math notranslate nohighlight">\(A = \{1, 2, 3, 4\}\)</span> and <span class="math notranslate nohighlight">\(B = \{3, 4, 5, 6\}\)</span>, then event <span class="math notranslate nohighlight">\(A \text{ OR } B = \{1, 2, 3, 4, 5, 6\}\)</span> since each of these outcomes are in <span class="math notranslate nohighlight">\(A\)</span> or in <span class="math notranslate nohighlight">\(B\)</span>. Note that when an outcome is in both <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, it is still only listed once in <span class="math notranslate nohighlight">\(A \text{ OR } B\)</span>.</p>
+<figure class="align-default" id="vennor">
+<a class="reference internal image-reference" href="../_images/vennOR.svg"><img alt="A venn diagram of two events A and B. The entirety of circle A together with the entirety of circle B is shaded representing the composite event (A OR B)." src="../_images/vennOR.svg" width="40%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2.2 </span><span class="caption-text">A venn diagram of two events A and B. The shaded portion of the diagram represents event <span class="math notranslate nohighlight">\(A \text{ OR } B\)</span>. It is the portion of the diagram that is in any part of <span class="math notranslate nohighlight">\(A\)</span> or in any part of <span class="math notranslate nohighlight">\(B\)</span>.</span><a class="headerlink" href="#vennor" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="docutils" />
+<section id="example-3-2-1">
+<h3>Example 3.2.1<a class="headerlink" href="#example-3-2-1" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<figure class="align-default" id="playingcards2">
+<a class="reference internal image-reference" href="../_images/playingcards.svg"><img alt="A standard deck of 52 playing cards." src="../_images/playingcards.svg" width="100%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2.3 </span><span class="caption-text">A standard deck of <span class="math notranslate nohighlight">\(52\)</span> playing cards.<a class="footnote-reference brackets" href="#cards-attribution" id="id1">1</a> <br/>
+A deck is divided into 4 suits: Spades (<span class="math notranslate nohighlight">\(♠\)</span>), Hearts (<span class="math notranslate nohighlight">\(\color{red} ♥\)</span>), Diamonds (<span class="math notranslate nohighlight">\(\color{red} ♦\)</span>), and Clubs (<span class="math notranslate nohighlight">\(♣\)</span>). <br/>
+Spades (<span class="math notranslate nohighlight">\(♠\)</span>) and Clubs (<span class="math notranslate nohighlight">\(♣\)</span>) are black. Hearts (<span class="math notranslate nohighlight">\(\color{red} ♥\)</span>) and Diamonds (<span class="math notranslate nohighlight">\(\color{red} ♦\)</span>) are red.<br/>
+There are 13 ranks in each suit:
+<strong>A</strong>ce, <strong>2</strong>, <strong>3</strong>, <strong>4</strong>, <strong>5</strong>, <strong>6</strong>, <strong>7</strong>, <strong>8</strong>, <strong>9</strong>, <strong>10</strong>, <strong>J</strong>ack, <strong>Q</strong>ueen, and <strong>K</strong>ing.<br/>
+The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="headerlink" href="#playingcards2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<p>Gloriana drew one card from a standard deck of <span class="math notranslate nohighlight">\(52\)</span> cards.</p>
+<ol class="arabic simple">
+<li><p>What is the probability that Gloriana’s card is both a Queen and a Heart?</p></li>
+<li><p>What is the probability that Gloriana’s card is a Queen or a Heart?</p></li>
+</ol>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(Q = \)</span> the event where Gloriana draws a Queen and <span class="math notranslate nohighlight">\({\color{red}♥} = \)</span> the event where Gloriana draws a Heart. Note that since each card has an equal probability of being chosen, all outcomes are equally likely. And since there are <span class="math notranslate nohighlight">\(52\)</span> cards in the deck, <span class="math notranslate nohighlight">\(n(S) = 52\)</span>.</p>
+<section id="part-1">
+<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<p>We can express the probability that Gloriana’s card is both a Queen and a Heart mathematically as <span class="math notranslate nohighlight">\(P(Q \text{ AND } {\color{red}♥})\)</span>. Since all the outcomes are equally likely, we can calculate the probability using the formula</p>
+<div class="math notranslate nohighlight">
+\[ P(Q \text{ AND } {\color{red}♥}) = \frac{n(Q \text{ AND } {\color{red}♥})}{n(S)}. \]</div>
+<p>Looking at <a class="reference internal" href="#playingcards2"><span class="std std-numref">Figure 3.2.3</span></a>, we can see that the Queen of Hearts is the only card that is both a Queen and a Heart, meaning <span class="math notranslate nohighlight">\(n(Q \text{ AND } {\color{red}♥}) = 1\)</span>. So the probability that Gloriana’s card is both a Queen and a Heart is</p>
+<div class="math notranslate nohighlight">
+\[ P(Q \text{ AND } {\color{red}♥}) = \frac{n(Q \text{ AND } {\color{red}♥})}{n(S)} = 1/52 = 0.0192. \]</div>
+</section>
+<section id="part-2">
+<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<p>The probability that Gloriana’s card is a Queen or a Heart can be found using the formula</p>
+<div class="math notranslate nohighlight">
+\[ P(Q \text{ OR } {\color{red}♥}) = \frac{n(Q \text{ OR } {\color{red}♥})}{n(S)}. \]</div>
+<p>Looking at <a class="reference internal" href="#playingcards2"><span class="std std-numref">Figure 3.2.3</span></a>, we can see the cards that are either a Queen or a Heart are</p>
+<div class="math notranslate nohighlight">
+\[ Q \text{ OR } {\color{red}♥} = \{Q♠, Q{\color{red}♥}, Q{\color{red}♦}, Q♣, A{\color{red}♥}, 2{\color{red}♥}, 3{\color{red}♥}, 4{\color{red}♥}, 5{\color{red}♥}, 6{\color{red}♥}, 7{\color{red}♥}, 8{\color{red}♥}, 9{\color{red}♥}, 10{\color{red}♥}, J{\color{red}♥}, K{\color{red}♥}\}. \]</div>
+<p>(Note that we counted the Queen of Hearts only once.) This means <span class="math notranslate nohighlight">\(n(Q \text{ OR } {\color{red}♥}) = 16\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[ P(Q \text{ OR } {\color{red}♥}) = \frac{n(Q \text{ OR } {\color{red}♥})}{n(S)} = \frac{16}{52} = 0.3077.\]</div>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conditional-probability-when-outcomes-are-equally-likely">
+<h2>Conditional Probability When Outcomes are Equally Likely<a class="headerlink" href="#conditional-probability-when-outcomes-are-equally-likely" title="Permalink to this headline">#</a></h2>
+<p>The <strong>conditional probability</strong> of <span class="math notranslate nohighlight">\(A\)</span> given <span class="math notranslate nohighlight">\(B\)</span> is written <span class="math notranslate nohighlight">\(P(A|B)\)</span>. <span class="math notranslate nohighlight">\(P(A|B)\)</span> is the probability that event <span class="math notranslate nohighlight">\(A\)</span> is true given that we already know event <span class="math notranslate nohighlight">\(B\)</span> is true.</p>
+<p>For example, imagine you roll a six-sided die, and it rolls where you can’t see it. You want to calculate the probability that the die came up a <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, or <span class="math notranslate nohighlight">\(6\)</span>. Let <span class="math notranslate nohighlight">\(D = \{4, 5, 6\}\)</span>. Since you can’t see the die, the probability of that you rolled a <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, or <span class="math notranslate nohighlight">\(6\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ P(D) = \frac{n(D)}{n(S)} = \frac{3}{6} = 0.5. \]</div>
+<p>Now suppose your friend checks the die and tells you that you have rolled an even number. This extra information changes how you calculate the probability because now you know some outcomes are not possible. For example, it is no longer possible that you have rolled a <span class="math notranslate nohighlight">\(5\)</span>. Since you know the result is even, there are only <strong>two</strong> outcomes in <span class="math notranslate nohighlight">\(D = \{4, 5, 6\}\)</span> that are still possible: <span class="math notranslate nohighlight">\(4\)</span> and <span class="math notranslate nohighlight">\(6\)</span>. Similarly, of the outcomes in sample space <span class="math notranslate nohighlight">\(S = \{1, 2, 3, 4, 5, 6\}\)</span>, there are only <strong>three</strong> outcomes that are still possible: <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(4\)</span>, and <span class="math notranslate nohighlight">\(6\)</span>. If event <span class="math notranslate nohighlight">\(E\)</span> is rolling an even number, then the probability that you rolled a <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, or <span class="math notranslate nohighlight">\(6\)</span> <em>given</em> that the number you rolled is even is</p>
+<div class="math notranslate nohighlight">
+\[ P(D|E) = \frac{2}{3} = 0.6666. \]</div>
+<p>As this example demonstrates, when outcomes are equally likely, the conditional probability <span class="math notranslate nohighlight">\(P(A|B)\)</span> is calculated almost like the usual probability <span class="math notranslate nohighlight">\(P(A)\)</span>: in both cases, we divide the possible number of outcomes in <span class="math notranslate nohighlight">\(A\)</span> by the total number of possible outcomes. The difference is that the extra condition in <span class="math notranslate nohighlight">\(P(A|B)\)</span> changes what outcomes are possible. If we know event <span class="math notranslate nohighlight">\(B\)</span> is true, the only outcomes in <span class="math notranslate nohighlight">\(A\)</span> that are possible are those outcomes that are also in <span class="math notranslate nohighlight">\(B\)</span>; that is, the outcomes in <span class="math notranslate nohighlight">\(A \text{ AND } B\)</span> are the only outcomes in <span class="math notranslate nohighlight">\(A\)</span> that are possible. And if we know event <span class="math notranslate nohighlight">\(B\)</span> is true, the set of all possible outcomes is reduced from the entire sample space <span class="math notranslate nohighlight">\(S\)</span> to just the outcomes in <span class="math notranslate nohighlight">\(B\)</span>. Putting these ideas together gives us the formula for <span class="math notranslate nohighlight">\(P(A|B)\)</span> when outcomes are equally likely:</p>
+<div class="math notranslate nohighlight">
+\[ P(A|B) = \frac{n(A \text{ AND } B)}{n(B)}. \]</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The order we write events in matters when working with conditional probability: generally, <span class="math notranslate nohighlight">\(P(A|B) \neq P(B|A)\)</span>. Be careful that you use the right expression and formula for your application.</p>
+</div>
+<hr class="docutils" />
+<section id="example-3-2-2">
+<h3>Example 3.2.2<a class="headerlink" href="#example-3-2-2" title="Permalink to this headline">#</a></h3>
+<p><a class="reference internal" href="#abortion-table2"><span class="std std-numref">Table 3.2.1</span></a> describes the distribution of a random sample of <span class="math notranslate nohighlight">\(466\)</span> individuals from the U.S., organized by political party and views on the circumstances under which abortion should be legal. One individual from the sample is selected at random.</p>
+<table class="table" id="abortion-table2">
+<caption><span class="caption-number">Table 3.2.1 </span><span class="caption-text">The political party identification and views on the circumstances under which abortion should be legal of a sample of <span class="math notranslate nohighlight">\(466\)</span> individuals.</span><a class="headerlink" href="#abortion-table2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>Legal under any circumstances</p></th>
+<th class="head"><p>Legal under certain circumstances</p></th>
+<th class="head"><p>Illegal in all circumstances</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Republican</p></th>
+<td><p>18</p></td>
+<td><p>66</p></td>
+<td><p>38</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Independent</p></th>
+<td><p>64</p></td>
+<td><p>96</p></td>
+<td><p>34</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Democrat</p></th>
+<td><p>76</p></td>
+<td><p>62</p></td>
+<td><p>12</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>Find the probability that the individual believes abortion should be illegal in all circumstances given that they are Republican.</p></li>
+<li><p>Find the probability that the individual is a Republican given that they believe abortion should be illegal in all circumstances.</p></li>
+</ol>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>Note that since the individual is selected randomly, each individual has an equal probability of being chosen. So the outcomes are equally likely. Let <span class="math notranslate nohighlight">\(I\)</span> be the event where the individual believes abortion should be illegal in all circumstances, and let <span class="math notranslate nohighlight">\(R\)</span> be the event where the individual is a Republican.</p>
+<section id="id3">
+<h5>Part 1<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<p>We want to find <span class="math notranslate nohighlight">\(P(I|R)\)</span>. The formula for this conditional probability is</p>
+<div class="math notranslate nohighlight">
+\[ P(I|R) = \frac{n(I\text{ AND } R)}{n(R)}. \]</div>
+<p>Looking at the table, there are <span class="math notranslate nohighlight">\(38\)</span> individuals who believe abortion should be illegal in all circumstances and are Republican, so <span class="math notranslate nohighlight">\(n(I \text{ AND } R) = 38\)</span>. We also calculate that the total number of Republicans is <span class="math notranslate nohighlight">\(n(R) = 18 + 66 + 38 = 122\)</span>. So</p>
+<div class="math notranslate nohighlight">
+\[ P(I|R) = \frac{n(I\text{ AND } R)}{n(R)} = \frac{38}{122} = 0.3115. \]</div>
+</section>
+<section id="id4">
+<h5>Part 2<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<p>We want to find <span class="math notranslate nohighlight">\(P(R|I)\)</span>. The formula for this conditional probability is</p>
+<div class="math notranslate nohighlight">
+\[P(R|I) = \frac{n(R \text{ AND } I)}{n(I)}. \]</div>
+<p>Since <span class="math notranslate nohighlight">\(R \text{ AND } I\)</span> is the same as <span class="math notranslate nohighlight">\(I \text{ AND } R\)</span> (because the order of an <span class="math notranslate nohighlight">\(\text{ AND }\)</span> event doesn’t matter), our work in Part 1 means <span class="math notranslate nohighlight">\(n(R \text{ AND } I) = n(I \text{ AND } R) = 38\)</span>. And the total number of individuals who believe abortion should be illegal in all circumstances is <span class="math notranslate nohighlight">\(n(I) = 38 + 34 + 12 = 84\)</span>. So</p>
+<div class="math notranslate nohighlight">
+\[ P(R|I) = \frac{n(R \text{ AND } I)}{n(I)} = \frac{38}{84} = 0.4524. \]</div>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conditional-probability-when-outcomes-are-not-equally-likely">
+<h2>Conditional Probability When Outcomes are Not Equally Likely<a class="headerlink" href="#conditional-probability-when-outcomes-are-not-equally-likely" title="Permalink to this headline">#</a></h2>
+<p>When calculating conditional probability when outcomes are not all equally likely, we need to adapt the formula we learned above. The generalized formula for calculating conditional probability is</p>
+<div class="math notranslate nohighlight">
+\[ P(A|B) = \frac{P(A \text{ AND } B)}{P(B)}. \]</div>
+<p>The formula we learned in the previous section for equally likely events is actually a special case of this more general formula. While the formula in the previous section only works when the outcomes are all equally likely, this formula works <em>always</em> in <em>all</em> circumstances.</p>
+<hr class="docutils" />
+<section id="example-3-2-3">
+<h3>Example 3.2.3<a class="headerlink" href="#example-3-2-3" title="Permalink to this headline">#</a></h3>
+<p>Kristina plays basketball. Sometimes she must take two free throw shots. She makes the first shot <span class="math notranslate nohighlight">\(59\%\)</span> of the time, and she makes both free throw shots <span class="math notranslate nohighlight">\(32\%\)</span> of the time. What is the probability that she makes the second shot given that she made the first shot?</p>
+<section id="id5">
+<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(F_1\)</span> be the event where Kristina makes the first free throw shot, and let <span class="math notranslate nohighlight">\(F_2\)</span> be the event where Kristina makes the second free throw shot. According to the problem statement, the probability that Kristina makes the first free throw shot is <span class="math notranslate nohighlight">\(P(F_1) = 0.59\)</span>, and the probability that she makes both free throw shots is <span class="math notranslate nohighlight">\(P(F_1 \text{ AND } F_2) = 0.32\)</span>. Then the probability that Kristina makes the second shot given that she made the first shot is</p>
+<div class="math notranslate nohighlight">
+\[ P(F_2|F_1) = \frac{P(F_2 \text{ AND } F_1)}{P(F_1)} = \frac{0.32}{0.59} = 0.5424. \]</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="cards-attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference internal" href="#playingcards2"><span class="std std-numref">Figure 3.2.3</span></a> was adapted from an image <a class="reference external" href="https://commons.wikimedia.org/wiki/File:English_pattern_playing_cards_deck.svg">created by Dmitry Fomin</a>, which is made available under the <a class="reference external" href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">Creative Commons CC0 1.0 Universal Public Domain Dedication</a>.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch3 Probability"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3.1%20Introduction%20to%20Probability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span>Introduction to Probability</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3.3%20Multiplication%20Rules%20and%20Independent%20Events.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Multiplication Rules and Independent Events</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-and-and-text-or-events"><span class="math notranslate nohighlight">\(\text{AND}\)</span> and <span class="math notranslate nohighlight">\(\text{OR}\)</span> Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-2-1">Example 3.2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability-when-outcomes-are-equally-likely">Conditional Probability When Outcomes are Equally Likely</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-2-2">Example 3.2.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability-when-outcomes-are-not-equally-likely">Conditional Probability When Outcomes are Not Equally Likely</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-2-3">Example 3.2.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

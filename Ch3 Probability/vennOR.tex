@@ -1,0 +1,17 @@
+\documentclass{standalone}
+
+\usepackage{venndiagram}
+\usepackage{mathtools}
+\usepackage{anyfontsize}
+
+\begin{document}
+
+\begin{venndiagram2sets}
+\fillA
+\fillB
+\setpostvennhook{
+    \node at (2.5, 0.2) {$A\text{ OR }B$};
+}
+\end{venndiagram2sets}
+
+\end{document}

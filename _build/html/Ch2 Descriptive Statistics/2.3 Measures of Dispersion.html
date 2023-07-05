@@ -1,0 +1,840 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2.3. Measures of Dispersion &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch2 Descriptive Statistics/2.3 Measures of Dispersion';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Probability" href="../Ch3%20Probability/3.0%20Probability.html" />
+    <link rel="prev" title="2.2. Measures of Central Tendency" href="2.2%20Measures%20of%20Central%20Tendency.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch2 Descriptive Statistics/2.3 Measures of Dispersion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Measures of Dispersion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-standard-deviation">The Standard Deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-population-standard-deviation">Calculating the Population Standard Deviation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-3-1">Example 2.3.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-sample-standard-deviation">Calculating the Sample Standard Deviation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-3-2">Example 2.3.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers">Outliers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-3-3">Example 2.3.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="measures-of-dispersion">
+<h1><span class="section-number">2.3. </span>Measures of Dispersion<a class="headerlink" href="#measures-of-dispersion" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Calculate the standard deviation of a data set.</p></li>
+<li><p>Distinguish between the population standard deviation and sample standard deviation.</p></li>
+<li><p>Identify the outliers of a data set.</p></li>
+</ul>
+</section>
+<section id="the-standard-deviation">
+<h2>The Standard Deviation<a class="headerlink" href="#the-standard-deviation" title="Permalink to this headline">#</a></h2>
+<p>An important characteristic of any set of data is the variation in the data. In some data sets, the data values are concentrated closely near the mean; in other data sets, the data values are more widely spread out from the mean. The most common measure of variation is the standard deviation. The <strong>standard deviation</strong> is a number that measures the average distance of data values from their mean.</p>
+<p>Because distance is never a negative value, the standard deviation is always positive or zero. The standard deviation is small when the data are all concentrated close to the mean, exhibiting little variation. The standard deviation is larger when the data values are more spread out from the mean, exhibiting more variation.</p>
+<p>Suppose that we are studying the amount of time customers wait in line at the checkout at supermarket A and supermarket B. the average wait time at both supermarkets is five minutes. At supermarket A, the standard deviation for the wait time is two minutes; at supermarket B the standard deviation for the wait time is four minutes.</p>
+<p>Because supermarket B has a higher standard deviation, we know that there is more variation in the wait times at supermarket B. Overall, wait times at supermarket B are more spread out from the mean; wait times at supermarket A are more concentrated near the mean.</p>
+<figure class="align-default" id="sd-example">
+<a class="reference internal image-reference" href="../_images/sd_example.png"><img alt="Two data sets side-by-side. The first data set has data more squashed close to the mean and a small standard deviation. The second data set has data more spread out from the mean and a larger standard deviation." src="../_images/sd_example.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.3.1 </span><span class="caption-text">The standard deviation is a measure of the average distance of data values from their mean. If we compare the two data sets in the figure, the values of data set 1 are squashed closer to the mean, so data set 1 has a smaller standard deviation. The values of data set 2 are more spread out from the mean, so data set 2 has a larger standard deviation.</span><a class="headerlink" href="#sd-example" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="calculating-the-population-standard-deviation">
+<h2>Calculating the Population Standard Deviation<a class="headerlink" href="#calculating-the-population-standard-deviation" title="Permalink to this headline">#</a></h2>
+<p>We will first look at calculating the standard deviation for a population. If <span class="math notranslate nohighlight">\(x\)</span> is a data value, then the difference “<span class="math notranslate nohighlight">\(x – \text{mean}\)</span>” is called its <strong>deviation</strong>; it’s a measure of the distance from the value <span class="math notranslate nohighlight">\(x\)</span> to the mean of the data. There is a deviation for each value in a data set. The deviations are used to calculate the standard deviation. For a population, the deviation for a data value <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(x – \mu\)</span>.</p>
+<p>For example, suppose a population has mean <span class="math notranslate nohighlight">\(\mu = 5\)</span>, and consider two data values of the population: <span class="math notranslate nohighlight">\(x = 2\)</span> and <span class="math notranslate nohighlight">\(x = 8\)</span>. The deviation of the value <span class="math notranslate nohighlight">\(x = 2\)</span> from the mean is</p>
+<div class="math notranslate nohighlight">
+\[x - \mu = 2 - 5 = -3.\]</div>
+<p>The deviation of the value <span class="math notranslate nohighlight">\(x = 8\)</span> from the mean is</p>
+<div class="math notranslate nohighlight">
+\[x - \mu = 8 - 5 = 3.\]</div>
+<p>Both <span class="math notranslate nohighlight">\(x = 2\)</span> and <span class="math notranslate nohighlight">\(x = 8\)</span> are a distance of <span class="math notranslate nohighlight">\(3\)</span> units away from <span class="math notranslate nohighlight">\(\mu = 5\)</span>. But the signs (positives or negatives) of the deviations also tell us direction: since the deviation of <span class="math notranslate nohighlight">\(x = 2\)</span> is <span class="math notranslate nohighlight">\(-3\)</span>, <span class="math notranslate nohighlight">\(x = 2\)</span> is <span class="math notranslate nohighlight">\(3\)</span> units <em>below</em> the mean; since the deviation of <span class="math notranslate nohighlight">\(x = 8\)</span> is <span class="math notranslate nohighlight">\(+3\)</span>, <span class="math notranslate nohighlight">\(x = 8\)</span> is <span class="math notranslate nohighlight">\(3\)</span> units <em>above</em> the mean.</p>
+<p>When calculating the standard deviation, we want to only focus on the average distance from the mean, not the direction. To remove the information on direction (the sign) from each deviation, we square each deviation. For <span class="math notranslate nohighlight">\(x = 2\)</span>, the squared deviation is</p>
+<div class="math notranslate nohighlight">
+\[ (x - \mu)^2 = (2 - 5)^2 = (-3)^2 = 9. \]</div>
+<p>For <span class="math notranslate nohighlight">\(x = 8\)</span>, the squared deviation is</p>
+<div class="math notranslate nohighlight">
+\[ (x - \mu)^2 = (8 - 5)^2 = 3^2 = 9. \]</div>
+<p>Since squaring a deviation always results in a positive number, it removes the information on direction. Unfortunately, squared deviations tell us the <em>square</em> of the distance of each value from the mean, not simply the distance. We will correct this problem later.</p>
+<p>Next, we find the mean of all the squared deviations in the usual way: by adding up all the squared deviations in the population and dividing by the population size <span class="math notranslate nohighlight">\(N\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\sum(x - \mu)^2}{N}. \]</div>
+<p>This is the average <em>squared</em> distance of the population data from the mean. We need to “unsquare” the average by taking the square root. This gives us the formula for the population standard deviation:</p>
+<div class="math notranslate nohighlight">
+\[ \sigma = \sqrt{\frac{\sum(x - \mu)^2}{N}}.\]</div>
+<p>We denote the population standard deviation by <span class="math notranslate nohighlight">\(\sigma\)</span> (the lower-case Greek letter sigma).</p>
+<p>Note that to calculate the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>, we first must calculate the population mean <span class="math notranslate nohighlight">\(\mu\)</span> since we use <span class="math notranslate nohighlight">\(\mu\)</span> in the formula for <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>Also, to use the formula for population standard deviation in R, we will need to know how to take a square root in R. We can take the square root of a value in R using the <code>sqrt</code> function:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code>x</code> is a number or list of numbers. For example,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sqrt</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2</div></div>
+</div>
+<hr class="docutils" />
+<section id="example-2-3-1">
+<h3>Example 2.3.1<a class="headerlink" href="#example-2-3-1" title="Permalink to this headline">#</a></h3>
+<p>The Cook Political Report scores the partisan lean of each state in the U.S. based on the results of recent elections. The Partisan Voting Index (PVI) for each of the 50 states (as of April 2021) is below, where more negative values means the state leans more toward the Democratic party, and more positive values means the state leans more toward the Republican party.<a class="footnote-reference brackets" href="#attribution" id="id1">1</a></p>
+<center>
+    15, 9, 3, 16, -14, -3, -7, -6, 3, 3, -15, 19, -7, 11, 6, 11, 16, 12, -1, -14, -14, 1, -1, 10, 11, 11, 13, 0, 0, -6, -3, -10, 3, 20, 6, 20, -6, 2, -8, 8, 16, 14, 5, 13, -15, -2, -8, 23, 2, 26
+</center>
+<br/>
+<ol class="arabic simple">
+<li><p>Calculate the mean state PVI.</p></li>
+<li><p>Calculate the standard deviation of the state PVIs.</p></li>
+</ol>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>Note that this list includes the PVIs for the entire <em>population</em> of 50 states, so we will be calculating the <em>population</em> mean and the <em>population</em> standard deviation.</p>
+<section id="part-1">
+<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">-14</span><span class="p">,</span> <span class="m">-3</span><span class="p">,</span> <span class="m">-7</span><span class="p">,</span> <span class="m">-6</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">-15</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">-7</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">-1</span><span class="p">,</span> <span class="m">-14</span><span class="p">,</span> <span class="m">-14</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">-1</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">-6</span><span class="p">,</span> <span class="m">-3</span><span class="p">,</span> <span class="m">-10</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">-6</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">-8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">-15</span><span class="p">,</span> <span class="m">-2</span><span class="p">,</span> <span class="m">-8</span><span class="p">,</span> <span class="m">23</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">26</span><span class="p">)</span>
+
+<span class="c1"># Calculate the Mean</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">mu</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">mu</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3.76</div></div>
+</div>
+<p>The mean PVI is <span class="math notranslate nohighlight">\(\mu = 3.76\)</span>. This means that states on average lean Republican.</p>
+</section>
+<section id="part-2">
+<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Standard Deviation</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="n">N</span> <span class="p">)</span>
+<span class="n">sigma</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">10.6743805440878</div></div>
+</div>
+<p>The standard deviation of the state PVIs is <span class="math notranslate nohighlight">\(\sigma = 10.6744\)</span>. On average, state PVIs differ from the mean by <span class="math notranslate nohighlight">\(10.6744\)</span> points.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be careful that you don’t interpret the mean state PVI that we calculated above to be the same as the PVI for the whole United States. Many Democratic leaning states have much larger populations than Republican leaning states, but we didn’t account for population differences in our analysis. For example, California (with a PVI of -14) has a population that is 68.5 times as large as the population of Wyoming (with a PVI of 26), but both states were treated equally in our calculations above. The lesson: we must be very careful not to misinterpret or over-interpret statistical results.</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="calculating-the-sample-standard-deviation">
+<h2>Calculating the Sample Standard Deviation<a class="headerlink" href="#calculating-the-sample-standard-deviation" title="Permalink to this headline">#</a></h2>
+<p>In many real-life situations, it is impractical to collect the data needed to calculate the standard deviation for an entire population. Instead, statisticians estimate the standard deviation of a population by calculating the standard deviation of a sample. The formula for the sample standard deviation is almost the same as the formula for the population standard deviation.</p>
+<p><strong>Formula for the Sample Standard Deviation:</strong></p>
+<div class="math notranslate nohighlight">
+\[ s = \sqrt{\frac{\sum(x - \bar{x})^2}{n - 1}} \]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x\)</span> is a data value in our sample, <span class="math notranslate nohighlight">\(\bar{x}\)</span> is the sample mean, and <span class="math notranslate nohighlight">\(n\)</span> is the sample size. We denote the sample standard deviation by <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>For comparison, let’s also review the formula for calculating the population standard deviation.</p>
+<p><strong>Formula for the Population Standard Deviation:</strong></p>
+<div class="math notranslate nohighlight">
+\[ \sigma = \sqrt{\frac{\sum(x - \mu)^2}{N}} \]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x\)</span> is a data value in our population, <span class="math notranslate nohighlight">\(\mu\)</span> is the population mean, and <span class="math notranslate nohighlight">\(N\)</span> is the population size. We denote the population standard deviation by <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>Most of the differences between the sample standard deviation <span class="math notranslate nohighlight">\(s\)</span> and the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> are trivial. Because we are dealing with a sample instead of a population, we use <span class="math notranslate nohighlight">\(\bar{x}\)</span> instead of <span class="math notranslate nohighlight">\(\mu\)</span> to notate the mean, and we use <span class="math notranslate nohighlight">\(n\)</span> instead of <span class="math notranslate nohighlight">\(N\)</span> to notate the number of data values. But the most significant difference is that the when calculating the sample standard deviation, we divide by <em>one less</em> than the number of data values: <span class="math notranslate nohighlight">\(n - 1\)</span>. In contrast, when calculating the population standard deviation, we simply divide by the number of data values: <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Why?</p>
+<p>Why do we divide by <span class="math notranslate nohighlight">\(n - 1\)</span> instead of <span class="math notranslate nohighlight">\(n\)</span> in the sample standard deviation formula? The sample standard deviation uses the distances from each value to the <em>sample</em> mean in its calculation: <span class="math notranslate nohighlight">\((x - \bar{x})\)</span>. We want the sample standard deviation to approximate the population standard deviation, but the population standard deviation averages the distances from each value to the <em>population</em> mean: <span class="math notranslate nohighlight">\((x - \mu)\)</span>. The sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span> is usually close to <span class="math notranslate nohighlight">\(\mu\)</span>, but they are rarely the same. Because of this small difference in what is being calculated, we need a small correction to the formula. Using techniques that are more advanced than what we will cover in this text, statisticians can show that dividing by <span class="math notranslate nohighlight">\(n - 1\)</span> instead of <span class="math notranslate nohighlight">\(n\)</span> corrects this bias.</p>
+</div>
+<hr class="docutils" />
+<section id="example-2-3-2">
+<h3>Example 2.3.2<a class="headerlink" href="#example-2-3-2" title="Permalink to this headline">#</a></h3>
+<p>Use data below represents students’ scores on the first exam from one of Susan Dean’s precalculus classes.</p>
+<p>33, 42, 49, 49, 53, 55, 55, 61, 63, 67, 68, 68, 69, 69, 72, 73, 74, 78, 80, 83, 88, 88, 88, 90, 92, 94, 94, 94, 94, 96, 100</p>
+<ol class="arabic simple">
+<li><p>Calculate the sample mean.</p></li>
+<li><p>Calculate the sample standard deviation.</p></li>
+</ol>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<section id="id3">
+<h5>Part 1<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">33</span><span class="p">,</span> <span class="m">42</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">53</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">83</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">92</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+
+<span class="c1"># Calculate the Sample Mean</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">73.5161290322581</div></div>
+</div>
+<p>The mean score is <span class="math notranslate nohighlight">\(\bar{x} = 73.5161\)</span>.</p>
+</section>
+<section id="id4">
+<h5>Part 2<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Sample Standard Deviation</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">17.923673298633</div></div>
+</div>
+<p>So the standard deviation of the scores is <span class="math notranslate nohighlight">\(s = 17.9237\)</span>.</p>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="outliers">
+<h2>Outliers<a class="headerlink" href="#outliers" title="Permalink to this headline">#</a></h2>
+<p><strong>Outliers</strong> are data values that deviate from the mean much greater than the standard amount for the data. Statisticians are interested in identifying outliers because they may indicate an error in the data. For example, suppose we collect the following data for the price of a cup of coffee at several local coffee shops:</p>
+<center>
+    2.69, 2.79, 2.99, 3.00, 2.69, 3.15, 2.89, 2.69, 2.90, <b>259</b>, 2.79, 2.80, 3.10, 2.59, 2.75
+</center>
+<br/>
+<p>The value in bold is a clear outlier. It seems extremely unlikely that this cup of coffee actually cost $259. Instead, the data value may have been recorded incorrectly, so that the true cost for this cup of coffee was $2.59, not $259.</p>
+<p>There are many different methods statisticians use to calculate outliers depending on the distribution of the data they are working with. We will learn one simple rule often used for detecting outliers. We will consider a data value an outlier if it is more than two standard deviations away from the mean. In mathematical notation, this means a data value is an outlier in a population if it is more than <span class="math notranslate nohighlight">\(\mu + 2\sigma\)</span> or less than <span class="math notranslate nohighlight">\(\mu - 2\sigma\)</span>. In a sample, a data value is an outlier if it is more than <span class="math notranslate nohighlight">\(\bar{x} + 2s\)</span> or less than <span class="math notranslate nohighlight">\(\bar{x} - 2s\)</span>. This is a reasonable definition because the average distance between data values and their mean is one standard deviation, so most data values lie within a distance of two standard deviations from their mean. Only relatively extreme data values are more than two standard deviations away from the mean.</p>
+<p>This definition is more a “rule of thumb” than a rigid law. Professional statisticians may use different rules to identify outliers depending on the circumstances.</p>
+<p>Also, just because a value is an outlier does not mean there is anything wrong with it. While some outliers may be the result of errors, other outliers may be perfectly valid data values that are just unusually large or small. You should determine whether outliers are valid on a case-by-case basis.</p>
+<figure class="align-default" id="outlier-example">
+<a class="reference internal image-reference" href="../_images/outlier_example.png"><img alt="The values of a data set are shown, and the outliers of the data set are indicated." src="../_images/outlier_example.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.3.2 </span><span class="caption-text">Given a set of data, most data values are within two standard deviations from their mean, either above or below the mean. In this text, we consider outliers to be data values that are more than two standard deviations away from the mean.</span><a class="headerlink" href="#outlier-example" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="docutils" />
+<section id="example-2-3-3">
+<h3>Example 2.3.3<a class="headerlink" href="#example-2-3-3" title="Permalink to this headline">#</a></h3>
+<p>A dating website surveyed 50 of their recently-married customers to see how many long-term relationships they had before they were married. The results are below.</p>
+<center>
+    1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 10, 11, 11, 13, 13, 14, 15
+</center>
+<br/>
+<ol class="arabic simple">
+<li><p>Find the mean number of relationships of the individuals surveyed.</p></li>
+<li><p>Find the standard deviation of the data.</p></li>
+<li><p>Does the data contain any outliers? If so, what are they?</p></li>
+</ol>
+<section id="id5">
+<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<p>Note that the 50 customers surveyed are only a small <em>sample</em> of all the dating website’s customers, so we will calculate the <em>sample</em> mean and <em>sample</em> standard deviation.</p>
+<section id="id6">
+<h5>Part 1<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+
+<span class="c1"># Calculate the Mean</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">5.42</div></div>
+</div>
+<p>On average, those surveyed had <span class="math notranslate nohighlight">\(\bar{x} = 5.42\)</span> relationships before they were married.</p>
+</section>
+<section id="id7">
+<h5>Part 2<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3.55763048866483</div></div>
+</div>
+<p>The sample standard deviation is <span class="math notranslate nohighlight">\(s = 3.558\)</span> relationships.</p>
+</section>
+<section id="part-3">
+<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<p>To find any outliers, we will calculate two standard deviations above the mean (<span class="math notranslate nohighlight">\(\bar{x} + 2s\)</span>) and two standard deviations below the mean (<span class="math notranslate nohighlight">\(\bar{x} - 2s\)</span>). Any data values above <span class="math notranslate nohighlight">\(\bar{x} + 2s\)</span> or below <span class="math notranslate nohighlight">\(\bar{x} - 2s\)</span> are outliers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span> <span class="o">+</span> <span class="m">2</span><span class="o">*</span><span class="n">s</span>
+<span class="n">xbar</span> <span class="o">-</span> <span class="m">2</span><span class="o">*</span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">12.5352609773297</div><div class="output text_html">-1.69526097732966</div></div>
+</div>
+<p>Returning to the original list of data values, we can see that <span class="math notranslate nohighlight">\(13\)</span>, <span class="math notranslate nohighlight">\(13\)</span>, <span class="math notranslate nohighlight">\(14\)</span>, and <span class="math notranslate nohighlight">\(15\)</span> are greater than <span class="math notranslate nohighlight">\(\bar{x} + 2s = 12.5353\)</span>. Any values smaller than <span class="math notranslate nohighlight">\(\bar{x} - 2s = -1.6953\)</span> would also be outliers, but there aren’t any values this small in the data.</p>
+<p>So our data contains a total of four outliers: <span class="math notranslate nohighlight">\(13\)</span>, <span class="math notranslate nohighlight">\(13\)</span>, <span class="math notranslate nohighlight">\(14\)</span>, and <span class="math notranslate nohighlight">\(15\)</span>.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Wasserman, David; Flinn, Ally (April 15, 2021). “<a class="reference external" href="https://cookpolitical.com/analysis/national/pvi/introducing-2021-cook-political-report-partisan-voter-index">Introducing the 2021 Cook Political Report Partisan Voter Index</a>”. The Cook Political Report. Retrieved April 15, 2021.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch2 Descriptive Statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2.2%20Measures%20of%20Central%20Tendency.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Measures of Central Tendency</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Ch3%20Probability/3.0%20Probability.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Probability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-standard-deviation">The Standard Deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-population-standard-deviation">Calculating the Population Standard Deviation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-3-1">Example 2.3.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-sample-standard-deviation">Calculating the Sample Standard Deviation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-3-2">Example 2.3.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers">Outliers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-3-3">Example 2.3.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

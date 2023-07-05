@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4.4. The Central Limit Theorem for Means &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch4 The Normal Distribution and the Central Limit Theorem/4.4 The Central Limit Theorem for Means';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.5. The Central Limit Theorem for Proportions" href="4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html" />
+    <link rel="prev" title="4.3. The Normal Distribution and \(z\)-Scores" href="4.3%20The%20Normal%20Distribution%20and%20z-scores.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch4 The Normal Distribution and the Central Limit Theorem/4.4 The Central Limit Theorem for Means.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Central Limit Theorem for Means</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-central-limit-theorem">The Central Limit Theorem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-1">Example 4.4.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-2">Example 4.4.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-3">Example 4.4.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-central-limit-theorem-for-means">
+<h1><span class="section-number">4.4. </span>The Central Limit Theorem for Means<a class="headerlink" href="#the-central-limit-theorem-for-means" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Apply the central limit theorem for means to identify sampling distributions of sample means.</p></li>
+<li><p>Computer probabilities involving sampling distributions of means.</p></li>
+</ul>
+</section>
+<section id="the-central-limit-theorem">
+<h2>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Permalink to this headline">#</a></h2>
+<p>Suppose we want to find the average hourly wage of workers in Brazil. There are millions of workers in Brazil, so we can’t practically survey all Brazilian workers to find the true population mean of their hourly wages. Instead, we can approximate the population mean by surveying a random sample of, say, <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers and calculating the mean of this smaller sample. This sample mean would probably not be <em>exactly</em> equal to the population mean, but the sample mean would likely be a good <em>approximation</em> of the population mean.</p>
+<p>But our random sample of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers is only one particular sample of many random samples that are possible. Because there are millions of Brazilian workers, there are many possible ways a sample of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers might be randomly chosen. For instance, if we were to collect a second random sample of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers, this second sample would almost certainly include <span class="math notranslate nohighlight">\(500\)</span> different workers than those workers which were selected for our first sample. The sample mean from this new second sample would probably be a little different than the sample mean from our first sample, though both sample means would probably give a good approximation of the population mean.</p>
+<p>So far, we’ve imagined taking just two different samples of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers from the population. Now imagine <em>all</em> the possible ways we can sample <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers from the population. How would the different sample means from all those samples be distributed? Well, like with the two sample means we considered above, we would expect most of the possible sample means to be close to the population mean. In fact, the further we get from the population mean, the fewer sample means we will to find.</p>
+<p>For example, it is <em>possible</em> that in random sample of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers, just by chance, all <span class="math notranslate nohighlight">\(500\)</span> workers are extremely well-paid. The sample mean of this sample would be considerably higher than the population mean since we only sampled well-paid workers. However, though it is <em>possible</em> to randomly select a sample like this, it is <em>extremely unlikely</em>. The vast majority of possible samples would include workers at a variety of income levels. Only a very small proportion of samples would have a sample mean as far from the population mean as in this example.</p>
+<p>We call the distribution of sample means taken from the possible random samples of a population the <strong>sampling distribution</strong> of the sample mean. From the above discussion, we expect the sampling distribution to be distributed like a bell curve, with most sample means clustered near the population mean, and few samples means far from the population mean.</p>
+<p>If we formalize this idea mathematically, we get the <strong>central limit theorem</strong> for sample means:</p>
+<div class="proof theorem admonition" id="theorem-0">
+<p class="admonition-title"><span class="caption-number">Theorem 4.4.1 </span> (The Central Limit Theorem for Sample Means)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable for a population with mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. Let <span class="math notranslate nohighlight">\(\bar{X}\)</span> be the random variable of the sampling distribution of the sample mean for this population, where the samples are of size <span class="math notranslate nohighlight">\(n\)</span>. If the sample size <span class="math notranslate nohighlight">\(n\)</span> is big enough (so that <span class="math notranslate nohighlight">\(n \geq 30\)</span>), then the sampling distribution is roughly a normal distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{n}}\)</span>. That is,</p>
+<div class="math notranslate nohighlight">
+\[ \bar{X} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right). \]</div>
+</section>
+</div><p>There are several important observations about this theorem that we should note:</p>
+<ul class="simple">
+<li><p>The central limit theorem does not make any requirements on how the population is distributed. This is why the central limit theorem is so powerful. The population can have any distribution. We do not even need to know <em>how</em> the population is distributed. No matter how the population is distributed, the sampling distribution of sample means (with <span class="math notranslate nohighlight">\(n \geq 30\)</span>) will approximate a normal distribution.</p></li>
+<li><p>The theorem states that the distribution of sample means <span class="math notranslate nohighlight">\(\bar{X}\)</span> only <em>approximates</em> a normal distribution. But in practice, as long as the sample size <span class="math notranslate nohighlight">\(n \geq 30\)</span>, the distribution of sample means approximates the normal distribution so closely that we can treat the distribution as if it is normally distributed. (In the special case that the population is also normally distributed, we can drop the requirement that <span class="math notranslate nohighlight">\(n \geq 30\)</span>. If the population is normally distributed, then the sampling distribution will also be normally distributed for any sample size <span class="math notranslate nohighlight">\(n\)</span>.)</p></li>
+<li><p>The standard deviation of the population, <span class="math notranslate nohighlight">\(\sigma\)</span>, is different from the standard deviation of the sampling distribution, <span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{n}}\)</span>. To distringuish between the standard deviations of the two different distributions, we call <span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{n}}\)</span> the <strong>standard error</strong>.</p></li>
+<li><p>Note that the larger the sample size <span class="math notranslate nohighlight">\(n\)</span> is, the smaller the standard error <span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{n}}\)</span> becomes. That is, sample means from larger samples will tend to better approximate the population mean than sample means from smaller samples.</p></li>
+<li><p>The central limit theorem only applies for samples that are randomly selected. If a sample is not selected randomly, the central limit theorem may not apply.</p></li>
+</ul>
+<p>In the previous section, we learned that if we have a normal distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>, the formulas</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{x - \mu}{\sigma}, \hspace{0.5in} x = \mu + z\sigma,\]</div>
+<p>allow us to calculate a <span class="math notranslate nohighlight">\(z\)</span>-score from an <span class="math notranslate nohighlight">\(x\)</span>-value or and <span class="math notranslate nohighlight">\(x\)</span>-value from a <span class="math notranslate nohighlight">\(z\)</span>-score. We use these same formulas in this section, but because we are focusing on the sampling distribution for sample means instead of just the population distribution, some of the variables in the formula look a little different. In particular, we use <span class="math notranslate nohighlight">\(\bar{x}\)</span> instead of <span class="math notranslate nohighlight">\(x\)</span> (since we are dealing with the distribution of sample means, not particular values of the population), and we use the standard error <span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{n}}\)</span> instead of the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> (since the standard error is the standard deviation of the sampling distribution). Making these substitutions, the formulas above become</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}, \hspace{0.5in} \bar{x} = \mu + z\frac{\sigma}{\sqrt{n}}. \]</div>
+<hr class="docutils" />
+<section id="example-4-4-1">
+<h3>Example 4.4.1<a class="headerlink" href="#example-4-4-1" title="Permalink to this headline">#</a></h3>
+<p>The expected value of a fair six-sided die roll is <span class="math notranslate nohighlight">\(\mu = 3.5\)</span>. The standard deviation is <span class="math notranslate nohighlight">\(\sigma = 1.7078\)</span>.</p>
+<ol class="arabic simple">
+<li><p>If we roll the die <span class="math notranslate nohighlight">\(50\)</span> times, what is the likelihood that the sample mean is smaller than <span class="math notranslate nohighlight">\(3.0\)</span>?</p></li>
+<li><p>If we roll the die <span class="math notranslate nohighlight">\(100\)</span> times, what is the likelihood that the sample mean is smaller than <span class="math notranslate nohighlight">\(3.0\)</span>?</p></li>
+<li><p>Is it more likely that our sample mean is smaller than <span class="math notranslate nohighlight">\(3.0\)</span> if we roll the die <span class="math notranslate nohighlight">\(50\)</span> times or <span class="math notranslate nohighlight">\(100\)</span> times? Why?</p></li>
+</ol>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<section id="part-1">
+<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<p>By the central limit theorem, we know that the distribution of sample means of samples of size <span class="math notranslate nohighlight">\(n = 50\)</span> are normally distributed with population mean</p>
+<div class="math notranslate nohighlight">
+\[\mu = 3.5\]</div>
+<p>and with standard error</p>
+<div class="math notranslate nohighlight">
+\[\frac{\sigma}{\sqrt{n}} = \frac{1.7078}{\sqrt{50}} = 0.2415\]</div>
+<p>We want to find <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0)\)</span>. Since <span class="math notranslate nohighlight">\(\bar{X} \sim N(3.5, 0.2415)\)</span>, we first find the <span class="math notranslate nohighlight">\(z\)</span>-score for <span class="math notranslate nohighlight">\(\bar{x} = 3.0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}} = \frac{3.0 - 3.5}{0.2415} = -2.0704. \]</div>
+<p>So <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0) = P(Z &lt; -2.0704)\)</span>. We use R to find the probability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.0704</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0192074509255941</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0) = P(Z &lt; -2.0704) = 0.0192\)</span>. That is, there is only a <span class="math notranslate nohighlight">\(1.92\%\)</span> chance that our <span class="math notranslate nohighlight">\(50\)</span> die rolls have an average of less than <span class="math notranslate nohighlight">\(3.0\)</span>.</p>
+</section>
+<section id="part-2">
+<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<p>By the central limit theorem, we know that the distribution of sample means of samples of size <span class="math notranslate nohighlight">\(n = 100\)</span> are normally distributed with population mean</p>
+<div class="math notranslate nohighlight">
+\[ \mu = 3.5 \]</div>
+<p>and with standard error</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\sigma}{\sqrt{n}} = \frac{1.7078}{\sqrt{100}} = 0.1708. \]</div>
+<p>We want to find <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0)\)</span>. Since <span class="math notranslate nohighlight">\(\bar{X} \sim N(3.5, 0.1708)\)</span>, we first need to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with <span class="math notranslate nohighlight">\(\bar{x} = 3.0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}} = \frac{3.0 - 3.5}{0.1708} = -2.9274. \]</div>
+<p>So <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0) = P(Z &lt; -2.9274)\)</span>. We use R to find the probability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.9274</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.00170904480232814</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0) = P(Z &lt; -2.9274) = 0.0017\)</span>. That is, there is only a <span class="math notranslate nohighlight">\(0.17\%\)</span> chance that our <span class="math notranslate nohighlight">\(100\)</span> die rolls have an average of less than <span class="math notranslate nohighlight">\(3.0\)</span>.</p>
+</section>
+<section id="part-3">
+<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<p>The probability of getting a sample mean of less than <span class="math notranslate nohighlight">\(3.0\)</span> after <span class="math notranslate nohighlight">\(50\)</span> die rolls is <span class="math notranslate nohighlight">\(1.92\%\)</span>. But the probability of getting a sample mean of less than <span class="math notranslate nohighlight">\(3.0\)</span> after <span class="math notranslate nohighlight">\(100\)</span> die rolls is only <span class="math notranslate nohighlight">\(0.17\%\)</span>, more than <span class="math notranslate nohighlight">\(10\)</span> times smaller. While both are unlikely, we are much more likely to have a sample mean of less than <span class="math notranslate nohighlight">\(3.0\)</span> after only <span class="math notranslate nohighlight">\(50\)</span> die rolls than we are after <span class="math notranslate nohighlight">\(100\)</span> die rolls.</p>
+<p>This is because the larger the sample size is, the smaller the standard error is, and, therefore, the more likely the sample mean from a randomly selected sample will be close to the population mean or expected value.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-4-4-2">
+<h3>Example 4.4.2<a class="headerlink" href="#example-4-4-2" title="Permalink to this headline">#</a></h3>
+<p>The length of time taken on the SAT for a group of students is normally distributed with a mean of <span class="math notranslate nohighlight">\(2.5\)</span> hours and a standard deviation of <span class="math notranslate nohighlight">\(0.85\)</span> hours. A sample size of <span class="math notranslate nohighlight">\(n = 30\)</span> is drawn randomly from the population. Find the probability that the sample mean is between <span class="math notranslate nohighlight">\(2.3\)</span> hours and <span class="math notranslate nohighlight">\(2.7\)</span> hours.</p>
+<section id="id1">
+<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>By the central limit theorem, sample means of samples of size <span class="math notranslate nohighlight">\(n = 30\)</span> are normally distributed with</p>
+<div class="math notranslate nohighlight">
+\[ \mu = 2.5 \]</div>
+<p>and a standard error of</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\sigma}{\sqrt{n}} = \frac{0.85}{\sqrt{30}} = 0.1552; \]</div>
+<p>that is, <span class="math notranslate nohighlight">\(\bar{X} \sim N(2.5, 0.1552)\)</span>.</p>
+<p>We want to find <span class="math notranslate nohighlight">\(P(2.3 &lt; \bar{X} &lt; 2.7)\)</span>. To do so, we first must find the <span class="math notranslate nohighlight">\(z\)</span>-scores associated with <span class="math notranslate nohighlight">\(\bar{x} = 2.3\)</span> and <span class="math notranslate nohighlight">\(\bar{x} = 2.7\)</span>. We calculate</p>
+<div class="math notranslate nohighlight">
+\[ z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}} = \frac{2.3 - 2.5}{0.1552} = -1.2887, \]</div>
+<div class="math notranslate nohighlight">
+\[ z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}} = \frac{2.7 - 2.5}{0.1552} = 1.2887. \]</div>
+<p>Then <span class="math notranslate nohighlight">\(P(2.3 &lt; \bar{X} &lt; 2.7) = P(-1.2887 &lt; Z &lt; 1.2887)\)</span>. We will use R to find the probability. We will first find <em>all</em> the area to the left of <span class="math notranslate nohighlight">\(z = 1.2887\)</span>, then subtract off the excess area to the left of <span class="math notranslate nohighlight">\(z = -1.2887\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">1.2887</span><span class="p">)</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-1.2887</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.802497597503648</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(2.3 &lt; \bar{X} &lt; 2.7) = P(-1.2887 &lt; Z &lt; 1.2887) = 0.8025\)</span>. There is an <span class="math notranslate nohighlight">\(80.25\%\)</span> chance that the sample of <span class="math notranslate nohighlight">\(30\)</span> individuals has a sample mean test time of between <span class="math notranslate nohighlight">\(2.3\)</span> and <span class="math notranslate nohighlight">\(2.7\)</span> hours.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-4-4-3">
+<h3>Example 4.4.3<a class="headerlink" href="#example-4-4-3" title="Permalink to this headline">#</a></h3>
+<p>A statistics instructor at Mt. San Jacinto College assigns each student in his class to randomly sample <span class="math notranslate nohighlight">\(40\)</span> other students at the college and find out how far they travel to get to campus, then calculate the sample mean. If the population mean is <span class="math notranslate nohighlight">\(26\)</span> miles with a standard deviation of <span class="math notranslate nohighlight">\(32\)</span> miles, then the top <span class="math notranslate nohighlight">\(10\%\)</span> of sample means submitted by the instrutor’s students should be greater than what value?</p>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>We will need to approach this problem a little differently than the way we approached the last two examples, but we start off the same way: by using the central limit theorem to find the properties of the sampling distribution of sample means. Since we are looking at samples of size <span class="math notranslate nohighlight">\(n = 40\)</span>, the central limit theorem tells us that the sampling distribution is normally distributed with mean</p>
+<div class="math notranslate nohighlight">
+\[ \mu = 26 \]</div>
+<p>and a standard error of</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\sigma}{\sqrt{n}} = \frac{32}{\sqrt{40}} = 5.05964. \]</div>
+<p>So <span class="math notranslate nohighlight">\(\bar{X} \sim N(26, 5.05964)\)</span>.</p>
+<p>In this problem, we are given a probability (<span class="math notranslate nohighlight">\(10\% = 0.10\)</span>), and we need to find an <span class="math notranslate nohighlight">\(\bar{x}\)</span>-value associated with it. We start by using R to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with the probability:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">-</span> <span class="m">0.10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">1.2815515655446</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(P(Z &gt; 1.28155) = 0.10\)</span>, meaing <span class="math notranslate nohighlight">\(10\%\)</span> of all <span class="math notranslate nohighlight">\(z\)</span>-values are greater than <span class="math notranslate nohighlight">\(z = 1.28155\)</span>.</p>
+<p>Then we calculate</p>
+<div class="math notranslate nohighlight">
+\[\bar{x} = \mu + z\frac{\sigma}{\sqrt{n}} = 26 + 1.28155(5.05964) = 32.48420.\]</div>
+<p>Then the top <span class="math notranslate nohighlight">\(10%\)</span> of sample means will be greater than <span class="math notranslate nohighlight">\(\bar{x} = 32.48420\)</span> miles.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch4 The Normal Distribution and the Central Limit Theorem"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4.3%20The%20Normal%20Distribution%20and%20z-scores.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.5. </span>The Central Limit Theorem for Proportions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-central-limit-theorem">The Central Limit Theorem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-1">Example 4.4.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-2">Example 4.4.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-3">Example 4.4.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

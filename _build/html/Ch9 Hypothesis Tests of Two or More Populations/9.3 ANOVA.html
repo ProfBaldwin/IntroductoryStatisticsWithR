@@ -1,0 +1,880 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>9.3. ANOVA &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch9 Hypothesis Tests of Two or More Populations/9.3 ANOVA';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="9.2. Hypothesis Testing Two Population Variances" href="9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch9 Hypothesis Tests of Two or More Populations/9.3 ANOVA.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ANOVA</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-anova">Introduction to ANOVA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-3-1">Example 9.3.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-test-statistic-for-an-anova-test">The Test Statistic For an ANOVA Test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-3-2">Example 9.3.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-null-and-alternative-hypotheses">Step 1: State the null and alternative hypotheses.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">Step 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-p-value">Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-draw-a-conclusion">Step 4: Draw a conclusion.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="anova">
+<h1><span class="section-number">9.3. </span>ANOVA<a class="headerlink" href="#anova" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Conduct an ANOVA test to compare the means of many populations.</p></li>
+</ul>
+</section>
+<section id="introduction-to-anova">
+<h2>Introduction to ANOVA<a class="headerlink" href="#introduction-to-anova" title="Permalink to this headline">#</a></h2>
+<p>ANOVA stands for ANalysis Of VAriance. An ANOVA test is a hypothesis test used to compare the means among several populations. The test uses variances to help determine if the population means are equal or not. To perform a one-way ANOVA test, the following basic assumptions must be fulfilled:</p>
+<ul class="simple">
+<li><p>Each population is normally distributed.</p></li>
+<li><p>All samples are randomly selected and independent.</p></li>
+<li><p>The populations have equal variances (or standard deviations).</p></li>
+</ul>
+<p>The null hypothesis is that all the population means are the same. The alternative hypothesis is that at least one pair of means is different. For example, if there are <span class="math notranslate nohighlight">\(k\)</span> populations:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+&amp;H_0:\mu_1 = \mu_2 = \mu_3 = \cdots = \mu_k \\
+&amp;H_a: \text{At least one mean isn't equal to all the other means}
+\end{align*}\]</div>
+<p>ANOVA works by comparing the approximate variance <em>between</em> the samples (that is, how much the samples vary with each other) with the approximate variance <em>within</em> the samples (that is, how much on average each sample varies on its own). If the null hypothesis is true so that the population means are all equal, then the variance between the samples and the variance within the samples should be about equal.</p>
+<figure class="align-default" id="anova-illustration">
+<a class="reference internal image-reference" href="../_images/anova_illustration.png"><img alt="Two groups of box plots are pictures, with four box plots in group A and four box plots in group B. There is little variation between the box plots in group A. There is significant variation between the box plots in group B." src="../_images/anova_illustration.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9.3.1 </span><span class="caption-text">The four box plots in group A represent four populations. There is little variation between the box plots in group A. It might be reasonable to expect the populations in group A to all have the same mean. Compare this to the four populations represented by the four box plots in group B. There is significant variation between the box plots in group B. We might expect the populations in group B to have different means.</span><a class="headerlink" href="#anova-illustration" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To better understand the principles behind ANOVA, consider the two groups of populations represented by the box plots in <a class="reference internal" href="#anova-illustration"><span class="std std-numref">Figure 9.3.1</span></a>. In group A, notice that there is little variation between the box plots of the different samples. It is reasonable to think that the underlying population means may be equal.</p>
+<p>In comparison, there is considerable variation in group B. In fact, there is so much variation between these samples that it is very unlikely that the underlying population means between these samples are all equal.</p>
+</section>
+<section id="notation">
+<h2>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">#</a></h2>
+<p>An ANOVA test can involve several populations and samples. To make our meaning clear, we will use the following notation in this section.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_j\)</span> are the data values in the <span class="math notranslate nohighlight">\(j\)</span>th sample.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_j\)</span> is the sample size of the <span class="math notranslate nohighlight">\(j\)</span>th sample.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{x}_j\)</span> is the mean of the <span class="math notranslate nohighlight">\(j\)</span>th sample. As usual, the sample mean <span class="math notranslate nohighlight">\(\bar{x}_j\)</span> is the sum of all data values in the sample divided by sample size:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\bar{x}_j = \dfrac{\sum x_j}{n_j}.\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\bar{\bar{x}}\)</span> is the <strong>grand mean</strong>. It is the mean of the combined data values of all the samples. It is calculated by adding all data values from all samples together, then dividing by the total number of all the data values from all samples:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\bar{\bar{x}} = \frac{\sum x_1 + \sum x_2 + \cdots + \sum x_k}{n_1 + n_2 + \cdots + n_k},\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the total number of samples, where one sample is taken from each population.</p>
+<p>A simple example may help to clarify the notation.</p>
+<hr class="docutils" />
+<section id="example-9-3-1">
+<h3>Example 9.3.1<a class="headerlink" href="#example-9-3-1" title="Permalink to this headline">#</a></h3>
+<p>Three small samples were drawn from three populations. The sample data obtained is:</p>
+<p>Sample <span class="math notranslate nohighlight">\(1\)</span>:  18, 21, 20, 20, 17 <br/>
+Sample <span class="math notranslate nohighlight">\(2\)</span>:  22, 19, 18, 21, 19, 16, 18 <br/>
+Sample <span class="math notranslate nohighlight">\(3\)</span>:  20, 19, 17, 21</p>
+<p>The data values <span class="math notranslate nohighlight">\(x_1\)</span> in sample <span class="math notranslate nohighlight">\(1\)</span> are 18, 21, 20, 20, 17. There are <span class="math notranslate nohighlight">\(5\)</span> data values in sample <span class="math notranslate nohighlight">\(1\)</span>, so <span class="math notranslate nohighlight">\(n_1 = 5\)</span>. We can use R to calculate the mean <span class="math notranslate nohighlight">\(\bar{x}_1\)</span> of sample <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">18</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">17</span><span class="p">)</span>
+<span class="n">n1</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+
+<span class="n">xbar1</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">n1</span>
+<span class="n">xbar1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">19.2</div></div>
+</div>
+<p>The mean of sample <span class="math notranslate nohighlight">\(1\)</span> is <span class="math notranslate nohighlight">\(\bar{x}_1 = 19.2\)</span>.</p>
+<p>The data values <span class="math notranslate nohighlight">\(x_2\)</span> in sample <span class="math notranslate nohighlight">\(2\)</span> are 22, 19, 18, 21, 19, 16, 18. There are <span class="math notranslate nohighlight">\(7\)</span> data values in sample <span class="math notranslate nohighlight">\(2\)</span>, so <span class="math notranslate nohighlight">\(n_2 = 7\)</span>. We can use R to calculate the mean <span class="math notranslate nohighlight">\(\bar{x}_2\)</span> of sample <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">22</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">18</span><span class="p">)</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+
+<span class="n">xbar2</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="n">n2</span>
+<span class="n">xbar2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">19</div></div>
+</div>
+<p>The mean of sample <span class="math notranslate nohighlight">\(2\)</span> is <span class="math notranslate nohighlight">\(\bar{x}_2 = 19\)</span>.</p>
+<p>The data values <span class="math notranslate nohighlight">\(x_3\)</span> in sample <span class="math notranslate nohighlight">\(3\)</span> are 20, 19, 17, 21. There are <span class="math notranslate nohighlight">\(4\)</span> data values in sample <span class="math notranslate nohighlight">\(3\)</span>, so <span class="math notranslate nohighlight">\(n_3 = 4\)</span>. We can use R to calculate the mean <span class="math notranslate nohighlight">\(\bar{x}_3\)</span> of sample <span class="math notranslate nohighlight">\(3\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x3</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">20</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">21</span><span class="p">)</span>
+<span class="n">n3</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+
+<span class="n">xbar3</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="n">n3</span>
+<span class="n">xbar3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">19.25</div></div>
+</div>
+<p>The mean of sample <span class="math notranslate nohighlight">\(3\)</span> is <span class="math notranslate nohighlight">\(\bar{x}_3 = 19.25\)</span>.</p>
+<p>Now we can use R to calculate the grand mean <span class="math notranslate nohighlight">\(\bar{\bar{x}}\)</span> of these three samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">grandx</span> <span class="o">=</span> <span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span> <span class="o">+</span> <span class="n">n3</span><span class="p">)</span>
+<span class="n">grandx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">19.125</div></div>
+</div>
+<p>The grand mean—the mean of all the data in all three samples—is <span class="math notranslate nohighlight">\(\bar{\bar{x}} = 19.125\)</span>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-test-statistic-for-an-anova-test">
+<h2>The Test Statistic For an ANOVA Test<a class="headerlink" href="#the-test-statistic-for-an-anova-test" title="Permalink to this headline">#</a></h2>
+<p>To calculate the test statistic for an ANOVA test with <span class="math notranslate nohighlight">\(k\)</span> samples (one sample from each population), we calculate two estimates of the variance.</p>
+<p><span class="math notranslate nohighlight">\(MST\)</span> is the <strong>m</strong>ean <strong>s</strong>quare estimate of the variance among <strong>t</strong>reatments. <span class="math notranslate nohighlight">\(MST\)</span> is the variance <em>between</em> the sample means of the different samples. We calculate <span class="math notranslate nohighlight">\(MST\)</span> using the formula</p>
+<div class="math notranslate nohighlight">
+\[ MST = \frac{SST}{DFT}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(SST\)</span>, called the <strong>s</strong>um of <strong>s</strong>quares among <strong>t</strong>reatments, is the sum of squared differences between the sample means and the grand mean, and <span class="math notranslate nohighlight">\(DFT\)</span> is the <strong>d</strong>egrees of <strong>f</strong>reedom for <strong>t</strong>reatments. <span class="math notranslate nohighlight">\(SST\)</span> and <span class="math notranslate nohighlight">\(DFT\)</span> are given by the formulas</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+SSE &amp;= n_1(\bar{x}_1 - \bar{\bar{x}})^2 + n_2(\bar{x}_2 - \bar{\bar{x}})^2 + \cdots + n_k(\bar{x}_k - \bar{\bar{x}})^2, \\
+DFE &amp;= k - 1.
+\end{align*}\]</div>
+<p><span class="math notranslate nohighlight">\(MSE\)</span> is the <strong>m</strong>ean <strong>s</strong>quare estimate for <strong>e</strong>rrors. <span class="math notranslate nohighlight">\(MSE\)</span> measures the variance <em>within</em> the samples. We calculate <span class="math notranslate nohighlight">\(MSE\)</span> using the formula</p>
+<div class="math notranslate nohighlight">
+\[ MSE = \frac{SSE}{DFE}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(SSE\)</span>, the <strong>sum</strong> of <strong>s</strong>quares for <strong>e</strong>rrors, is the total sum of squared differences between the data values of each sample and the sample’s mean, and <span class="math notranslate nohighlight">\(DFE\)</span> is the degrees of freedom for errors. We calculate <span class="math notranslate nohighlight">\(SSE\)</span> and <span class="math notranslate nohighlight">\(DFE\)</span> using the formulas</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+SSE &amp;= \sum (x_1 - \bar{x}_1)^2 + \sum (x_2 - \bar{x}_2)^2 + \cdots + \sum (x_k - \bar{x}_k)^2, \\
+DFE &amp;= (n_1 - 1) + (n_2 - 1) + \cdots + (n_k - 1).
+\end{align*}\]</div>
+<p><span class="math notranslate nohighlight">\(MST\)</span> and <span class="math notranslate nohighlight">\(MSE\)</span> both estimate variances, so we use an <span class="math notranslate nohighlight">\(F\)</span>-distribution to perform an ANOVA test just like we did when comparing two population variances. The <span class="math notranslate nohighlight">\(F\)</span>-statistic we use for an ANOVA test is given by</p>
+<div class="math notranslate nohighlight">
+\[ F = \frac{MST}{MSE}. \]</div>
+<p>We use an <span class="math notranslate nohighlight">\(F\)</span>-distribution with numerator degrees of freedom <span class="math notranslate nohighlight">\(DFT\)</span> and denominator degrees of freedom <span class="math notranslate nohighlight">\(DFE\)</span> to calculate the <span class="math notranslate nohighlight">\(p\)</span>-value.</p>
+<p>If the null hypothesis is true (that is, if the means of all the populations are equal), then we would expect the variance between samples, <span class="math notranslate nohighlight">\(MST\)</span>, to be no larger than the average variance within a sample, <span class="math notranslate nohighlight">\(MSE\)</span>. In this case,</p>
+<div class="math notranslate nohighlight">
+\[F = \frac{MST}{MSE} \leq 1.\]</div>
+<p>But if the null hypothesis is not true, then we would expect the variance between samples, <span class="math notranslate nohighlight">\(MST\)</span>, to be greater than the average variance within a sample, <span class="math notranslate nohighlight">\(MSE\)</span>, in which case</p>
+<div class="math notranslate nohighlight">
+\[F = \frac{MST}{MSE} &gt; 1.\]</div>
+<p>Because of this, an ANOVA test is always a right-tailed test.</p>
+<p>The general steps for completing a hypothesis test have not changed:</p>
+<ol class="arabic simple">
+<li><p>State the null and alternative hypotheses.</p></li>
+<li><p>Assuming the null hypothesis is true, identify the sampling distribution.</p></li>
+<li><p>Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</p></li>
+<li><p>Draw a conclusion.</p></li>
+</ol>
+<hr class="docutils" />
+<section id="example-9-3-2">
+<h3>Example 9.3.2<a class="headerlink" href="#example-9-3-2" title="Permalink to this headline">#</a></h3>
+<p>A meteorologist wishes to test if the average daily high temperature is the same for each of the past four years. She randomly selects a number of days from each year and records the daily high temperature on each selected day (in °F):</p>
+<p>Year 1: <br/>
+82, 104, 119, 56, 85, 94, 81, 106, 82, 92, 109, 71, 95, 86, 34, 89, 80, 53, 78, 99, 57, 87, 69, 98, 75, 88, 59, 104, 65, 66, 74, 73, 73, 106, 91, 89, 85, 84, 53, 81</p>
+<p>Year 2: <br/>
+80, 52, 72, 72, 43, 61, 66, 58, 118, 73, 76, 64, 81, 65, 63, 78, 72, 83, 104, 54, 69, 100, 63, 71, 38, 73, 92, 70, 86, 51, 66, 89, 74, 85</p>
+<p>Year 3: <br/>
+75, 87, 79, 96, 72, 75, 93, 84, 80, 95, 72, 56, 83, 98, 96, 54, 106, 66, 120, 77, 88, 90, 75, 98, 113, 55, 44</p>
+<p>Year 4: <br/>
+92, 68, 74, 82, 94, 44, 63, 61, 99, 71, 85, 42, 90, 94, 48, 97, 89, 65, 81, 45, 93, 81, 73, 69, 93, 75, 76, 61, 75, 102</p>
+<p>Use an ANOVA test with a level of significance of <span class="math notranslate nohighlight">\(6\%\)</span> to test if the average daily high temperature is the same for all four years.</p>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<section id="step-1-state-the-null-and-alternative-hypotheses">
+<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#step-1-state-the-null-and-alternative-hypotheses" title="Permalink to this headline">#</a></h5>
+<p>For an ANOVA test, the null hypothesis is always that the means of all the populations are equal. The alternative hypothesis for an ANOVA test is always that at least one of the population means is not equal to the others. That is,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+H_0:&amp;\ \mu_1 = \mu_2 = \mu_3 = \mu_4 \\
+H_a:&amp;\ \text{At least one mean isn't equal to the other means}
+\end{align*}\]</div>
+</section>
+<section id="step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">
+<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Permalink to this headline">#</a></h5>
+<p>To perform an ANOVA test, we use an <span class="math notranslate nohighlight">\(F\)</span>-distribution. The numerator degrees of freedom is the degrees of freedom for treatments, <span class="math notranslate nohighlight">\(DFT\)</span>. It is one less than the number of samples. In this example, we have <span class="math notranslate nohighlight">\(k = 4\)</span> samples, so the numerator degrees of freedom is</p>
+<div class="math notranslate nohighlight">
+\[ DFT = k - 1 = 4 - 1 = 3. \]</div>
+<p>The denominator degrees of freedom is the degrees of freedom for errors, <span class="math notranslate nohighlight">\(DFE\)</span>. To calculate <span class="math notranslate nohighlight">\(DFE\)</span>, we first must know the size of each of the four samples. We will use R to count the size of each sample.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">82</span><span class="p">,</span> <span class="m">104</span><span class="p">,</span> <span class="m">119</span><span class="p">,</span> <span class="m">56</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">106</span><span class="p">,</span> <span class="m">82</span><span class="p">,</span> <span class="m">92</span><span class="p">,</span> <span class="m">109</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">95</span><span class="p">,</span> <span class="m">86</span><span class="p">,</span> <span class="m">34</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">53</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">99</span><span class="p">,</span> <span class="m">57</span><span class="p">,</span> <span class="m">87</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">59</span><span class="p">,</span> <span class="m">104</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">106</span><span class="p">,</span> <span class="m">91</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">84</span><span class="p">,</span> <span class="m">53</span><span class="p">,</span> <span class="m">81</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">80</span><span class="p">,</span> <span class="m">52</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">43</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">58</span><span class="p">,</span> <span class="m">118</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">76</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">83</span><span class="p">,</span> <span class="m">104</span><span class="p">,</span> <span class="m">54</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">38</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">92</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">86</span><span class="p">,</span> <span class="m">51</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">85</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">75</span><span class="p">,</span> <span class="m">87</span><span class="p">,</span> <span class="m">79</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">84</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">95</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">56</span><span class="p">,</span> <span class="m">83</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">54</span><span class="p">,</span> <span class="m">106</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">77</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">113</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">44</span><span class="p">)</span>
+<span class="n">x4</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">92</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">82</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">44</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">99</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">42</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">48</span><span class="p">,</span> <span class="m">97</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">45</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">76</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">102</span><span class="p">)</span>
+
+<span class="n">n1</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">n3</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+<span class="n">n4</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span>
+
+<span class="n">n1</span>
+<span class="n">n2</span>
+<span class="n">n3</span>
+<span class="n">n4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">40</div><div class="output text_html">34</div><div class="output text_html">27</div><div class="output text_html">30</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(n_1 = 40\)</span>, <span class="math notranslate nohighlight">\(n_2 = 34\)</span>, <span class="math notranslate nohighlight">\(n_3 = 27\)</span>, and <span class="math notranslate nohighlight">\(n_4 = 30\)</span>. Then the denominator degrees of freedom is</p>
+<div class="math notranslate nohighlight">
+\[ DFE = (n_1 - 1) + (n_2 - 1) + (n_3 - 1) + (n_4 - 1) = (40 - 1) + (34 - 1) + (27 - 1) + (30 - 1) = 127.\]</div>
+</section>
+<section id="step-3-find-the-p-value">
+<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#step-3-find-the-p-value" title="Permalink to this headline">#</a></h5>
+<p>To find the test statistic, we first need to calculate the sample mean of each of the four samples as well as the grand mean <span class="math notranslate nohighlight">\(\bar{\bar{x}}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar1</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">n1</span>
+<span class="n">xbar1</span>
+
+<span class="n">xbar2</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="n">n2</span>
+<span class="n">xbar2</span>
+
+<span class="n">xbar3</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="n">n3</span>
+<span class="n">xbar3</span>
+
+<span class="n">xbar4</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span><span class="o">/</span><span class="n">n4</span>
+<span class="n">xbar4</span>
+
+<span class="n">grandx</span> <span class="o">=</span> <span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x4</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span> <span class="o">+</span> <span class="n">n3</span> <span class="o">+</span> <span class="n">n4</span><span class="p">)</span>
+<span class="n">grandx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">81.8</div><div class="output text_html">72.4117647058823</div><div class="output text_html">82.4814814814815</div><div class="output text_html">76.0666666666667</div><div class="output text_html">78.1908396946565</div></div>
+</div>
+<p>We find that <span class="math notranslate nohighlight">\(\bar{x}_1 = 81.800\)</span>, <span class="math notranslate nohighlight">\(\bar{x}_2 = 72.412\)</span>, <span class="math notranslate nohighlight">\(\bar{x}_3 = 82.481\)</span>, <span class="math notranslate nohighlight">\(\bar{x}_4 = 76.067\)</span>, and the grand mean is <span class="math notranslate nohighlight">\( \bar{\bar{x}} = 78.191\)</span>.</p>
+<p>We can now use these values to find</p>
+<div class="math notranslate nohighlight">
+\[SST = n_1(\bar{x}_1 - \bar{\bar{x}})^2 + n_2(\bar{x}_2 - \bar{\bar{x}})^2 + n_3(\bar{x}_3 - \bar{\bar{x}})^2 + n_4(\bar{x}_4 - \bar{\bar{x}})^2.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">SST</span> <span class="o">=</span> <span class="n">n1</span><span class="o">*</span><span class="p">(</span><span class="n">xbar1</span> <span class="o">-</span> <span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="n">n2</span><span class="o">*</span><span class="p">(</span><span class="n">xbar2</span> <span class="o">-</span> <span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="n">n3</span><span class="o">*</span><span class="p">(</span><span class="n">xbar3</span> <span class="o">-</span> <span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="n">n4</span><span class="o">*</span><span class="p">(</span><span class="n">xbar4</span> <span class="o">-</span> <span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span>
+<span class="n">SST</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2288.98630610853</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(SST = 2288.986\)</span>. With <span class="math notranslate nohighlight">\(SST\)</span> calculated and the value of <span class="math notranslate nohighlight">\(DFT\)</span> found earlier, we are ready to find</p>
+<div class="math notranslate nohighlight">
+\[ MST = \frac{SST}{DFT}. \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">DFT</span> <span class="o">=</span> <span class="m">3</span>
+
+<span class="n">MST</span> <span class="o">=</span> <span class="n">SST</span><span class="o">/</span><span class="n">DFT</span>
+<span class="n">MST</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">762.995435369511</div></div>
+</div>
+<p>Thus, <span class="math notranslate nohighlight">\(MST = 762.995\)</span>. This is the numerator of the test statistic.</p>
+<p>We still need to find the denominator, <span class="math notranslate nohighlight">\(MSE\)</span>. To find <span class="math notranslate nohighlight">\(MSE\)</span>, we first calculate</p>
+<div class="math notranslate nohighlight">
+\[SSE = \sum (x_1 - \bar{x}_1)^2 + \sum (x_2 - \bar{x}_2)^2 + \sum (x_3 - \bar{x}_3)^2 + \sum(x_4 - \bar{x}_4)^2.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">SSE</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">xbar1</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">xbar2</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x3</span> <span class="o">-</span> <span class="n">xbar3</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x4</span> <span class="o">-</span> <span class="n">xbar4</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span>
+<span class="n">SSE</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">38587.2427015251</div></div>
+</div>
+<p>We find that <span class="math notranslate nohighlight">\(SSE = 38587.243\)</span>. Using this value for <span class="math notranslate nohighlight">\(SSE\)</span> together with the value for <span class="math notranslate nohighlight">\(DFE\)</span> we found earlier, we can calculate</p>
+<div class="math notranslate nohighlight">
+\[ MSE = \frac{SSE}{DSE}. \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">DFE</span> <span class="o">=</span> <span class="m">127</span>
+
+<span class="n">MSE</span> <span class="o">=</span> <span class="n">SSE</span><span class="o">/</span><span class="n">DFE</span>
+<span class="n">MSE</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">303.836556704922</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(MSE = 303.837\)</span>. This is the denominator value of the test statistic.</p>
+<p>We now have all the pieces to calculate the test statistic,</p>
+<div class="math notranslate nohighlight">
+\[ F = \frac{MST}{MSE}. \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="bp">F</span> <span class="o">=</span> <span class="n">MST</span><span class="o">/</span><span class="n">MSE</span>
+<span class="bp">F</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2.51120353536166</div></div>
+</div>
+<p>Because an ANOVA test involves so many calculations, statisticians often organize the data into a table like in <a class="reference internal" href="#anova-table"><span class="std std-numref">Table 9.3.1</span></a>.</p>
+<table class="table" id="anova-table">
+<caption><span class="caption-number">Table 9.3.1 </span><span class="caption-text">A table summarizing the important calculations for the ANOVA test in this example.</span><a class="headerlink" href="#anova-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>SS</p></th>
+<th class="head"><p>DF</p></th>
+<th class="head"><p>MS</p></th>
+<th class="head"><p>F</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Treatments</p></th>
+<td><p>2288.986</p></td>
+<td><p>3</p></td>
+<td><p>762.995</p></td>
+<td><p>2.511</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Errors</p></th>
+<td><p>38587.243</p></td>
+<td><p>127</p></td>
+<td><p>303.837</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Now that we have our test statistic, we are ready to find the <span class="math notranslate nohighlight">\(p\)</span>-value. Remember that an ANOVA test is always a right-tailed test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pf</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">DFT</span><span class="p">,</span> <span class="n">df2</span> <span class="o">=</span> <span class="n">DFE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0616171055195667</div></div>
+</div>
+<p>So the <span class="math notranslate nohighlight">\(p\)</span>-value is <span class="math notranslate nohighlight">\(P(F &gt; 2.511) = 0.062\)</span>. That is, there is about a <span class="math notranslate nohighlight">\(6.2\%\)</span> chance that we would randomly sample data with this much variation between samples relative to the variation within samples if the population means were all actually equal.</p>
+</section>
+<section id="step-4-draw-a-conclusion">
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Permalink to this headline">#</a></h5>
+<p>Since the <span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(= 0.062 \geq 0.06 = \alpha\)</span>, we do <em>not</em> reject the null hypothesis. There is not enough evidence to conclude that the average daily high temperature for at least one year is different than average in the other years sampled.</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch9 Hypothesis Tests of Two or More Populations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Hypothesis Testing Two Population Variances</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-anova">Introduction to ANOVA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-3-1">Example 9.3.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-test-statistic-for-an-anova-test">The Test Statistic For an ANOVA Test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-3-2">Example 9.3.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-null-and-alternative-hypotheses">Step 1: State the null and alternative hypotheses.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">Step 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-p-value">Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-draw-a-conclusion">Step 4: Draw a conclusion.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

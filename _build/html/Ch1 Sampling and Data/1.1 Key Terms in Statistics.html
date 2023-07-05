@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.1. Key Terms in Statistics &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch1 Sampling and Data/1.1 Key Terms in Statistics';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.2. Qualitative Data and Quantitative Data" href="1.2%20Scales%20of%20Measurement.html" />
+    <link rel="prev" title="1. Sampling and Data" href="1.0%20Sampling%20and%20Data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch1 Sampling and Data/1.1 Key Terms in Statistics.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Key Terms in Statistics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-definition-of-statistics">The Definition of Statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-1">Example 1.1.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-terms">Key Terms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-2">Example 1.1.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-4">Example 1.1.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-5">Example 1.1.5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-6">Example 1.1.6</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-7">Example 1.1.7</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="key-terms-in-statistics">
+<h1><span class="section-number">1.1. </span>Key Terms in Statistics<a class="headerlink" href="#key-terms-in-statistics" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Distinguish the difference between a population and a sample.</p></li>
+<li><p>Distinguish between a parameter and a statistic.</p></li>
+<li><p>Identify variables and data.</p></li>
+</ul>
+</section>
+<section id="the-definition-of-statistics">
+<h2>The Definition of Statistics<a class="headerlink" href="#the-definition-of-statistics" title="Permalink to this headline">#</a></h2>
+<p>The science of <strong>statistics</strong> deals with the collection, analysis, interpretation, and presentation of <strong>data</strong>. We see and use data in our everyday lives.</p>
+<p>In this course, you will learn how to organize and summarize data. Organizing and summarizing data is called <strong>descriptive statistics</strong>. Two ways to summarize data are by graphing and by using numbers (for example, by finding an average). After you have studied probability and probability distributions, you will use formal methods for drawing conclusions from “good” data. The formal methods are called <strong>inferential statistics</strong>. Statistical inference uses probability to determine how confident we can be that our conclusions are correct.</p>
+<p>Effective interpretation of data (inference) is based on good procedures for producing data and thoughtful examination of the data. You will encounter what will seem to be too many mathematical formulas for interpreting data. The goal of statistics is not to perform numerous calculations using the formulas, but to gain an understanding of your data. The calculations can be done using a calculator or a computer. The understanding must come from you. If you can thoroughly grasp the basics of statistics, you can be more confident in the decisions you make in life.</p>
+<hr class="docutils" />
+<section id="example-1-1-1">
+<h3>Example 1.1.1<a class="headerlink" href="#example-1-1-1" title="Permalink to this headline">#</a></h3>
+<p>We asked <span class="math notranslate nohighlight">\(14\)</span> people chosen randomly from a statistics class how many hours they sleep per night. We obtained the following data:</p>
+<div style="text-align:center">5, 5.5, 6, 6, 6, 6.5, 6.5, 6.5, 6.5, 7, 7, 8, 8, 9</div>
+<br/>
+<p>We can summarize this data in a <strong>histogram</strong>, as shown in <a class="reference internal" href="#intro-histogram"><span class="std std-numref">Figure 1.1.1</span></a>.</p>
+<figure class="align-default" id="intro-histogram">
+<a class="reference internal image-reference" href="../_images/intro_histogram.png"><img alt="A histogram of the data in this example. The histogram shows most people surveyed sleep less than 7 hours per night." src="../_images/intro_histogram.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1.1 </span><span class="caption-text">A histogram of the data above. The height of each bar in the histogram tells us how many data values we have in the range covered by the histogram. For example, we can see that 5 of the individuals surveyed sleep between 5 and 6 hours per night.</span><a class="headerlink" href="#intro-histogram" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>By looking at the histogram, we can see that most people we surveyed got no more than <span class="math notranslate nohighlight">\(7\)</span> hours of sleep per night.</p>
+<p>We can summarize our data by calculating the average number of hours slept: the <span class="math notranslate nohighlight">\(14\)</span> statistics students surveyed slept an average of <span class="math notranslate nohighlight">\(6.679\)</span> hours per night. Since this was the average for our sample of <span class="math notranslate nohighlight">\(14\)</span> students, we might
+infer that the average amount of sleep of <em>all</em> statistics students is close to <span class="math notranslate nohighlight">\(6.679\)</span> hours per night.</p>
+<p>Note that this example deals in a very simple manner with the fundamental components of statistics mentioned above. We are provided <em>data</em> and told how the data was <em>collected</em>. We <em>present</em> this data graphically using a histogram, then provide a simple <em>analysis</em> of the data, concluding that most people surveyed get no more than <span class="math notranslate nohighlight">\(7\)</span> hours of sleep per night. We calculated the average number of hours those surveyed slept each night; this <em>descriptive statistic</em> summarized our data. Using the average we calculated, we <em>inferred</em> that it was likely that if we averaged the amount of sleep of all statistics students, it would be close to the average amount of sleep of the <span class="math notranslate nohighlight">\(14\)</span> students we surveyed.</p>
+<p>In this course, we will be studying each of these concepts in much greater detail.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="key-terms">
+<h2>Key Terms<a class="headerlink" href="#key-terms" title="Permalink to this headline">#</a></h2>
+<p>In statistics, we generally want to study a <strong>population</strong>. You can think of a population as a collection of persons, things, or objects under study. To study the population, we select a <strong>sample</strong>. The idea of <strong>sampling</strong> is to select a portion (or subset) of the larger population and study that smaller portion (the sample) to infer information about the population.</p>
+<figure class="align-default" id="sampling-image">
+<a class="reference internal image-reference" href="../_images/Simple_random_sampling.png"><img alt="A sample of four individuals is chosen from a population of twelve individuals." src="../_images/Simple_random_sampling.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1.2 </span><span class="caption-text">A sample of four individuals is chosen from a population of twelve individuals.<a class="footnote-reference brackets" href="#attribution" id="id1">1</a></span><a class="headerlink" href="#sampling-image" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Because it usually takes a lot of time and money to examine an entire population, sampling is a very practical technique. For example:</p>
+<ul class="simple">
+<li><p>During a national election, it is impossible for a pollster to survey all the millions of voters in the country. Instead, the pollster will sample only a few hundred voters from the population. The opinions expressed by those sampled in the survey (hopefully) represent the views of voters in the entire country.</p></li>
+<li><p>An ice cream manufacturer wouldn’t want to taste-test every carton of ice cream produced to ensure its quality, because the testing process would ruin the ice cream. Instead, the manufacturer could taste-test a sample of ice cream cartons. If any quality control issues are present in the ice cream cartons sampled, it likely indicates there are problems in the larger population.</p></li>
+</ul>
+<hr class="docutils" />
+<section id="example-1-1-2">
+<h3>Example 1.1.2<a class="headerlink" href="#example-1-1-2" title="Permalink to this headline">#</a></h3>
+<p>An advertising company has created two ads for an American restaurant chain, one featuring a burger and one featuring a salad. They want to know which of the two ads Americans would find more appealing. To find out, the advertising company surveys <span class="math notranslate nohighlight">\(50\)</span> people and asks them which of the two ads they prefer. What is the population and what is the sample in this example?</p>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Population: All Americans</p></li>
+<li><p>Sample: The 50 people that were surveyed</p></li>
+</ul>
+<hr class="docutils" />
+<p>We sample the population so we can estimate a population <strong>parameter</strong>. A parameter is a number that summarizes the characteristics of a population. Because it can be difficult to study an entire population, we often cannot find the exact value of a parameter. Instead, we estimate the population parameter by calculating a sample <strong>statistic</strong>. A statistic is a number that summarizes the characteristics of a sample. A statistic is easier to calculate than a parameter because we only need to study a sample—not the entire population—to calculate a statistic. We can use a sample statistic to estimate a population parameter.</p>
+<p>The <strong>mean</strong> of a population (commonly referred to as the <strong>average</strong> of a population) is one example of a parameter. Suppose we want to find the mean age of people living in California. Since it is difficult to find the age of every person in California, we could sample just a few Californians and calculate the mean age of the sample. We can use this statistic—the mean age of the Californians sampled—to estimate the parameter—the mean age of all Californians. For instance, if the average age of Californians in our sample is 35.2 years old, we would estimate that the average age of all Californians is around 35.2 years old.</p>
+<p>Another common parameter is the <strong>proportion</strong> of a population. The proportion of the population is a fraction of the population that has some characteristic. We can express proportions as fractions, percents, or decimals. Suppose on your way to school you counted 50 cars, 8 of which were red. So in your sample of 50 cars, the proportion of red cars is <span class="math notranslate nohighlight">\(\frac{8}{50}\)</span>. (As a percent, this proportion is 16%. As a decimal, it is 0.16.) We can use this statistic from our sample of 50 cars to estimate the proportion of the population of all cars that are red; that is, we estimate that around 16% of all cars are red.</p>
+<p>One of the main concerns in the field of statistics is how accurately a statistic estimates a parameter. The accuracy really depends on how well the sample represents the population. The sample must contain the characteristics of the population in order to be a representative sample. We are interested in both the sample statistic and the population parameter in inferential statistics. In a later chapter, we will use the sample statistic to test the validity of the established population parameter.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The first letter of <em>parameter</em> and the first letter of <em>statistic</em> will help you remember in which setting each word is used. A <strong>p</strong>arameter summarizes characteristics of a <strong>p</strong>opulation. A <strong>s</strong>tatistic summarizes characteristics of a <strong>s</strong>ample.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-1-1-4">
+<h3>Example 1.1.4<a class="headerlink" href="#example-1-1-4" title="Permalink to this headline">#</a></h3>
+<p>The Bureau of Labor Statistics (BLS) wants to know the average annual income of statisticians. To find out, they ask 150 statisticians across the country what their annual income is, then average their results. What is the parameter and the statistic of interest in this example?</p>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Population Parameter: The average annual income of all statisticians</p></li>
+<li><p>Sample Statistic: The average annual income of the 150 statisticians that were surveyed</p></li>
+</ul>
+<hr class="docutils" />
+<p>To calculate a sample statistic, we must gather information from each member sampled. A <strong>variable</strong> is a characteristic or measurement that can be determined for each member of a population. Variables are usually denoted by campital letters such as <span class="math notranslate nohighlight">\(X\)</span> or <span class="math notranslate nohighlight">\(Y\)</span>. To calculate a sample statistic, we must gather <strong>data</strong> corresponding to the variable we are studying from each member sampled. The data are the actual values of the variable. They may be numbers or they may be words. A <strong>datum</strong> is a single data value. For example:</p>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(X\)</span> equal the number of points earned by a math student on an exam. Examples of data for <span class="math notranslate nohighlight">\(X\)</span> might be 91, 76, or 83.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(Y\)</span> be a person’s political party affiliation. Some examples of data for <span class="math notranslate nohighlight">\(Y\)</span> include “Republican”, “Democrat”, and “Independent”.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In practice, the word <em>data</em> is sometimes treated as a plural noun, in which case plural verbs and pronouns are used, and at other times <em>data</em> is treated as a singular collective noun, in which case singular verbs and pronouns are used. In most cases, either form is acceptable: “The data <em>are</em> accurate” or “The data <em>is</em> accurate” have the same meaning.<a class="footnote-reference brackets" href="#websterref" id="id3">2</a> This is similar to how <em>people</em> is a plural noun (“The people <em>are</em> happy”) but <em>population</em> is a singular collective noun (“The population <em>is</em> happy), even though both words indicate a group of several individuals.</p>
+<p>In formal writing, the plural form of <em>data</em> is often preferred, and several writing style guides, such as MLA and APA, only allow the plural form.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-1-1-5">
+<h3>Example 1.1.5<a class="headerlink" href="#example-1-1-5" title="Permalink to this headline">#</a></h3>
+<p>A medical doctor wishes to know the average time a laproscopic gallbladder removal surgery takes at her hospital. To find out, she samples 14 gallbladder removal surgeries to find out and notes how long each surgery takes. Three of the surgeries sampled respectively took 1.5 hours, 2.25 hours, and 1.25 hours. What is the variable and what is the data in this example?</p>
+<section id="id4">
+<h4>Solution<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Variable: <span class="math notranslate nohighlight">\(X\)</span> = The time it takes to perform one gallbladder surgery.</p></li>
+<li><p>Data: 1.5 hours, 2.25 hours, 1.25 hours</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-1-1-6">
+<h3>Example 1.1.6<a class="headerlink" href="#example-1-1-6" title="Permalink to this headline">#</a></h3>
+<p>We want to know the average (mean) amount of money first year college students spend at ABC College on school supplies that do not include books. We randomly surveyed 100 first year students at the college. Three of those students spent $150, $200, and $225, respectively.</p>
+<p>Identify the population, sample, parameter, statistic, variable, and data in this example.</p>
+<section id="id5">
+<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Population: First year college students at ABC College</p></li>
+<li><p>Sample: The 100 first year students surveyed</p></li>
+<li><p>Population Parameter: The average (mean) amount of money spent (excluding books) by first year college students at ABC College</p></li>
+<li><p>Sample Statistic: The average (mean) amount of money spent (excluding books) by first year college students in the sample</p></li>
+<li><p>Variable: <span class="math notranslate nohighlight">\(X\)</span> = The amount of money spent (excluding books) by one first year student attending ABC College</p></li>
+<li><p>Data: $150, $200, and $225</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-1-1-7">
+<h3>Example 1.1.7<a class="headerlink" href="#example-1-1-7" title="Permalink to this headline">#</a></h3>
+<p>An insurance company would like to determine the proportion of all medical doctors who have been involved in one or more malpractice lawsuits. The company selects 500 doctors at random from a professional directory and determines the number in the sample who have been involved in a malpractice lawsuit.</p>
+<p>Identify the population, sample, parameter, statistic, variable, and data in this example.</p>
+<section id="id6">
+<h4>Solution<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Population: All medical doctors</p></li>
+<li><p>Sample: The 500 doctors selected at random from the professional directory</p></li>
+<li><p>Population Parameter: The proportion of medical doctors who have been involved in one or more malpractice suits</p></li>
+<li><p>Sample Statistic: The proportion of medical doctors who have been involved in one or more malpractice suits in the sample</p></li>
+<li><p>Variable: <span class="math notranslate nohighlight">\(X\)</span> = Whether or not one doctor has been involved in one or more malpractice suits</p></li>
+<li><p>Data: Either “Yes, was involved in one or more malpractice suits,” or “No, was not involved in one or more malpractice suits”</p></li>
+</ul>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference internal" href="#sampling-image"><span class="std std-numref">Figure 1.1.2</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Simple_random_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+</dd>
+<dt class="label" id="websterref"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>See <a class="reference external" href="https://www.merriam-webster.com/dictionary/data#usage-1">Merriam-Webster’s entry for <em>data</em></a> for more information.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch1 Sampling and Data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1.0%20Sampling%20and%20Data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Sampling and Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1.2%20Scales%20of%20Measurement.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Qualitative Data and Quantitative Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-definition-of-statistics">The Definition of Statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-1">Example 1.1.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-terms">Key Terms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-2">Example 1.1.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-4">Example 1.1.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-5">Example 1.1.5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-6">Example 1.1.6</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-1-7">Example 1.1.7</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

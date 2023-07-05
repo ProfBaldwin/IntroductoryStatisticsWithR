@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5.2. Estimating Population Proportions &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch5 Confidence Intervals/5.2 Estimating Population Proportions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.3. Student’s \(t\)-Distribution" href="5.3%20Student%27s%20t-Distribution.html" />
+    <link rel="prev" title="5.1. Estimating Population Means (\(\sigma\) Known)" href="5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch5 Confidence Intervals/5.2 Estimating Population Proportions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Estimating Population Proportions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-confidence-interval">Calculating the Confidence Interval</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-2-1">Example 5.2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-find-the-sample-proportion-hat-p">Part 1: Find the sample proportion <span class="math notranslate nohighlight">\(\hat{p}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-find-z-alpha-2">Part 2: Find <span class="math notranslate nohighlight">\(z_{\alpha/2}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-calculate-the-margin-of-error">Step 3: Calculate the Margin of Error.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-construct-the-confidence-interval">Step 4: Construct the Confidence Interval.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-2-2">Example 5.2.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-find-the-sample-proportion-hat-p">Step 1: Find the sample proportion <span class="math notranslate nohighlight">\(\hat{p}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-find-z-alpha-2">Step 2: Find <span class="math notranslate nohighlight">\(z_{\alpha/2}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 3: Calculate the Margin of Error.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 4: Construct the Confidence Interval.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="estimating-population-proportions">
+<h1><span class="section-number">5.2. </span>Estimating Population Proportions<a class="headerlink" href="#estimating-population-proportions" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Construct confidence intervals for population proportions.</p></li>
+<li><p>Identify and interpret the margin of error for a confidence interval.</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>During an election year, we see articles in the newspaper that state <strong>confidence intervals</strong> in terms of proportions or percentages. For example, a poll for a particular candidate running for president might show that the candidate has <span class="math notranslate nohighlight">\(40\%\)</span> of the vote with a margin of error of three percentage points (if the sample is large enough). Often, election polls are calculated with <span class="math notranslate nohighlight">\(95\%\)</span> confidence, so the pollster in this example would be <span class="math notranslate nohighlight">\(95\%\)</span> confident that the true proportion of voters who favored the candidate would fall in the interval <span class="math notranslate nohighlight">\((0.40 - 0.03, 0.40 + 0.03) = (0.37, 0.43)\)</span>. That is, the pollster would be <span class="math notranslate nohighlight">\(95\%\)</span> confident that the true proportion falls between <span class="math notranslate nohighlight">\(37\%\)</span> and <span class="math notranslate nohighlight">\(43\%\)</span>.</p>
+<p>Investors in the stock market might be interested in the true proportion of stocks that go up and down each week. Heart surgeons might be interested in the success rate for a certain procedure. Confidence intervals can be calculated for the true proportion of stocks that go up or down each week and for proportion of heart procedures that are successful. Estimating population proportions using confidence intervals is useful in many disciplines.</p>
+</section>
+<section id="calculating-the-confidence-interval">
+<h2>Calculating the Confidence Interval<a class="headerlink" href="#calculating-the-confidence-interval" title="Permalink to this headline">#</a></h2>
+<p>The procedure to find the confidence interval, the sample size, the <strong>margin of error</strong>, and the <strong>confidence level</strong> for a proportion is similar to that for the population mean, but the formulas are different.</p>
+<p>We know from the Central Limit Theorem that the distributions of sample proportions is</p>
+<div class="math notranslate nohighlight">
+\[ \hat{P} \sim N\left(p, \sqrt{\frac{p(1 - p)}{n}}\right), \]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is the population proportion and <span class="math notranslate nohighlight">\(n\)</span> is the sample size. Of course, as in the case with means, if we already knew the value of the population proportion <span class="math notranslate nohighlight">\(p\)</span>, we wouldn’t be estimating it using a confidence interval. We approximate the population proportion <span class="math notranslate nohighlight">\(p\)</span> with the point estimate <span class="math notranslate nohighlight">\(\hat{p}\)</span>. Then to construct a confidence interval, we will use the distribution</p>
+<div class="math notranslate nohighlight">
+\[ N\left(\hat{p}, \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}\right) \]</div>
+<p>We want to construct the confidence interval</p>
+<div class="math notranslate nohighlight">
+\[ (\hat{p} - E, \hat{p} + E), \]</div>
+<p>where <span class="math notranslate nohighlight">\(E\)</span> is the margin of error. As in the case with means, we know that the upper bound has a <span class="math notranslate nohighlight">\(z\)</span>-score associated with it. This implies that <span class="math notranslate nohighlight">\(\hat{p} + E = \hat{p} + z\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\)</span> for some value of <span class="math notranslate nohighlight">\(z\)</span>. Subtracting <span class="math notranslate nohighlight">\(\hat{p}\)</span> from both sides gives us the formula for the margin of error:</p>
+<div class="math notranslate nohighlight">
+\[ E = z\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}. \]</div>
+<p>The value of <span class="math notranslate nohighlight">\(z\)</span> is calculated exactly the same way when estimating proportions as it was when estimating means.</p>
+<p>Based on these observations, we can see that the steps to finding a confidence interval for a population proportion are:</p>
+<ol class="arabic simple">
+<li><p>Find the sample proportion <span class="math notranslate nohighlight">\(\hat{p}\)</span>.</p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(z_{\alpha/2}\)</span>, the <span class="math notranslate nohighlight">\(z\)</span>-score with an area of <span class="math notranslate nohighlight">\(\alpha/2\)</span> to its right.</p></li>
+<li><p>Calculate the margin of error using the formula <span class="math notranslate nohighlight">\(E = z_{\alpha/2}\sqrt{\dfrac{\hat{p}(1 - \hat{p})}{n}}\)</span>.</p></li>
+<li><p>Construct the confidence interval <span class="math notranslate nohighlight">\((\hat{p} - E, \hat{p} + E)\)</span>.</p></li>
+</ol>
+<hr class="docutils" />
+<section id="example-5-2-1">
+<h3>Example 5.2.1<a class="headerlink" href="#example-5-2-1" title="Permalink to this headline">#</a></h3>
+<p>A student polls his school to see if students in the school district are for or against new legislation regarding school uniforms. She surveys <span class="math notranslate nohighlight">\(600\)</span> students and finds that <span class="math notranslate nohighlight">\(480\)</span> are against the new legislation. Compute a <span class="math notranslate nohighlight">\(99\%\)</span> confidence interval for the true percent of students who are against the new legislation.</p>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>First, note the given information:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+n &amp;= 600 \\
+x &amp;= 480 \\
+\text{CL} &amp;= 0.99.
+\end{align*}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x\)</span> represents the number of students who are against the new legislation.</p>
+<section id="part-1-find-the-sample-proportion-hat-p">
+<h5>Part 1: Find the sample proportion <span class="math notranslate nohighlight">\(\hat{p}\)</span>.<a class="headerlink" href="#part-1-find-the-sample-proportion-hat-p" title="Permalink to this headline">#</a></h5>
+<p>The sample proportion is</p>
+<div class="math notranslate nohighlight">
+\[ \hat{p} = \frac{x}{n} = \frac{480}{600} = 0.8. \]</div>
+<p>So <span class="math notranslate nohighlight">\(80\%\)</span> of the students surveyed are against the new legislation.</p>
+</section>
+<section id="part-2-find-z-alpha-2">
+<h5>Part 2: Find <span class="math notranslate nohighlight">\(z_{\alpha/2}\)</span>.<a class="headerlink" href="#part-2-find-z-alpha-2" title="Permalink to this headline">#</a></h5>
+<p>Since <span class="math notranslate nohighlight">\(\text{CL} = 0.99\)</span>, the area under the normal density function not in the confidence interval is</p>
+<div class="math notranslate nohighlight">
+\[\alpha = 1 - \text{CL} = 1 - 0.99 = 0.01. \]</div>
+<p>This means that each tail should have an area of <span class="math notranslate nohighlight">\(\alpha/2 = 0.01/2 = 0.005\)</span> outside the confidence interval. We can use R to find <span class="math notranslate nohighlight">\(z_{\alpha/2} = z_{0.005}\)</span>, the <span class="math notranslate nohighlight">\(z\)</span>-score with area <span class="math notranslate nohighlight">\(0.005\)</span> to its right.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">-</span> <span class="m">0.005</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2.5758293035489</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(z_{0.005} = 2.5758\)</span>.</p>
+</section>
+<section id="step-3-calculate-the-margin-of-error">
+<h5>Step 3: Calculate the Margin of Error.<a class="headerlink" href="#step-3-calculate-the-margin-of-error" title="Permalink to this headline">#</a></h5>
+<p>The margin of error is</p>
+<div class="math notranslate nohighlight">
+\[ E = z_{0.005}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 2.5758\sqrt{\frac{0.8(1 - 0.8)}{600}} = 0.0421. \]</div>
+</section>
+<section id="step-4-construct-the-confidence-interval">
+<h5>Step 4: Construct the Confidence Interval.<a class="headerlink" href="#step-4-construct-the-confidence-interval" title="Permalink to this headline">#</a></h5>
+<p>The confidence interval is</p>
+<div class="math notranslate nohighlight">
+\[ (\hat{p} - E, \hat{p} + E) = (0.8 - 0.0421, 0.8 + 0.0421) = (0.7579, 0.8421). \]</div>
+<p>So we are <span class="math notranslate nohighlight">\(99\%\)</span> confident that between <span class="math notranslate nohighlight">\(75.79\%\)</span> and <span class="math notranslate nohighlight">\(84.21\%\)</span> of all students in the district are against the new legislation.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-5-2-2">
+<h3>Example 5.2.2<a class="headerlink" href="#example-5-2-2" title="Permalink to this headline">#</a></h3>
+<p>The Berkman Center for Internet &amp; Society at Harvard recently conducted a study analyzing the privacy management habits of teen internet users. In a group of <span class="math notranslate nohighlight">\(50\)</span> teens, <span class="math notranslate nohighlight">\(13\)</span> reported having more than <span class="math notranslate nohighlight">\(500\)</span> friends on Facebook. Find a <span class="math notranslate nohighlight">\(92\%\)</span> confidence interval for the true proportion of teens who would report having more than <span class="math notranslate nohighlight">\(500\)</span> Facebook friends.</p>
+<section id="id1">
+<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>We are told that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+n &amp;= 50 \\
+x &amp;= 13 \\
+\text{CL} &amp;= 0.92
+\end{align*}\]</div>
+<section id="step-1-find-the-sample-proportion-hat-p">
+<h5>Step 1: Find the sample proportion <span class="math notranslate nohighlight">\(\hat{p}\)</span>.<a class="headerlink" href="#step-1-find-the-sample-proportion-hat-p" title="Permalink to this headline">#</a></h5>
+<p>The sample proportion is</p>
+<div class="math notranslate nohighlight">
+\[ \hat{p} = \frac{x}{n} = \frac{13}{50} = 0.26. \]</div>
+<p>So <span class="math notranslate nohighlight">\(26\%\)</span> of the <span class="math notranslate nohighlight">\(50\)</span> teens sampled have more than 500 friends on facebook.</p>
+</section>
+<section id="step-2-find-z-alpha-2">
+<h5>Step 2: Find <span class="math notranslate nohighlight">\(z_{\alpha/2}\)</span>.<a class="headerlink" href="#step-2-find-z-alpha-2" title="Permalink to this headline">#</a></h5>
+<p>The area under the normal density function inside the confidence interval is <span class="math notranslate nohighlight">\(\text{CL} = 0.92\)</span>. Thus, the area under the normal density function outside the confidence interval is</p>
+<div class="math notranslate nohighlight">
+\[ \alpha = 1 - \text{CL} = 1 - 0.92 = 0.08. \]</div>
+<p>This means that the area outside the confidence interval in each tail of the normal density function is <span class="math notranslate nohighlight">\(\alpha/2 = 0.08/2 = 0.04\)</span>.</p>
+<p>We use R to find <span class="math notranslate nohighlight">\(z_{\alpha/2} = z_{0.04}\)</span>, the <span class="math notranslate nohighlight">\(z\)</span>-score with an area of <span class="math notranslate nohighlight">\(0.04\)</span> to its right.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">-</span> <span class="m">0.04</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">1.75068607125217</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(z_{0.04} = 1.7507\)</span>.</p>
+</section>
+<section id="id2">
+<h5>Step 3: Calculate the Margin of Error.<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
+<p>The margin of error is</p>
+<div class="math notranslate nohighlight">
+\[ E = z_{0.04}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} = 1.7507 \sqrt{\frac{0.26(1 - 0.26)}{50}} = 0.1086. \]</div>
+</section>
+<section id="id3">
+<h5>Step 4: Construct the Confidence Interval.<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<p>The confidence interval is</p>
+<div class="math notranslate nohighlight">
+\[ (\hat{p} - E, \hat{p} + E) = (0.26 - 0.1086, 0.26 + 0.1086) = (0.1514, 0.3686). \]</div>
+<p>We are <span class="math notranslate nohighlight">\(92\%\)</span> confident that between <span class="math notranslate nohighlight">\(15.14\%\)</span> and <span class="math notranslate nohighlight">\(36.86\%\)</span> of teens have more than <span class="math notranslate nohighlight">\(500\)</span> friends on Facebook.</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch5 Confidence Intervals"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5.1. </span>Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5.3%20Student%27s%20t-Distribution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.3. </span>Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-confidence-interval">Calculating the Confidence Interval</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-2-1">Example 5.2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-find-the-sample-proportion-hat-p">Part 1: Find the sample proportion <span class="math notranslate nohighlight">\(\hat{p}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-find-z-alpha-2">Part 2: Find <span class="math notranslate nohighlight">\(z_{\alpha/2}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-calculate-the-margin-of-error">Step 3: Calculate the Margin of Error.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-construct-the-confidence-interval">Step 4: Construct the Confidence Interval.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-2-2">Example 5.2.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-find-the-sample-proportion-hat-p">Step 1: Find the sample proportion <span class="math notranslate nohighlight">\(\hat{p}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-find-z-alpha-2">Step 2: Find <span class="math notranslate nohighlight">\(z_{\alpha/2}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 3: Calculate the Margin of Error.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 4: Construct the Confidence Interval.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

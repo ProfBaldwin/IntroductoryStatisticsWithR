@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2.1. Measures of Position &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch2 Descriptive Statistics/2.1 Measures of Position';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Measures of Central Tendency" href="2.2%20Measures%20of%20Central%20Tendency.html" />
+    <link rel="prev" title="2. Descriptive Statistics" href="2.0%20Descriptive%20Statistics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch2 Descriptive Statistics/2.1 Measures of Position.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Measures of Position</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">Percentiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-1-1">Example 2.1.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quartiles">Quartiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-1-2">Example 2.1.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-1-3">Example 2.1.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-1-4">Example 2.1.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="measures-of-position">
+<h1><span class="section-number">2.1. </span>Measures of Position<a class="headerlink" href="#measures-of-position" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Calculate percentiles and quartiles and interpret the results.</p></li>
+<li><p>Construct and interpret box plots.</p></li>
+</ul>
+</section>
+<section id="percentiles">
+<h2>Percentiles<a class="headerlink" href="#percentiles" title="Permalink to this headline">#</a></h2>
+<p>A common measure of position is <strong>percentiles</strong>. Percentiles are values that divide ordered data into 100 equally sized groups. To score in the 90th percentile of an exam does not mean, necessarily, that you received 90% on a test. It means that 90% of test scores are the same or less than your score and 10% of the test scores are the same or greater than your test score.</p>
+<p>Percentiles are useful for comparing values. For this reason, universities and colleges use percentiles extensively. One instance in which colleges and universities use percentiles is when SAT results are used to determine a minimum testing score that will be used as an acceptance factor. For example, suppose Duke accepts SAT scores at or above the 75th percentile. This means Duke will only accept students with an SAT scores higher than at least 75% of all SAT scores.</p>
+<p>Percentiles are mostly used with very large populations. Therefore, if you were to say that 90% of the test scores are less (and not the same or less) than your score, it would be acceptable because removing one particular data value is not significant in a very large population.</p>
+<p>To calculate percentiles by hand, the data must be ordered from smallest to largest. But we can use R to quickly find percentiles without ordering the data using the <code>quantile</code> function. <strong>Quantiles</strong> are values that divide ordered data into any number of equally-sized groups, so a percentile is a type of <strong>quantile</strong>.</p>
+<p>The syntax for the <code>quantile</code> function is:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">probs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, <code>x</code> is the list of data that we want the percentiles of and <code>probs</code> is the percentage or list of percentages, converted to decimal form, corresponding to our percentiles. The name <code>probs</code> is an abbreviation for ‘probabilities.’ We will learn more about why that abbreviation is appropriate later.</p>
+<p>The following example illustrates how to use the <code>quantile</code> function to find a percentile.</p>
+<hr class="docutils" />
+<section id="example-2-1-1">
+<h3>Example 2.1.1<a class="headerlink" href="#example-2-1-1" title="Permalink to this headline">#</a></h3>
+<p>Listed are 29 ages for Academy Award winning best actors. Find the 73rd percentile. Explain, in words, what this value represents.</p>
+<center>
+18, 21, 22, 25, 26, 27, 29, 30, 31, 33, 36, 37, 41, 42, 47, 52, 55, 57, 58, 59, 62, 65, 67, 71, 72, 73, 74, 76, 77
+</center>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>We will use the <code>quantile</code> function in R with <code>probs = 0.73</code>, since 73% = 0.73. Note that it is important to use the decimal form of the percentage; if we use <code>probs = 73</code>, we will get an error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">18</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">22</span><span class="p">,</span> <span class="m">25</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">27</span><span class="p">,</span> <span class="m">29</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">31</span><span class="p">,</span> <span class="m">33</span><span class="p">,</span> <span class="m">36</span><span class="p">,</span> <span class="m">37</span><span class="p">,</span> <span class="m">41</span><span class="p">,</span> <span class="m">42</span><span class="p">,</span> <span class="m">47</span><span class="p">,</span> <span class="m">52</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">57</span><span class="p">,</span> <span class="m">58</span><span class="p">,</span> <span class="m">59</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">76</span><span class="p">,</span> <span class="m">77</span><span class="p">)</span>
+
+<span class="nf">quantile</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.73</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>73%:</strong> 63.32</div></div>
+</div>
+<p>So the 73rd percentile is 63.32. That means that of the 29 Academy Award winning best actors in our sample, 73% of them were younger than 63.32 years old.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quartiles">
+<h2>Quartiles<a class="headerlink" href="#quartiles" title="Permalink to this headline">#</a></h2>
+<p><strong>Quartiles</strong> are values that divide ordered data into 4 equally sized groups, called <strong>quarters</strong>. A quartile is another kind of quantile.</p>
+<ul class="simple">
+<li><p>The first quartile, <span class="math notranslate nohighlight">\(Q_1\)</span>, is the same as the 25th percentile.</p></li>
+<li><p>The second quartile, <span class="math notranslate nohighlight">\(Q_2\)</span>, is the same as the 50th percentile.</p></li>
+<li><p>The third quartile, <span class="math notranslate nohighlight">\(Q_3\)</span>, is the same as the 75th percentile.</p></li>
+</ul>
+<p>The four quarters that we get from the quartiles each contain about the same amount of data values.</p>
+<ul class="simple">
+<li><p>The first quarter consists of the data values less than or equal to <span class="math notranslate nohighlight">\(Q_1\)</span> (the 25th percentile). This quarter contains 25% of the data values.</p></li>
+<li><p>The second quarter consists of the data values between <span class="math notranslate nohighlight">\(Q_1\)</span> (the 25th percentile) and <span class="math notranslate nohighlight">\(Q_2\)</span> (the 50th percentile). This quarter contains 25% of the data values.</p></li>
+<li><p>The third quarter consists of the data values between <span class="math notranslate nohighlight">\(Q_2\)</span> (the 50th percentile) and <span class="math notranslate nohighlight">\(Q_3\)</span> (the 75th percentile). This quarter contains 25% of the data values.</p></li>
+<li><p>The fourth quarter consists of the data values greater than or equal to<span class="math notranslate nohighlight">\(Q_3\)</span> (the 75th percentile). This quarter contains 25% of the data values.</p></li>
+</ul>
+<figure class="align-default" id="quartiles-and-quarters">
+<a class="reference internal image-reference" href="../_images/quartiles_and_quarters.png"><img alt="An illustration of quartiles and quarters for 100 random values." src="../_images/quartiles_and_quarters.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1.1 </span><span class="caption-text">Quartiles and quarters for 100 random data values. The quartiles (<span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, and <span class="math notranslate nohighlight">\(Q_3\)</span>) divide the data into quarters. Note that each quarter of the data contains 25% of data values. The data is more spread out in larger quarters and more squished together in smaller quarters, but both large quarters and small quarters contain the same number of data values.</span><a class="headerlink" href="#quartiles-and-quarters" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The second quartile, <span class="math notranslate nohighlight">\(Q_2\)</span>, is more often called the <strong>median</strong> and represented by the variable <span class="math notranslate nohighlight">\(M\)</span>. It is a number that measures the “center” of the data. You can think of the median as the “middle value,” but it does not actually have to be one of the observed values. It is a number that separates ordered data into halves. Half the values are the same value or smaller than the median, and half the values are the same value or larger than the median. For example, consider the following data.</p>
+<center>
+1, 11.5, 6, 7.2, 4, 8, 9, 10, 6.8, 8.3, 2, 2, 10, 1 
+</center>
+<p>Ordered from smallest to largest:</p>
+<center>
+1, 1, 2, 2, 4, 6, 6.8, 7.2, 8, 8.3, 9, 10, 10, 11.5
+</center>
+<p>Since there are 14 observations, the median is between the seventh value, 6.8, and the eighth value, 7.2. To find the median, average the two values together by adding them and dividing by 2.</p>
+<div class="math notranslate nohighlight">
+\[\frac{6.8 + 7.2}{2} = 7\]</div>
+<p>The median is 7. Half of the values are smaller than 7 and half of the values are larger than 7.</p>
+<p>Let’s confirm the median is 7 using R. Since the median is the 50th percentile, we will use <code>probs = 0.50</code>, since 50% = 0.50.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">11.5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">7.2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">6.8</span><span class="p">,</span> <span class="m">8.3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>50%:</strong> 7</div></div>
+</div>
+<p>From our R calculation, we see that the median, or the 50th percentile, is 7. This matches the result we obtained from our calculation by hand above. But recall that when we calculated the median by hand, we had to first order the data from smallest to largest. By contrast, we were able to leave the data we plugged into R unordered and let the computer do the hard work.</p>
+<p>We can use the <code>quantile</code> function allows us to quickly and easily find any quartile, not just the median.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be careful not to confuse the term <em>qua<strong>r</strong>tile</em> with the term <em>qua<strong>n</strong>tile</em>. <strong>Quart</strong>iles split the data into four <strong>quart</strong>ers, while <strong>quant</strong>iles split the data using more general <strong>quant</strong>ities.</p>
+</div>
+<hr class="docutils" />
+<section id="example-2-1-2">
+<h3>Example 2.1.2<a class="headerlink" href="#example-2-1-2" title="Permalink to this headline">#</a></h3>
+<p>For the following 13 real estate prices, calculate the quartiles.</p>
+<center>
+$389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000; $659,000; $529,000; $575,000; $488,800; $1,095,000
+</center>
+<section id="id1">
+<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>We will use the <code>quantile</code> function to calculate our quartiles.</p>
+<ul class="simple">
+<li><p>To calculate our first quartile <span class="math notranslate nohighlight">\(Q_1\)</span>, we will use <code>probs = 0.25</code>.</p></li>
+<li><p>To calculate our median <span class="math notranslate nohighlight">\(M\)</span> or second quartile <span class="math notranslate nohighlight">\(Q_2\)</span>, we will use <code>probs = 0.50</code>.</p></li>
+<li><p>To calculate our third quartile <span class="math notranslate nohighlight">\(Q_3\)</span>, we will use <code>probs = 0.75</code>.</p></li>
+</ul>
+<p>But notice that our list of real estate prices above isn’t ready to be input into R: it won’t understand the dollar sign, and we must use a comma to separate values.</p>
+<center>
+389950, 230500, 158000, 479000, 639000, 114950, 5500000, 387000, 659000, 529000, 575000, 488800, 1095000
+</center>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>R will not allow the use of a comma to mark the thousands place of a number; commas are only used in R to separate values or items in a list. For example, if you type <code>389,950</code> into R, it will interpret it as a list of two numbers: 389 and 950. Instead, we omit the comma and type simply <code>389950</code>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">389950</span><span class="p">,</span> <span class="m">230500</span><span class="p">,</span> <span class="m">158000</span><span class="p">,</span> <span class="m">479000</span><span class="p">,</span> <span class="m">639000</span><span class="p">,</span> <span class="m">114950</span><span class="p">,</span> <span class="m">5500000</span><span class="p">,</span> <span class="m">387000</span><span class="p">,</span> <span class="m">659000</span><span class="p">,</span> <span class="m">529000</span><span class="p">,</span> <span class="m">575000</span><span class="p">,</span> <span class="m">488800</span><span class="p">,</span> <span class="m">1095000</span><span class="p">)</span>
+
+<span class="c1">#First Quartile</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span>
+
+<span class="c1">#Median/Second Quartile</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
+
+<span class="c1">#Third Quartile</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>25%:</strong> 387000</div><div class="output text_html"><strong>50%:</strong> 488800</div><div class="output text_html"><strong>75%:</strong> 639000</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(Q_1 = \$387,000\)</span>, <span class="math notranslate nohighlight">\(Q_2 = \$488,800\)</span>, and <span class="math notranslate nohighlight">\(Q_3 = \$639,000\)</span>.</p>
+<p>So we deduce that:</p>
+<ul class="simple">
+<li><p>About 25% of the real estate prices in our sample are less than <span class="math notranslate nohighlight">\(Q_1 = \$387,000\)</span> (in the first quarter of the data).</p></li>
+<li><p>About 25% of the real estate prices in our sample are between <span class="math notranslate nohighlight">\(Q_1 = \$387,000\)</span> and <span class="math notranslate nohighlight">\(Q_2 = \$488,800\)</span> (in the second quarter of the data).</p></li>
+<li><p>About 25% of the real estate prices in our sample are between <span class="math notranslate nohighlight">\(Q_2 = \$488,800\)</span> and <span class="math notranslate nohighlight">\(Q_3 = \$639,000\)</span> (in the third quarter of the data).</p></li>
+<li><p>About 25% of the real estate prices in our sample are greater than <span class="math notranslate nohighlight">\(Q_3 = \$639,000\)</span> (in the fourth quarter of the data).</p></li>
+</ul>
+<p>The quartiles quartered the data into groups each containing 25% of the data points.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="box-plots">
+<h2>Box Plots<a class="headerlink" href="#box-plots" title="Permalink to this headline">#</a></h2>
+<p><strong>Box plots</strong> (also called <strong>box-and-whisker plots</strong> or <strong>box-whisker plots</strong>) give a good graphical image of the concentration of the data. They also show how far the extreme values are from most of the data. A box plot is constructed from five values: the minimum value, the first quartile, the second quartile or median, the third quartile, and the maximum value. The box plot illustrates the four quarters of the data and how squished together or spread out the data in each quarter is.</p>
+<p>To construct a box plot, use a horizontal or vertical number line and a rectangular box. The smallest and largest data values label the endpoints of the axis. The first quartile marks one end of the box and the third quartile marks the other end of the box. <strong>Approximately the middle 50 percent of the data fall inside the box.</strong> The “whiskers” extend from the ends of the box to the smallest and largest data values. The box plot gives a good, quick picture of how the data is spread out.</p>
+<p>To illustrate a box plot, consider this small dataset.</p>
+<center>
+    1, 2, 2, 3, 5, 7, 9, 9, 11, 12, 15
+</center>
+<p>We can easily find the quartiles for this data using R:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+
+<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>25%:</strong> 2.5</div><div class="output text_html"><strong>50%:</strong> 7</div><div class="output text_html"><strong>75%:</strong> 10</div></div>
+</div>
+<p>So <span class="math notranslate nohighlight">\(Q_1 = 2.5\)</span>, <span class="math notranslate nohighlight">\(Q_2 = 7\)</span>, and <span class="math notranslate nohighlight">\(Q_3 = 10\)</span>. We also note that 1 is the minimum value and 15 is the maximum value of the data. Observe that these quartiles and maximum/minimum values are plotted using horizontal lines in the box plot for the data in <a class="reference internal" href="#labeled-boxplot"><span class="std std-numref">Figure 2.1.2</span></a>.</p>
+<figure class="align-default" id="labeled-boxplot">
+<a class="reference internal image-reference" href="../_images/labeled_boxplot.png"><img alt="A boxplot labeled with the minimum and maximum values, the quartile values, and the quarters." src="../_images/labeled_boxplot.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1.2 </span><span class="caption-text">The locations of the quartiles (<span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, and <span class="math notranslate nohighlight">\(Q_3\)</span>) and the minimum and maximum values of the data are indicated with horizontal lines. While the data itself is not plotted, we can see how spread out the data is in each quarter. Note that each quarter of the data contains 25% of data values. The data is more spread out in larger quarters and more squished together in smaller quarters, but both large quarters and small quarters contain the same number of data values.</span><a class="headerlink" href="#labeled-boxplot" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that box plots are different than other graphs like bar graphs. In a bar graph, the height of a bar tells us how many data values are in a particular category. The higher the bar is, the more data values are in that category. But each quarter of a box plot contains the same number of data values. The size of a quarter tells us how spread out the data values in that quarter are. The larger the quarter is, the more spread out the data values are in that quarter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may encounter box plots that have dots marking especially extreme values. In these cases, the extreme values are left out of the box plot so that the data doesn’t look more spread out than it really is.</p>
+<figure class="align-default" id="outlier-boxplot">
+<a class="reference internal image-reference" href="../_images/outlier_boxplot.png"><img alt="A box plot with one extreme value excluded from the main box plot and instead plotted as a separate point." src="../_images/outlier_boxplot.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1.3 </span><span class="caption-text">A box plot with one extreme value excluded from the main box plot and instead plotted as a separate point.</span><a class="headerlink" href="#outlier-boxplot" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<p>We can construct a boxplot in R using the boxplot function:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">boxplot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, <code>x</code> is the list of data we want to create a boxplot for.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes there will be a slight difference between the quartile values we obtain using the <code>quantile</code> function and the partition boundaries on the box plot we obtain using the <code>boxplot</code> function. This is due to small differences in the way the <code>quantile</code> function and the <code>boxplot</code> function calculate <span class="math notranslate nohighlight">\(Q_1\)</span> and <span class="math notranslate nohighlight">\(Q_3\)</span>. In practice, this small difference usually doesn’t matter as both still partition the data into regions containing <em>about</em> 25% of the data.</p>
+</div>
+<hr class="docutils" />
+<section id="example-2-1-3">
+<h3>Example 2.1.3<a class="headerlink" href="#example-2-1-3" title="Permalink to this headline">#</a></h3>
+<p>The following data are the heights of 40 students in a statistics class. Construct a box plot using R. In which quarter of the data is the spread of the data the smallest? In which quarter of the data is the spread of the data the largest?</p>
+<center>
+60, 60, 61, 62, 62, 63, 63, 64, 64, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 66, 67, 67, 68, 68, 69, 70, 70, 70, 70, 70, 71, 71, 72, 72, 73, 74, 74, 75, 77
+    </center>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>Simply construct a box plot of the data.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">heights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span> <span class="m">60</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">77</span><span class="p">)</span>
+
+<span class="nf">boxplot</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="boxplot-example">
+<a class="reference internal image-reference" href="../_images/boxplot_example.png"><img alt="A box plot of the example data." src="../_images/boxplot_example.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1.4 </span><span class="caption-text">A box plot of the example data.</span><a class="headerlink" href="#boxplot-example" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the box plot, we can see that the region between the first quartile <span class="math notranslate nohighlight">\(Q_1\)</span> and the median <span class="math notranslate nohighlight">\(M = Q_2\)</span> has the smallest spread of data, and the region between the third quartile <span class="math notranslate nohighlight">\(Q_3\)</span> and the maximum value has the largest spread of data.</p>
+<hr class="docutils" />
+<p>By providing the <code>boxplot</code> function with multiple sets of data, we can generate multiple box plots side-by-side. This is useful for comparing how different data sets are distributed.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-2-1-4">
+<h3>Example 2.1.4<a class="headerlink" href="#example-2-1-4" title="Permalink to this headline">#</a></h3>
+<p>Use R to construct side-by-side boxplots for the two sets of data below. Which data set has the larger spread of data?</p>
+<p>Data set 1:
+64, 73, 101.3, 71.1, 94, 85.5, 99.9, 42, 92.4, 103, 54.7, 72.5, 101.9, 86.4, 47.2, 71.5, 71</p>
+<p>Data set 2:
+56.8, 71, 49, 69.4, 67.6, 71, 68.5, 61.1, 50.9, 71, 71, 71, 72, 72, 71, 64, 67.2, 52.5, 71, 69, 72, 71.3, 58.3, 71, 71</p>
+<section id="id3">
+<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<p>We will create two box plots side-by-side, one for each set of data.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">64</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">101.3</span><span class="p">,</span> <span class="m">71.1</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">85.5</span><span class="p">,</span> <span class="m">99.9</span><span class="p">,</span> <span class="m">42</span><span class="p">,</span> <span class="m">92.4</span><span class="p">,</span> <span class="m">103</span><span class="p">,</span> <span class="m">54.7</span><span class="p">,</span> <span class="m">72.5</span><span class="p">,</span> <span class="m">101.9</span><span class="p">,</span> <span class="m">86.4</span><span class="p">,</span> <span class="m">47.2</span><span class="p">,</span> <span class="m">71.5</span><span class="p">,</span> <span class="m">71</span><span class="p">)</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">56.8</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">69.4</span><span class="p">,</span> <span class="m">67.6</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">68.5</span><span class="p">,</span> <span class="m">61.1</span><span class="p">,</span> <span class="m">50.9</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">67.2</span><span class="p">,</span> <span class="m">52.5</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">71.3</span><span class="p">,</span> <span class="m">58.3</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">)</span>
+
+<span class="nf">boxplot</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="side-by-side-boxplots">
+<a class="reference internal image-reference" href="../_images/side_by_side_boxplots.png"><img alt="Two box plots side-by-side." src="../_images/side_by_side_boxplots.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1.5 </span><span class="caption-text">Two box plots side-by-side makes it easy to compare how different data sets are distributed.</span><a class="headerlink" href="#side-by-side-boxplots" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>By examining the box plots, we quickly see that the data in data set 1 is much more spread out than the data in data set 2.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch2 Descriptive Statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2.0%20Descriptive%20Statistics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Descriptive Statistics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2.2%20Measures%20of%20Central%20Tendency.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Measures of Central Tendency</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">Percentiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-1-1">Example 2.1.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quartiles">Quartiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-1-2">Example 2.1.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-1-3">Example 2.1.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-1-4">Example 2.1.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

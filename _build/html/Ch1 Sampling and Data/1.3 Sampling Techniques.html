@@ -1,0 +1,1297 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.3. Sampling Techniques &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch1 Sampling and Data/1.3 Sampling Techniques';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.4. Tables and Charts" href="1.4%20Tables%20and%20Charts.html" />
+    <link rel="prev" title="1.2. Qualitative Data and Quantitative Data" href="1.2%20Scales%20of%20Measurement.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.2%20Hypotheses%20and%20Errors.html">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch6%20An%20Introduction%20to%20Hypothesis%20Testing/6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch1 Sampling and Data/1.3 Sampling Techniques.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sampling Techniques</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-and-bias">Sampling and Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-random-sampling">Simple Random Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-1">Example 1.3.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systematic-sampling">Systematic Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-2">Example 1.3.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stratified-sampling">Stratified Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-3">Example 1.3.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-sampling">Cluster Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-4">Example 1.3.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convenience-sampling-a-method-to-avoid">Convenience Sampling: A Method to Avoid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-size-and-variability">Sample Size and Variability</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sampling-techniques">
+<h1><span class="section-number">1.3. </span>Sampling Techniques<a class="headerlink" href="#sampling-techniques" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Identify the standard methods of obtaining data and the advantages and disadvantages of each.</p></li>
+<li><p>Construct a random sample from a population using simple random sampling, systematic sampling, stratified sampling, and cluster sampling.</p></li>
+</ul>
+</section>
+<section id="sampling-and-bias">
+<h2>Sampling and Bias<a class="headerlink" href="#sampling-and-bias" title="Permalink to this headline">#</a></h2>
+<p>Gathering information about an entire population often costs too much or is virtually impossible. Instead, we gather information about a sample of the population. <strong>A sample should have the same characteristics as the population it is representing.</strong> If the sample does not have the same characteristics as the population, the statistic may not be a good estimator for the parameter. When this happens, we say the sample statistic is <strong>biased</strong>.</p>
+<p>For example, suppose a pollster wants to find out if the United States population believes a college education is important for a successful career. If the pollster only samples college students, then we might expect the proportion of the sample that believes college is important to be higher than the proportion of the population that believes college is important. Because the sample (which includes only college students) does not have the same characteristics as the population (which includes college students, college graduates, those who have never been to college, etc.), the sample statistic probably isn’t a good estimate of the population parameter.</p>
+<p>To try to make sure that the sample has the same characteristics as the population, most statisticians use various methods of <strong>random sampling</strong>. There are several different methods of random sampling. In each form of random sampling, each member of a population initially has an equal chance of being selected for the sample. Each method has pros and cons. We describe some of the most common methods below.</p>
+</section>
+<section id="simple-random-sampling">
+<h2>Simple Random Sampling<a class="headerlink" href="#simple-random-sampling" title="Permalink to this headline">#</a></h2>
+<p>The easiest method to describe is called a <strong>simple random sample</strong>. In simple random sampling, each member of the population has an equal chance of being chosen for the sample and is chosen independent of any other member in the population.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/Simple_random_sampling.png"><img alt="A simple random sample of four individuals is chosen from a population of twelve individuals." src="../_images/Simple_random_sampling.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.1 </span><span class="caption-text">A simple random sample of four individuals is chosen from a population of twelve individuals.<a class="footnote-reference brackets" href="#simple-random-attribution" id="id1">1</a></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>For example, suppose Professor Baldwin wants to form a six-person study group from the students in his precalculus class, which has 30 students. To choose a simple random sample of size six from the students of his class, Professor Baldwin could put all 30 names in a hat, shake the hat, close his eyes, and pick out six names. A more technological way is for Professor Baldwin to first list the last names of the members of his class together with a number, as in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>.</p>
+<table class="table" id="name-table">
+<caption><span class="caption-number">Table 1.3.1 </span><span class="caption-text">Lisa’s Class Roster.</span><a class="headerlink" href="#name-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Number</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Number</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Anselmo</p></td>
+<td><p>11</p></td>
+<td><p>Khan</p></td>
+<td><p>21</p></td>
+<td><p>Roquero</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Bautista</p></td>
+<td><p>12</p></td>
+<td><p>Legeny</p></td>
+<td><p>22</p></td>
+<td><p>Roth</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Bayani</p></td>
+<td><p>13</p></td>
+<td><p>Lundquist</p></td>
+<td><p>23</p></td>
+<td><p>Rowell</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Cheng</p></td>
+<td><p>14</p></td>
+<td><p>Macierz</p></td>
+<td><p>24</p></td>
+<td><p>Salangsang</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Cuarismo</p></td>
+<td><p>15</p></td>
+<td><p>Motogawa</p></td>
+<td><p>25</p></td>
+<td><p>Slade</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Cuningham</p></td>
+<td><p>16</p></td>
+<td><p>Okimoto</p></td>
+<td><p>26</p></td>
+<td><p>Stratcher</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Fontecha</p></td>
+<td><p>17</p></td>
+<td><p>Patel</p></td>
+<td><p>27</p></td>
+<td><p>Tallai</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Hong</p></td>
+<td><p>18</p></td>
+<td><p>Price</p></td>
+<td><p>28</p></td>
+<td><p>Tran</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Hoobler</p></td>
+<td><p>19</p></td>
+<td><p>Quizon</p></td>
+<td><p>29</p></td>
+<td><p>Wai</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Jiao</p></td>
+<td><p>20</p></td>
+<td><p>Reyes</p></td>
+<td><p>30</p></td>
+<td><p>Wood</p></td>
+</tr>
+</tbody>
+</table>
+<p>Professor Baldwin could now use a computer to generate six random numbers and choose the individuals on the table matching the numbers. We can do this in R with the <code>sample</code> function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sample(x, size)
+</pre></div>
+</div>
+<p>Here, <code>x</code> is a list of the members of the population, and <code>size</code> is the size of the sample we desire. The <code>sample</code> function will randomly choose a simple random sample from population <code>x</code> of the given <code>size</code>.</p>
+<p>In this example, we would want <code>x</code> to be a list of numbers from 1 to 30 corresponding to the numbers on our table. R makes it easy to create a list of consecutive numbers. Simply type <code>start:end</code>, where <code>start</code> is the first number in the list and <code>end</code> is the last number in the list. For a list from 1 to 30, we would type <code>1:30</code>.</p>
+<p>And since we want to choose six students from the class to be in the study group, <code>size</code> will be 6.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly choose 6 students from the class</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>4</li><li>25</li><li>19</li><li>7</li><li>17</li><li>18</li></ol>
+</div></div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title">Simple Random Sampling Study Group</p>
+<table class="table" id="simple-random-table">
+<caption><span class="caption-number">Table 1.3.2 </span><span class="caption-text">Students in the study group chosen by simple random sampling.</span><a class="headerlink" href="#simple-random-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Cheng</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>Slade</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>Quizon</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Fontecha</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>Patel</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>Price</p></td>
+</tr>
+</tbody>
+</table>
+</aside>
+<p>In this case, the <code>sample</code> function randomly chose students 4, 25, 19, 7, 17, and 18 (Cheng, Slade, Quizon, Fontecha, Patel, and Price) to be in the study group. (See <a class="reference internal" href="#simple-random-table"><span class="std std-numref">Table 1.3.2</span></a>.)</p>
+<p>For large samples, simple random sampling tends to do a very good job at representing the characteristics of a population. However, the smaller the sample is, the more likely it is that some characteristics or groups of a population won’t be accurately represented in the sample. Also, to make sure that each member of the population has an equal chance of being chosen, simple random sampling requires a list of the full population, which may be difficult or impossible to obtain for large populations. Because of this, simple random sampling can sometimes be tedious, time consuming, and expensive to implement.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Humans don’t have a good intuition for randomness. To demonstrate this point, the author asked 113 of his math students to pick a random number from 1 to 10. <a class="reference internal" href="#human-randomness"><span class="std std-numref">Figure 1.3.2</span></a> shows a bar chart on the left of how many times each number was chosen by the students, as well as a bar chart on the right of how many times we would expect each number to be chosen by a truly uniformly random process.</p>
+<figure class="align-default" id="human-randomness">
+<a class="reference internal image-reference" href="../_images/human_randomness.png"><img alt="Two bar charts. The bar chart on the left shows how many times each number from 1 to 10 was chosen by 113 students. The bar chart on the right shows how many we would expect each number from 1 to 10 to be chosen by a random process." src="../_images/human_randomness.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.2 </span><span class="caption-text">The bar chart on the left shows how many times each number from 1 to 10 was chosen by 113 students. The bar chart on the right shows how many times we would expect each number to be chosen if the numbers were actually chosen randomly. The dramatic differences in the bar charts suggest that the students did not truly choose their numbers randomly.</span><a class="headerlink" href="#human-randomness" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>With a truly random process, we would expect 1 to be chosen about as often as 6 is chosen. However, only three of the 113 students chose 1, while twenty-four students chose 6.</p>
+<p>When you need random values, <strong>do not trust yourself to be random.</strong> Instead, use a random process like rolling a die, picking values out of a hat, or (as we will most often do in this class) using a computer to generate random values.</p>
+</div>
+<hr class="docutils" />
+<section id="example-1-3-1">
+<h3>Example 1.3.1<a class="headerlink" href="#example-1-3-1" title="Permalink to this headline">#</a></h3>
+<p>The spreadsheet below contains real data of the revenues per capita of each city in Riverside County, California in 2019. Sample five cities using simple random sampling.</p>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHinHZVMWY21a098Dp1P5pU-uD_uasOrqBXb0y81UkOL3RRtpwSD5R2Tzq7iucIIJca_ocrs3slf8s/pubhtml?widget=true&amp;headers=false" width="100%" height="500"></iframe>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>Rather than assign each city a number, we can use the row numbers already on the spreadsheet. Note, though, that row 1 contains the column headers and row 30 gives the source of the data. The actual data is contained in rows 2 to 29. To perform simple random sampling, we use the <code>sample</code> function to select five random row numbers between 2 and 29.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="m">29</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>2</li><li>10</li><li>13</li><li>23</li><li>17</li></ol>
+</div></div>
+</div>
+<p>Our sample includes the city in row 2 (Banning), row 10 (Desert Hot Springs), row 13 (Indian Wells), row 23 (Palm Springs), and row 17 (La Quinta).</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="systematic-sampling">
+<h2>Systematic Sampling<a class="headerlink" href="#systematic-sampling" title="Permalink to this headline">#</a></h2>
+<p>To choose a <strong>systematic sample</strong>, list every member of the population in some order, randomly choose a member of the population to start your sample, then include every <span class="math notranslate nohighlight">\(k\)</span>th member of the population from the starting point, where <span class="math notranslate nohighlight">\(k\)</span> is a whole number. (For example, if <span class="math notranslate nohighlight">\(k = 7\)</span>, then every 7th member of the population is included after the starting point.) To make sure we sample members throughout the whole population, we calculate <span class="math notranslate nohighlight">\(k\)</span> using the formula</p>
+<div class="math notranslate nohighlight">
+\[k = \frac{N}{n}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the size of the population, and <span class="math notranslate nohighlight">\(n\)</span> is the size of the sample we want.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/Systematic_sampling.png"><img alt="Four individuals are chosen from a population of twelve individuals by sampling every third individual." src="../_images/Systematic_sampling.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.3 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals using systematic sampling. The second individual is randomly chosen as a starting point. Since there are <span class="math notranslate nohighlight">\(N = 12\)</span> individuals in the population and the size of the sample is <span class="math notranslate nohighlight">\(n = 4\)</span>, the interval between each individual sampled is <span class="math notranslate nohighlight">\(k = 12/4 = 3\)</span>. So every 3rd individual is chosen from the starting point.<a class="footnote-reference brackets" href="#systematic-attribution" id="id3">2</a></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>For example, suppose Professor Baldwin wants to choose six students from his precalculus class for a study group using systematic sampling. The students are already in an ordered list in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>. To start the systematic sample, Professor Baldwin must randomly choose a starting point. To make sure the choice is truly random, we can use the <code>sample</code> function. We will choose 1 student from the list of 30 students as a starting point. Systematic sampling is frequently chosen because it is a simple method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly choose one student as a starting point</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">18</div></div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title">Systematic Sampling Study Group</p>
+<table class="table" id="systematic-table">
+<caption><span class="caption-number">Table 1.3.3 </span><span class="caption-text">Students in the study group chosen by sytematic sampling.</span><a class="headerlink" href="#systematic-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>Price</p></td>
+</tr>
+<tr class="row-odd"><td><p>23</p></td>
+<td><p>Rowell</p></td>
+</tr>
+<tr class="row-even"><td><p>28</p></td>
+<td><p>Tran</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Bayani</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Hong</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Lundquist</p></td>
+</tr>
+</tbody>
+</table>
+</aside>
+<p>So the 18th student in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>, Price, is the first person in the study group and the starting point of the systematic sample. To find the rest of the students in the sample, we need to calculate the size of the interval <span class="math notranslate nohighlight">\(k\)</span> between students. Since there are <span class="math notranslate nohighlight">\(N = 30\)</span> total students in the class, and Professor Baldwin wants to sample <span class="math notranslate nohighlight">\(n = 6\)</span> students for the study group, the size of the interval between each student we sample is</p>
+<div class="math notranslate nohighlight">
+\[ k = \frac{30}{6} = 5. \]</div>
+<p>So we will sample every 5th student after our starting point. After Price, the next student in the study group is student <span class="math notranslate nohighlight">\(18 + 5 = 23\)</span>, Rowell. The next student after Rowell is student <span class="math notranslate nohighlight">\(23 + 5 = 28\)</span>, Tran. But after Tran, there is no student <span class="math notranslate nohighlight">\(28 + 5 = 33\)</span>, since there are only 30 students. To complete the sample, we will go back to the beginning of the list of students after we reach the end. Since 33 is 3 more than the number of students in the class, the next student in the study group is student number 3, Bayani. The final students in the study group are student <span class="math notranslate nohighlight">\(3 + 5 = 8\)</span>, Hong, and student <span class="math notranslate nohighlight">\(8 + 5 = 13\)</span>, Lundquist. (See <a class="reference internal" href="#systematic-table"><span class="std std-numref">Table 1.3.3</span></a>.)</p>
+<p>Systematic sampling is a usually effective sampling technique that is easy to understand and implement. However, if members of the population with a certain characteristic regularly repeat in the order, systematic sampling may over-sample or under-sample these members. For example, suppose that a microchip manufacturer performs quality testing on every 9th microchip in the assembly line. If there is a fault on the assembly line that causes every 3rd microchip manufactured to malfunction, then the quality testing will either sample none of the faulty microchips (if the systematic sampling is started on a working microchip), or the quality testing will only sample faulty microchips (if the systematic sampling is started on a faulty microchip). In either case, the sample would be biased.</p>
+<hr class="docutils" />
+<section id="example-1-3-2">
+<h3>Example 1.3.2<a class="headerlink" href="#example-1-3-2" title="Permalink to this headline">#</a></h3>
+<p>The spreadsheet below contains real data of the revenues per capita of each city in Riverside County, California in 2019. Sample five cities using systematic sampling.</p>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHinHZVMWY21a098Dp1P5pU-uD_uasOrqBXb0y81UkOL3RRtpwSD5R2Tzq7iucIIJca_ocrs3slf8s/pubhtml?widget=true&amp;headers=false" width="100%" height="500"></iframe>
+<section id="id5">
+<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<p>We first will randomly choose one city on which to begin the systematic sampling. We use the <code>sample</code> function to choose one city from the population.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="m">29</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">11</div></div>
+</div>
+<p>We will begin our systematic sampling with the city on row 11 (Eastvale).</p>
+<p>Next, we must determine the step size <span class="math notranslate nohighlight">\(k\)</span> between the cities in our sample. Since there are <span class="math notranslate nohighlight">\(N = 28\)</span> cities in the population, and we want a sample size of <span class="math notranslate nohighlight">\(n = 5\)</span>, we want the step size between each city we sample to be</p>
+<div class="math notranslate nohighlight">
+\[ k = \frac{28}{5} = 5.6. \]</div>
+<p>Of course, we can only actually take whole number step sizes, so we round 5.6 to a step size of <span class="math notranslate nohighlight">\(k = 6\)</span>. Consequently, after Eastvale on row 11, the next city in our sample is on row <span class="math notranslate nohighlight">\(11 + 6 = 17\)</span> (La Quinta), then the city on row <span class="math notranslate nohighlight">\(17+6 = 23\)</span> (Palm Springs), and then the city on row <span class="math notranslate nohighlight">\(23+6 = 29\)</span> (Wildomar). Since 29 is the last row of data, we circle back to the beginning of the order and sample the 6th city on the list. Since the first row contains the column headers, the 6th city is actually in the 7th row (Cathedral City), which completes our sample of 5 cities.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="stratified-sampling">
+<h2>Stratified Sampling<a class="headerlink" href="#stratified-sampling" title="Permalink to this headline">#</a></h2>
+<p>To choose a <strong>stratified sample</strong>, divide the population into groups called strata, then randomly choose a <strong>proportionate</strong> number of members from each stratum. For example, if a certain stratum consists of 27% of the population, the sample should have 27% of its members taken from that strata. Usually, strata are chosen to guarantee that certain important characteristics of the population are present in the sample. For instance, imagine a pollster wants to make sure their sample accurately represents each ethnicity of the population. The pollster can do this using stratified sampling where the strata are the different ethnicities of the population. If the population is 13.4% African American and 5.9% Asian, then the pollster’s stratified sample will be 13.4% African American and 5.9% Asian.</p>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/Stratified_sampling.png"><img alt="Four individuals are chosen from a population of twelve individuals by dividing the population into strata (groups) and sampling a proportionate number of individuals from each strata." src="../_images/Stratified_sampling.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.4 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals by dividing the population into strata (groups) based on color, then sampling a proportionate number of individuals from each strata. In this example, one individual is sampled from the white stratum, two individuals from the black stratum, and one individual from the gray stratum. Twice as many individuals were sampled from the black stratum than from the other strata because the black stratum is twice as large as the other strata.<a class="footnote-reference brackets" href="#stratified-attribution" id="id6">3</a></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To better illustrate stratified sampling, suppose Professor Baldwin was to choose six students from his precalculus class for a study group, but wants students with an A, students with a B, and students with a C or lower to be proportionately represented in the study group. He divides the 30 students in the class into three different strata based on their grade, as shown in <a class="reference internal" href="#stratified-list"><span class="std std-numref">Table 1.3.4</span></a>. (Note that we have assigned each student a new number in the stratum they are in. This will make it easier to randomly sample students in each stratum later.)</p>
+<table class="table" id="stratified-list">
+<caption><span class="caption-number">Table 1.3.4 </span><span class="caption-text">Students are divided into strata based on their grade in the course.</span><a class="headerlink" href="#stratified-list" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Grade A Students</p></th>
+<th class="head"><p>Grade B Students</p></th>
+<th class="head"><p>Grade C or Lower Students</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number in Stratum</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Bautista</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Cheng</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Hong</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Hoobler</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Jiao</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Lundquist</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Patel</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Salangsang</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Stratcher</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Tran</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td><table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number in Stratum</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Anselmo</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Bayani</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Cuarismo</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Fontecha</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Khan</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Legeny</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Okimoto</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Price</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Quizon</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Reyes</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Roquero</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Roth</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Slade</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>Tallai</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Wai</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td><table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number in Stratum</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Cuningham</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Macierz</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Motogawa</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Rowell</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Wood</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>There are 10 students with an A out of the 30 total students in the class, so the proportion of students in the class in the “Grade A” stratum is <span class="math notranslate nohighlight">\(\frac{10}{30}\)</span>. Since the size of the study group is 6, there should be <span class="math notranslate nohighlight">\(\frac{10}{30} \times 6 = 2\)</span> students from the “Grade A” stratum in the study group. Similarly, the “Grade B” stratum has 15 students out of the 30 total students in the class, so there should be <span class="math notranslate nohighlight">\(\frac{15}{30} \times 6 = 3\)</span> students from the “Grade B” stratum in the study group. And there should be <span class="math notranslate nohighlight">\(\frac{5}{30} \times 6 = 1\)</span> student from the “Grade C” or Lower stratum in the study group since 5 of the 30 students in the class have a grade of C or lower.</p>
+<p>We can use simple random sampling using the <code>sample</code> function to choose the students for the study group in each stratum. We want to choose 2 students from the 10 students in the “Grade A” stratum.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly choose 2 students from the Grade A stratum</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>9</li></ol>
+</div></div>
+</div>
+<p>So student 1 (Bautista) and student 9 (Stratcher) from the “Grade A” stratum will be in the study group.</p>
+<p>Similarly, we choose 3 of the 15 students in the “Grade B” stratum for the study group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly choose 3 students from the Grade B stratum</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>2</li><li>5</li><li>15</li></ol>
+</div></div>
+</div>
+<p>We include student 2 (Bayani), student 5 (Khan), and student 15 (Wai) from the “Grade B” stratum in the study group.</p>
+<p>Finally, we want to select 1 of the 5 students in the “Grade C or Lower” stratum for the study group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly choose 1 student from the Grade C or Lower stratum</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2</div></div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title">Stratified Sampling Study Group</p>
+<table class="table" id="stratified-table">
+<caption><span class="caption-number">Table 1.3.5 </span><span class="caption-text">Students in the study group chosen by stratified sampling.</span><a class="headerlink" href="#stratified-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Stratum</p></th>
+<th class="head"><p>Number in Stratum</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Grade A</p></td>
+<td><p>1</p></td>
+<td><p>Bautista</p></td>
+</tr>
+<tr class="row-odd"><td><p>Grade A</p></td>
+<td><p>9</p></td>
+<td><p>Stratcher</p></td>
+</tr>
+<tr class="row-even"><td><p>Grade B</p></td>
+<td><p>2</p></td>
+<td><p>Bayani</p></td>
+</tr>
+<tr class="row-odd"><td><p>Grade B</p></td>
+<td><p>5</p></td>
+<td><p>Khan</p></td>
+</tr>
+<tr class="row-even"><td><p>Grade B</p></td>
+<td><p>15</p></td>
+<td><p>Wai</p></td>
+</tr>
+<tr class="row-odd"><td><p>Grade C or Lower</p></td>
+<td><p>2</p></td>
+<td><p>Macierz</p></td>
+</tr>
+</tbody>
+</table>
+</aside>
+<p>The last student in the study group is student 2 (Macierz) from the “Grade C or Lower” stratum. (See <a class="reference internal" href="#stratified-table"><span class="std std-numref">Table 1.3.5</span></a>.)</p>
+<p>Unlike other sampling methods, stratified sampling guarantees that important characteristics of the population (the characteristics that determine the strata) are properly represented in the sample. However, it can be difficult to implement, since the size of each stratum and which stratum each member of the population belong to must be known beforehand.</p>
+<hr class="docutils" />
+<section id="example-1-3-3">
+<h3>Example 1.3.3<a class="headerlink" href="#example-1-3-3" title="Permalink to this headline">#</a></h3>
+<p>An economist wants to survey 400 renters regarding their income and budgets. She wants to make sure her sample accurately reflects the different prices of rental units in the United States, so she will use stratified sampling to collect her sample, where the strata are the different price levels of rental units according to the nationwide data obtained by the Census Bureau shown in <a class="reference internal" href="#rent-table"><span class="std std-numref">Table 1.3.6</span></a>.</p>
+<table class="colwidths-given table" id="rent-table">
+<caption><span class="caption-number">Table 1.3.6 </span><span class="caption-text">Occupied Units Paying Rent in the United States in 2019.<a class="footnote-reference brackets" href="#rent-attribution" id="id8">4</a></span><a class="headerlink" href="#rent-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 83%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Monthly Rent</p></th>
+<th class="head"><p>Percentage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Less that $500</p></td>
+<td><p>9.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p>$500 to $999</p></td>
+<td><p>34.1%</p></td>
+</tr>
+<tr class="row-even"><td><p>$1,000 to $1,499</p></td>
+<td><p>29.9%</p></td>
+</tr>
+<tr class="row-odd"><td><p>$1,500 to $1,999</p></td>
+<td><p>15.2%</p></td>
+</tr>
+<tr class="row-even"><td><p>$2,000 to $2,499</p></td>
+<td><p>6.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p>$2,500 to $2,999</p></td>
+<td><p>2.7%</p></td>
+</tr>
+<tr class="row-even"><td><p>$3,000 or More</p></td>
+<td><p>2.7%</p></td>
+</tr>
+</tbody>
+</table>
+<p>How many renters with rents between $1,500 and $1,999 should the economist include in her sample?</p>
+<section id="id9">
+<h4>Solution<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<p>To find the number of renters that should be included in the sample with rents between $1,500 and $1,999, we need to multiply the proportion of renters with rents between $1,500 and $1,999 in the population with the size of the sample. From the table, we can see that the proportion of renters in this strata is 15.2% = 0.152. (Note, when performing mathematics with percentages, we must always first convert percentages to decimals.) Since the economist wants a sample of size 400, we simply multiply 0.152 by 400 to find the number of individuals we should sample from the strata.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">0.152</span> <span class="o">*</span> <span class="m">400</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">60.8</div></div>
+</div>
+<p>We can’t sample exactly 60.8 people, so we round up to 61. Thus, of the 400 renters in the sample, 61 of those renters should pay monthly rents of between $1,500 and $1,999.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="cluster-sampling">
+<h2>Cluster Sampling<a class="headerlink" href="#cluster-sampling" title="Permalink to this headline">#</a></h2>
+<p>To choose a <strong>cluster sample</strong>, divide the population into clusters (groups) and then randomly select some of the clusters. <em>All</em> the members from the selected clusters are in the sample.</p>
+<figure class="align-default" id="id11">
+<a class="reference internal image-reference" href="../_images/Cluster_sampling.png"><img alt="Four individuals are chosen from a population of twelve individuals by dividing the population into six clusters (groups) and sampling all individuals in two of the clusters." src="../_images/Cluster_sampling.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.5 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals by dividing the population into six clusters, then randomly selecting two of the clusters. All individuals in the two chosen clusters are sampled. <a class="footnote-reference brackets" href="#cluster-attribution" id="id10">5</a></span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>For example, suppose Professor Baldwin’s precalculus students are seated in class at tables in groups of three. (See <a class="reference internal" href="#table-clusters"><span class="std std-numref">Figure 1.3.6</span></a>.) He wants to use cluster sampling to select a six-student study group, where the clusters are the groups of three students at each table.</p>
+<figure class="align-default" id="table-clusters">
+<a class="reference internal image-reference" href="../_images/table_clusters.png"><img alt="Ten tables are shown, with each table numbered. At each table, the names of three individuals seated at the table are given." src="../_images/table_clusters.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.6 </span><span class="caption-text">Three students sit at each of the ten tables in Professor Baldwin’s precalculus classroom. The students at each table form a cluster.</span><a class="headerlink" href="#table-clusters" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Since each cluster has three students, Professor Baldwin will need to randomly select two of the ten tables to create the six-person study group. As with the other sampling methods described above, we can make a random selection with the <code class="docutils literal notranslate"><span class="pre">sample</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly select two of the ten tables</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>2</li><li>8</li></ol>
+</div></div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title">Cluster Sampling Study Group</p>
+<table class="table" id="cluster-table">
+<caption><span class="caption-number">Table 1.3.7 </span><span class="caption-text">Students in the study group chosen by cluster sampling.</span><a class="headerlink" href="#cluster-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Cluster</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Table 2</p></td>
+<td><p>Hong</p></td>
+</tr>
+<tr class="row-odd"><td><p>Table 2</p></td>
+<td><p>Quizon</p></td>
+</tr>
+<tr class="row-even"><td><p>Table 2</p></td>
+<td><p>Cuarismo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Table 8</p></td>
+<td><p>Okimoto</p></td>
+</tr>
+<tr class="row-even"><td><p>Table 8</p></td>
+<td><p>Tran</p></td>
+</tr>
+<tr class="row-odd"><td><p>Table 8</p></td>
+<td><p>Bautista</p></td>
+</tr>
+</tbody>
+</table>
+</aside>
+<p>The students in cluster 2 and cluster 8 have been randomly selected to be included in the study group. So <em>all</em> the students at table 2 (Hong, Quizon, and Cuarismo) and <em>all</em> the students at table 8 (Okimoto, Tran, and Bautista) have been selected for the study group. None of the students at any of the other tables are included in the study group. (See <a class="reference internal" href="#cluster-table"><span class="std std-numref">Table 1.3.7</span></a>.)</p>
+<p>Cluster sampling can be more convenient to implement than other sampling methods because it often involves sampling members of a population that are close together. Because of this, cluster sampling can be an economical sampling method. However, the clusters must be carefully chosen to reflect the population, or the sample may be biased.</p>
+<hr class="docutils" />
+<section id="example-1-3-4">
+<h3>Example 1.3.4<a class="headerlink" href="#example-1-3-4" title="Permalink to this headline">#</a></h3>
+<p>About 130 planes fly out of Ontario International Airport in California each day. Airport management wants to survey customer satisfaction using cluster sampling by sampling the passengers on six different flights on a given day. Use R to randomly choose the flights that should be sampled.</p>
+<section id="id12">
+<h4>Solution<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h4>
+<p>The clusters in this sample are the flights. We will use the <code>sample</code> function to randomly choose six flights from the 130 total.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">130</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>36</li><li>67</li><li>77</li><li>79</li><li>26</li><li>106</li></ol>
+</div></div>
+</div>
+<p>We will sample <em>all</em> the passengers on the 36th flight to leave for the day, the 67th flight to leave for the day, the 77th flight to leave for the day, the 79th flight to leave for the day, the 26th flight to leave for the day, and the 106th flight to leave for the day.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="convenience-sampling-a-method-to-avoid">
+<h2>Convenience Sampling: A Method to Avoid<a class="headerlink" href="#convenience-sampling-a-method-to-avoid" title="Permalink to this headline">#</a></h2>
+<p>A type of sampling that is non-random is <strong>convenience sampling</strong>. Convenience sampling involves using results that are convenient and readily available. For example, a computer software store conducts a marketing study by interviewing potential customers who happen to be in the store browsing through the available software. The results of convenience sampling may be very good in some cases and highly biased (favor certain outcomes) in others. Because the outcome if often biased, convenience sampling should generally be avoided.</p>
+<p>For example, suppose Professor Baldwin chooses a six-student study group by conveniently choosing the six students sitting nearest to the front of the classroom. Note that Professor Baldwin’s choice is <em>not</em> random: students who tend to sit at the back of the classroom did not have an equal chance of being chosen for the study group. The study group is also very likely to be biased: it is well established that students who sit at the front of the classroom tend to do better in the class, which means the study group is likely to have a higher proportion of students with high grades than the class as a whole.</p>
+</section>
+<section id="sample-size-and-variability">
+<h2>Sample Size and Variability<a class="headerlink" href="#sample-size-and-variability" title="Permalink to this headline">#</a></h2>
+<p>When collecting a sample, the <strong>sample size</strong> is important. The larger the size of the sample, the more likely it is that the sample statistic will accurately approximate the population parameter. A random sample of 10 members of a population is less likely to give a good approximation of the population parameter than a random sample of 100 members. The examples you have seen in this book so far have been small. Samples of only a few hundred observations, or even smaller, are sufficient for many purposes.</p>
+<p>Additionally, two or more samples from the same population, taken randomly, and having close to the same characteristics of the population will likely be different from each other. This <strong>sample variability</strong> is completely natural. Suppose Doreen and Jung both decide to study the average amount of time students at their college sleep each night. Doreen and Jung each use simple random sampling to sample 500 students. Doreen’s sample will be different from Jung’s sample. Neither sample is wrong, but purely by chance, Doreen will sample students that Jung doesn’t sample, and Jung will sample students that Doreen doesn’t sample. So we shouldn’t be surprised if the students in Doreen’s sample sleep an average of 7.38 hours per night, while the students in Jung’s sample sleep an average of 7.41 hours per night. While the results are different, both statistics are likely a good approximation of the population average.</p>
+<p>If Doreen and Jung took larger samples (i.e. the number of data values is increased), their sample statistics (the average amount of time a student sleeps) might be closer to the actual population average. But still, their samples would be, in all likelihood, different from each other.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="simple-random-attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference internal" href="#id2"><span class="std std-numref">Figure 1.3.1</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Simple_random_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+</dd>
+<dt class="label" id="systematic-attribution"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p><a class="reference internal" href="#id4"><span class="std std-numref">Figure 1.3.3</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Systematic_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+</dd>
+<dt class="label" id="stratified-attribution"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
+<dd><p><a class="reference internal" href="#id7"><span class="std std-numref">Figure 1.3.4</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Stratified_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+</dd>
+<dt class="label" id="rent-attribution"><span class="brackets"><a class="fn-backref" href="#id8">4</a></span></dt>
+<dd><p>The data in <a class="reference internal" href="#rent-table"><span class="std std-numref">Table 1.3.6</span></a> is from the United States Census Bureau’s <a class="reference external" href="https://data.census.gov/cedsci/table?q=United%20States&amp;g=0100000US&amp;tid=ACSDP1Y2019.DP04&amp;hidePreview=true">2019 American Community Survey 1-Year Estimates</a>.</p>
+</dd>
+<dt class="label" id="cluster-attribution"><span class="brackets"><a class="fn-backref" href="#id10">5</a></span></dt>
+<dd><p><a class="reference internal" href="#id11"><span class="std std-numref">Figure 1.3.5</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Cluster_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch1 Sampling and Data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1.2%20Scales%20of%20Measurement.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Qualitative Data and Quantitative Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1.4%20Tables%20and%20Charts.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.4. </span>Tables and Charts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-and-bias">Sampling and Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-random-sampling">Simple Random Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-1">Example 1.3.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systematic-sampling">Systematic Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-2">Example 1.3.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stratified-sampling">Stratified Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-3">Example 1.3.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-sampling">Cluster Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-4">Example 1.3.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convenience-sampling-a-method-to-avoid">Convenience Sampling: A Method to Avoid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-size-and-variability">Sample Size and Variability</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

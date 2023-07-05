@@ -1,0 +1,716 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6.2. Hypotheses and Errors &#8212; Introductory Statistics with R</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Ch6 An Introduction to Hypothesis Testing/6.2 Hypotheses and Errors';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.3. Drawing a Conclusion" href="6.3%20Drawing%20a%20Conclusion.html" />
+    <link rel="prev" title="6.1. An Introduction to Hypothesis Testing" href="6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introductory Statistics with R</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.1%20Key%20Terms%20in%20Statistics.html">1.1. Key Terms in Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.2%20Scales%20of%20Measurement.html">1.2. Qualitative Data and Quantitative Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.3%20Sampling%20Techniques.html">1.3. Sampling Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.4%20Tables%20and%20Charts.html">1.4. Tables and Charts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.0%20Descriptive%20Statistics.html">2. Descriptive Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.1%20Measures%20of%20Position.html">2.1. Measures of Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.2%20Measures%20of%20Central%20Tendency.html">2.2. Measures of Central Tendency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch2%20Descriptive%20Statistics/2.3%20Measures%20of%20Dispersion.html">2.3. Measures of Dispersion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3%20Probability/3.0%20Probability.html">3. Probability</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.1%20Introduction%20to%20Probability.html">3.1. Introduction to Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.2%20Conditional%20Probability.html">3.2. Conditional Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.3%20Multiplication%20Rules%20and%20Independent%20Events.html">3.3. Multiplication Rules and Independent Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.4%20Addition%20Rules%20and%20Mutually%20Exclusive%20Events.html">3.4. Addition Rules and Mutually Exclusive Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.5%20Discrete%20Probability%20Distributions.html">3.5. Discrete Probability Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.6%20The%20Binomial%20Distribution.html">3.6. The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3%20Probability/3.7%20Continuous%20Probability%20Distributions.html">3.7. Continuous Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html">4. The Normal Distribution and the Central Limit Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.1%20Properties%20of%20the%20Normal%20Distribution.html">4.1. Properties of The Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.2%20The%20Standard%20Normal%20Distribution.html">4.2. The Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.3%20The%20Normal%20Distribution%20and%20z-scores.html">4.3. The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html">4.4. The Central Limit Theorem for Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch4%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem/4.5%20The%20Central%20Limit%20Theorem%20for%20Proportions.html">4.5. The Central Limit Theorem for Proportions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.0%20Confidence%20Intervals.html">5. Confidence Intervals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.1%20Estimating%20Population%20Means%20%28Sigma%20Known%29.html">5.1. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Known)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.2%20Estimating%20Population%20Proportions.html">5.2. Estimating Population Proportions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.3%20Student%27s%20t-Distribution.html">5.3. Student’s <span class="math notranslate nohighlight">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5%20Confidence%20Intervals/5.4%20Estimating%20Population%20Means%20%28Sigma%20Unknown%29.html">5.4. Estimating Population Means (<span class="math notranslate nohighlight">\(\sigma\)</span> Unknown)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html">6. An Introduction to Hypothesis Testing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html">6.1. An Introduction to Hypothesis Testing</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.2. Hypotheses and Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3%20Drawing%20a%20Conclusion.html">6.3. Drawing a Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4%20Hypothesis%20Tests%20of%20One%20Population.html">6.4. Hypothesis Tests of One Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.0%20The%20Chi-Square%20Distribution.html">7. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.1%20The%20Chi-Square%20Distribution.html">7.1. The <span class="math notranslate nohighlight">\(\chi^2\)</span>-Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.2%20Hypothesis%20Testing%20for%20the%20Population%20Variance.html">7.2. Hypothesis Testing for the Population Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch7%20The%20Chi-Square%20Distribution/7.3%20Goodness-of-Fit%20Test.html">7.3. Goodness-of-Fit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.0%20Correlation%20and%20Linear%20Regression.html">8. Correlation and Linear Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.1%20Scatter%20Plots.html">8.1. Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.2%20Linear%20Equations.html">8.2. Linear Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.3%20The%20Regression%20Equation.html">8.3. The Regression Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch8%20Correlation%20and%20Linear%20Regression/8.4%20The%20Correlation%20Coefficient.html">8.4. The Correlation Coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.0%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations.html">9. Hypothesis Tests of Two or More Populations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html">9.1. Hypothesis Testing: Two Population Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html">9.2. Hypothesis Testing Two Population Variances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch9%20Hypothesis%20Tests%20of%20Two%20or%20More%20Populations/9.3%20ANOVA.html">9.3. ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Ch6 An Introduction to Hypothesis Testing/6.2 Hypotheses and Errors.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hypotheses and Errors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-null-and-alternative-hypothesis">The Null and Alternative Hypothesis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-1">Example 6.2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-2">Example 6.2.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-3">Example 6.2.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-i-and-type-ii-errors">Type I and Type II Errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-4">Example 6.2.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-5">Example 6.2.5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hypotheses-and-errors">
+<h1><span class="section-number">6.2. </span>Hypotheses and Errors<a class="headerlink" href="#hypotheses-and-errors" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Identify the null and alternative hypotheses for a hypothesis test.</p></li>
+<li><p>Identify the possible type I and type II errors in a hypothesis test.</p></li>
+</ul>
+</section>
+<section id="the-null-and-alternative-hypothesis">
+<h2>The Null and Alternative Hypothesis<a class="headerlink" href="#the-null-and-alternative-hypothesis" title="Permalink to this headline">#</a></h2>
+<p>In the previous section we considered the general strategy of how we can statistically test a hypothesis. In this section, we begin to formalize the ideas needed for hypothesis testing.</p>
+<p>A hypothesis test begins by considering two <strong>hypotheses</strong>. They are called the <strong>null hypothesis</strong> and the <strong>alternative hypothesis</strong>. These hypotheses represent opposing viewpoints.</p>
+<p><span class="math notranslate nohighlight">\(H_a\)</span>: <strong>The alternative hypothesis</strong>. This is a statement about a population parameter such as the mean <span class="math notranslate nohighlight">\(\mu\)</span> or proportion <span class="math notranslate nohighlight">\(p\)</span>. When conducting a hypothesis test, we generally seek to gather evidence in favor of this alternative hypothesis.</p>
+<p><span class="math notranslate nohighlight">\(H_0\)</span>: <strong>The null hypothesis</strong>. This hypothesis is the mathematical opposite of the alternative hypothesis. When conducting a hypothesis test, we assume the null hypothesis is true.</p>
+<p>The null and alternative hypotheses are complementary mathematical statements. This means that either the null hypothesis or the alternative hypothesis is true, but not both. One of the hypotheses must be true. When conducting a hypothesis test, we assume the null hypothesis is true, then examine the evidence from sample data to decide if we have enough evidence to reject the null hypothesis and accept the alternative hypothesis or not.</p>
+<p>After we have determined which hypothesis the sample data supports, we make a decision. There are two options for a decision:</p>
+<ul class="simple">
+<li><p>The evidence is sufficient to reject <span class="math notranslate nohighlight">\(H_0\)</span> and accept <span class="math notranslate nohighlight">\(H_a\)</span>.</p></li>
+<li><p>The evidence is not sufficient reject <span class="math notranslate nohighlight">\(H_0\)</span> and accept <span class="math notranslate nohighlight">\(H_a\)</span>.
+Note that we never definitively conclude to accept the null hypothesis and reject the alternative hypothesis. The purpose of the hypothesis test is only to determine if we have sufficient evidence to accept the alternative hypothesis.</p></li>
+</ul>
+<table class="colwidths-given table" id="hypotheses-symbols-table">
+<caption><span class="caption-number">Table 6.2.1 </span><span class="caption-text">The mathematical symbols used to state null and alternative hypotheses. The symbols in each row are mathematical opposites.</span><a class="headerlink" href="#hypotheses-symbols-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Null Hypothesis <span class="math notranslate nohighlight">\((H_0)\)</span></p></th>
+<th class="head"><p>Alternative Hypothesis <span class="math notranslate nohighlight">\((H_a)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>equal <span class="math notranslate nohighlight">\((=)\)</span></p></td>
+<td><p>not equal <span class="math notranslate nohighlight">\((\neq)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>greater than or equal to <span class="math notranslate nohighlight">\((\geq)\)</span></p></td>
+<td><p>less than (<span class="math notranslate nohighlight">\(&lt;\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p>less than or equal to <span class="math notranslate nohighlight">\((\leq)\)</span></p></td>
+<td><p>greater than <span class="math notranslate nohighlight">\((&gt;)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The symbols we use to state the null hypothesis are different than the symbols we use to state the alternative hypothesis. <a class="reference internal" href="#hypotheses-symbols-table"><span class="std std-numref">Table 6.2.1</span></a> shows the symbols we can use when stating each hypothesis. Also, note that the two hypotheses are complementary and will use symbols that are mathematical opposites so that exactly one of the hypotheses must be true. For example, if null hypothesis of a hypothesis test is <span class="math notranslate nohighlight">\(\mu \geq 7\)</span>, then the alternative hypothesis is <span class="math notranslate nohighlight">\(\mu &lt; 7\)</span> because the less-than symbol is the mathematical opposite of the greater-than-or-equal-to symbol.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> always has a symbol with an equal in it. The alternative hypothesis <span class="math notranslate nohighlight">\(H_a\)</span> never has a symbol with an equal in it. The choice of symbol depends on the wording of the hypothesis test.</p>
+<p>Also, while we will only state null and alternative hypotheses using mathematically opposite symbols in this textbook, be aware that some researchers sometimes use <span class="math notranslate nohighlight">\(=\)</span> when stating a null hypothesis and <span class="math notranslate nohighlight">\(&gt;\)</span> or <span class="math notranslate nohighlight">\(&lt;\)</span> when stating the corresponding alternative hypothesis even though the symbols are not mathematical opposites. This practice does not ultimately make any real difference to the hypothesis test.</p>
+</div>
+<hr class="docutils" />
+<section id="example-6-2-1">
+<h3>Example 6.2.1<a class="headerlink" href="#example-6-2-1" title="Permalink to this headline">#</a></h3>
+<p>We want to test whether the mean GPA of students in American colleges is different from <span class="math notranslate nohighlight">\(2.0\)</span> (out of <span class="math notranslate nohighlight">\(4.0\)</span>). State the null and alternative hypotheses.</p>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>The statement, “the mean GPA of students in American colleges is different from <span class="math notranslate nohighlight">\(2.0\)</span>” can be written mathematically as <span class="math notranslate nohighlight">\(\mu \neq 2.0\)</span>. Because we are using a not-equal-to symbol, we can see from <a class="reference internal" href="#hypotheses-symbols-table"><span class="std std-numref">Table 6.2.1</span></a> that this statement must be our alternative hypothesis <span class="math notranslate nohighlight">\(H_a\)</span>. Since the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> and the alternative hypothesis <span class="math notranslate nohighlight">\(H_a\)</span> are mathematical opposites, the null  hypothesis is <span class="math notranslate nohighlight">\(\mu = 2.0\)</span>. In summary</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+H_0:&amp;\  \mu = 2.0 \\
+H_a:&amp;\  \mu \neq 2.0
+\end{align*}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-6-2-2">
+<h3>Example 6.2.2<a class="headerlink" href="#example-6-2-2" title="Permalink to this headline">#</a></h3>
+<p>We want to test if, on average, college students take less than five years to graduate from college. Find the null and alternative hypotheses.</p>
+<section id="id1">
+<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>The statement, “college students, on average, take less than five years to graduate from college”, can be written mathematically as <span class="math notranslate nohighlight">\(\mu &lt; 5\)</span>. Since the less-than symbol does not have an equal in it, this statement is the alternative hypothesis <span class="math notranslate nohighlight">\(H_a\)</span>. Then the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> is <span class="math notranslate nohighlight">\(\mu \geq 5\)</span>, which is the opposite of the alternative hypothesis <span class="math notranslate nohighlight">\(H_a\)</span>. So</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+H_0:&amp;\  \mu \geq 5 \\
+H_a:&amp;\  \mu &lt; 5
+\end{align*}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-6-2-3">
+<h3>Example 6.2.3<a class="headerlink" href="#example-6-2-3" title="Permalink to this headline">#</a></h3>
+<p>In an issue of <em>U.S. News and World Report</em>, an article on school standards stated that about half of all students in France, Germany, and Israel take advanced placement exams, and a third pass. The same article stated that <span class="math notranslate nohighlight">\(6.6\%\)</span> of U.S. students take advanced placement exams, and <span class="math notranslate nohighlight">\(4.4\%\)</span> pass. We want to test if the percentage of U.S. students who take advanced placement exams is more than <span class="math notranslate nohighlight">\(6.6\%\)</span>. State the null and alternative hypotheses of this test.</p>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>The statement, “the percentage of U.S. students who take advanced placement exams is more than <span class="math notranslate nohighlight">\(6.6\%\)</span>” can be written mathematically as <span class="math notranslate nohighlight">\(p &gt; 0.066\)</span>. Since the greater-than symbol does not have an equal in it, this is the alternative hypothesis. The null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> is <span class="math notranslate nohighlight">\(p \leq 0.066\)</span>, which is the mathematical opposite of the alternative hypothesis <span class="math notranslate nohighlight">\(H_a\)</span>. That is,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+H_0:&amp;\ p \leq 0.066 \\
+H_a:&amp;\ p &gt; 0.066
+\end{align*}\]</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="type-i-and-type-ii-errors">
+<h2>Type I and Type II Errors<a class="headerlink" href="#type-i-and-type-ii-errors" title="Permalink to this headline">#</a></h2>
+<p>When you perform a hypothesis test, there are four possible outcomes depending on the actual truth of the hypotheses and what conclusion we draw from the sample data. The possible outcomes are summarized in <a class="reference internal" href="#hypotheses-errors-table"><span class="std std-numref">Table 6.2.2</span></a>.</p>
+<table class="table" id="hypotheses-errors-table">
+<caption><span class="caption-number">Table 6.2.2 </span><span class="caption-text">The different possible outcomes of a hypothesis test. The outcome depends on which hypothesis is actually true and what we conclude based on the sample data.</span><a class="headerlink" href="#hypotheses-errors-table" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(H_0\)</span> is Actually True and<br/><span class="math notranslate nohighlight">\(H_a\)</span> is Actually False</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(H_0\)</span> is Actually False and<br/><span class="math notranslate nohighlight">\(H_a\)</span> is Actually True</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Do Not Reject <span class="math notranslate nohighlight">\(H_0\)</span><br/>and<br/>Do Not Accept <span class="math notranslate nohighlight">\(H_a\)</span></p></th>
+<td><p>Correct Outcome</p></td>
+<td><p>Type II Error</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Reject <span class="math notranslate nohighlight">\(H_0\)</span><br/>and<br/>Accept <span class="math notranslate nohighlight">\(H_a\)</span></p></th>
+<td><p>Type I Error</p></td>
+<td><p>Correct Outcome</p></td>
+</tr>
+</tbody>
+</table>
+<p>The four possible outcomes in <a class="reference internal" href="#hypotheses-errors-table"><span class="std std-numref">Table 6.2.2</span></a> are:</p>
+<ol class="arabic simple">
+<li><p><em><span class="math notranslate nohighlight">\(H_0\)</span> is true and <span class="math notranslate nohighlight">\(H_a\)</span> is false</em>, and we decide <em>not to reject <span class="math notranslate nohighlight">\(H_0\)</span> and not to accept <span class="math notranslate nohighlight">\(H_a\)</span></em>. (Correct outcome.)</p></li>
+<li><p><em><span class="math notranslate nohighlight">\(H_0\)</span> is true and <span class="math notranslate nohighlight">\(H_a\)</span> is false</em>, but we decide to <em>reject <span class="math notranslate nohighlight">\(H_0\)</span> and accept <span class="math notranslate nohighlight">\(H_a\)</span></em>. (Incorrect Outcome known as a <strong>type I error</strong> or a <strong>false positive</strong>.)</p></li>
+<li><p><em><span class="math notranslate nohighlight">\(H_0\)</span> is false and <span class="math notranslate nohighlight">\(H_a\)</span> is true</em>, but we decide <em>not to reject <span class="math notranslate nohighlight">\(H_0\)</span> and not to accept <span class="math notranslate nohighlight">\(H_a\)</span></em>. (Incorrect outcome known as a <strong>type II error</strong> or a <strong>false negative</strong>.)</p></li>
+<li><p><em><span class="math notranslate nohighlight">\(H_0\)</span> is false and <span class="math notranslate nohighlight">\(H_a\)</span> is true</em>, and we decide to <em>reject <span class="math notranslate nohighlight">\(H_0\)</span> and accept <span class="math notranslate nohighlight">\(H_a\)</span></em>. (Correct outcome.)</p></li>
+</ol>
+<p>Statisticians are trained to minimize the probability that a type I or type II error would occur in a hypothesis test. We will focus on simply identifying the type I and type II errors in different situations.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note that type I or type II errors are not the result of a mathematical mistake. Rather, these errors happen because of the probabilistic uncertainty inherent  in random sampling.</p>
+<p>For example, suppose a new education law was passed in California, and we want to conduct a hypothesis test to see if the new law has improved student outcomes. We randomly sample a number of students, but because the sampling is random, there is a small chance that our sample contains an unusually high proportion of high performing students. Based on this skewed sample data, we would conclude that student outcomes had improved after implementation of the new law even if, in reality, student outcomes did not actually improve. (This would be a type I error or false positive.) In this hypothetical example, we did all the math right. This error is not the result of a mathematical mistake, but because, just by chance, we collected a sample with an unusually high sample mean.</p>
+<p>So there is a small chance that we can come to the wrong conclusion when performing a hypothesis test, resulting in a type I or type II error, even if we do all the math right.</p>
+</div>
+<hr class="docutils" />
+<section id="example-6-2-4">
+<h3>Example 6.2.4<a class="headerlink" href="#example-6-2-4" title="Permalink to this headline">#</a></h3>
+<p>Truc tests blood cultures to see if there are traces of pathogen X. The null hypothesis is that the blood cultures contain no traces of pathogen X. The alternative hypothesis is that the blood cultures do contain traces of pathogen X. State the type I and type II errors for this hypothesis test.</p>
+<section id="id3">
+<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Type I error: Truc concludes that the blood cultures <em>do</em> contain traces of pathogen X, but the blood cultures actually <em>do not</em> contain traces of pathogen X.</p></li>
+<li><p>Type II error: Truc concludes that the blood cultures <em>do not</em> contain traces of pathogen X, but the blood cultures actually <em>do</em> contain traces of pathogen X.</p></li>
+</ul>
+<p>In this situation, which do you think would be the more serious error: a Type I error or a Type II error?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-6-2-5">
+<h3>Example 6.2.5<a class="headerlink" href="#example-6-2-5" title="Permalink to this headline">#</a></h3>
+<p>A certain experimental drug claims a cure rate of at least <span class="math notranslate nohighlight">\(75\%\)</span> for males with prostate cancer. State the type I and type II errors in context. Which error is the more serious?</p>
+<section id="id4">
+<h4>Solution<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<p>Let’s first identify our hypotheses. The statement “the drug claims a cure rate of at least <span class="math notranslate nohighlight">\(75\%\)</span>” can be written mathematically as <span class="math notranslate nohighlight">\(p \geq 0.75\)</span>. Since the greater-than-or-equal-to symbol has an “equal” in it, this inequality represents the null hypothesis. This means that the alternative hypothesis is the mathematical opposite: <span class="math notranslate nohighlight">\(p &lt; 0.75\)</span>.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+H_0:&amp;\ p \geq 0.75 \\
+H_a:&amp;\ p &lt; 0.75
+\end{align*}\]</div>
+<p>Then:</p>
+<ul class="simple">
+<li><p>Type I error: We conclude that the cure rate for the drug is less than <span class="math notranslate nohighlight">\(75\%\)</span>, but the cure rate for the drug is actually at least <span class="math notranslate nohighlight">\(75\%\)</span>.</p></li>
+<li><p>Type II error: We conclude that the cure rate for the drug is at least <span class="math notranslate nohighlight">\(75\%\)</span>, but the cure rate for the drug is actually less than <span class="math notranslate nohighlight">\(75\%\)</span>.</p></li>
+</ul>
+<p>In this case, the Type II error would be the more serious error. If a patient believes the drug works at least 75% of the time, this most likely will influence the patient’s (and doctor’s) choice about whether to use the drug as a treatment option.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./Ch6 An Introduction to Hypothesis Testing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="6.1%20An%20Introduction%20to%20Hypothesis%20Testing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6.1. </span>An Introduction to Hypothesis Testing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6.3%20Drawing%20a%20Conclusion.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.3. </span>Drawing a Conclusion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-null-and-alternative-hypothesis">The Null and Alternative Hypothesis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-1">Example 6.2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-2">Example 6.2.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-3">Example 6.2.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-i-and-type-ii-errors">Type I and Type II Errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-4">Example 6.2.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-2-5">Example 6.2.5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license. It is adapted from  <a href="https://openstax.org/books/introductory-statistics/pages/1-introduction"><i>Introductory Statistics</i></a> by Barbara Illowsky and Susan Dean, which is published by <a href="https://openstax.org/">OpenStax</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</small><br/><br/>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
