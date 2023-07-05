@@ -1,4 +1,3 @@
 # Introductory Statistics with R
 
-```{tableofcontents}
-```
+[1.1 Key Terms in Statistics](_build/html/Ch1 Sampling and Data/1.1 Key Terms in Statistics.html)
