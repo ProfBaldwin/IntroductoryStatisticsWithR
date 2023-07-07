@@ -419,15 +419,6 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the number of individuals in the <em>sample</em> with the desired characteristic, and <span class="math notranslate nohighlight">\(n\)</span> is the size of the <em>sample</em>.</p>
 <p>Recall from the central limit theorem for sample means says that, if the size of a sample is large enough, we can generally expect the mean of a sample to approximate the mean of the population. We might naturally ask the same question of proportions: if we take a large enough sample from a population, can we expect the sample proportion to be close to the population proportion?</p>
 <p>The answer is “Yes”. This is the idea of the <strong>central limit theorem</strong> for sample proportions.</p>
-<div class="math notranslate nohighlight">
-\[ \mu_{P'} = p \]</div>
-<p>and distribution standard deviation</p>
-<div class="math notranslate nohighlight">
-\[ \sigma_{P'} = \sqrt{\frac{p(1 - p)}{n}}, \]</div>
-<p>where <span class="math notranslate nohighlight">\(p\)</span> is the population proportion. That is <span class="math notranslate nohighlight">\(P' \sim N\left(p, \sqrt{\frac{p(1 - p)}{n}}\right)\)</span>.</p>
-<p>As usual, we can calculate the <span class="math notranslate nohighlight">\(z\)</span>-score for a value <span class="math notranslate nohighlight">\(p'\)</span> in the distribution with the formula</p>
-<div class="math notranslate nohighlight">
-\[ z = \frac{p' - \mu_{P'}}{\sigma_{P'}}. \]</div>
 <div class="proof theorem admonition" id="theorem-0">
 <p class="admonition-title"><span class="caption-number">Theorem 4.5.1 </span> (The Central Limit Theorem for Sample Proportions)</p>
 <section class="theorem-content" id="proof-content">
