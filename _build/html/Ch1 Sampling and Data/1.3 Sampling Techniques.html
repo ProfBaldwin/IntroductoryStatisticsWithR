@@ -367,21 +367,21 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systematic-sampling">Systematic Sampling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-2">Example 1.3.2</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stratified-sampling">Stratified Sampling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-3">Example 1.3.3</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-sampling">Cluster Sampling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-4">Example 1.3.4</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Solution</a></li>
 </ul>
 </li>
 </ul>
@@ -591,11 +591,235 @@ document.write(`
 <hr class="docutils" />
 <section id="example-1-3-1">
 <h3>Example 1.3.1<a class="headerlink" href="#example-1-3-1" title="Permalink to this headline">#</a></h3>
-<p>The spreadsheet below contains real data of the revenues per capita of each city in Riverside County, California in 2019. Sample five cities using simple random sampling.</p>
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHinHZVMWY21a098Dp1P5pU-uD_uasOrqBXb0y81UkOL3RRtpwSD5R2Tzq7iucIIJca_ocrs3slf8s/pubhtml?widget=true&amp;headers=false" width="100%" height="500"></iframe>
+<p><a class="reference internal" href="#revenues-per-capita-1"><span class="std std-numref">Table 1.3.3</span></a> contains real data of the revenues per capita from each city in Riverside County, California in 2019. The data in the table is displayed how data in a spreadsheet might be displayed. Sample five cities using simple random sampling.</p>
+<table class="colwidths-given table" id="revenues-per-capita-1">
+<caption><span class="caption-number">Table 1.3.3 </span><span class="caption-text">Real data from the cities in Riverside County, California in 2019. The data is organized how data might be organized in a spreadsheet with each row labeled with a number and each column labeled with a letter. <a class="footnote-reference brackets" href="#revenues-per-capita-attribution" id="id3">2</a></span><a class="headerlink" href="#revenues-per-capita-1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>C</p></th>
+<th class="head"><p>D</p></th>
+<th class="head"><p>E</p></th>
+</tr>
+<tr class="row-even"><th class="head stub"><p>1</p></th>
+<th class="head"><p>City Name</p></th>
+<th class="head"><p>Fiscal Year</p></th>
+<th class="head"><p>Total Revenues</p></th>
+<th class="head"><p>Estimated Population</p></th>
+<th class="head"><p>Revenues Per Capita</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>2</p></th>
+<td><p>Banning</p></td>
+<td><p>2019</p></td>
+<td><p>80260834</p></td>
+<td><p>31044</p></td>
+<td><p>2585</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>3</p></th>
+<td><p>Beaumont</p></td>
+<td><p>2019</p></td>
+<td><p>74407907</p></td>
+<td><p>48401</p></td>
+<td><p>1537</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>4</p></th>
+<td><p>Blythe</p></td>
+<td><p>2019</p></td>
+<td><p>18024910</p></td>
+<td><p>19428</p></td>
+<td><p>928</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>5</p></th>
+<td><p>Calimesa</p></td>
+<td><p>2019</p></td>
+<td><p>13892401</p></td>
+<td><p>9159</p></td>
+<td><p>1517</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>6</p></th>
+<td><p>Canyon Lake</p></td>
+<td><p>2019</p></td>
+<td><p>6168512</p></td>
+<td><p>11285</p></td>
+<td><p>547</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>7</p></th>
+<td><p>Cathedral City</p></td>
+<td><p>2019</p></td>
+<td><p>90568810</p></td>
+<td><p>54907</p></td>
+<td><p>1649</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>8</p></th>
+<td><p>Coachella</p></td>
+<td><p>2019</p></td>
+<td><p>49670997</p></td>
+<td><p>46351</p></td>
+<td><p>1072</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>9</p></th>
+<td><p>Corona</p></td>
+<td><p>2019</p></td>
+<td><p>365886198</p></td>
+<td><p>168101</p></td>
+<td><p>2177</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>10</p></th>
+<td><p>Desert Hot Springs</p></td>
+<td><p>2019</p></td>
+<td><p>28443202</p></td>
+<td><p>29251</p></td>
+<td><p>972</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>11</p></th>
+<td><p>Eastvale</p></td>
+<td><p>2019</p></td>
+<td><p>38063775</p></td>
+<td><p>66078</p></td>
+<td><p>576</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>12</p></th>
+<td><p>Hemet</p></td>
+<td><p>2019</p></td>
+<td><p>97943137</p></td>
+<td><p>84754</p></td>
+<td><p>1156</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>13</p></th>
+<td><p>Indian Wells</p></td>
+<td><p>2019</p></td>
+<td><p>50539127</p></td>
+<td><p>5445</p></td>
+<td><p>9282</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>14</p></th>
+<td><p>Indio</p></td>
+<td><p>2019</p></td>
+<td><p>159055776</p></td>
+<td><p>89406</p></td>
+<td><p>1779</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>15</p></th>
+<td><p>Jurupa Valley</p></td>
+<td><p>2019</p></td>
+<td><p>53992209</p></td>
+<td><p>106318</p></td>
+<td><p>508</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>16</p></th>
+<td><p>Lake Elsinore</p></td>
+<td><p>2019</p></td>
+<td><p>86746399</p></td>
+<td><p>62949</p></td>
+<td><p>1378</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>17</p></th>
+<td><p>La Quinta</p></td>
+<td><p>2019</p></td>
+<td><p>83793774</p></td>
+<td><p>42098</p></td>
+<td><p>1990</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>18</p></th>
+<td><p>Menifee</p></td>
+<td><p>2019</p></td>
+<td><p>88732376</p></td>
+<td><p>93452</p></td>
+<td><p>949</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>19</p></th>
+<td><p>Moreno Valley</p></td>
+<td><p>2019</p></td>
+<td><p>211345835</p></td>
+<td><p>208297</p></td>
+<td><p>1015</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>20</p></th>
+<td><p>Murrieta</p></td>
+<td><p>2019</p></td>
+<td><p>110754720</p></td>
+<td><p>118125</p></td>
+<td><p>938</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>21</p></th>
+<td><p>Norco</p></td>
+<td><p>2019</p></td>
+<td><p>53558820</p></td>
+<td><p>26386</p></td>
+<td><p>2030</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>22</p></th>
+<td><p>Palm Desert</p></td>
+<td><p>2019</p></td>
+<td><p>111757506</p></td>
+<td><p>53625</p></td>
+<td><p>2084</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>23</p></th>
+<td><p>Palm Springs</p></td>
+<td><p>2019</p></td>
+<td><p>271251311</p></td>
+<td><p>48733</p></td>
+<td><p>5566</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>24</p></th>
+<td><p>Perris</p></td>
+<td><p>2019</p></td>
+<td><p>111143322</p></td>
+<td><p>76971</p></td>
+<td><p>1444</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>25</p></th>
+<td><p>Rancho Mirage</p></td>
+<td><p>2019</p></td>
+<td><p>68949584</p></td>
+<td><p>18489</p></td>
+<td><p>3729</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>26</p></th>
+<td><p>Riverside</p></td>
+<td><p>2019</p></td>
+<td><p>942831959</p></td>
+<td><p>328101</p></td>
+<td><p>2874</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>27</p></th>
+<td><p>San Jacinto</p></td>
+<td><p>2019</p></td>
+<td><p>52582546</p></td>
+<td><p>48878</p></td>
+<td><p>1076</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>28</p></th>
+<td><p>Temecula</p></td>
+<td><p>2019</p></td>
+<td><p>140192073</p></td>
+<td><p>113826</p></td>
+<td><p>1232</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>29</p></th>
+<td><p>Wildomar</p></td>
+<td><p>2019</p></td>
+<td><p>23506765</p></td>
+<td><p>36066</p></td>
+<td><p>652</p></td>
+</tr>
+</tbody>
+</table>
 <section id="solution">
 <h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
-<p>Rather than assign each city a number, we can use the row numbers already on the spreadsheet. Note, though, that row 1 contains the column headers and row 30 gives the source of the data. The actual data is contained in rows 2 to 29. To perform simple random sampling, we use the <code>sample</code> function to select five random row numbers between 2 and 29.</p>
+<p>Rather than assign each city a number, we can use the row numbers already on the spreadsheet. Note, though, that row <span class="math notranslate nohighlight">\(1\)</span> contains the column headers. The actual data is contained in rows <span class="math notranslate nohighlight">\(2\)</span> to <span class="math notranslate nohighlight">\(29\)</span>. To perform simple random sampling, we use the <code>sample</code> function to select five random row numbers between <span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(29\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="m">29</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
@@ -618,31 +842,36 @@ document.write(`
 <hr class="docutils" />
 <section id="systematic-sampling">
 <h2>Systematic Sampling<a class="headerlink" href="#systematic-sampling" title="Permalink to this headline">#</a></h2>
-<p>To choose a <strong>systematic sample</strong>, list every member of the population in some order, randomly choose a member of the population to start your sample, then include every <span class="math notranslate nohighlight">\(k\)</span>th member of the population from the starting point, where <span class="math notranslate nohighlight">\(k\)</span> is a whole number. (For example, if <span class="math notranslate nohighlight">\(k = 7\)</span>, then every 7th member of the population is included after the starting point.) To make sure we sample members throughout the whole population, we calculate <span class="math notranslate nohighlight">\(k\)</span> using the formula</p>
+<p>In a <strong>systematic sample</strong>, the population is in some order, and every <span class="math notranslate nohighlight">\(k\)</span>th member of the population is sampled for some number <span class="math notranslate nohighlight">\(k\)</span> called the <strong>sampling interval</strong>. (For example, if <span class="math notranslate nohighlight">\(k = 7\)</span>, then every <span class="math notranslate nohighlight">\(7\)</span>th member of the population is included.) To make sure we sample members throughout the whole population, we calculate the sampling interval <span class="math notranslate nohighlight">\(k\)</span> using the formula</p>
 <div class="math notranslate nohighlight">
 \[k = \frac{N}{n}, \]</div>
-<p>where <span class="math notranslate nohighlight">\(N\)</span> is the size of the population, and <span class="math notranslate nohighlight">\(n\)</span> is the size of the sample we want.</p>
-<figure class="align-default" id="id4">
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the size of the population, and <span class="math notranslate nohighlight">\(n\)</span> is the size of the sample we want. To make the sampling random, one of the first <span class="math notranslate nohighlight">\(k\)</span> members of the population is randomly chosen as the first member of the sample and the starting point of the sampling process.</p>
+<figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/Systematic_sampling.png"><img alt="Four individuals are chosen from a population of twelve individuals by sampling every third individual." src="../_images/Systematic_sampling.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.3 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals using systematic sampling. The second individual is randomly chosen as a starting point. Since there are <span class="math notranslate nohighlight">\(N = 12\)</span> individuals in the population and the size of the sample is <span class="math notranslate nohighlight">\(n = 4\)</span>, the interval between each individual sampled is <span class="math notranslate nohighlight">\(k = 12/4 = 3\)</span>. So every 3rd individual is chosen from the starting point.<a class="footnote-reference brackets" href="#systematic-attribution" id="id3">2</a></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.3.3 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals using systematic sampling. The second individual is randomly chosen as a starting point. Since there are <span class="math notranslate nohighlight">\(N = 12\)</span> individuals in the population and the size of the sample is <span class="math notranslate nohighlight">\(n = 4\)</span>, the interval between each individual sampled is <span class="math notranslate nohighlight">\(k = 12/4 = 3\)</span>. So every 3rd individual is chosen from the starting point.<a class="footnote-reference brackets" href="#systematic-attribution" id="id4">3</a></span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>For example, suppose Professor Baldwin wants to choose six students from his precalculus class for a study group using systematic sampling. The students are already in an ordered list in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>. To start the systematic sample, Professor Baldwin must randomly choose a starting point. To make sure the choice is truly random, we can use the <code>sample</code> function. We will choose 1 student from the list of 30 students as a starting point. Systematic sampling is frequently chosen because it is a simple method.</p>
+<p>For example, suppose Professor Baldwin wants to choose six students from his precalculus class for a study group using systematic sampling. The students are already in an ordered list in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>. To begin the systematic sampling, Professor Baldwin first calculates the sampling interval <span class="math notranslate nohighlight">\(k\)</span>. Since there are <span class="math notranslate nohighlight">\(N = 30\)</span> total students in the class, and since Professor Baldwin wants to sample <span class="math notranslate nohighlight">\(n = 6\)</span> of the students for the study group, the sampling interval is</p>
+<div class="math notranslate nohighlight">
+\[ k = \frac{30}{6} = 5. \]</div>
+<p>So Professor Baldwin will sample every <span class="math notranslate nohighlight">\(5\)</span>th student.</p>
+<p>To determine which student is the first student chosen to be sampled, Professor Baldwin uses R to randomly select one of the first 5 students.</p>
+<p>must randomly choose a starting point. To make sure the choice is truly random, we can use the <code>sample</code> function. We will choose <span class="math notranslate nohighlight">\(1\)</span> student from the list of <span class="math notranslate nohighlight">\(30\)</span> students as a starting point. Systematic sampling is frequently chosen because it is a simple method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly choose one student as a starting point</span>
-<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">18</div></div>
+<div class="output text_html">4</div></div>
 </div>
 <aside class="margin sidebar">
 <p class="sidebar-title">Systematic Sampling Study Group</p>
 <table class="table" id="systematic-table">
-<caption><span class="caption-number">Table 1.3.3 </span><span class="caption-text">Students in the study group chosen by sytematic sampling.</span><a class="headerlink" href="#systematic-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1.3.4 </span><span class="caption-text">Students in the study group chosen by sytematic sampling.</span><a class="headerlink" href="#systematic-table" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -653,54 +882,276 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>18</p></td>
-<td><p>Price</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p>Cheng</p></td>
 </tr>
-<tr class="row-odd"><td><p>23</p></td>
-<td><p>Rowell</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+<td><p>Hoobler</p></td>
 </tr>
-<tr class="row-even"><td><p>28</p></td>
-<td><p>Tran</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(14\)</span></p></td>
+<td><p>Macierz</p></td>
 </tr>
-<tr class="row-odd"><td><p>3</p></td>
-<td><p>Bayani</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(19\)</span></p></td>
+<td><p>Quizon</p></td>
 </tr>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>Hong</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(24\)</span></p></td>
+<td><p>Salangsang</p></td>
 </tr>
-<tr class="row-odd"><td><p>13</p></td>
-<td><p>Lundquist</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(29\)</span></p></td>
+<td><p>Wai</p></td>
 </tr>
 </tbody>
 </table>
 </aside>
-<p>So the 18th student in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>, Price, is the first person in the study group and the starting point of the systematic sample. To find the rest of the students in the sample, we need to calculate the size of the interval <span class="math notranslate nohighlight">\(k\)</span> between students. Since there are <span class="math notranslate nohighlight">\(N = 30\)</span> total students in the class, and Professor Baldwin wants to sample <span class="math notranslate nohighlight">\(n = 6\)</span> students for the study group, the size of the interval between each student we sample is</p>
-<div class="math notranslate nohighlight">
-\[ k = \frac{30}{6} = 5. \]</div>
-<p>So we will sample every 5th student after our starting point. After Price, the next student in the study group is student <span class="math notranslate nohighlight">\(18 + 5 = 23\)</span>, Rowell. The next student after Rowell is student <span class="math notranslate nohighlight">\(23 + 5 = 28\)</span>, Tran. But after Tran, there is no student <span class="math notranslate nohighlight">\(28 + 5 = 33\)</span>, since there are only 30 students. To complete the sample, we will go back to the beginning of the list of students after we reach the end. Since 33 is 3 more than the number of students in the class, the next student in the study group is student number 3, Bayani. The final students in the study group are student <span class="math notranslate nohighlight">\(3 + 5 = 8\)</span>, Hong, and student <span class="math notranslate nohighlight">\(8 + 5 = 13\)</span>, Lundquist. (See <a class="reference internal" href="#systematic-table"><span class="std std-numref">Table 1.3.3</span></a>.)</p>
-<p>Systematic sampling is a usually effective sampling technique that is easy to understand and implement. However, if members of the population with a certain characteristic regularly repeat in the order, systematic sampling may over-sample or under-sample these members. For example, suppose that a microchip manufacturer performs quality testing on every 9th microchip in the assembly line. If there is a fault on the assembly line that causes every 3rd microchip manufactured to malfunction, then the quality testing will either sample none of the faulty microchips (if the systematic sampling is started on a working microchip), or the quality testing will only sample faulty microchips (if the systematic sampling is started on a faulty microchip). In either case, the sample would be biased.</p>
+<p>So the <span class="math notranslate nohighlight">\(4\)</span>th student in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>, Cheng, is the first person in the study group and the starting point of the systematic sample.</p>
+<p>Since the sampling interval is <span class="math notranslate nohighlight">\(k = 5\)</span>, Professor Baldwin next samples every <span class="math notranslate nohighlight">\(5\)</span>th student in the population after Cheng. After Cheng, the next student in the study group is student <span class="math notranslate nohighlight">\(4 + 5 = 9\)</span>, Hoobler. The next student after Hoobler is student number <span class="math notranslate nohighlight">\(9 + 5 = 14\)</span>, Macierz. The next student is number <span class="math notranslate nohighlight">\(14 + 5 = 19\)</span>, Quizon, then student number <span class="math notranslate nohighlight">\(19 + 5 = 24\)</span>, Salangsang. The final student is student number <span class="math notranslate nohighlight">\(24 + 5 = 29\)</span>, Wai. (See <a class="reference internal" href="#systematic-table"><span class="std std-numref">Table 1.3.4</span></a>.)</p>
+<p>Systematic sampling is a usually effective sampling technique that is easy to understand and implement. However, if members of the population with a certain characteristic regularly repeat in the order, systematic sampling may over-sample or under-sample these members. For example, suppose that a microchip manufacturer performs quality testing on every <span class="math notranslate nohighlight">\(9\)</span>th microchip in the assembly line. If there is a fault on the assembly line that causes every <span class="math notranslate nohighlight">\(3\)</span>rd microchip manufactured to malfunction, then the quality testing will either sample none of the faulty microchips (if the systematic sampling is started on a working microchip), or the quality testing will sample only faulty microchips (if the systematic sampling is started on a faulty microchip). In either case, the sample would be biased.</p>
 <hr class="docutils" />
 <section id="example-1-3-2">
 <h3>Example 1.3.2<a class="headerlink" href="#example-1-3-2" title="Permalink to this headline">#</a></h3>
 <p>The spreadsheet below contains real data of the revenues per capita of each city in Riverside County, California in 2019. Sample five cities using systematic sampling.</p>
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHinHZVMWY21a098Dp1P5pU-uD_uasOrqBXb0y81UkOL3RRtpwSD5R2Tzq7iucIIJca_ocrs3slf8s/pubhtml?widget=true&amp;headers=false" width="100%" height="500"></iframe>
-<section id="id5">
-<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
-<p>We first will randomly choose one city on which to begin the systematic sampling. We use the <code>sample</code> function to choose one city from the population.</p>
+<table class="colwidths-given table" id="revenues-per-capita-2">
+<caption><span class="caption-number">Table 1.3.5 </span><span class="caption-text">Real data from the cities in Riverside County, California in 2019. The data is organized how data might be organized in a spreadsheet with each row labeled with a number and each column labeled with a letter. <a class="footnote-reference brackets" href="#revenues-per-capita-attribution" id="id6">2</a></span><a class="headerlink" href="#revenues-per-capita-2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>C</p></th>
+<th class="head"><p>D</p></th>
+<th class="head"><p>E</p></th>
+</tr>
+<tr class="row-even"><th class="head stub"><p>1</p></th>
+<th class="head"><p>City Name</p></th>
+<th class="head"><p>Fiscal Year</p></th>
+<th class="head"><p>Total Revenues</p></th>
+<th class="head"><p>Estimated Population</p></th>
+<th class="head"><p>Revenues Per Capita</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>2</p></th>
+<td><p>Banning</p></td>
+<td><p>2019</p></td>
+<td><p>80260834</p></td>
+<td><p>31044</p></td>
+<td><p>2585</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>3</p></th>
+<td><p>Beaumont</p></td>
+<td><p>2019</p></td>
+<td><p>74407907</p></td>
+<td><p>48401</p></td>
+<td><p>1537</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>4</p></th>
+<td><p>Blythe</p></td>
+<td><p>2019</p></td>
+<td><p>18024910</p></td>
+<td><p>19428</p></td>
+<td><p>928</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>5</p></th>
+<td><p>Calimesa</p></td>
+<td><p>2019</p></td>
+<td><p>13892401</p></td>
+<td><p>9159</p></td>
+<td><p>1517</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>6</p></th>
+<td><p>Canyon Lake</p></td>
+<td><p>2019</p></td>
+<td><p>6168512</p></td>
+<td><p>11285</p></td>
+<td><p>547</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>7</p></th>
+<td><p>Cathedral City</p></td>
+<td><p>2019</p></td>
+<td><p>90568810</p></td>
+<td><p>54907</p></td>
+<td><p>1649</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>8</p></th>
+<td><p>Coachella</p></td>
+<td><p>2019</p></td>
+<td><p>49670997</p></td>
+<td><p>46351</p></td>
+<td><p>1072</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>9</p></th>
+<td><p>Corona</p></td>
+<td><p>2019</p></td>
+<td><p>365886198</p></td>
+<td><p>168101</p></td>
+<td><p>2177</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>10</p></th>
+<td><p>Desert Hot Springs</p></td>
+<td><p>2019</p></td>
+<td><p>28443202</p></td>
+<td><p>29251</p></td>
+<td><p>972</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>11</p></th>
+<td><p>Eastvale</p></td>
+<td><p>2019</p></td>
+<td><p>38063775</p></td>
+<td><p>66078</p></td>
+<td><p>576</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>12</p></th>
+<td><p>Hemet</p></td>
+<td><p>2019</p></td>
+<td><p>97943137</p></td>
+<td><p>84754</p></td>
+<td><p>1156</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>13</p></th>
+<td><p>Indian Wells</p></td>
+<td><p>2019</p></td>
+<td><p>50539127</p></td>
+<td><p>5445</p></td>
+<td><p>9282</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>14</p></th>
+<td><p>Indio</p></td>
+<td><p>2019</p></td>
+<td><p>159055776</p></td>
+<td><p>89406</p></td>
+<td><p>1779</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>15</p></th>
+<td><p>Jurupa Valley</p></td>
+<td><p>2019</p></td>
+<td><p>53992209</p></td>
+<td><p>106318</p></td>
+<td><p>508</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>16</p></th>
+<td><p>Lake Elsinore</p></td>
+<td><p>2019</p></td>
+<td><p>86746399</p></td>
+<td><p>62949</p></td>
+<td><p>1378</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>17</p></th>
+<td><p>La Quinta</p></td>
+<td><p>2019</p></td>
+<td><p>83793774</p></td>
+<td><p>42098</p></td>
+<td><p>1990</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>18</p></th>
+<td><p>Menifee</p></td>
+<td><p>2019</p></td>
+<td><p>88732376</p></td>
+<td><p>93452</p></td>
+<td><p>949</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>19</p></th>
+<td><p>Moreno Valley</p></td>
+<td><p>2019</p></td>
+<td><p>211345835</p></td>
+<td><p>208297</p></td>
+<td><p>1015</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>20</p></th>
+<td><p>Murrieta</p></td>
+<td><p>2019</p></td>
+<td><p>110754720</p></td>
+<td><p>118125</p></td>
+<td><p>938</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>21</p></th>
+<td><p>Norco</p></td>
+<td><p>2019</p></td>
+<td><p>53558820</p></td>
+<td><p>26386</p></td>
+<td><p>2030</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>22</p></th>
+<td><p>Palm Desert</p></td>
+<td><p>2019</p></td>
+<td><p>111757506</p></td>
+<td><p>53625</p></td>
+<td><p>2084</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>23</p></th>
+<td><p>Palm Springs</p></td>
+<td><p>2019</p></td>
+<td><p>271251311</p></td>
+<td><p>48733</p></td>
+<td><p>5566</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>24</p></th>
+<td><p>Perris</p></td>
+<td><p>2019</p></td>
+<td><p>111143322</p></td>
+<td><p>76971</p></td>
+<td><p>1444</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>25</p></th>
+<td><p>Rancho Mirage</p></td>
+<td><p>2019</p></td>
+<td><p>68949584</p></td>
+<td><p>18489</p></td>
+<td><p>3729</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>26</p></th>
+<td><p>Riverside</p></td>
+<td><p>2019</p></td>
+<td><p>942831959</p></td>
+<td><p>328101</p></td>
+<td><p>2874</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>27</p></th>
+<td><p>San Jacinto</p></td>
+<td><p>2019</p></td>
+<td><p>52582546</p></td>
+<td><p>48878</p></td>
+<td><p>1076</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>28</p></th>
+<td><p>Temecula</p></td>
+<td><p>2019</p></td>
+<td><p>140192073</p></td>
+<td><p>113826</p></td>
+<td><p>1232</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>29</p></th>
+<td><p>Wildomar</p></td>
+<td><p>2019</p></td>
+<td><p>23506765</p></td>
+<td><p>36066</p></td>
+<td><p>652</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id7">
+<h4>Solution<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h4>
+<p>We must first determine the sampling interval <span class="math notranslate nohighlight">\(k\)</span> between the cities in the sample. Since there are <span class="math notranslate nohighlight">\(N = 28\)</span> cities in the population, and we want a sample size of <span class="math notranslate nohighlight">\(n = 5\)</span>, we calculate</p>
+<div class="math notranslate nohighlight">
+\[ k = \frac{28}{5} = 5.6. \]</div>
+<p>But the size of the sampling interval must be a whole number, so we round <span class="math notranslate nohighlight">\(5.6\)</span> to a sampling interval of <span class="math notranslate nohighlight">\(k = 6\)</span>.</p>
+<p>Next, we will randomly choose one city with which to begin the systematic sampling. We use the <code>sample</code> function to choose one city from the from the first <span class="math notranslate nohighlight">\(k = 6\)</span> cities in the population. (Note that the first <span class="math notranslate nohighlight">\(6\)</span> cities are on rows <span class="math notranslate nohighlight">\(2\)</span> to <span class="math notranslate nohighlight">\(7\)</span>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="m">29</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="m">7</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">11</div></div>
+<div class="output text_html">3</div></div>
 </div>
-<p>We will begin our systematic sampling with the city on row 11 (Eastvale).</p>
-<p>Next, we must determine the step size <span class="math notranslate nohighlight">\(k\)</span> between the cities in our sample. Since there are <span class="math notranslate nohighlight">\(N = 28\)</span> cities in the population, and we want a sample size of <span class="math notranslate nohighlight">\(n = 5\)</span>, we want the step size between each city we sample to be</p>
-<div class="math notranslate nohighlight">
-\[ k = \frac{28}{5} = 5.6. \]</div>
-<p>Of course, we can only actually take whole number step sizes, so we round 5.6 to a step size of <span class="math notranslate nohighlight">\(k = 6\)</span>. Consequently, after Eastvale on row 11, the next city in our sample is on row <span class="math notranslate nohighlight">\(11 + 6 = 17\)</span> (La Quinta), then the city on row <span class="math notranslate nohighlight">\(17+6 = 23\)</span> (Palm Springs), and then the city on row <span class="math notranslate nohighlight">\(23+6 = 29\)</span> (Wildomar). Since 29 is the last row of data, we circle back to the beginning of the order and sample the 6th city on the list. Since the first row contains the column headers, the 6th city is actually in the 7th row (Cathedral City), which completes our sample of 5 cities.</p>
+<p>We will begin our systematic sampling with the city on row <span class="math notranslate nohighlight">\(3\)</span> (Eastvale). Since the sampling interval is <span class="math notranslate nohighlight">\(k = 6\)</span>, we sample every <span class="math notranslate nohighlight">\(6\)</span>th city after Eastvale. The next city to be sampled is Corona on row <span class="math notranslate nohighlight">\(3 + 6 = 9\)</span>. After Corona is the city on row <span class="math notranslate nohighlight">\(9 + 6 = 15\)</span>, Jurupa Valley. Next is Norco on row <span class="math notranslate nohighlight">\(15 + 6 = 21\)</span>. The last city to be included in the sample is San Jacinto on row <span class="math notranslate nohighlight">\(21 + 6 = 27\)</span>.</p>
 </section>
 </section>
 </section>
@@ -708,15 +1159,15 @@ document.write(`
 <section id="stratified-sampling">
 <h2>Stratified Sampling<a class="headerlink" href="#stratified-sampling" title="Permalink to this headline">#</a></h2>
 <p>To choose a <strong>stratified sample</strong>, divide the population into groups called strata, then randomly choose a <strong>proportionate</strong> number of members from each stratum. For example, if a certain stratum consists of 27% of the population, the sample should have 27% of its members taken from that strata. Usually, strata are chosen to guarantee that certain important characteristics of the population are present in the sample. For instance, imagine a pollster wants to make sure their sample accurately represents each ethnicity of the population. The pollster can do this using stratified sampling where the strata are the different ethnicities of the population. If the population is 13.4% African American and 5.9% Asian, then the pollster’s stratified sample will be 13.4% African American and 5.9% Asian.</p>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/Stratified_sampling.png"><img alt="Four individuals are chosen from a population of twelve individuals by dividing the population into strata (groups) and sampling a proportionate number of individuals from each strata." src="../_images/Stratified_sampling.png" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.4 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals by dividing the population into strata (groups) based on color, then sampling a proportionate number of individuals from each strata. In this example, one individual is sampled from the white stratum, two individuals from the black stratum, and one individual from the gray stratum. Twice as many individuals were sampled from the black stratum than from the other strata because the black stratum is twice as large as the other strata.<a class="footnote-reference brackets" href="#stratified-attribution" id="id6">3</a></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.3.4 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals by dividing the population into strata (groups) based on color, then sampling a proportionate number of individuals from each strata. In this example, one individual is sampled from the white stratum, two individuals from the black stratum, and one individual from the gray stratum. Twice as many individuals were sampled from the black stratum than from the other strata because the black stratum is twice as large as the other strata.<a class="footnote-reference brackets" href="#stratified-attribution" id="id8">4</a></span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>To better illustrate stratified sampling, suppose Professor Baldwin was to choose six students from his precalculus class for a study group, but wants students with an A, students with a B, and students with a C or lower to be proportionately represented in the study group. He divides the 30 students in the class into three different strata based on their grade, as shown in <a class="reference internal" href="#stratified-list"><span class="std std-numref">Table 1.3.4</span></a>. (Note that we have assigned each student a new number in the stratum they are in. This will make it easier to randomly sample students in each stratum later.)</p>
+<p>To better illustrate stratified sampling, suppose Professor Baldwin was to choose six students from his precalculus class for a study group, but wants students with an A, students with a B, and students with a C or lower to be proportionately represented in the study group. He divides the 30 students in the class into three different strata based on their grade, as shown in <a class="reference internal" href="#stratified-list"><span class="std std-numref">Table 1.3.6</span></a>. (Note that we have assigned each student a new number in the stratum they are in. This will make it easier to randomly sample students in each stratum later.)</p>
 <table class="table" id="stratified-list">
-<caption><span class="caption-number">Table 1.3.4 </span><span class="caption-text">Students are divided into strata based on their grade in the course.</span><a class="headerlink" href="#stratified-list" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1.3.6 </span><span class="caption-text">Students are divided into strata based on their grade in the course.</span><a class="headerlink" href="#stratified-list" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -915,7 +1366,7 @@ document.write(`
 <aside class="margin sidebar">
 <p class="sidebar-title">Stratified Sampling Study Group</p>
 <table class="table" id="stratified-table">
-<caption><span class="caption-number">Table 1.3.5 </span><span class="caption-text">Students in the study group chosen by stratified sampling.</span><a class="headerlink" href="#stratified-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1.3.7 </span><span class="caption-text">Students in the study group chosen by stratified sampling.</span><a class="headerlink" href="#stratified-table" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -955,14 +1406,14 @@ document.write(`
 </tbody>
 </table>
 </aside>
-<p>The last student in the study group is student 2 (Macierz) from the “Grade C or Lower” stratum. (See <a class="reference internal" href="#stratified-table"><span class="std std-numref">Table 1.3.5</span></a>.)</p>
+<p>The last student in the study group is student 2 (Macierz) from the “Grade C or Lower” stratum. (See <a class="reference internal" href="#stratified-table"><span class="std std-numref">Table 1.3.7</span></a>.)</p>
 <p>Unlike other sampling methods, stratified sampling guarantees that important characteristics of the population (the characteristics that determine the strata) are properly represented in the sample. However, it can be difficult to implement, since the size of each stratum and which stratum each member of the population belong to must be known beforehand.</p>
 <hr class="docutils" />
 <section id="example-1-3-3">
 <h3>Example 1.3.3<a class="headerlink" href="#example-1-3-3" title="Permalink to this headline">#</a></h3>
-<p>An economist wants to survey 400 renters regarding their income and budgets. She wants to make sure her sample accurately reflects the different prices of rental units in the United States, so she will use stratified sampling to collect her sample, where the strata are the different price levels of rental units according to the nationwide data obtained by the Census Bureau shown in <a class="reference internal" href="#rent-table"><span class="std std-numref">Table 1.3.6</span></a>.</p>
+<p>An economist wants to survey 400 renters regarding their income and budgets. She wants to make sure her sample accurately reflects the different prices of rental units in the United States, so she will use stratified sampling to collect her sample, where the strata are the different price levels of rental units according to the nationwide data obtained by the Census Bureau shown in <a class="reference internal" href="#rent-table"><span class="std std-numref">Table 1.3.8</span></a>.</p>
 <table class="colwidths-given table" id="rent-table">
-<caption><span class="caption-number">Table 1.3.6 </span><span class="caption-text">Occupied Units Paying Rent in the United States in 2019.<a class="footnote-reference brackets" href="#rent-attribution" id="id8">4</a></span><a class="headerlink" href="#rent-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1.3.8 </span><span class="caption-text">Occupied Units Paying Rent in the United States in 2019.<a class="footnote-reference brackets" href="#rent-attribution" id="id10">5</a></span><a class="headerlink" href="#rent-table" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 83%" />
 <col style="width: 17%" />
@@ -997,8 +1448,8 @@ document.write(`
 </tbody>
 </table>
 <p>How many renters with rents between $1,500 and $1,999 should the economist include in her sample?</p>
-<section id="id9">
-<h4>Solution<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<section id="id11">
+<h4>Solution<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h4>
 <p>To find the number of renters that should be included in the sample with rents between $1,500 and $1,999, we need to multiply the proportion of renters with rents between $1,500 and $1,999 in the population with the size of the sample. From the table, we can see that the proportion of renters in this strata is 15.2% = 0.152. (Note, when performing mathematics with percentages, we must always first convert percentages to decimals.) Since the economist wants a sample of size 400, we simply multiply 0.152 by 400 to find the number of individuals we should sample from the strata.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1017,10 +1468,10 @@ document.write(`
 <section id="cluster-sampling">
 <h2>Cluster Sampling<a class="headerlink" href="#cluster-sampling" title="Permalink to this headline">#</a></h2>
 <p>To choose a <strong>cluster sample</strong>, divide the population into clusters (groups) and then randomly select some of the clusters. <em>All</em> the members from the selected clusters are in the sample.</p>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/Cluster_sampling.png"><img alt="Four individuals are chosen from a population of twelve individuals by dividing the population into six clusters (groups) and sampling all individuals in two of the clusters." src="../_images/Cluster_sampling.png" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.5 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals by dividing the population into six clusters, then randomly selecting two of the clusters. All individuals in the two chosen clusters are sampled. <a class="footnote-reference brackets" href="#cluster-attribution" id="id10">5</a></span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.3.5 </span><span class="caption-text">Four individuals are chosen from a population of twelve individuals by dividing the population into six clusters, then randomly selecting two of the clusters. All individuals in the two chosen clusters are sampled. <a class="footnote-reference brackets" href="#cluster-attribution" id="id12">6</a></span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>For example, suppose Professor Baldwin’s precalculus students are seated in class at tables in groups of three. (See <a class="reference internal" href="#table-clusters"><span class="std std-numref">Figure 1.3.6</span></a>.) He wants to use cluster sampling to select a six-student study group, where the clusters are the groups of three students at each table.</p>
@@ -1050,7 +1501,7 @@ document.write(`
 <aside class="margin sidebar">
 <p class="sidebar-title">Cluster Sampling Study Group</p>
 <table class="table" id="cluster-table">
-<caption><span class="caption-number">Table 1.3.7 </span><span class="caption-text">Students in the study group chosen by cluster sampling.</span><a class="headerlink" href="#cluster-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1.3.9 </span><span class="caption-text">Students in the study group chosen by cluster sampling.</span><a class="headerlink" href="#cluster-table" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1082,14 +1533,14 @@ document.write(`
 </tbody>
 </table>
 </aside>
-<p>The students in cluster 2 and cluster 8 have been randomly selected to be included in the study group. So <em>all</em> the students at table 2 (Hong, Quizon, and Cuarismo) and <em>all</em> the students at table 8 (Okimoto, Tran, and Bautista) have been selected for the study group. None of the students at any of the other tables are included in the study group. (See <a class="reference internal" href="#cluster-table"><span class="std std-numref">Table 1.3.7</span></a>.)</p>
+<p>The students in cluster 2 and cluster 8 have been randomly selected to be included in the study group. So <em>all</em> the students at table 2 (Hong, Quizon, and Cuarismo) and <em>all</em> the students at table 8 (Okimoto, Tran, and Bautista) have been selected for the study group. None of the students at any of the other tables are included in the study group. (See <a class="reference internal" href="#cluster-table"><span class="std std-numref">Table 1.3.9</span></a>.)</p>
 <p>Cluster sampling can be more convenient to implement than other sampling methods because it often involves sampling members of a population that are close together. Because of this, cluster sampling can be an economical sampling method. However, the clusters must be carefully chosen to reflect the population, or the sample may be biased.</p>
 <hr class="docutils" />
 <section id="example-1-3-4">
 <h3>Example 1.3.4<a class="headerlink" href="#example-1-3-4" title="Permalink to this headline">#</a></h3>
 <p>About 130 planes fly out of Ontario International Airport in California each day. Airport management wants to survey customer satisfaction using cluster sampling by sampling the passengers on six different flights on a given day. Use R to randomly choose the flights that should be sampled.</p>
-<section id="id12">
-<h4>Solution<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h4>
+<section id="id14">
+<h4>Solution<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h4>
 <p>The clusters in this sample are the flights. We will use the <code>sample</code> function to randomly choose six flights from the 130 total.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1126,17 +1577,20 @@ document.write(`
 <dt class="label" id="simple-random-attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p><a class="reference internal" href="#id2"><span class="std std-numref">Figure 1.3.1</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Simple_random_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
 </dd>
-<dt class="label" id="systematic-attribution"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
-<dd><p><a class="reference internal" href="#id4"><span class="std std-numref">Figure 1.3.3</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Systematic_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+<dt class="label" id="revenues-per-capita-attribution"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id6">2</a>)</span></dt>
+<dd><p>Riverside County data on 2019 city revenues per capita obtained from <a class="reference external" href="https://data.ca.gov/dataset/city-revenues-per-capita">https://data.ca.gov/dataset/city-revenues-per-capita</a></p>
 </dd>
-<dt class="label" id="stratified-attribution"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
-<dd><p><a class="reference internal" href="#id7"><span class="std std-numref">Figure 1.3.4</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Stratified_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+<dt class="label" id="systematic-attribution"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p><a class="reference internal" href="#id5"><span class="std std-numref">Figure 1.3.3</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Systematic_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
 </dd>
-<dt class="label" id="rent-attribution"><span class="brackets"><a class="fn-backref" href="#id8">4</a></span></dt>
-<dd><p>The data in <a class="reference internal" href="#rent-table"><span class="std std-numref">Table 1.3.6</span></a> is from the United States Census Bureau’s <a class="reference external" href="https://data.census.gov/cedsci/table?q=United%20States&amp;g=0100000US&amp;tid=ACSDP1Y2019.DP04&amp;hidePreview=true">2019 American Community Survey 1-Year Estimates</a>.</p>
+<dt class="label" id="stratified-attribution"><span class="brackets"><a class="fn-backref" href="#id8">4</a></span></dt>
+<dd><p><a class="reference internal" href="#id9"><span class="std std-numref">Figure 1.3.4</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Stratified_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
 </dd>
-<dt class="label" id="cluster-attribution"><span class="brackets"><a class="fn-backref" href="#id10">5</a></span></dt>
-<dd><p><a class="reference internal" href="#id11"><span class="std std-numref">Figure 1.3.5</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Cluster_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+<dt class="label" id="rent-attribution"><span class="brackets"><a class="fn-backref" href="#id10">5</a></span></dt>
+<dd><p>The data in <a class="reference internal" href="#rent-table"><span class="std std-numref">Table 1.3.8</span></a> is from the United States Census Bureau’s <a class="reference external" href="https://data.census.gov/cedsci/table?q=United%20States&amp;g=0100000US&amp;tid=ACSDP1Y2019.DP04&amp;hidePreview=true">2019 American Community Survey 1-Year Estimates</a>.</p>
+</dd>
+<dt class="label" id="cluster-attribution"><span class="brackets"><a class="fn-backref" href="#id12">6</a></span></dt>
+<dd><p><a class="reference internal" href="#id13"><span class="std std-numref">Figure 1.3.5</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Cluster_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
 </dd>
 </dl>
 </section>
@@ -1220,21 +1674,21 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systematic-sampling">Systematic Sampling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-2">Example 1.3.2</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stratified-sampling">Stratified Sampling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-3">Example 1.3.3</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-sampling">Cluster Sampling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-3-4">Example 1.3.4</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Solution</a></li>
 </ul>
 </li>
 </ul>
