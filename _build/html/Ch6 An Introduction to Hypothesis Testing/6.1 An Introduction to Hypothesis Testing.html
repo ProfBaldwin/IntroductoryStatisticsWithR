@@ -360,30 +360,30 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-hypothesis-testing">Introduction to Hypothesis Testing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-1">Example 6.1.1</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-hypothesis">Step 1: State the Hypothesis</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-determine-the-features-of-the-distribution-of-point-estimates-using-the-central-limit-theorem">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-assuming-the-claim-is-true-find-the-probability-of-obtaining-the-point-estimate">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-make-a-conclusion-about-the-claim">Step 4: Make a Conclusion About the Claim</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-hypothesis">Step 1: State the Hypothesis.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-assuming-the-hypothesis-is-true-identify-the-sampling-distribution">Step 2: Assuming the hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-probability">Step 3: Find the probability.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-draw-a-conclusion">Step 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-2">Example 6.1.2</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 1: State the Hypothesis</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 4: Make a Conclusion About the Claim</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 1: State the Hypothesis.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 2: Assuming the hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 3: Find the probability.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-3">Example 6.1.3</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Step 1: State the Hypothesis</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Step 4: Make a Conclusion About the Claim</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Step 1: State the Hypothesis.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Step 2: Assuming the hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Step 3: Find the probability.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Step 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>
@@ -412,13 +412,16 @@ document.write(`
 <section id="introduction-to-hypothesis-testing">
 <h2>Introduction to Hypothesis Testing<a class="headerlink" href="#introduction-to-hypothesis-testing" title="Permalink to this headline">#</a></h2>
 <p>Sometimes we want to test whether a claim made about a population parameter is true or not. For instance, a car dealer advertises that its new small truck averages <span class="math notranslate nohighlight">\(35\)</span> miles per gallon. A tutoring service claims that <span class="math notranslate nohighlight">\(90\%\)</span> of its students get an A or a B. A company says that women managers in their company earn an average of <span class="math notranslate nohighlight">\(\$53{,}000\)</span> per year.</p>
-<p>It’s often impractical to survey every member of a population to confirm a claim or <strong>hypothesis</strong>. Instead, statisticians sample a few members of the population and calculate a point estimate of the parameter they are interested in. Then they use the central limit theorem to determine how likely it is to randomly select a sample with that particular point estimate <em>assuming the hypothesis is true</em>. If it is exceptionally unlikely to get the point estimate that actually obtained if the hypothesis were true, we can conclude with some confidence that the claim is probably not true.</p>
-<p>In summary, the fundamental components to a <strong>hypothesis test</strong> are as follows:</p>
-<ol class="arabic simple">
-<li><p>We want to test if a claim about a population parameter is true.</p></li>
-<li><p>We randomly sample members of the population to find a point estimate of the population parameter.</p></li>
-<li><p>Assuming the claim about the population parameter <em>is</em> true, we use the central limit theorem to determine the probability of obtaining the point estimate of our random sample.</p></li>
-<li><p>If the probability of obtaining the point estimate is exceptionally small, we reject the claim.</p></li>
+<p>It’s often impractical to survey every member of a population to confirm a claim or <strong>hypothesis</strong>. Instead, we can sample a few members of the population and calculate a point estimate of the parameter we are interested in. If the hypothesis is true, we would expect the point estimate to be close to the hypothesized value of the parameter. So if the point estimate is actually far away from the hypothesized value of the parameter, we might conclude that the actual value of the parameter is different from the hypothesis.</p>
+<p>For example, suppose Julian claims his average time for the <span class="math notranslate nohighlight">\(100\)</span>-meter dash is <span class="math notranslate nohighlight">\(11.72\)</span> seconds. We can test the hypothesis that this parameter, the population mean, is <span class="math notranslate nohighlight">\(\mu = 11.72\)</span> seconds. Imagine we sample several of his runs and calculate a sample mean of <span class="math notranslate nohighlight">\(\bar{x} = 11.77\)</span> seconds. Since the point estimate <span class="math notranslate nohighlight">\(\bar{x} = 11.77\)</span> seconds is so close to Julian’s claimed mean time of <span class="math notranslate nohighlight">\(\mu = 11.72\)</span> seconds, we would probably feel that Julian’s claim is about right. But if, instead, we obtained a sample mean of <span class="math notranslate nohighlight">\(\bar{x} = 13.45\)</span> seconds, this sample mean would be so far from Julian’s claim of <span class="math notranslate nohighlight">\(\mu = 11.72\)</span> seconds that we might seriously doubt his claim.</p>
+<p>But how do we tell exactly when a point estimate is far enough from a hypothesized parameter that we should reject that hypothesis? To do this, we first calculate the sampling distribution of the point estimate <em>assuming the hypothesis is true</em>. Using the sampling distribution, we determine the theoretical probability of randomly selecting a sample with a point estimate at least as far from the parameter as the point estimate obtained from the actual sample. If it is exceptionally unlikely that we would have randomly selected a sample with a point estimate so far from the hypothesized parameter, we can conclude with some confidence that the hypothesis is probably not true.</p>
+<p>In summary, the fundamental steps to a <strong>hypothesis test</strong> are as follows:</p>
+<ol class="arabic simple" start="0">
+<li><p><strong>Gather a random sample.</strong><br/>Consider this “step zero”: before we conduct a hypothesis test, we need a point estimate from sample data to compare to the hypothesized parameter. In the real world, statisticians must carefully gather a random sample from the population to be able to perform a hypothesis test. In this text, we will generally be given the sample data in the problem statement, so we won’t need to gather a sample ourselves.</p></li>
+<li><p><strong>State the hypothesis.</strong><br/>Identify a claim about a population parameter that we want to test, and state the hypothesis mathematically.</p></li>
+<li><p><strong>Assuming the hypothesis is true, identify the sampling distribution.</strong><br/>In this chapter, we will focus on hypotheses about the population mean or population proportion. We use the central limit theorem to identify the sampling distributions of the point estimates of these parameters.</p></li>
+<li><p><strong>Find the probability.</strong><br/>Using the sampling distribution, we calculate the probability that the point estimate from a random sample is at least as far from the hypothesized parameter as the point estimate from the actual sample is.</p></li>
+<li><p><strong>Draw a conclusion.</strong><br/>If the probability of obtaining our point estimate is very small, we might conclude that our assumption, that the hypothesis is true, is actually not correct. On the other hand, if the probability is not small, we would not have a good argument to reject the hypothesis.</p></li>
 </ol>
 <p>We will formalize these ideas in the coming chapter and return to them throughout the rest of the course. For now, let’s go over a few examples focusing on the big idea and the fundamental components.</p>
 <hr class="docutils" />
@@ -430,13 +433,13 @@ document.write(`
 <section id="solution">
 <h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
 <section id="step-1-state-the-hypothesis">
-<h5>Step 1: State the Hypothesis<a class="headerlink" href="#step-1-state-the-hypothesis" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#step-1-state-the-hypothesis" title="Permalink to this headline">#</a></h5>
 <p>The claim or hypothesis is that the average annual income of women managers at the company is <span class="math notranslate nohighlight">\(\$53,000\)</span>. Written mathematically, the hypothesis is that</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 53{,}000. \]</div>
 </section>
-<section id="step-2-determine-the-features-of-the-distribution-of-point-estimates-using-the-central-limit-theorem">
-<h5>Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem<a class="headerlink" href="#step-2-determine-the-features-of-the-distribution-of-point-estimates-using-the-central-limit-theorem" title="Permalink to this headline">#</a></h5>
+<section id="step-2-assuming-the-hypothesis-is-true-identify-the-sampling-distribution">
+<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-hypothesis-is-true-identify-the-sampling-distribution" title="Permalink to this headline">#</a></h5>
 <p>We are testing the mean <span class="math notranslate nohighlight">\(\mu\)</span>, and we are told what the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> is. Then by the central limit theorem, sample means follow a  normal distribution with mean</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 53{,}000 \]</div>
@@ -445,8 +448,8 @@ document.write(`
 \[ \frac{\sigma}{\sqrt{n}} = \frac{5000}{\sqrt{25}} = 1000. \]</div>
 <p>That is, <span class="math notranslate nohighlight">\(\bar{X} \sim N(53000, 1000)\)</span>.</p>
 </section>
-<section id="step-3-assuming-the-claim-is-true-find-the-probability-of-obtaining-the-point-estimate">
-<h5>Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate<a class="headerlink" href="#step-3-assuming-the-claim-is-true-find-the-probability-of-obtaining-the-point-estimate" title="Permalink to this headline">#</a></h5>
+<section id="step-3-find-the-probability">
+<h5>Step 3: Find the probability.<a class="headerlink" href="#step-3-find-the-probability" title="Permalink to this headline">#</a></h5>
 <p>First, we calculate the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>, which is the point estimate of the population mean <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -477,8 +480,8 @@ document.write(`
 </div>
 <p>So <span class="math notranslate nohighlight">\(P(\bar{X} \leq 50283.36) = P(Z \leq -2.7166) = 0.00330\)</span>. That is, if the claim were true, there would only be a <span class="math notranslate nohighlight">\(0.33\%\)</span> chance that a random sample of women managers would yield a sample mean salary of <span class="math notranslate nohighlight">\(\$50{,}283.36\)</span> or less.</p>
 </section>
-<section id="step-4-make-a-conclusion-about-the-claim">
-<h5>Step 4: Make a Conclusion About the Claim<a class="headerlink" href="#step-4-make-a-conclusion-about-the-claim" title="Permalink to this headline">#</a></h5>
+<section id="step-4-draw-a-conclusion">
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Permalink to this headline">#</a></h5>
 <p>In this case, it is very unlikely that we would obtain the point estimate we did if the claim were true. In fact, it is so unlikely (less than a 1% chance) that we feel confident in concluding that the claim is not true.</p>
 <p>We conclude that the average salary of women managers at the company is not <span class="math notranslate nohighlight">\(\$53,000\)</span>.</p>
 </section>
@@ -491,13 +494,13 @@ document.write(`
 <section id="id1">
 <h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <section id="id2">
-<h5>Step 1: State the Hypothesis<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
 <p>The claim we are testing is that the proportion of students of the tutoring service who get an A or a B is <span class="math notranslate nohighlight">\(90\%\)</span>. Mathematically, the hypothesis is</p>
 <div class="math notranslate nohighlight">
 \[p = 0.90. \]</div>
 </section>
 <section id="id3">
-<h5>Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
 <p>Assuming the hypothesis is true, we know by the central limit theorem that the sampling distribution of sample proportions is normally distributed with mean</p>
 <div class="math notranslate nohighlight">
 \[ p = 0.90 \]</div>
@@ -507,7 +510,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(\hat{P} \sim N(0.90, 0.0447)\)</span>.</p>
 </section>
 <section id="id4">
-<h5>Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<h5>Step 3: Find the probability.<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
 <p>First note that the sample proportion, the point estimate of the population proportion, is</p>
 <div class="math notranslate nohighlight">
 \[ \hat{p} = \frac{x}{n} = \frac{37}{45} = 0.8222. \]</div>
@@ -528,7 +531,7 @@ document.write(`
 <p>Then <span class="math notranslate nohighlight">\(P(\hat{P} \leq 0.8222) = P(Z \leq -1.7405) = 0.0409\)</span>. So if the population proportion is actually <span class="math notranslate nohighlight">\(p = 0.90\)</span>, there is a <span class="math notranslate nohighlight">\(4.09\%\)</span> chance that a random sample gives a sample proportion of <span class="math notranslate nohighlight">\(\hat{p} = 0.8222\)</span> or less.</p>
 </section>
 <section id="id5">
-<h5>Step 4: Make a Conclusion About the Claim<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h5>
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h5>
 <p>There is about a <span class="math notranslate nohighlight">\(4\%\)</span> chance of obtaining a sample proportion of <span class="math notranslate nohighlight">\(\hat{p} \leq 0.8222\)</span> if the claim were true. This is somewhat unlikely, but it wouldn’t be outlandish.</p>
 <p>Ultimately, whether we reject a hypothesis or not is a choice. Would you reject the hypothesis if there is only a <span class="math notranslate nohighlight">\(1\%\)</span> chance that we get a point estimate as extreme as the point estimate we actually get from our sample? What if it was a <span class="math notranslate nohighlight">\(4\%\)</span> chance? An <span class="math notranslate nohighlight">\(8\%\)</span> chance? The choice ultimately must be made by the statistician where to draw the line. In a later section, we will cover some guidelines on making this choice.</p>
 <p>So what do you think? In this particular case, do you think the evidence is sufficient to reject the claim that <span class="math notranslate nohighlight">\(90\%\)</span> of students of the tutoring service get an A or a B? Or do you think the evidence isn’t strong enough to make that conclusion?</p>
@@ -544,13 +547,13 @@ document.write(`
 <section id="id6">
 <h4>Solution<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
 <section id="id7">
-<h5>Step 1: State the Hypothesis<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
 <p>The hypothesis is that the class average is <span class="math notranslate nohighlight">\(65\)</span> points. Mathematically, we write</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 65. \]</div>
 </section>
 <section id="id8">
-<h5>Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h5>
+<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h5>
 <p>We want to test the population mean <span class="math notranslate nohighlight">\(\mu\)</span>, but we are <em>not</em> given the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. We will need to use the sample standard deviation <span class="math notranslate nohighlight">\(s\)</span> and a <span class="math notranslate nohighlight">\(t\)</span>-distribution with <span class="math notranslate nohighlight">\(df = n - 1 = 9 - 1 = 8\)</span> degrees of freedom.</p>
 <p>To find the <span class="math notranslate nohighlight">\(t\)</span>-score, we need the mean of the sampling distribution,</p>
 <div class="math notranslate nohighlight">
@@ -587,7 +590,7 @@ document.write(`
 \[ \frac{s}{\sqrt{n}} = \frac{11.2472}{\sqrt{9}} = 3.7491. \]</div>
 </section>
 <section id="id9">
-<h5>Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h5>
+<h5>Step 3: Find the probability.<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h5>
 <p>We calculated the point estimate in step 2: the sample mean is <span class="math notranslate nohighlight">\(\bar{x} =  66.6667\)</span>. The <span class="math notranslate nohighlight">\(t\)</span>-score associated with <span class="math notranslate nohighlight">\(\bar{x} = 66.6667\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} = \frac{66.6667 - 65}{3.7491} = 0.4446. \]</div>
@@ -604,7 +607,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(\bar{X} \geq 66.6667) = P(T \geq 0.4446) = 0.3342\)</span>. That is, assuming the claim is true, there is a <span class="math notranslate nohighlight">\(33.42\%\)</span> chance that our sample would have a sample mean of <span class="math notranslate nohighlight">\(66.6667\)</span> or greater.</p>
 </section>
 <section id="id10">
-<h5>Step 4: Make a Conclusion About the Claim<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h5>
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h5>
 <p>If the claim is true, there is a <span class="math notranslate nohighlight">\(33.42\%\)</span> chance that a random sample of the population has a sample mean as extreme as <span class="math notranslate nohighlight">\(\bar{x} = 66.6667\)</span>. This isn’t a small probability; there is a fairly large chance that we obtain a sample with the sample mean we do given that the claim is true. We usually don’t reject a claim unless we obtain at a probability of at least less than <span class="math notranslate nohighlight">\(10\%\)</span>. So we do not have enough evidence to conclude that the mean exam score is greater than <span class="math notranslate nohighlight">\(65\)</span> points.</p>
 </section>
 </section>
@@ -683,30 +686,30 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-hypothesis-testing">Introduction to Hypothesis Testing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-1">Example 6.1.1</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-hypothesis">Step 1: State the Hypothesis</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-determine-the-features-of-the-distribution-of-point-estimates-using-the-central-limit-theorem">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-assuming-the-claim-is-true-find-the-probability-of-obtaining-the-point-estimate">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-make-a-conclusion-about-the-claim">Step 4: Make a Conclusion About the Claim</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-state-the-hypothesis">Step 1: State the Hypothesis.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-assuming-the-hypothesis-is-true-identify-the-sampling-distribution">Step 2: Assuming the hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-probability">Step 3: Find the probability.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-draw-a-conclusion">Step 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-2">Example 6.1.2</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 1: State the Hypothesis</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 4: Make a Conclusion About the Claim</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 1: State the Hypothesis.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 2: Assuming the hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 3: Find the probability.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1-3">Example 6.1.3</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Step 1: State the Hypothesis</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Step 2: Determine the Features of the Distribution of Point Estimates Using the Central Limit Theorem</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Step 3: Assuming the Claim is True, Find the Probability of Obtaining the Point Estimate</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Step 4: Make a Conclusion About the Claim</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Step 1: State the Hypothesis.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Step 2: Assuming the hypothesis is true, identify the sampling distribution.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Step 3: Find the probability.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Step 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>

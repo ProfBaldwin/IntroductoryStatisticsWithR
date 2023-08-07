@@ -393,7 +393,7 @@ document.write(`
 <p>The “center” of a data set is also a way of describing location. The two most widely used measures of the “center” of the data are the <strong>mean</strong> (average) and the <strong>median</strong>. To calculate the mean weight of 50 people, add the 50 weights together and divide by 50. In the last section, we learned that the median is the second quartile <span class="math notranslate nohighlight">\(Q_2\)</span> or the 50th percentile. To find the median weight of the 50 people, order the data and find the number that splits the data into two equal parts. The median is generally a better measure of the center when there are extreme values or outliers because it is not affected by the precise numerical values of the outliers. The mean is the most common measure of the center.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The words <em>mean</em> and <em>average</em> are often used interchangeably. The substitution of one word for the other is common practice. The technical term for the type of mean we a discussing in this section is <em>arithmetic mean</em>, and <em>average</em> is technically a general term for any center location. For example, the <em>median</em> of a data set is also technically an average of the data set because it is one measure of the center location. However, in practice among non-statisticians, <em>average</em> is commonly accepted for <em>arithmetic mean</em>.</p>
+<p>The words <em>mean</em> and <em>average</em> are often used interchangeably. The substitution of one word for the other is common practice. The technical term for the type of mean we a discussing in this section is <em>arithmetic mean</em>, and <em>average</em> is technically a general term for any center location. For example, the <em>median</em> of a data set is also technically an average of the data set because it is one measure of the center location. However, in practice among non-statisticians, the <em>average</em> of a data set is commonly understood as the <em>arithmetic mean</em>.</p>
 </div>
 <p>We use different symbols to differentiate between the mean of a sample and the mean of a population. The letter used to represent the sample mean is an x with a bar over it (pronounced “x bar”): <span class="math notranslate nohighlight">\(\bar{x}\)</span>. The Greek letter <span class="math notranslate nohighlight">\(\mu\)</span> (pronounced “mew” and spelled in English “mu”) represents the population mean. Both the sample mean and population mean are calculated the same way: add together all the data values in the sample or population, then divide by the number of data values in the sample of population. In practice, we usually calculate the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>. If we know enough about the population to calculate the population mean <span class="math notranslate nohighlight">\(\mu\)</span>, then we don’t need to collect a smaller sample to estimate features of the population.</p>
 <p>When each value in the data set is not unique, the mean can be calculated by multiplying each distinct value by its frequency and then dividing the sum by the total number of data values.  To see that both ways of calculating the mean are the same, consider this sample of 11 data values:</p>
@@ -464,7 +464,7 @@ document.write(`
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We will usually store a list of data in variable <code>x</code> to make the computer code as similar as possible to the formula. For example, <code>xbar = sum(x)/n</code> has an obviously similar structure to <span class="math notranslate nohighlight">\(\bar{x} = \sum x/n\)</span>. However, any variable name would work. For example, the following code would work just as well as the code above:</p>
+<p>We will usually store a list of data in variable <code>x</code> to make the computer code as similar as possible to the formula. For example, <code>xbar = sum(x)/n</code> has an obviously similar structure to <span class="math notranslate nohighlight">\(\bar{x} = \sum x/n\)</span>. However, any variable name would work. For example, the following code calculates the mean just as well as the code above:</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
@@ -486,27 +486,6 @@ document.write(`
 <div class="output text_html"><strong>50%:</strong> 3</div></div>
 </div>
 <p>The median is <span class="math notranslate nohighlight">\(M = 3\)</span>. Exactly half the values in the data are less than the median, and exactly half the values is the data are greater than the median.</p>
-<hr class="docutils" />
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">22</span><span class="p">,</span> <span class="m">22</span><span class="p">,</span> <span class="m">24</span><span class="p">,</span> <span class="m">24</span><span class="p">,</span> <span class="m">25</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">27</span><span class="p">,</span> <span class="m">27</span><span class="p">,</span> <span class="m">29</span><span class="p">,</span> <span class="m">29</span><span class="p">,</span> <span class="m">31</span><span class="p">,</span> <span class="m">32</span><span class="p">,</span> <span class="m">33</span><span class="p">,</span> <span class="m">33</span><span class="p">,</span> <span class="m">34</span><span class="p">,</span> <span class="m">34</span><span class="p">,</span> <span class="m">35</span><span class="p">,</span> <span class="m">37</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">44</span><span class="p">,</span> <span class="m">44</span><span class="p">,</span> <span class="m">47</span><span class="p">)</span>
-
-<span class="c1"># Find the Mean</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
-<span class="n">xbar</span>
-
-<span class="c1"># Find the Median</span>
-<span class="n">M</span> <span class="o">=</span> <span class="nf">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">M</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">23.575</div><div class="output text_html">24</div></div>
-</div>
-<p>So the mean is <span class="math notranslate nohighlight">\(\bar{x} = 23.575\)</span>  years and the median is <span class="math notranslate nohighlight">\(M = 24\)</span> years.</p>
 <hr class="docutils" />
 <section id="example-2-2-1">
 <h3>Example 2.2.1<a class="headerlink" href="#example-2-2-1" title="Permalink to this headline">#</a></h3>
