@@ -425,8 +425,8 @@ document.write(`
 <p>There are three characteristics of a <strong>binomial experiment</strong>.</p>
 <ul class="simple">
 <li><p>There are a fixed number of trials. Think of trials as repetitions of an experiment. The letter <span class="math notranslate nohighlight">\(n\)</span> denotes the number of trials. <br/><br/> For example, if we conduct a binomial experiment by rolling a six-sided die ten times, then the binomial experiment has <span class="math notranslate nohighlight">\(n = 10\)</span> trials.<br/><br/></p></li>
-<li><p>There are only two possible outcomes, called “success” and “failure,” for each trial. The letter <span class="math notranslate nohighlight">\(p\)</span> denotes the probability of a success for one trial, and <span class="math notranslate nohighlight">\(q\)</span> denotes the probability of a failure for one trial. Since “success” and “failure” are complementary outcomes, <span class="math notranslate nohighlight">\(p + q = 1\)</span>. <br/><br/> Imagine we roll a six-sided die ten times, and we want to know many twos we roll. Then each of the <span class="math notranslate nohighlight">\(n = 10\)</span> trials is counted a “success” when we roll a two and is a “failure” when we roll anything that isn’t a two. In this case, the probability a trial is a success is <span class="math notranslate nohighlight">\(p = \frac{1}{6}\)</span>, and the probability a trial is a failure is <span class="math notranslate nohighlight">\(q = \frac{5}{6}\)</span>. (Note, <span class="math notranslate nohighlight">\(p + q = \frac{1}{6} + \frac{5}{6} = 1\)</span>.)<br/><br/></p></li>
-<li><p>The <span class="math notranslate nohighlight">\(n\)</span> trials of a binomial experiment are independent and are repeated using identical conditions. Because the <span class="math notranslate nohighlight">\(n\)</span> trials are independent and identical, the probability of success <span class="math notranslate nohighlight">\(p\)</span> and probability of failure <span class="math notranslate nohighlight">\(q\)</span> are the same for each trial. <br/><br/> In our binomial experiment of <span class="math notranslate nohighlight">\(n = 10\)</span> die rolls, we have a probabiliy of <span class="math notranslate nohighlight">\(p = \frac{1}{6}\)</span> of rolling a two on the second trial no matter what happened during the first trial. The probability of success and the probability of failure is the same for every roll of the die.</p></li>
+<li><p>There are only two possible outcomes, called “success” and “failure,” for each trial. The letter <span class="math notranslate nohighlight">\(p\)</span> denotes the probability of a success for one trial. Since “success” and “failure” are complementary outcomes, the probability of failure is <span class="math notranslate nohighlight">\((1-p)\)</span>. <br/><br/> Imagine we roll a six-sided die ten times, and we want to know many twos we roll. Then each of the <span class="math notranslate nohighlight">\(n = 10\)</span> trials is counted a “success” when we roll a two and is a “failure” when we roll anything that isn’t a two. In this case, the probability a trial is a success is <span class="math notranslate nohighlight">\(p = \frac{1}{6}\)</span>, and the probability a trial is a failure is <span class="math notranslate nohighlight">\((1-p) = (1-\frac{1}{6}) = \frac{5}{6}\)</span>.<br/><br/></p></li>
+<li><p>The <span class="math notranslate nohighlight">\(n\)</span> trials of a binomial experiment are independent and are repeated using identical conditions. Because the <span class="math notranslate nohighlight">\(n\)</span> trials are independent and identical, the probability of success <span class="math notranslate nohighlight">\(p\)</span> and probability of failure <span class="math notranslate nohighlight">\((1-p)\)</span> are the same for each trial. <br/><br/> In our binomial experiment of <span class="math notranslate nohighlight">\(n = 10\)</span> die rolls, we have a probabiliy of <span class="math notranslate nohighlight">\(p = \frac{1}{6}\)</span> of rolling a two on the second trial no matter what happened during the first trial. The probability of success and the probability of failure is the same for every roll of the die.</p></li>
 </ul>
 <p>The outcomes of a binomial experiment fit a <strong>binomial probability distribution</strong>, which is a special kind of discrete probability distribution. A binomial distribution is a formula that gives the probability that there were exactly <span class="math notranslate nohighlight">\(x\)</span> successes in the <span class="math notranslate nohighlight">\(n\)</span> trials, where we can choose any whole number <span class="math notranslate nohighlight">\(x\)</span>  between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <p>The expected value of a binomial distribution is</p>
@@ -434,7 +434,7 @@ document.write(`
 \[ \mu = n \cdot p. \]</div>
 <p>The standard deviation of a binomial distribution is</p>
 <div class="math notranslate nohighlight">
-\[ \sigma = \sqrt{n \cdot p \cdot q}. \]</div>
+\[ \sigma = \sqrt{n \cdot p \cdot (1-p)}. \]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Be aware that the success of a trial in a binomial experiment isn’t necessarily good, and the failure of a trial isn’t necessarily bad. Rather, we call the outcome we are trying to measure a success regardless of whether it is good or bad.</p>
@@ -470,9 +470,9 @@ document.write(`
 </section>
 <section id="part-3">
 <h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
-<p>Since the probability of success of any one trial is <span class="math notranslate nohighlight">\(p = 0.30\)</span>, the probability of failure is <span class="math notranslate nohighlight">\(q = 0.70\)</span>. Then the standard deviation of the binomial distribution is</p>
+<p>Since the probability of success of any one trial is <span class="math notranslate nohighlight">\(p = 0.30\)</span>, the probability of failure is <span class="math notranslate nohighlight">\((1-p) = (1 - 0.30) = 0.70\)</span>. Then the standard deviation of the binomial distribution is</p>
 <div class="math notranslate nohighlight">
-\[ \sigma = \sqrt{n \cdot p \cdot q} = \sqrt{20 \cdot 0.30 \cdot 0.70} = 2.0494. \]</div>
+\[ \sigma = \sqrt{n \cdot p \cdot (1-p)} = \sqrt{20 \cdot 0.30 \cdot 0.70} = 2.0494. \]</div>
 </section>
 </section>
 </section>
@@ -506,9 +506,9 @@ document.write(`
 </section>
 <section id="step-3">
 <h5>Step 3<a class="headerlink" href="#step-3" title="Permalink to this headline">#</a></h5>
-<p>Since the probability of success is <span class="math notranslate nohighlight">\(p = 0.25\)</span> and <span class="math notranslate nohighlight">\(p + q = 1\)</span>, the probability of failure must be <span class="math notranslate nohighlight">\(q = 0.75\)</span>. Then the standard deviation is</p>
+<p>Since the probability of success is <span class="math notranslate nohighlight">\(p = 0.25\)</span>, the probability of failure is <span class="math notranslate nohighlight">\((1 - p) = (1 - 0.25) = 0.75\)</span>. Then the standard deviation is</p>
 <div class="math notranslate nohighlight">
-\[ \sigma = \sqrt{n \cdot p \cdot q} = \sqrt{50 \cdot 0.25 \cdot 0.75} = 3.0619. \]</div>
+\[ \sigma = \sqrt{n \cdot p \cdot (1 - p)} = \sqrt{50 \cdot 0.25 \cdot 0.75} = 3.0619. \]</div>
 </section>
 </section>
 </section>
