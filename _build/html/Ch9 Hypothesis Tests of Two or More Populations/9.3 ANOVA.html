@@ -504,16 +504,16 @@ Sample <span class="math notranslate nohighlight">\(3\)</span>:  20, 19, 17, 21<
 <section id="the-test-statistic-for-an-anova-test">
 <h2>The Test Statistic For an ANOVA Test<a class="headerlink" href="#the-test-statistic-for-an-anova-test" title="Permalink to this headline">#</a></h2>
 <p>To calculate the test statistic for an ANOVA test with <span class="math notranslate nohighlight">\(k\)</span> samples (one sample from each population), we calculate two estimates of the variance.</p>
-<p><span class="math notranslate nohighlight">\(MST\)</span> is the <strong>m</strong>ean <strong>s</strong>quare estimate of the variance among <strong>t</strong>reatments. <span class="math notranslate nohighlight">\(MST\)</span> is the variance <em>between</em> the sample means of the different samples. We calculate <span class="math notranslate nohighlight">\(MST\)</span> using the formula</p>
+<p>The first estimate of the variance is <span class="math notranslate nohighlight">\(MST\)</span>, which is the <strong>m</strong>ean <strong>s</strong>quare estimate of the variance among <strong>t</strong>reatments. <span class="math notranslate nohighlight">\(MST\)</span> is the variance <em>between</em> the sample means of the different samples. We calculate <span class="math notranslate nohighlight">\(MST\)</span> using the formula</p>
 <div class="math notranslate nohighlight">
 \[ MST = \frac{SST}{DFT}, \]</div>
 <p>where <span class="math notranslate nohighlight">\(SST\)</span>, called the <strong>s</strong>um of <strong>s</strong>quares among <strong>t</strong>reatments, is the sum of squared differences between the sample means and the grand mean, and <span class="math notranslate nohighlight">\(DFT\)</span> is the <strong>d</strong>egrees of <strong>f</strong>reedom for <strong>t</strong>reatments. <span class="math notranslate nohighlight">\(SST\)</span> and <span class="math notranslate nohighlight">\(DFT\)</span> are given by the formulas</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-SSE &amp;= n_1(\bar{x}_1 - \bar{\bar{x}})^2 + n_2(\bar{x}_2 - \bar{\bar{x}})^2 + \cdots + n_k(\bar{x}_k - \bar{\bar{x}})^2, \\
-DFE &amp;= k - 1.
+SST &amp;= n_1(\bar{x}_1 - \bar{\bar{x}})^2 + n_2(\bar{x}_2 - \bar{\bar{x}})^2 + \cdots + n_k(\bar{x}_k - \bar{\bar{x}})^2, \\
+DFT &amp;= k - 1.
 \end{align*}\]</div>
-<p><span class="math notranslate nohighlight">\(MSE\)</span> is the <strong>m</strong>ean <strong>s</strong>quare estimate for <strong>e</strong>rrors. <span class="math notranslate nohighlight">\(MSE\)</span> measures the variance <em>within</em> the samples. We calculate <span class="math notranslate nohighlight">\(MSE\)</span> using the formula</p>
+<p>The second estimate of the variance is <span class="math notranslate nohighlight">\(MSE\)</span>, which is the <strong>m</strong>ean <strong>s</strong>quare estimate for <strong>e</strong>rrors. <span class="math notranslate nohighlight">\(MSE\)</span> measures the variance <em>within</em> the samples. We calculate <span class="math notranslate nohighlight">\(MSE\)</span> using the formula</p>
 <div class="math notranslate nohighlight">
 \[ MSE = \frac{SSE}{DFE}, \]</div>
 <p>where <span class="math notranslate nohighlight">\(SSE\)</span>, the <strong>sum</strong> of <strong>s</strong>quares for <strong>e</strong>rrors, is the total sum of squared differences between the data values of each sample and the sample’s mean, and <span class="math notranslate nohighlight">\(DFE\)</span> is the degrees of freedom for errors. We calculate <span class="math notranslate nohighlight">\(SSE\)</span> and <span class="math notranslate nohighlight">\(DFE\)</span> using the formulas</p>

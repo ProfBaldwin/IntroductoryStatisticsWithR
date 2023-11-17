@@ -368,16 +368,6 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-2-2">Example 7.2.2</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 1: State the null and alternative hypotheses.</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 4: Draw a conclusion.</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -496,82 +486,6 @@ H_a:&amp;\ \sigma^2 &gt; 2.25
 </section>
 </section>
 </section>
-<hr class="docutils" />
-<section id="example-7-2-2">
-<h3>Example 7.2.2<a class="headerlink" href="#example-7-2-2" title="Permalink to this headline">#</a></h3>
-<p>A medical testing company has created an IQ test and claims that the average score on the test is <span class="math notranslate nohighlight">\(100\)</span> points with a standard deviation of <span class="math notranslate nohighlight">\(15\)</span> points. A psychologist suspects that the standard deviation might be wrong. He administers the IQ test to <span class="math notranslate nohighlight">\(18\)</span> randomly chosen individuals and obtains the following scores.</p>
-<p>108, 95, 98, 101, 118, 105, 102, 80, 112, 113, 88, 101, 93, 98, 104, 99, 87, 90</p>
-<p>Perform a hypothesis test with a <span class="math notranslate nohighlight">\(5\%\)</span> level of significance to test the medical testing company’s claim.</p>
-<section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
-<section id="id2">
-<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
-<p>The medical testing company claims that the population standard deviation score on the test is 15 points, or <span class="math notranslate nohighlight">\(\sigma = 15\)</span>. Since the symbol is an equal sign, this is our null hypothesis. The alternative hypothesis is the opposite of this.</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-H_0:&amp;\ \sigma = 15 \\
-H_a:&amp;\ \sigma \neq 15
-\end{align*}\]</div>
-</section>
-<section id="id3">
-<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
-<p>Since we are testing the population standard deviation, we will be using a <span class="math notranslate nohighlight">\(chi^2\)</span>-distribution with <span class="math notranslate nohighlight">\(df = n - 1 = 18 - 1 = 17\)</span> degrees of freedom.</p>
-</section>
-<section id="id4">
-<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
-<p>To calculate the test statistic, we first must find the sample standard deviation. And to find the sample standard deviation, we need the sample mean.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">108</span><span class="p">,</span> <span class="m">95</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">101</span><span class="p">,</span> <span class="m">118</span><span class="p">,</span> <span class="m">105</span><span class="p">,</span> <span class="m">102</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">112</span><span class="p">,</span> <span class="m">113</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">101</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">104</span><span class="p">,</span> <span class="m">99</span><span class="p">,</span> <span class="m">87</span><span class="p">,</span> <span class="m">90</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
-<span class="n">xbar</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">99.5555555555556</div></div>
-</div>
-<p>So the sample mean is <span class="math notranslate nohighlight">\(\bar{x} = 99.5556\)</span>. Next, we use our calculation of the sample mean to find the sample standard deviation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">s</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">9.82327501529626</div></div>
-</div>
-<p>The sample standard deviation is <span class="math notranslate nohighlight">\(s = 9.8233\)</span>. Using this with the hypothesized population standard deviation of <span class="math notranslate nohighlight">\(\sigma = 15\)</span>, we calculate the test statistic</p>
-<div class="math notranslate nohighlight">
-\[ \chi^2 = \frac{(n - 1)s^2}{\sigma^2} = \frac{(18 - 1)9.8233^2}{15^2} = 7.2909. \]</div>
-<p>Since the alternative hypothesis uses a “not-equal-to” symbol, we will perform a two-tailed test. Because our sample standard deviation <span class="math notranslate nohighlight">\(s = 9.8233\)</span> is smaller than our hypothesized population standard deviation of <span class="math notranslate nohighlight">\(\sigma = 15\)</span>, we will first find the half of the <span class="math notranslate nohighlight">\(p\)</span>-value in the lower tail by calculating <span class="math notranslate nohighlight">\(P(\chi^2 &lt; 7.2909)\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pchisq</span><span class="p">(</span><span class="m">7.2909</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="m">17</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">0.0205403083373764</div></div>
-</div>
-<p>The half of the <span class="math notranslate nohighlight">\(p\)</span>-value in the left tail is equal to <span class="math notranslate nohighlight">\(0.02054\)</span>. To find the full <span class="math notranslate nohighlight">\(p\)</span>-value, we double this quantity:</p>
-<div class="math notranslate nohighlight">
-\[ p\text{-value} = 2(0.0205) = 0.04108. \]</div>
-<p>So the probability of testing <span class="math notranslate nohighlight">\(18\)</span> randomly sampled individuals from the population and obtaining a sample standard deviation as extreme as the one we got is only about <span class="math notranslate nohighlight">\(4.108\%\)</span>.</p>
-</section>
-<section id="id5">
-<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h5>
-<p>Our level of significance for this problem is <span class="math notranslate nohighlight">\(5\%\)</span>, so <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>. Since</p>
-<div class="math notranslate nohighlight">
-\[ p\text{-value} = 0.04108 &lt; 0.05 = \alpha, \]</div>
-<p>we reject the null hypothesis.</p>
-<p>We conclude that the population standard deviation score on the IQ test is not <span class="math notranslate nohighlight">\(15\)</span> points.</p>
-</section>
-</section>
-</section>
 </section>
 </section>
 
@@ -650,16 +564,6 @@ H_a:&amp;\ \sigma \neq 15
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">Step 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-p-value">Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-draw-a-conclusion">Step 4: Draw a conclusion.</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-2-2">Example 7.2.2</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 1: State the null and alternative hypotheses.</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>

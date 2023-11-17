@@ -368,9 +368,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-4-2">Example 8.4.2</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-state-the-null-and-alternative-hypotheses">Part 1: State the null and alternative hypotheses.</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-assuming-the-null-hypothesis-is-true-determine-the-features-of-the-distribution-of-sample-statistics">Part 2: Assuming the null hypothesis is true, determine the features of the distribution of sample statistics.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">Part 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-find-the-p-value">Part 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-make-a-conclusion-about-the-null-hypothesis">Part 4: Make a conclusion about the null hypothesis.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-draw-a-conclusion">Part 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>
@@ -494,7 +494,7 @@ H_a:\ \rho \neq 0.
 <li><p>State the null and alternative hypotheses.</p></li>
 <li><p>Assuming the null hypothesis is true, identify the sampling distribution.</p></li>
 <li><p>Find the <span class="math notranslate nohighlight">\(p\)</span>-value.</p></li>
-<li><p>Make a conclusion about the null hypothesis.</p></li>
+<li><p>Draw a conclusion.</p></li>
 </ol>
 <hr class="docutils" />
 <section id="example-8-4-2">
@@ -560,8 +560,8 @@ H_a:\ \rho \neq 0.
 \end{align*}\]</div>
 <p>Our null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> is that there is no linear correlation in the population between a student’s third exam score and their final exam score. The alternative hypothesis <span class="math notranslate nohighlight">\(H_a\)</span> is that there is some degree of linear correlation in the population between a student’s third exam score and their final exam score.</p>
 </section>
-<section id="part-2-assuming-the-null-hypothesis-is-true-determine-the-features-of-the-distribution-of-sample-statistics">
-<h5>Part 2: Assuming the null hypothesis is true, determine the features of the distribution of sample statistics.<a class="headerlink" href="#part-2-assuming-the-null-hypothesis-is-true-determine-the-features-of-the-distribution-of-sample-statistics" title="Permalink to this headline">#</a></h5>
+<section id="part-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">
+<h5>Part 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#part-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Permalink to this headline">#</a></h5>
 <p>When testing the population correlation coefficient <span class="math notranslate nohighlight">\(\rho\)</span>, we use a <span class="math notranslate nohighlight">\(t\)</span>-distribution with <span class="math notranslate nohighlight">\(n - 2\)</span> degrees of freedom, where <span class="math notranslate nohighlight">\(n\)</span> is the number of <span class="math notranslate nohighlight">\((x, y)\)</span> points in our data. Since our data has <span class="math notranslate nohighlight">\(11\)</span> <span class="math notranslate nohighlight">\((x, y)\)</span> points in this case, we have <span class="math notranslate nohighlight">\( df = n - 2 = 11 - 2 = 9\)</span> degrees of freedom.</p>
 </section>
 <section id="part-3-find-the-p-value">
@@ -600,8 +600,8 @@ H_a:\ \rho \neq 0.
 \[p\text{-value} = 2(0.0131) = 0.0262. \]</div>
 <p>So assuming that the null hypothesis is true—that there is no correlation in the population—there would still be a <span class="math notranslate nohighlight">\(2.62\%\)</span> chance that a random sample of <span class="math notranslate nohighlight">\(11\)</span> students’ test scores would have a correlation coefficient at least as extreme as <span class="math notranslate nohighlight">\(r = 0.6631\)</span>.</p>
 </section>
-<section id="part-4-make-a-conclusion-about-the-null-hypothesis">
-<h5>Part 4: Make a conclusion about the null hypothesis.<a class="headerlink" href="#part-4-make-a-conclusion-about-the-null-hypothesis" title="Permalink to this headline">#</a></h5>
+<section id="part-4-draw-a-conclusion">
+<h5>Part 4: Draw a conclusion.<a class="headerlink" href="#part-4-draw-a-conclusion" title="Permalink to this headline">#</a></h5>
 <p>We’re performing the test at the <span class="math notranslate nohighlight">\(1\%\)</span> significance level, so <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span>. Thus, since</p>
 <div class="math notranslate nohighlight">
 \[p\text{-value} = 0.0262 \geq 0.01 = \alpha, \]</div>
@@ -692,9 +692,9 @@ H_a:\ \rho \neq 0.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-4-2">Example 8.4.2</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-state-the-null-and-alternative-hypotheses">Part 1: State the null and alternative hypotheses.</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-assuming-the-null-hypothesis-is-true-determine-the-features-of-the-distribution-of-sample-statistics">Part 2: Assuming the null hypothesis is true, determine the features of the distribution of sample statistics.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">Part 2: Assuming the null hypothesis is true, identify the sampling distribution.</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-find-the-p-value">Part 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-make-a-conclusion-about-the-null-hypothesis">Part 4: Make a conclusion about the null hypothesis.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-draw-a-conclusion">Part 4: Draw a conclusion.</a></li>
 </ul>
 </li>
 </ul>
