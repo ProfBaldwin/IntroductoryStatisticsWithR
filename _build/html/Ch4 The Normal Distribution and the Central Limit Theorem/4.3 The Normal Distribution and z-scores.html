@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4.3. The Normal Distribution and \(z\)-Scores &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch4 The Normal Distribution and the Central Limit Theorem/4.3 The Normal Distribution and z-scores';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -406,19 +437,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-normal-distribution-and-z-scores">
-<h1><span class="section-number">4.3. </span>The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores<a class="headerlink" href="#the-normal-distribution-and-z-scores" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.3. </span>The Normal Distribution and <span class="math notranslate nohighlight">\(z\)</span>-Scores<a class="headerlink" href="#the-normal-distribution-and-z-scores" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Use <span class="math notranslate nohighlight">\(z\)</span>-scores to find probabilities for non-standard normal distributions.</p></li>
 <li><p>Use <span class="math notranslate nohighlight">\(z\)</span>-scores to find quantiles for non-standard normal distributions.</p></li>
 </ul>
 </section>
 <section id="finding-probability-given-an-x-value-by-computing-the-z-score">
-<h2>Finding Probability Given an <span class="math notranslate nohighlight">\(x\)</span>-value by Computing the <span class="math notranslate nohighlight">\(z\)</span>-score<a class="headerlink" href="#finding-probability-given-an-x-value-by-computing-the-z-score" title="Permalink to this headline">#</a></h2>
+<h2>Finding Probability Given an <span class="math notranslate nohighlight">\(x\)</span>-value by Computing the <span class="math notranslate nohighlight">\(z\)</span>-score<a class="headerlink" href="#finding-probability-given-an-x-value-by-computing-the-z-score" title="Link to this heading">#</a></h2>
 <p>In the last section, we learned how to find probabilities for the standard normal distribution, <span class="math notranslate nohighlight">\(Z \sim N(0, 1)\)</span>. To find probabilities generally for a non-standard normal distribution, <span class="math notranslate nohighlight">\(X \sim N(\mu, \sigma)\)</span>, we first convert the <span class="math notranslate nohighlight">\(x\)</span>-value of interest into a <strong><span class="math notranslate nohighlight">\(z\)</span>-score</strong>.</p>
 <p>The <span class="math notranslate nohighlight">\(z\)</span>-score of an <span class="math notranslate nohighlight">\(x\)</span>-value is how many standard deviations the <span class="math notranslate nohighlight">\(x\)</span>-value is away from the mean and in which direction. For example, consider <span class="math notranslate nohighlight">\(X \sim N(5, 2)\)</span>, the normal distribution with mean <span class="math notranslate nohighlight">\(\mu = 5\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma = 2\)</span>. Then <span class="math notranslate nohighlight">\(x = 11\)</span> is three standard deviations above (or to the right of) the mean since</p>
 <div class="math notranslate nohighlight">
@@ -436,12 +467,12 @@ document.write(`
 <figure class="align-default" id="pnorm-zscore">
 <a class="reference internal image-reference" href="../_images/pnorm_zscore.png"><img alt="An arrow labeled z = (x - mu)/sigma points from &quot;x&quot; to &quot;z&quot;, then another arrow labeled pnorm(q) points from &quot;z&quot; to &quot;Probability&quot;." src="../_images/pnorm_zscore.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.1 </span><span class="caption-text">To find the probability associated with an <span class="math notranslate nohighlight">\(x\)</span>-value in a non-standard normal distribution, first tranform the problem to be over the standard normal distribution by finding the <span class="math notranslate nohighlight">\(z\)</span>-score using the formula <span class="math notranslate nohighlight">\(z = \frac{x - \mu}{\sigma}\)</span>, then use the <code>pnorm</code> function to compute the probability.</span><a class="headerlink" href="#pnorm-zscore" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.1 </span><span class="caption-text">To find the probability associated with an <span class="math notranslate nohighlight">\(x\)</span>-value in a non-standard normal distribution, first tranform the problem to be over the standard normal distribution by finding the <span class="math notranslate nohighlight">\(z\)</span>-score using the formula <span class="math notranslate nohighlight">\(z = \frac{x - \mu}{\sigma}\)</span>, then use the <code>pnorm</code> function to compute the probability.</span><a class="headerlink" href="#pnorm-zscore" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
 <section id="example-4-2-1">
-<h3>Example 4.2.1<a class="headerlink" href="#example-4-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.2.1<a class="headerlink" href="#example-4-2-1" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(X \sim N(15, 2.4)\)</span>.</p>
 <ol class="arabic simple">
 <li><p>Find <span class="math notranslate nohighlight">\(P(X &lt; 13.5)\)</span>.</p></li>
@@ -449,10 +480,10 @@ document.write(`
 <li><p>Find <span class="math notranslate nohighlight">\(P(12.4 &lt; X &lt; 19.5)\)</span>.</p></li>
 </ol>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <p>Recall that <span class="math notranslate nohighlight">\(X \sim N(15, 2.4)\)</span> means that <span class="math notranslate nohighlight">\(X\)</span> is a normally distributed random variable with mean <span class="math notranslate nohighlight">\(\mu = 15\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma = 2.4\)</span>.</p>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <p>To find <span class="math notranslate nohighlight">\(P(X &lt; 13.5)\)</span>, we first need to calculate the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(x = 13.5\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ z = \frac{x - \mu}{\sigma} = \frac{13.5 - 15}{2.4} = -0.625. \]</div>
@@ -460,13 +491,13 @@ document.write(`
 <figure class="align-default" id="stdnormal-ex11">
 <a class="reference internal image-reference" href="../_images/stdnormal_ex11.png"><img alt="The area under the standard normal distribution and to the left of z = -0.625 is shaded. The shaded area is labeled P(Z &lt; -0.625)." src="../_images/stdnormal_ex11.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.2 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(Z &lt; -0.625)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.2 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(Z &lt; -0.625)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that we have converted the probability from a non-standard normal distribution to the standard normal distribution, we can use R to find the probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-0.625</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-0.625</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -476,7 +507,7 @@ document.write(`
 <p>Thus, <span class="math notranslate nohighlight">\(P(X &lt; 13.5) = P(Z &lt; -0.625) = 0.26599\)</span>.</p>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <p>For this part, we want to find <span class="math notranslate nohighlight">\(P(X &gt; 16.1)\)</span>. To calculate this probability, we first find the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(x = 16.1\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ z = \frac{x - \mu}{\sigma} = \frac{16.1 - 15}{2.4} = 0.45833. \]</div>
@@ -484,13 +515,13 @@ document.write(`
 <figure class="align-default" id="stdnormal-ex12">
 <a class="reference internal image-reference" href="../_images/stdnormal_ex12.png"><img alt="The area under the standard normal distribution and to the right of z = 0.45833 is shaded. The shaded area is labeled P(Z &gt; 0.45833)." src="../_images/stdnormal_ex12.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.3 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(Z &gt; 0.45833)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.3 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(Z &gt; 0.45833)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Next, we use R to calculate the probability. Recall that the <code>pnorm</code> function only gives the area to the left of the input <span class="math notranslate nohighlight">\(z\)</span>-value. To find the area to the right of a <span class="math notranslate nohighlight">\(z\)</span>-value, we start with the total area under the standard normal distribution (which is <span class="math notranslate nohighlight">\(1 = 100\%\)</span>), then subtract away the part that we don’t want, which is the area left of the <span class="math notranslate nohighlight">\(z\)</span>-value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">0.45833</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.45833</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -500,7 +531,7 @@ document.write(`
 <p>We find that <span class="math notranslate nohighlight">\(P(X &gt; 16.1) = P(Z &gt; 0.45833) = 0.32336\)</span>.</p>
 </section>
 <section id="part-3">
-<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h5>
 <p>We want to find <span class="math notranslate nohighlight">\(P(12.4 &lt; X &lt; 19.5)\)</span>. We need to find two <span class="math notranslate nohighlight">\(z\)</span>-scores: one for <span class="math notranslate nohighlight">\(x = 12.4\)</span>, and one for <span class="math notranslate nohighlight">\(x = 17.5\)</span>. The <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(x = 12.4\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[ z = \frac{x - \mu}{\sigma} = \frac{12.4 - 15}{2.4} = -1.08333. \]</div>
@@ -511,13 +542,13 @@ document.write(`
 <figure class="align-default" id="stdnormal-ex13">
 <a class="reference internal image-reference" href="../_images/stdnormal_ex13.png"><img alt="The area under the standard normal distribution between z = -1.08333 and z = 1.875 is shaded. The shaded area is labeled P(-1.08333 &lt; Z &lt; 1.875)." src="../_images/stdnormal_ex13.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.4 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(-1.08333 &lt; Z &lt; 1.875)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.4 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(-1.08333 &lt; Z &lt; 1.875)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Next, we’ll use R to calculate the probability. Since we want the probability between two <span class="math notranslate nohighlight">\(z\)</span>-values, recall that we first calculate all the area to the left of the larger <span class="math notranslate nohighlight">\(z\)</span>-value, then subtract the excess area to the left of the smaller <span class="math notranslate nohighlight">\(z\)</span>-value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">1.875</span><span class="p">)</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-1.08333</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.875</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1.08333</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -530,7 +561,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-4-2-2">
-<h3>Example 4.2.2<a class="headerlink" href="#example-4-2-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.2.2<a class="headerlink" href="#example-4-2-2" title="Link to this heading">#</a></h3>
 <p>The heights of adult men in the United States are normally distributed with a mean of 70 inches (5 ft, 10 in) and a standard deviation of 4 inches. If you choose an adult male from the U.S. population at random, what is the probability that:</p>
 <ol class="arabic simple">
 <li><p>he will be shorter than <span class="math notranslate nohighlight">\(60\)</span> inches (<span class="math notranslate nohighlight">\(5\)</span> ft)?</p></li>
@@ -538,10 +569,10 @@ document.write(`
 <li><p>he will be between <span class="math notranslate nohighlight">\(60\)</span> inches and <span class="math notranslate nohighlight">\(72\)</span> inches tall?</p></li>
 </ol>
 <section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>The distribution of the heights of adult males is <span class="math notranslate nohighlight">\(X \sim N(70, 4)\)</span>. This is a non-standard normal distribution. In each case, to find the probabilities, we will first convert to the standard normal distribution by finding the appropriate <span class="math notranslate nohighlight">\(z\)</span>-scores.</p>
 <section id="id2">
-<h5>Part 1<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
 <p>We want <span class="math notranslate nohighlight">\(P(X &lt; 60)\)</span>. To find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with <span class="math notranslate nohighlight">\(x = 60\)</span>, we calculate</p>
 <div class="math notranslate nohighlight">
 \[ z = \frac{x - \mu}{\sigma} = \frac{60 - 70}{4} = -2.5. \]</div>
@@ -549,13 +580,13 @@ document.write(`
 <figure class="align-default" id="stdnormal-ex8">
 <a class="reference internal image-reference" href="../_images/stdnormal_ex8.png"><img alt="The area under the standard normal distribution and to the left of z = -2.5 is shaded. The shaded area is labeled P(Z &lt; -2.5)." src="../_images/stdnormal_ex8.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.5 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(Z &lt; -2.5)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.5 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(Z &lt; -2.5)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that we have converted the probability from a non-standard normal distribution to the standard normal distribution, we can use R to find the probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.5</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-2.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -565,7 +596,7 @@ document.write(`
 <p>Then <span class="math notranslate nohighlight">\(P(X &lt; 60) = P(Z &lt; -2.5) = 0.00621\)</span>. In other words, there is only a <span class="math notranslate nohighlight">\(0.621\%\)</span> chance that the adult male you randomly choose from the population is less than <span class="math notranslate nohighlight">\(5\)</span> feet tall.</p>
 </section>
 <section id="id3">
-<h5>Part 2<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
 <p>We want <span class="math notranslate nohighlight">\(P(X &gt; 72)\)</span>. To find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with <span class="math notranslate nohighlight">\(x = 72\)</span>, we calculate</p>
 <div class="math notranslate nohighlight">
 \[ z = \frac{x - \mu}{\sigma} = \frac{72 - 70}{4} = 0.5. \]</div>
@@ -573,13 +604,13 @@ document.write(`
 <figure class="align-default" id="stdnormal-ex9">
 <a class="reference internal image-reference" href="../_images/stdnormal_ex9.png"><img alt="The area under the standard normal distribution and to the right of z = 0.5 is shaded. The shaded area is labeled P(Z &gt; 0.5)." src="../_images/stdnormal_ex9.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.6 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(Z &gt; 0.5)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.6 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(Z &gt; 0.5)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that we have converted the probability from a non-standard normal distribution to the standard normal distribution, we can use R to find the probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -589,20 +620,20 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(x &gt; 72) = P(z &gt; 0.5) = 0.30854\)</span>. In other words, there is a <span class="math notranslate nohighlight">\(30.854\%\)</span> chance that the adult male you randomly choose from the population is more than <span class="math notranslate nohighlight">\(6\)</span> feet tall.</p>
 </section>
 <section id="id4">
-<h5>Part 3<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <p>We want <span class="math notranslate nohighlight">\(P(60 &lt; X &lt; 72)\)</span>. We need a <span class="math notranslate nohighlight">\(z\)</span>-score for both <span class="math notranslate nohighlight">\(x = 60\)</span> and <span class="math notranslate nohighlight">\(x = 72\)</span>. Fortunately, we’ve already done the hard work. We already found the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(x = 60\)</span> is <span class="math notranslate nohighlight">\(z = -2.5\)</span> in part 1, and we found the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(x = 72\)</span> is <span class="math notranslate nohighlight">\(z = 0.5\)</span> in part 2. This means that</p>
 <div class="math notranslate nohighlight">
 \[ P(60 &lt; X &lt; 72) = P(-2.5 &lt; Z &lt; 0.5). \]</div>
 <figure class="align-default" id="stdnormal-ex10">
 <a class="reference internal image-reference" href="../_images/stdnormal_ex10.png"><img alt="The area under the standard normal distribution between z = -2.5 and z = 0.5 is shaded. The shaded area is labeled P(-2.5 &lt; Z &lt; 0.5)." src="../_images/stdnormal_ex10.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.7 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(-2.5 &lt; Z &lt; 0.5)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.7 </span><span class="caption-text">The standard normal distribution with the area equal to <span class="math notranslate nohighlight">\(P(-2.5 &lt; Z &lt; 0.5)\)</span> shaded.</span><a class="headerlink" href="#stdnormal-ex10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that we have converted the probability from a non-standard normal distribution to the standard normal distribution, we can use R to find the probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.5</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-2.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -616,7 +647,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="finding-an-x-value-given-probability-by-computing-the-z-score">
-<h2>Finding an <span class="math notranslate nohighlight">\(x\)</span>-value Given Probability by Computing the <span class="math notranslate nohighlight">\(z\)</span>-score<a class="headerlink" href="#finding-an-x-value-given-probability-by-computing-the-z-score" title="Permalink to this headline">#</a></h2>
+<h2>Finding an <span class="math notranslate nohighlight">\(x\)</span>-value Given Probability by Computing the <span class="math notranslate nohighlight">\(z\)</span>-score<a class="headerlink" href="#finding-an-x-value-given-probability-by-computing-the-z-score" title="Link to this heading">#</a></h2>
 <p>In the above examples, we saw how to find a probability involving a non-standard normal distribution. Next, we will learn how to do the inverse: given a probability, we want to find a corresponding <span class="math notranslate nohighlight">\(x\)</span>-value in a non-standard normal distribution. For example, we might want to find <span class="math notranslate nohighlight">\(x\)</span> so that <span class="math notranslate nohighlight">\(P(X &lt; x)\)</span> is equal to a certain probability.</p>
 <p>To do so, we first use the <code>qnorm</code> function (which is the inverse of the <code>pnorm</code> function) to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with our initial probability. Once we have the <span class="math notranslate nohighlight">\(z\)</span>-score, we use the formula</p>
 <div class="math notranslate nohighlight">
@@ -625,32 +656,32 @@ document.write(`
 <figure class="align-default" id="pnorm-qnorm-zscore">
 <a class="reference internal image-reference" href="../_images/pnorm_qnorm_zscore.png"><img alt="At the top of the image, an arrow labeled z = (x - mu)/sigma points from &quot;x&quot; to &quot;z&quot;, then another arrow labeled pnorm(q) points from &quot;z&quot; to &quot;Probability&quot;. At the bottom of the image, an arrow labeled qnorm(p) points from &quot;probability&quot; to &quot;z&quot;, then another arrow labeled x = mu + z*sigma points from &quot;z&quot; to &quot;x&quot;." src="../_images/pnorm_qnorm_zscore.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.8 </span><span class="caption-text">The approach we take to solve a problem involving a non-standard normal distribution depends on whether we know an <span class="math notranslate nohighlight">\(x\)</span>-value and want to find an associated probability, or we know a probability and want to find an associated <span class="math notranslate nohighlight">\(x\)</span>-value. But in either case, we must find a <span class="math notranslate nohighlight">\(z\)</span>-score as an intermediary step.</span><a class="headerlink" href="#pnorm-qnorm-zscore" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.8 </span><span class="caption-text">The approach we take to solve a problem involving a non-standard normal distribution depends on whether we know an <span class="math notranslate nohighlight">\(x\)</span>-value and want to find an associated probability, or we know a probability and want to find an associated <span class="math notranslate nohighlight">\(x\)</span>-value. But in either case, we must find a <span class="math notranslate nohighlight">\(z\)</span>-score as an intermediary step.</span><a class="headerlink" href="#pnorm-qnorm-zscore" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
 <section id="example-4-2-3">
-<h3>Example 4.2.3<a class="headerlink" href="#example-4-2-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.2.3<a class="headerlink" href="#example-4-2-3" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(X \sim N(5, 0.6)\)</span>.</p>
 <ol class="arabic simple">
 <li><p>Find <span class="math notranslate nohighlight">\(a\)</span> so that <span class="math notranslate nohighlight">\(P(X &lt; a) = 0.75\)</span>.</p></li>
 <li><p>Find <span class="math notranslate nohighlight">\(b\)</span> so that <span class="math notranslate nohighlight">\(P(X &gt; b) = 0.9\)</span>.</p></li>
 </ol>
 <section id="id5">
-<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p>First, observe that the random variable <span class="math notranslate nohighlight">\(X\)</span> is normally distributed with mean <span class="math notranslate nohighlight">\(\mu = 5\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma = 0.6\)</span>.</p>
 <section id="id6">
-<h5>Part 1<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
 <figure class="align-default" id="normal-ex6">
 <a class="reference internal image-reference" href="../_images/normal_ex6.png"><img alt="A normal distribution with mean 5 is shown. The area under the curve to the left of an unknown value a is shaded, and the shaded region is labeled P(X &lt; a) = 0.75." src="../_images/normal_ex6.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.9 </span><span class="caption-text">The distribution <span class="math notranslate nohighlight">\(N(5, 0.6)\)</span> is shown. We want to find the value <span class="math notranslate nohighlight">\(a\)</span> so that <span class="math notranslate nohighlight">\(P(X &lt; a) = 0.75\)</span>.</span><a class="headerlink" href="#normal-ex6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.9 </span><span class="caption-text">The distribution <span class="math notranslate nohighlight">\(N(5, 0.6)\)</span> is shown. We want to find the value <span class="math notranslate nohighlight">\(a\)</span> so that <span class="math notranslate nohighlight">\(P(X &lt; a) = 0.75\)</span>.</span><a class="headerlink" href="#normal-ex6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We want to find <span class="math notranslate nohighlight">\(a\)</span> so that <span class="math notranslate nohighlight">\(P(X &lt; a) = 0.75\)</span>. Note that we are given a probability (<span class="math notranslate nohighlight">\(0.75\)</span>), and we want to find a particular <span class="math notranslate nohighlight">\(x\)</span>-value in the distribution (<span class="math notranslate nohighlight">\(x = a\)</span>). To do this, we first need to use the <code>qnorm</code> function to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with the probability:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.75</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -664,18 +695,18 @@ document.write(`
 <p>Thus, <span class="math notranslate nohighlight">\(P(X &lt; 5.40469) = 0.75\)</span>.</p>
 </section>
 <section id="id7">
-<h5>Part 2<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
 <figure class="align-default" id="normal-ex7">
 <a class="reference internal image-reference" href="../_images/normal_ex7.png"><img alt="A normal distribution with mean 5 is shown. The area under the curve to the right of an unknown value b is shaded, and the shaded region is labeled P(X &gt; b) = 0.9." src="../_images/normal_ex7.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.10 </span><span class="caption-text">The distribution <span class="math notranslate nohighlight">\(N(5, 0.6)\)</span> is shown. We want to find the value of <span class="math notranslate nohighlight">\(b\)</span> so that <span class="math notranslate nohighlight">\(P(X &gt; b) = 0.9\)</span>.</span><a class="headerlink" href="#normal-ex7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.10 </span><span class="caption-text">The distribution <span class="math notranslate nohighlight">\(N(5, 0.6)\)</span> is shown. We want to find the value of <span class="math notranslate nohighlight">\(b\)</span> so that <span class="math notranslate nohighlight">\(P(X &gt; b) = 0.9\)</span>.</span><a class="headerlink" href="#normal-ex7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We want to find the value of <span class="math notranslate nohighlight">\(b\)</span> so that <span class="math notranslate nohighlight">\(P(X &gt; b) = 0.9\)</span>. Again, we are given a probability (<span class="math notranslate nohighlight">\(0.9\)</span>), and we need to find an <span class="math notranslate nohighlight">\(x\)</span>-value associated with that probability (<span class="math notranslate nohighlight">\(x = b\)</span>).</p>
 <p>We will begin by using the <code>qnorm</code> function to find the <span class="math notranslate nohighlight">\(z\)</span>-value associated with the probability <span class="math notranslate nohighlight">\(0.9\)</span>. However, recall that the <code>qnorm</code> function assumes that the input represents a <em>left</em>-tailed probability. The probability of <span class="math notranslate nohighlight">\(0.9\)</span> in this example is a <em>right</em>-tailed probability. To use the <code>qnorm</code> function, we first observe that since the probability to the right of <span class="math notranslate nohighlight">\(b\)</span> is <span class="math notranslate nohighlight">\(P(X &gt; b) = 0.9\)</span>, the probability to the left of <span class="math notranslate nohighlight">\(b\)</span> is <span class="math notranslate nohighlight">\(P(X &lt; b) = 1 - P(X &gt; b) = 1 - 0.9\)</span>. With this observation, we are able to calculate the <span class="math notranslate nohighlight">\(z\)</span>-score:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">-</span> <span class="m">0.9</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -692,26 +723,26 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-4-2-4">
-<h3>Example 4.2.4<a class="headerlink" href="#example-4-2-4" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.2.4<a class="headerlink" href="#example-4-2-4" title="Link to this heading">#</a></h3>
 <p>Scores on a calculus test are normally distributed with a mean score of <span class="math notranslate nohighlight">\(73\)</span> and a standard deviation of <span class="math notranslate nohighlight">\(9\)</span>.</p>
 <ol class="arabic simple">
 <li><p>Find the <span class="math notranslate nohighlight">\(80\)</span>th percentile.</p></li>
 <li><p>The highest <span class="math notranslate nohighlight">\(32\%\)</span> of scores are higher than which score?</p></li>
 </ol>
 <section id="id8">
-<h4>Solution<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <section id="id9">
-<h5>Part 1<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id9" title="Link to this heading">#</a></h5>
 <figure class="align-default" id="normal-ex4">
 <a class="reference internal image-reference" href="../_images/normal_ex4.png"><img alt="A normal distribution with mean 73 is shown. The area under the curve to the left of an unknown value x is shaded, and the shaded region is labeled P(X &lt; x) = 0.85." src="../_images/normal_ex4.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.11 </span><span class="caption-text">The distribution <span class="math notranslate nohighlight">\(N(73, 9)\)</span> is shown. We want to find the <span class="math notranslate nohighlight">\(x\)</span>-value that is the <span class="math notranslate nohighlight">\(85\)</span>th percentile.</span><a class="headerlink" href="#normal-ex4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.11 </span><span class="caption-text">The distribution <span class="math notranslate nohighlight">\(N(73, 9)\)</span> is shown. We want to find the <span class="math notranslate nohighlight">\(x\)</span>-value that is the <span class="math notranslate nohighlight">\(85\)</span>th percentile.</span><a class="headerlink" href="#normal-ex4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In this example, the <span class="math notranslate nohighlight">\(85\)</span>th percentile is the test score that is larger than <span class="math notranslate nohighlight">\(85\%\)</span> of all test scores. Note that we are given a probability (<span class="math notranslate nohighlight">\(85\% = 0.85\)</span>), and we need to find a particular <span class="math notranslate nohighlight">\(x\)</span>-value (the test score that is the <span class="math notranslate nohighlight">\(85\)</span>th percentile). We will first use the <code>qnorm</code> function to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with the given probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">0.85</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.85</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -724,17 +755,17 @@ document.write(`
 <p>So a test score of <span class="math notranslate nohighlight">\(x = 82.32790\)</span> is greater than <span class="math notranslate nohighlight">\(85\%\)</span> of scores on the calculus test.</p>
 </section>
 <section id="id10">
-<h5>Part 2<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id10" title="Link to this heading">#</a></h5>
 <figure class="align-default" id="normal-ex5">
 <a class="reference internal image-reference" href="../_images/normal_ex5.png"><img alt="A normal distribution with mean 73 is shown. The area under the curve to the right of an unknown value x is shaded, and the shaded region is labeled P(X &gt; x) = 0.36." src="../_images/normal_ex5.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.3.12 </span><span class="caption-text">The distribution <span class="math notranslate nohighlight">\(N(73, 9)\)</span> is shown. We want to find the <span class="math notranslate nohighlight">\(x\)</span>-value with <span class="math notranslate nohighlight">\(36\%\)</span> of test scores higher than it.</span><a class="headerlink" href="#normal-ex5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3.12 </span><span class="caption-text">The distribution <span class="math notranslate nohighlight">\(N(73, 9)\)</span> is shown. We want to find the <span class="math notranslate nohighlight">\(x\)</span>-value with <span class="math notranslate nohighlight">\(36\%\)</span> of test scores higher than it.</span><a class="headerlink" href="#normal-ex5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Again, we are given a probability (<span class="math notranslate nohighlight">\(32\% = 0.32\)</span>), and we want to find an <span class="math notranslate nohighlight">\(x\)</span>-value (the test score with <span class="math notranslate nohighlight">\(32\%\)</span> of scores higher than it). We can use the <code>qnorm</code> function to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with the probability. However, the probability we are given is located in the <em>upper</em> tail of the distribution. The <code>qnorm</code> function expects probability in the <em>lower</em> tail of the distribution. But this is easy to calculate. Since the probability in the upper tail of the distribution is <span class="math notranslate nohighlight">\(0.32\)</span>, the area in the lower tail of the distribution is <span class="math notranslate nohighlight">\(1 - 0.32\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">-</span> <span class="m">0.32</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.32</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -776,11 +807,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="4.2%20The%20Standard%20Normal%20Distribution.html"
@@ -800,10 +830,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -811,6 +838,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -880,6 +908,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -906,8 +935,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

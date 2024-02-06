@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.4. Tables and Charts &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch1 Sampling and Data/1.4 Tables and Charts';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -419,30 +450,26 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tables-and-charts">
-<h1><span class="section-number">1.4. </span>Tables and Charts<a class="headerlink" href="#tables-and-charts" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1.4. </span>Tables and Charts<a class="headerlink" href="#tables-and-charts" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Create and interpret frequency tables.</p></li>
 <li><p>Create and interpret bar charts, histograms, and pie charts.</p></li>
 </ul>
 </section>
 <section id="frequency">
-<h2>Frequency<a class="headerlink" href="#frequency" title="Permalink to this headline">#</a></h2>
+<h2>Frequency<a class="headerlink" href="#frequency" title="Link to this heading">#</a></h2>
 <p>Once you have a set of data, you will need to organize it so that you can analyze how frequently each datum occurs in the set. The <strong>frequency</strong> of a value is the number of times the value occurs in the data.</p>
 <p>For example, imagine twenty students in an organic chemistry class obtain the following grades:</p>
 <center>C, A, F, B, F, C, A, A, B, B, C, C, B, A, D, A, B, B, B, C</center>
 <br/>
 <p>By counting the number of times each value occurs, we can construct a <strong>frequency table</strong> for the data, shown in <a class="reference internal" href="#grade-frequency-table"><span class="std std-numref">Table 1.4.1</span></a>.</p>
 <table class="table" id="grade-frequency-table">
-<caption><span class="caption-number">Table 1.4.1 </span><span class="caption-text">The frequency with which each grade is obtained in an organic chemistry class. The frequency of a value is the number of times the value occurs in a data set.</span><a class="headerlink" href="#grade-frequency-table" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<caption><span class="caption-number">Table 1.4.1 </span><span class="caption-text">The frequency with which each grade is obtained in an organic chemistry class. The frequency of a value is the number of times the value occurs in a data set.</span><a class="headerlink" href="#grade-frequency-table" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Grade</p></th>
 <th class="head"><p>Frequency</p></th>
@@ -473,12 +500,7 @@ document.write(`
 <p>It is sometimes more useful to know how many times a particular value occurs in comparison to the total number of values in the data. (A surgeon who has performed 99 surgeries out of 100 successfully may be a good surgeon. A surgeon who has performed 99 surgeries out of 1,000 successfully may not be a good surgeon.)  A <strong>relative frequency</strong> is the ratio (fraction or proportion) of the number of times a value of the data occurs to the total number of outcomes. To find the relative frequencies, divide each frequency by the total number values. Relative frequencies can be written as fractions, percents, or decimals.</p>
 <p>For the example of the twenty-student organic chemistry class above, the <strong>relative frequency table</strong> is provided in <a class="reference internal" href="#grade-rf-table"><span class="std std-numref">Table 1.4.2</span></a>.</p>
 <table class="table" id="grade-rf-table">
-<caption><span class="caption-number">Table 1.4.2 </span><span class="caption-text">The frequency and relative frequency with which each grade is obtained in an organic chemistry class. The relative frequency for each value is obtained by dividing the frequency of the value by the total size of the data set.</span><a class="headerlink" href="#grade-rf-table" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
+<caption><span class="caption-number">Table 1.4.2 </span><span class="caption-text">The frequency and relative frequency with which each grade is obtained in an organic chemistry class. The relative frequency for each value is obtained by dividing the frequency of the value by the total size of the data set.</span><a class="headerlink" href="#grade-rf-table" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Grade</p></th>
 <th class="head"><p>Frequency</p></th>
@@ -515,12 +537,7 @@ document.write(`
 <p>Note that the sum of the relative frequencies should always add up to 1.00 or 100% since the table accounts for all (that is, 100%) of the data values.</p>
 <p>We could also <strong>group</strong> data and calculate the frequency and relative frequency for each group. For example, <a class="reference internal" href="#soccer-height-table"><span class="std std-numref">Table 1.4.3</span></a> represents the heights, in inches, of a sample of 150 male semiprofessional soccer players.</p>
 <table class="table" id="soccer-height-table">
-<caption><span class="caption-number">Table 1.4.3 </span><span class="caption-text">The frequency and relative frequency of soccer player heights.</span><a class="headerlink" href="#soccer-height-table" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
+<caption><span class="caption-number">Table 1.4.3 </span><span class="caption-text">The frequency and relative frequency of soccer player heights.</span><a class="headerlink" href="#soccer-height-table" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Height (Inches)</p></th>
 <th class="head"><p>Frequency</p></th>
@@ -569,15 +586,10 @@ document.write(`
 <p>So, for example, a soccer player in the sample that is 64.5 inches tall will be counted in the group of athletes with heights between 64-66 inches.</p>
 <hr class="docutils" />
 <section id="example-1-4-1">
-<h3>Example 1.4.1<a class="headerlink" href="#example-1-4-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.4.1<a class="headerlink" href="#example-1-4-1" title="Link to this heading">#</a></h3>
 <p>Adrian asked 75 instructors whether they preferred teaching face-to-face, online, or hybrid. His results can be found in the incomplete frequency table below. Complete the table.</p>
 <table class="table" id="modality-frequency-table-incomplete">
-<caption><span class="caption-number">Table 1.4.4 </span><span class="caption-text">An incomplete frequency table showing what types of classes 75 instructors prefer to teach.</span><a class="headerlink" href="#modality-frequency-table-incomplete" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
+<caption><span class="caption-number">Table 1.4.4 </span><span class="caption-text">An incomplete frequency table showing what types of classes 75 instructors prefer to teach.</span><a class="headerlink" href="#modality-frequency-table-incomplete" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Type of Class</p></th>
 <th class="head"><p>Frequency</p></th>
@@ -600,7 +612,7 @@ document.write(`
 </tbody>
 </table>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <p>Let’s first find the missing frequency. We know there are 75 total instructors in the sample, and each instructor is represented in exactly one of the three categories. So all the frequencies added together, including the missing frequency (let’s call it <span class="math notranslate nohighlight">\(x\)</span>), should be 75.</p>
 <div class="math notranslate nohighlight">
 \[ 42 + x + 7 = 75. \]</div>
@@ -627,12 +639,7 @@ document.write(`
 </div>
 <p><a class="reference internal" href="#modality-frequency-table-complete"><span class="std std-numref">Table 1.4.5</span></a> is the completed table. The values we added to the table are in bold, and we rounded the relative frequencies to four decimal places.</p>
 <table class="table" id="modality-frequency-table-complete">
-<caption><span class="caption-number">Table 1.4.5 </span><span class="caption-text">A completed frequency table showing what types of classes 75 instructors prefer to teach.</span><a class="headerlink" href="#modality-frequency-table-complete" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
+<caption><span class="caption-number">Table 1.4.5 </span><span class="caption-text">A completed frequency table showing what types of classes 75 instructors prefer to teach.</span><a class="headerlink" href="#modality-frequency-table-complete" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Type of Class</p></th>
 <th class="head"><p>Frequency</p></th>
@@ -659,11 +666,11 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="bar-charts">
-<h2>Bar Charts<a class="headerlink" href="#bar-charts" title="Permalink to this headline">#</a></h2>
+<h2>Bar Charts<a class="headerlink" href="#bar-charts" title="Link to this heading">#</a></h2>
 <p>Once you have organized your data, it can be useful to present the data graphically. For qualitative or categorical data, <strong>Bar charts</strong> or <strong>bar graphs</strong> can be used to visualize the frequency or relative frequency of each category. In a bar chart, each category has a rectangular bar associated with it, where the height of the bar (or the width of the bar, for a horizontal bar chart) represents the frequency or relative frequency of the category. The bars in a bar chart are separated by a small space or gap.</p>
 <hr class="docutils" />
 <section id="example-1-4-2">
-<h3>Example 1.4.2<a class="headerlink" href="#example-1-4-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.4.2<a class="headerlink" href="#example-1-4-2" title="Link to this heading">#</a></h3>
 <p>An elementary school teacher records for one week how many students were absent each day. <a class="reference internal" href="#elementary-attendance-barchart"><span class="std std-numref">Figure 1.4.1</span></a> below summarizes the data she obtained. Use the bar chart to answer the following questions.</p>
 <ol class="arabic simple">
 <li><p>On which day were the most students absent?</p></li>
@@ -673,21 +680,21 @@ document.write(`
 <figure class="align-default" id="elementary-attendance-barchart">
 <a class="reference internal image-reference" href="../_images/elementary_attendance_barchart.png"><img alt="A bar chart illustrating the number of absences each in an elementary school class each day for one week. Monday, 5. Tuesday, 2. Wednesday, 3. Thursday, 4. Friday, 6." src="../_images/elementary_attendance_barchart.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.1 </span><span class="caption-text">A bar chart illustrating the number of absences in an elementary school class each day for one week.</span><a class="headerlink" href="#elementary-attendance-barchart" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.1 </span><span class="caption-text">A bar chart illustrating the number of absences in an elementary school class each day for one week.</span><a class="headerlink" href="#elementary-attendance-barchart" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <p>Friday has the highest bar on the bar chart, so the most students were absent on Friday.</p>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <p>The bar for Wednesday has a height of 3, meaning 3 students were absent on Wednesday.</p>
 </section>
 <section id="part-3">
-<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h5>
 <p>To find what <em>percentage</em> of absences occurred on Tuesday, we must first find what <em>fraction</em> of absences occurrred on Tuesday. Looking at the bar chart, we see that 2 absences occurred on Tuesday. We need to divide this by the total number of absences that occurred during the week. There were 5 absences on Monday, 2 on Tuesday, 3 on Wednesday, 4 on Thursday, and 6 on Friday, for a total of</p>
 <div class="math notranslate nohighlight">
 \[5 + 2 + 3 + 4 + 6 = 20\]</div>
@@ -697,7 +704,7 @@ document.write(`
 <p>Now, to calculate the <em>percentage</em> of absences, we multiply this fraction by 100%.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">2</span><span class="o">/</span><span class="m">20</span> <span class="o">*</span> <span class="m">100</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">2</span><span class="o">/</span><span class="m">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span>
 </pre></div>
 </div>
 </div>
@@ -707,7 +714,7 @@ document.write(`
 <p>So 10% of the week’s absences occurred on Tuesday.</p>
 <hr class="docutils" />
 <p>We can use R to construct a bar chart for us by specifying both the categories of the data and the frequencies (or relative frequencies) of those categories. To do so, we use the <code>barplot</code> function:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Here, <code>height</code> is a list of the heights (the frequencies or relative frequencies) of the bars, and <code>names</code> is the corresponding list of categories that will be used to label the bars. The order of the <code>height</code> list must correspond to the order of the <code>names</code> list so that the bar with the first height is labeled with the first name, the bar with the second height is labeled with the second name, etc.</p>
@@ -716,15 +723,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-1-4-3">
-<h3>Example 1.4.3<a class="headerlink" href="#example-1-4-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.4.3<a class="headerlink" href="#example-1-4-3" title="Link to this heading">#</a></h3>
 <p>The population in Park City is made up of children, working-age adults, and retirees. <a class="reference internal" href="#park-city-population-table"><span class="std std-numref">Table 1.4.6</span></a> shows the three age groups, the number of people in the city in each age group, and the proportion of people in each age group. Construct a bar graph showing the proportions.</p>
 <table class="table" id="park-city-population-table">
-<caption><span class="caption-number">Table 1.4.6 </span><span class="caption-text">Population in Park City by age group.</span><a class="headerlink" href="#park-city-population-table" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
+<caption><span class="caption-number">Table 1.4.6 </span><span class="caption-text">Population in Park City by age group.</span><a class="headerlink" href="#park-city-population-table" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Age Groups</p></th>
 <th class="head"><p>Number of People</p></th>
@@ -751,14 +753,14 @@ document.write(`
 <p><a class="reference internal" href="#park-city-population-table"><span class="std std-numref">Table 1.4.6</span></a> is a relative frequency table even though the table uses different labels for the frequency and relative frequency columns than we saw in the other examples. The frequency column is labeled “Number of People”. The relative frequency column is labeled “Proportion of Population”, and relative frequencies are given in percents instead of fractions or decimals.</p>
 </div>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>In this example, we have three categories of age groups (“Children”, “Working-age adults”, “Retirees”). We are given the frequency of each age group in the “Number of people” column and the relative frequency in the “Proportion of the population” column. We will use R to construct a bar graph of the relative frequencies of each category.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">19.11</span><span class="p">,</span> <span class="m">43.37</span><span class="p">,</span> <span class="m">37.52</span><span class="p">)</span>
-<span class="n">age_groups</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Children&quot;</span><span class="p">,</span> <span class="s">&quot;Working-age Adults&quot;</span><span class="p">,</span> <span class="s">&quot;Retirees&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">19.11</span><span class="p">,</span><span class="w"> </span><span class="m">43.37</span><span class="p">,</span><span class="w"> </span><span class="m">37.52</span><span class="p">)</span>
+<span class="n">age_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Children&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Working-age Adults&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Retirees&quot;</span><span class="p">)</span>
 
-<span class="nf">barplot</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="n">proportions</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">age_groups</span><span class="p">)</span>
+<span class="nf">barplot</span><span class="p">(</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proportions</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age_groups</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -766,7 +768,7 @@ document.write(`
 <figure class="align-default" id="park-city-barchart">
 <a class="reference internal image-reference" href="../_images/park_city_barchart.png"><img alt="A bar chart of the proportion of people in each age group in Park City." src="../_images/park_city_barchart.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.2 </span><span class="caption-text">A bar chart illustrating the proportion of each age group relative to the population of Park City.</span><a class="headerlink" href="#park-city-barchart" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.2 </span><span class="caption-text">A bar chart illustrating the proportion of each age group relative to the population of Park City.</span><a class="headerlink" href="#park-city-barchart" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -806,15 +808,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-1-4-4">
-<h3>Example 1.4.4<a class="headerlink" href="#example-1-4-4" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.4.4<a class="headerlink" href="#example-1-4-4" title="Link to this heading">#</a></h3>
 <p>The columns in the table below contain: the race or ethnicity of students in U.S. Public Schools for the class of 2011, percentages for the Advanced Placement examine population for that class, and percentages for the overall student population. Create a bar graph with the student race or ethnicity (qualitative data) on the x-axis, and the Advanced Placement examinee population percentages on the y-axis.</p>
 <table class="table" id="ap-examinee-table">
-<caption><span class="caption-number">Table 1.4.7 </span><span class="caption-text">Race/Ethnicity of AP Examinee Population vs. Overall Student Population. Note a key is provided which assigns a letter to each race/ethnicity. This makes it easier to reference the long race/ethnicity names.</span><a class="headerlink" href="#ap-examinee-table" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
+<caption><span class="caption-number">Table 1.4.7 </span><span class="caption-text">Race/Ethnicity of AP Examinee Population vs. Overall Student Population. Note a key is provided which assigns a letter to each race/ethnicity. This makes it easier to reference the long race/ethnicity names.</span><a class="headerlink" href="#ap-examinee-table" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Race/Ethnicity</p></th>
 <th class="head"><p>AP Examinee Population</p></th>
@@ -853,14 +850,14 @@ document.write(`
 <p><a class="reference internal" href="#ap-examinee-table"><span class="std std-numref">Table 1.4.7</span></a> does not include a frequency column. Instead, it provides the relative frequencies (as percents) of two different populations: the AP examinee population and the overall student population.</p>
 </div>
 <section id="id3">
-<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>This table provides us with the relative frequecy of each ethnicity in two different populations: the population of all AP examinees and the overall student population. In this case, we will only use the data in the “AP Examinee Population” column to construct our bar chart; we will not use the “Overall Student Population” data in this example.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">APproportion</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">10.3</span><span class="p">,</span> <span class="m">9.0</span><span class="p">,</span> <span class="m">17.0</span><span class="p">,</span> <span class="m">0.6</span><span class="p">,</span> <span class="m">57.1</span><span class="p">,</span> <span class="m">6.0</span><span class="p">)</span>
-<span class="n">race</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="s">&quot;D&quot;</span><span class="p">,</span> <span class="s">&quot;E&quot;</span><span class="p">,</span> <span class="s">&quot;F&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">APproportion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10.3</span><span class="p">,</span><span class="w"> </span><span class="m">9.0</span><span class="p">,</span><span class="w"> </span><span class="m">17.0</span><span class="p">,</span><span class="w"> </span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="m">57.1</span><span class="p">,</span><span class="w"> </span><span class="m">6.0</span><span class="p">)</span>
+<span class="n">race</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;E&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">)</span>
 
-<span class="nf">barplot</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="n">APproportion</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">race</span><span class="p">)</span>
+<span class="nf">barplot</span><span class="p">(</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APproportion</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">race</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -868,7 +865,7 @@ document.write(`
 <figure class="align-default" id="ap-examinees-barchart">
 <a class="reference internal image-reference" href="../_images/ap_examinees_barchart.png"><img alt="A bar chart of the proportion of each race/ethnicity in the AP examinee population." src="../_images/ap_examinees_barchart.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.3 </span><span class="caption-text">A bar chart illustrating the proportion of each race/ethnicity in the AP examinee population.</span><a class="headerlink" href="#ap-examinees-barchart" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.3 </span><span class="caption-text">A bar chart illustrating the proportion of each race/ethnicity in the AP examinee population.</span><a class="headerlink" href="#ap-examinees-barchart" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Because the names of the races/ethnicities are so long, there isn’t enough room on the bar chart to use the actual names of the races/ethnicities as the bar labels. Instead, we use a key for the labels (“A” for “Asian, Asian American, or Pacific Islander”, “B” for “Black or African American”, “C” for “Hispanic or Latino”, etc.).</p>
@@ -877,10 +874,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="pie-charts">
-<h2>Pie Charts<a class="headerlink" href="#pie-charts" title="Permalink to this headline">#</a></h2>
+<h2>Pie Charts<a class="headerlink" href="#pie-charts" title="Link to this heading">#</a></h2>
 <p>Qualitative data can also be visualized using a pie chart. In a <strong>pie chart</strong>, a circle is sliced (like a pie) so that the number of categories in the data is equal to the number of slices, and the size of each slice is proportional to the corresponding category’s quantity.</p>
 <p>We can create a pie chart in R using the <code>pie</code> function:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">pie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">pie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Here, <code>x</code> is a list with a frequency (or relative frequency) for each category, and <code>labels</code> is a list with a label for each category. The two lists must be in the same order.</p>
@@ -888,15 +885,10 @@ document.write(`
 <p>Let’s revisit the population of Park City in <a href="#example-1-4-5">Example 1.4.5</a>, but this time construct a pie chart of the data.</p>
 <hr class="docutils" />
 <section id="example-1-4-5">
-<h3>Example 1.4.5<a class="headerlink" href="#example-1-4-5" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.4.5<a class="headerlink" href="#example-1-4-5" title="Link to this heading">#</a></h3>
 <p>The population in Park City is made up of children, working-age adults, and retirees. <a class="reference internal" href="#park-city-population-table-pie"><span class="std std-numref">Table 1.4.8</span></a> shows the three age groups, the number of people in the city in each age group, and the proportion of people in each age group. Construct a pie chart showing the proportions.</p>
 <table class="table" id="park-city-population-table-pie">
-<caption><span class="caption-number">Table 1.4.8 </span><span class="caption-text">Population in Park City by age group.</span><a class="headerlink" href="#park-city-population-table-pie" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
+<caption><span class="caption-number">Table 1.4.8 </span><span class="caption-text">Population in Park City by age group.</span><a class="headerlink" href="#park-city-population-table-pie" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Age Groups</p></th>
 <th class="head"><p>Number of People</p></th>
@@ -919,14 +911,14 @@ document.write(`
 </tbody>
 </table>
 <section id="id4">
-<h4>Solution<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>We use R to construct a pie chart.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">19.11</span><span class="p">,</span> <span class="m">43.37</span><span class="p">,</span> <span class="m">37.52</span><span class="p">)</span>
-<span class="n">age_groups</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Children&quot;</span><span class="p">,</span> <span class="s">&quot;Working-age Adults&quot;</span><span class="p">,</span> <span class="s">&quot;Retirees&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">19.11</span><span class="p">,</span><span class="w"> </span><span class="m">43.37</span><span class="p">,</span><span class="w"> </span><span class="m">37.52</span><span class="p">)</span>
+<span class="n">age_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Children&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Working-age Adults&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Retirees&quot;</span><span class="p">)</span>
 
-<span class="nf">pie</span><span class="p">(</span><span class="n">proportions</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">age_groups</span><span class="p">)</span>
+<span class="nf">pie</span><span class="p">(</span><span class="n">proportions</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age_groups</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -934,7 +926,7 @@ document.write(`
 <figure class="align-default" id="park-city-piechart">
 <a class="reference internal image-reference" href="../_images/park_city_piechart.png"><img alt="A pie chart of the proportion of people in each age group in Park City." src="../_images/park_city_piechart.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.4 </span><span class="caption-text">A pie chart illustrating the proportion of each age group relative to the population of Park City.</span><a class="headerlink" href="#park-city-piechart" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.4 </span><span class="caption-text">A pie chart illustrating the proportion of each age group relative to the population of Park City.</span><a class="headerlink" href="#park-city-piechart" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
@@ -943,7 +935,7 @@ document.write(`
 <figure class="align-default" id="pie-vs-bar">
 <a class="reference internal image-reference" href="../_images/pie_vs_bar.png"><img alt="Three examples comparing pie charts and bar charts illustrating the same data." src="../_images/pie_vs_bar.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.5 </span><span class="caption-text">Three examples comparing pie charts and bar charts illustrating the same data. In each case, the qualitative and quantitative features of the data are easier to interpret using the bar chart.<a class="footnote-reference brackets" href="#attribution" id="id5">1</a></span><a class="headerlink" href="#pie-vs-bar" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.5 </span><span class="caption-text">Three examples comparing pie charts and bar charts illustrating the same data. In each case, the qualitative and quantitative features of the data are easier to interpret using the bar chart.<a class="footnote-reference brackets" href="#attribution" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#pie-vs-bar" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>While pie charts are still commonly used in media and in business, most visualization experts generally recommend against using pie charts in favor of other visualization tools like bar charts.</p>
@@ -951,14 +943,14 @@ document.write(`
 </section>
 </section>
 <section id="histograms">
-<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">#</a></h2>
+<h2>Histograms<a class="headerlink" href="#histograms" title="Link to this heading">#</a></h2>
 <p>We apporach graphs for quantitative data similarly, though with a few important distinctions.</p>
 <p>First, with quantitative data, it is often up to the statistician how to group or categorize the data. For example, if we are gathering data on eye color (qualitative data), we naturally have a category of blue eyes and a category of brown eyes; there is no opportunity to adjust the categories. But if we are gathering data on the heights of adult males (quantitative data), the statistician could partition the data so they get a group of individuals 50-59 inches tall, or they could partition the data so they get a group of individuals 50-54 inches tall and another group of individuals 55-59 inches tall.</p>
 <p>Second, we can measure how far apart quantitative data is. It doesn’t make sense to ask how far apart blue eyes are from brown eyes. But it does make sense to ask how far apart 50 inches is from 59 inches. (They are 59 - 50 = 9 inches apart.)</p>
 <p>A common way to visualize quantitative data is to use a histogram. A <strong>histogram</strong> is similar to a bar chart, but it is better at displaying quantitative data. Unlike a bar chart, a histogram consists of contiguous (adjoining) boxes so there is no gap between the bars. This helps emphasize the “distance” between quantitative data. A histogram has both a horizontal axis and a vertical axis. The horizontal axis is labeled with what the data represents (for instance, distance from your home to school). The vertical axis is labeled either frequency or relative frequency (or percent frequency or probability). The histogram can suggest shape of the data and can suggest where the center of the data is and how spread out the data is.</p>
 <hr class="docutils" />
 <section id="example-1-4-6">
-<h3>Example 1.4.6<a class="headerlink" href="#example-1-4-6" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.4.6<a class="headerlink" href="#example-1-4-6" title="Link to this heading">#</a></h3>
 <p>An economist surveys gas stations in the Bay Area. <a class="reference internal" href="#gas-hist"><span class="std std-numref">Figure 1.4.6</span></a> below summarizes the gas prices at the gas stations he surveyed. Use the histogram to answer the following questions.</p>
 <ol class="arabic simple">
 <li><p>About how many gas stations had gas prices above $4.70?</p></li>
@@ -967,17 +959,17 @@ document.write(`
 <figure class="align-default" id="gas-hist">
 <a class="reference internal image-reference" href="../_images/gas_hist.png"><img alt="Histogram of gas prices in the Bay Area. There are 45 gas stations with prices between 4.30 and 4.40, 60 with prices between 4.40 and 4.50, 70 with prices between 4.50 and 4.60, 40 with prices betwen 4.60 and 4.70, 20 with prices between 4.70 and 4.80, 15 with prices between 4.80 and 4.90, and 5 with prices between 4.90 and 5.00." src="../_images/gas_hist.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.6 </span><span class="caption-text">A histogram of gas prices in the Bay Area. Note there is no gap in between the bars, and each bar represents a range of values instead of a single category or number.</span><a class="headerlink" href="#gas-hist" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.6 </span><span class="caption-text">A histogram of gas prices in the Bay Area. Note there is no gap in between the bars, and each bar represents a range of values instead of a single category or number.</span><a class="headerlink" href="#gas-hist" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id6">
-<h4>Solution<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <section id="id7">
-<h5>Part 1<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
 <p>Looking at the histogram, we can see that there are 20 gas stations with prices between $4.70 and $4.80, there are 15 gas stations with prices between $4.80 and $4.90, and there are 5 gas stations prices between $4.90 and $5.00. So there are about 20 + 15 + 5 = 40 gas stations with prices above $4.70.</p>
 </section>
 <section id="id8">
-<h5>Part 2<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id8" title="Link to this heading">#</a></h5>
 <p>To find the <em>percentage</em> of gas stations with prices between $4.40 and $4.60, we must first find the <em>fraction</em> of gas stations with prices between $4.40 and $4.60.</p>
 <p>We start by finding the <em>number</em> of gas stations with prices between $4.40 and $4.60: there are 60 gas stations with prices between $4.40 and $4.50 and 70 gas stations with prices between $4.50 and $4.60, meaning there are a total of</p>
 <div class="math notranslate nohighlight">
@@ -1003,7 +995,7 @@ document.write(`
 <p>To find the <em>percentage</em> of gas stations with prices between $4.40 and $4.60, we multiply the fraction by 100%.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">130</span><span class="o">/</span><span class="m">255</span> <span class="o">*</span> <span class="m">100</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">130</span><span class="o">/</span><span class="m">255</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span>
 </pre></div>
 </div>
 </div>
@@ -1022,15 +1014,15 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-1-4-7">
-<h3>Example 1.4.7<a class="headerlink" href="#example-1-4-7" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.4.7<a class="headerlink" href="#example-1-4-7" title="Link to this heading">#</a></h3>
 <p>The following data are the heights (in inches to the nearest half inch) of 100 male semiprofessional soccer players. The heights are continuous data, since height is measured.</p>
 <p>60, 60.5, 61, 61, 61.5, 63.5, 63.5, 63.5, 64, 64, 64, 64, 64, 64, 64, 64.5, 64.5, 64.5, 64.5, 64.5, 64.5, 64.5, 64.5, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66.5, 66.5, 66.5, 66.5, 66.5, 66.5, 66.5,    66.5, 66.5, 66.5, 66.5, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67.5, 67.5, 67.5, 67.5, 67.5, 67.5, 68, 68, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69.5, 69.5, 69.5, 69.5, 69.5, 70, 70, 70, 70, 70, 70, 70.5, 70.5, 70.5, 71, 71, 71, 72, 72, 72, 72.5, 72.5, 73, 73.5, 74</p>
 <p>Construct a histogram of the data. Where do the data seem to be concentrated?</p>
 <section id="id9">
-<h4>Solution<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span> <span class="m">60.5</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">61.5</span><span class="p">,</span> <span class="m">63.5</span><span class="p">,</span> <span class="m">63.5</span><span class="p">,</span> <span class="m">63.5</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64.5</span><span class="p">,</span> <span class="m">64.5</span><span class="p">,</span> <span class="m">64.5</span><span class="p">,</span> <span class="m">64.5</span><span class="p">,</span> <span class="m">64.5</span><span class="p">,</span> <span class="m">64.5</span><span class="p">,</span> <span class="m">64.5</span><span class="p">,</span> <span class="m">64.5</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">66.5</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67.5</span><span class="p">,</span> <span class="m">67.5</span><span class="p">,</span> <span class="m">67.5</span><span class="p">,</span> <span class="m">67.5</span><span class="p">,</span> <span class="m">67.5</span><span class="p">,</span> <span class="m">67.5</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69.5</span><span class="p">,</span> <span class="m">69.5</span><span class="p">,</span> <span class="m">69.5</span><span class="p">,</span> <span class="m">69.5</span><span class="p">,</span> <span class="m">69.5</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70.5</span><span class="p">,</span> <span class="m">70.5</span><span class="p">,</span> <span class="m">70.5</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72.5</span><span class="p">,</span> <span class="m">72.5</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">73.5</span><span class="p">,</span> <span class="m">74</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">60.5</span><span class="p">,</span><span class="w"> </span><span class="m">61</span><span class="p">,</span><span class="w"> </span><span class="m">61</span><span class="p">,</span><span class="w"> </span><span class="m">61.5</span><span class="p">,</span><span class="w"> </span><span class="m">63.5</span><span class="p">,</span><span class="w"> </span><span class="m">63.5</span><span class="p">,</span><span class="w"> </span><span class="m">63.5</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64.5</span><span class="p">,</span><span class="w"> </span><span class="m">64.5</span><span class="p">,</span><span class="w"> </span><span class="m">64.5</span><span class="p">,</span><span class="w"> </span><span class="m">64.5</span><span class="p">,</span><span class="w"> </span><span class="m">64.5</span><span class="p">,</span><span class="w"> </span><span class="m">64.5</span><span class="p">,</span><span class="w"> </span><span class="m">64.5</span><span class="p">,</span><span class="w"> </span><span class="m">64.5</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">66.5</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67.5</span><span class="p">,</span><span class="w"> </span><span class="m">67.5</span><span class="p">,</span><span class="w"> </span><span class="m">67.5</span><span class="p">,</span><span class="w"> </span><span class="m">67.5</span><span class="p">,</span><span class="w"> </span><span class="m">67.5</span><span class="p">,</span><span class="w"> </span><span class="m">67.5</span><span class="p">,</span><span class="w"> </span><span class="m">68</span><span class="p">,</span><span class="w"> </span><span class="m">68</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69.5</span><span class="p">,</span><span class="w"> </span><span class="m">69.5</span><span class="p">,</span><span class="w"> </span><span class="m">69.5</span><span class="p">,</span><span class="w"> </span><span class="m">69.5</span><span class="p">,</span><span class="w"> </span><span class="m">69.5</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70.5</span><span class="p">,</span><span class="w"> </span><span class="m">70.5</span><span class="p">,</span><span class="w"> </span><span class="m">70.5</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">72.5</span><span class="p">,</span><span class="w"> </span><span class="m">72.5</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">73.5</span><span class="p">,</span><span class="w"> </span><span class="m">74</span><span class="p">)</span>
 
 <span class="nf">hist</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -1040,7 +1032,7 @@ document.write(`
 <figure class="align-default" id="soccer-hist">
 <a class="reference internal image-reference" href="../_images/soccer_hist.png"><img alt="Histogram of the heights of soccer players." src="../_images/soccer_hist.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.7 </span><span class="caption-text">A histogram of the heights of 100 semiprofessional soccer players.</span><a class="headerlink" href="#soccer-hist" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.7 </span><span class="caption-text">A histogram of the heights of 100 semiprofessional soccer players.</span><a class="headerlink" href="#soccer-hist" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the histogram, we can see that most of the players’ heights are between 64 inches and 70 inches.</p>
@@ -1052,14 +1044,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-1-4-8">
-<h3>Example 1.4.8<a class="headerlink" href="#example-1-4-8" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.4.8<a class="headerlink" href="#example-1-4-8" title="Link to this heading">#</a></h3>
 <p>Create a histogram for the following data: the number of books bought by 50 part-time college students at ABC College. The number of books is discrete data, since books are counted.</p>
 <p>0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6</p>
 <section id="id10">
-<h4>Solution<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">books</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">6</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">books</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">)</span>
 
 <span class="nf">hist</span><span class="p">(</span><span class="n">books</span><span class="p">)</span>
 </pre></div>
@@ -1069,7 +1061,7 @@ document.write(`
 <figure class="align-default" id="books-hist">
 <a class="reference internal image-reference" href="../_images/books_hist.png"><img alt="Histogram of the number of books bought by part-time students at ABC college." src="../_images/books_hist.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.8 </span><span class="caption-text">A histogram of number of books bought by 50 part-time students at ABC college.</span><a class="headerlink" href="#books-hist" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.8 </span><span class="caption-text">A histogram of number of books bought by 50 part-time students at ABC college.</span><a class="headerlink" href="#books-hist" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1078,17 +1070,18 @@ document.write(`
 <figure class="align-default" id="books-bar">
 <a class="reference internal image-reference" href="../_images/books_bar.png"><img alt="Bar chart of the number of books bought by part-time students at ABC college." src="../_images/books_bar.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.9 </span><span class="caption-text">A bar chart of the number of books bought by part-time students at ABC college. Note that <em>in this case</em>, a bar chart communicates the data better than a histogram.</span><a class="headerlink" href="#books-bar" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4.9 </span><span class="caption-text">A bar chart of the number of books bought by part-time students at ABC college. Note that <em>in this case</em>, a bar chart communicates the data better than a histogram.</span><a class="headerlink" href="#books-bar" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This does <em>not</em> mean that a bar chart is always better than a histogram. In some situations (like this one), a bar chart may do the best job at communicating the data. In other situations (like for continuous data), a histogram may do the best job at communicating the data. A wise statistician will choose the best tool for the job.</p>
 </div>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="attribution"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
-<dd><p><a class="reference internal" href="#pie-vs-bar"><span class="std std-numref">Figure 1.4.5</span></a> was adapted from <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Piecharts.svg">an image created by Shutz</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by/1.0/deed.en">Creative Commons Attribution 1.0 Generic</a> license.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="attribution" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference internal" href="#pie-vs-bar"><span class="std std-numref">Figure 1.4.5</span></a> was adapted from <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Piecharts.svg">an image created by Shutz</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by/1.0/deed.en">Creative Commons Attribution 1.0 Generic</a> license.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -1119,11 +1112,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="1.3%20Sampling%20Techniques.html"
@@ -1143,10 +1135,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1154,6 +1143,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1236,6 +1226,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -1262,8 +1253,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

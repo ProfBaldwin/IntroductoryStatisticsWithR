@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>6.1. An Introduction to Hypothesis Testing &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch6 An Introduction to Hypothesis Testing/6.1 An Introduction to Hypothesis Testing';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -399,18 +430,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="an-introduction-to-hypothesis-testing">
-<h1><span class="section-number">6.1. </span>An Introduction to Hypothesis Testing<a class="headerlink" href="#an-introduction-to-hypothesis-testing" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.1. </span>An Introduction to Hypothesis Testing<a class="headerlink" href="#an-introduction-to-hypothesis-testing" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand the fundamentals of hypothesis testing.</p></li>
 </ul>
 </section>
 <section id="introduction-to-hypothesis-testing">
-<h2>Introduction to Hypothesis Testing<a class="headerlink" href="#introduction-to-hypothesis-testing" title="Permalink to this headline">#</a></h2>
+<h2>Introduction to Hypothesis Testing<a class="headerlink" href="#introduction-to-hypothesis-testing" title="Link to this heading">#</a></h2>
 <p>Sometimes we want to test whether a claim made about a population parameter is true or not. For instance, a car dealer advertises that its new small truck averages <span class="math notranslate nohighlight">\(35\)</span> miles per gallon. A tutoring service claims that <span class="math notranslate nohighlight">\(90\%\)</span> of its students get an A or a B. A company says that women managers in their company earn an average of <span class="math notranslate nohighlight">\(\$53{,}000\)</span> per year.</p>
 <p>It’s often impractical to survey every member of a population to confirm a claim or <strong>hypothesis</strong>. Instead, we can sample a few members of the population and calculate a point estimate of the parameter we are interested in. If the hypothesis is true, we would expect the point estimate to be close to the hypothesized value of the parameter. So if the point estimate is actually far away from the hypothesized value of the parameter, we might conclude that the actual value of the parameter is different from the hypothesis.</p>
 <p>For example, suppose Julian claims his average time for the <span class="math notranslate nohighlight">\(100\)</span>-meter dash is <span class="math notranslate nohighlight">\(11.72\)</span> seconds. We can test the hypothesis that this parameter, the population mean, is <span class="math notranslate nohighlight">\(\mu = 11.72\)</span> seconds. Imagine we sample several of his runs and calculate a sample mean of <span class="math notranslate nohighlight">\(\bar{x} = 11.77\)</span> seconds. Since the point estimate <span class="math notranslate nohighlight">\(\bar{x} = 11.77\)</span> seconds is so close to Julian’s claimed mean time of <span class="math notranslate nohighlight">\(\mu = 11.72\)</span> seconds, we would probably feel that Julian’s claim is about right. But if, instead, we obtained a sample mean of <span class="math notranslate nohighlight">\(\bar{x} = 13.45\)</span> seconds, this sample mean would be so far from Julian’s claim of <span class="math notranslate nohighlight">\(\mu = 11.72\)</span> seconds that we might seriously doubt his claim.</p>
@@ -426,20 +457,20 @@ document.write(`
 <p>We will formalize these ideas in the coming chapter and return to them throughout the rest of the course. For now, let’s go over a few examples focusing on the big idea and the fundamental components.</p>
 <hr class="docutils" />
 <section id="example-6-1-1">
-<h3>Example 6.1.1<a class="headerlink" href="#example-6-1-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 6.1.1<a class="headerlink" href="#example-6-1-1" title="Link to this heading">#</a></h3>
 <p>A company says that women managers in their company earn an average of <span class="math notranslate nohighlight">\(\$53{,}000\)</span> per year with a standard deviation of <span class="math notranslate nohighlight">\(\$5{,}000\)</span>. Janice wants to test the claim. She surveys <span class="math notranslate nohighlight">\(25\)</span> women managers and obtains the following data on income per year:</p>
 <p>48230, 53491, 52926, 54832, 48080, 47101, 50126, 47433, 57753, 55107, 57205, 46297, 61249, 66936, 5463, 44429, 52696, 51243, 49008, 51522, 46658, 51788, 60244, 46164, 51103</p>
 <p>Assume the population is normally distributed. What do you think Janice should conclude about the claim?</p>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <section id="step-1-state-the-hypothesis">
-<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#step-1-state-the-hypothesis" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#step-1-state-the-hypothesis" title="Link to this heading">#</a></h5>
 <p>The claim or hypothesis is that the average annual income of women managers at the company is <span class="math notranslate nohighlight">\(\$53,000\)</span>. Written mathematically, the hypothesis is that</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 53{,}000. \]</div>
 </section>
 <section id="step-2-assuming-the-hypothesis-is-true-identify-the-sampling-distribution">
-<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-hypothesis-is-true-identify-the-sampling-distribution" title="Permalink to this headline">#</a></h5>
+<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-hypothesis-is-true-identify-the-sampling-distribution" title="Link to this heading">#</a></h5>
 <p>We are testing the mean <span class="math notranslate nohighlight">\(\mu\)</span>, and we are told what the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> is. Then by the central limit theorem, sample means follow a  normal distribution with mean</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 53{,}000 \]</div>
@@ -449,14 +480,14 @@ document.write(`
 <p>That is, <span class="math notranslate nohighlight">\(\bar{X} \sim N(53000, 1000)\)</span>.</p>
 </section>
 <section id="step-3-find-the-probability">
-<h5>Step 3: Find the probability.<a class="headerlink" href="#step-3-find-the-probability" title="Permalink to this headline">#</a></h5>
+<h5>Step 3: Find the probability.<a class="headerlink" href="#step-3-find-the-probability" title="Link to this heading">#</a></h5>
 <p>First, we calculate the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>, which is the point estimate of the population mean <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">48230</span><span class="p">,</span> <span class="m">53491</span><span class="p">,</span> <span class="m">52926</span><span class="p">,</span> <span class="m">54832</span><span class="p">,</span> <span class="m">48080</span><span class="p">,</span> <span class="m">47101</span><span class="p">,</span> <span class="m">50126</span><span class="p">,</span> <span class="m">47433</span><span class="p">,</span> <span class="m">57753</span><span class="p">,</span> <span class="m">55107</span><span class="p">,</span> <span class="m">57205</span><span class="p">,</span> <span class="m">46297</span><span class="p">,</span> <span class="m">61249</span><span class="p">,</span> <span class="m">66936</span><span class="p">,</span> <span class="m">5463</span><span class="p">,</span> <span class="m">44429</span><span class="p">,</span> <span class="m">52696</span><span class="p">,</span> <span class="m">51243</span><span class="p">,</span> <span class="m">49008</span><span class="p">,</span> <span class="m">51522</span><span class="p">,</span> <span class="m">46658</span><span class="p">,</span> <span class="m">51788</span><span class="p">,</span> <span class="m">60244</span><span class="p">,</span> <span class="m">46164</span><span class="p">,</span> <span class="m">51103</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">48230</span><span class="p">,</span><span class="w"> </span><span class="m">53491</span><span class="p">,</span><span class="w"> </span><span class="m">52926</span><span class="p">,</span><span class="w"> </span><span class="m">54832</span><span class="p">,</span><span class="w"> </span><span class="m">48080</span><span class="p">,</span><span class="w"> </span><span class="m">47101</span><span class="p">,</span><span class="w"> </span><span class="m">50126</span><span class="p">,</span><span class="w"> </span><span class="m">47433</span><span class="p">,</span><span class="w"> </span><span class="m">57753</span><span class="p">,</span><span class="w"> </span><span class="m">55107</span><span class="p">,</span><span class="w"> </span><span class="m">57205</span><span class="p">,</span><span class="w"> </span><span class="m">46297</span><span class="p">,</span><span class="w"> </span><span class="m">61249</span><span class="p">,</span><span class="w"> </span><span class="m">66936</span><span class="p">,</span><span class="w"> </span><span class="m">5463</span><span class="p">,</span><span class="w"> </span><span class="m">44429</span><span class="p">,</span><span class="w"> </span><span class="m">52696</span><span class="p">,</span><span class="w"> </span><span class="m">51243</span><span class="p">,</span><span class="w"> </span><span class="m">49008</span><span class="p">,</span><span class="w"> </span><span class="m">51522</span><span class="p">,</span><span class="w"> </span><span class="m">46658</span><span class="p">,</span><span class="w"> </span><span class="m">51788</span><span class="p">,</span><span class="w"> </span><span class="m">60244</span><span class="p">,</span><span class="w"> </span><span class="m">46164</span><span class="p">,</span><span class="w"> </span><span class="m">51103</span><span class="p">)</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -471,7 +502,7 @@ document.write(`
 <p>To test the claim, we want to find the probability that a randomly selected sample will have a sample mean at least as far away from the hypothesized population mean as the sample mean we actually got. This means we want to find <span class="math notranslate nohighlight">\(P(\bar{X} \leq 50283.36) = P(Z \leq -2.7166)\)</span>$. Let’s use R to find this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.7166</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-2.7166</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -481,7 +512,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(\bar{X} \leq 50283.36) = P(Z \leq -2.7166) = 0.00330\)</span>. That is, if the claim were true, there would only be a <span class="math notranslate nohighlight">\(0.33\%\)</span> chance that a random sample of women managers would yield a sample mean salary of <span class="math notranslate nohighlight">\(\$50{,}283.36\)</span> or less.</p>
 </section>
 <section id="step-4-draw-a-conclusion">
-<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Permalink to this headline">#</a></h5>
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Link to this heading">#</a></h5>
 <p>In this case, it is very unlikely that we would obtain the point estimate we did if the claim were true. In fact, it is so unlikely (less than a 1% chance) that we feel confident in concluding that the claim is not true.</p>
 <p>We conclude that the average salary of women managers at the company is not <span class="math notranslate nohighlight">\(\$53,000\)</span>.</p>
 </section>
@@ -489,18 +520,18 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-6-1-2">
-<h3>Example 6.1.2<a class="headerlink" href="#example-6-1-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 6.1.2<a class="headerlink" href="#example-6-1-2" title="Link to this heading">#</a></h3>
 <p>A tutoring service claims that <span class="math notranslate nohighlight">\(90\%\)</span> of its students get an A or a B. Mike wants to test the claim. He surveys <span class="math notranslate nohighlight">\(45\)</span> students who utilized the tutoring service and found that <span class="math notranslate nohighlight">\(37\)</span> students got an A or a B. Do you think Mike should reject the claim?</p>
 <section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <section id="id2">
-<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
 <p>The claim we are testing is that the proportion of students of the tutoring service who get an A or a B is <span class="math notranslate nohighlight">\(90\%\)</span>. Mathematically, the hypothesis is</p>
 <div class="math notranslate nohighlight">
 \[p = 0.90. \]</div>
 </section>
 <section id="id3">
-<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
 <p>Assuming the hypothesis is true, we know by the central limit theorem that the sampling distribution of sample proportions is normally distributed with mean</p>
 <div class="math notranslate nohighlight">
 \[ p = 0.90 \]</div>
@@ -510,7 +541,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(\hat{P} \sim N(0.90, 0.0447)\)</span>.</p>
 </section>
 <section id="id4">
-<h5>Step 3: Find the probability.<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<h5>Step 3: Find the probability.<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <p>First note that the sample proportion, the point estimate of the population proportion, is</p>
 <div class="math notranslate nohighlight">
 \[ \hat{p} = \frac{x}{n} = \frac{37}{45} = 0.8222. \]</div>
@@ -521,7 +552,7 @@ document.write(`
 <p>To test the claim, we want to find the probability that a randomly selected sample will have a sample proportion at least as far away from the hypothesized population proportion as the sample proportion we actually got. This means we want to find <span class="math notranslate nohighlight">\(P(\hat{P} \leq 0.8222) = P(Z \leq -1.7405)\)</span>$. Let’s use R to find this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-1.7405</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1.7405</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -531,7 +562,7 @@ document.write(`
 <p>Then <span class="math notranslate nohighlight">\(P(\hat{P} \leq 0.8222) = P(Z \leq -1.7405) = 0.0409\)</span>. So if the population proportion is actually <span class="math notranslate nohighlight">\(p = 0.90\)</span>, there is a <span class="math notranslate nohighlight">\(4.09\%\)</span> chance that a random sample gives a sample proportion of <span class="math notranslate nohighlight">\(\hat{p} = 0.8222\)</span> or less.</p>
 </section>
 <section id="id5">
-<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h5>
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
 <p>There is about a <span class="math notranslate nohighlight">\(4\%\)</span> chance of obtaining a sample proportion of <span class="math notranslate nohighlight">\(\hat{p} \leq 0.8222\)</span> if the claim were true. This is somewhat unlikely, but it wouldn’t be outlandish.</p>
 <p>Ultimately, whether we reject a hypothesis or not is a choice. Would you reject the hypothesis if there is only a <span class="math notranslate nohighlight">\(1\%\)</span> chance that we get a point estimate as extreme as the point estimate we actually get from our sample? What if it was a <span class="math notranslate nohighlight">\(4\%\)</span> chance? An <span class="math notranslate nohighlight">\(8\%\)</span> chance? The choice ultimately must be made by the statistician where to draw the line. In a later section, we will cover some guidelines on making this choice.</p>
 <p>So what do you think? In this particular case, do you think the evidence is sufficient to reject the claim that <span class="math notranslate nohighlight">\(90\%\)</span> of students of the tutoring service get an A or a B? Or do you think the evidence isn’t strong enough to make that conclusion?</p>
@@ -540,20 +571,20 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-6-1-3">
-<h3>Example 6.1.3<a class="headerlink" href="#example-6-1-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 6.1.3<a class="headerlink" href="#example-6-1-3" title="Link to this heading">#</a></h3>
 <p>A statistics instructor claims that the class average on an exam is <span class="math notranslate nohighlight">\(65\)</span> points. Richard thinks the class average is higher. He collects the following scores from 9 students in the class:</p>
 <p>84, 67, 60, 55, 51, 64, 66, 70, 83</p>
 <p>Richard assumes the scores in the class are normally distributed. Should Richard reject his instructor’s claim?</p>
 <section id="id6">
-<h4>Solution<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <section id="id7">
-<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the Hypothesis.<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
 <p>The hypothesis is that the class average is <span class="math notranslate nohighlight">\(65\)</span> points. Mathematically, we write</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 65. \]</div>
 </section>
 <section id="id8">
-<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h5>
+<h5>Step 2: Assuming the hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#id8" title="Link to this heading">#</a></h5>
 <p>We want to test the population mean <span class="math notranslate nohighlight">\(\mu\)</span>, but we are <em>not</em> given the population standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. We will need to use the sample standard deviation <span class="math notranslate nohighlight">\(s\)</span> and a <span class="math notranslate nohighlight">\(t\)</span>-distribution with <span class="math notranslate nohighlight">\(df = n - 1 = 9 - 1 = 8\)</span> degrees of freedom.</p>
 <p>To find the <span class="math notranslate nohighlight">\(t\)</span>-score, we need the mean of the sampling distribution,</p>
 <div class="math notranslate nohighlight">
@@ -562,10 +593,10 @@ document.write(`
 <p>To find the sample standard deviation <span class="math notranslate nohighlight">\(s\)</span>, we first find the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">84</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">60</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">51</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">83</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">84</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">55</span><span class="p">,</span><span class="w"> </span><span class="m">51</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">83</span><span class="p">)</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -577,7 +608,7 @@ document.write(`
 <p>Next, we find the sample standard deviation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="m">1</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
 <span class="n">s</span>
 </pre></div>
 </div>
@@ -590,14 +621,14 @@ document.write(`
 \[ \frac{s}{\sqrt{n}} = \frac{11.2472}{\sqrt{9}} = 3.7491. \]</div>
 </section>
 <section id="id9">
-<h5>Step 3: Find the probability.<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h5>
+<h5>Step 3: Find the probability.<a class="headerlink" href="#id9" title="Link to this heading">#</a></h5>
 <p>We calculated the point estimate in step 2: the sample mean is <span class="math notranslate nohighlight">\(\bar{x} =  66.6667\)</span>. The <span class="math notranslate nohighlight">\(t\)</span>-score associated with <span class="math notranslate nohighlight">\(\bar{x} = 66.6667\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} = \frac{66.6667 - 65}{3.7491} = 0.4446. \]</div>
 <p>To test the claim, we want to find the probability that a randomly selected sample will have a sample mean at least as far away from the hypothesized population mean as the sample mean we actually got. This means we want to find <span class="math notranslate nohighlight">\(P(\bar{X} \geq 66.6667) = P(T \geq -0.4446)\)</span>. We calculate this using R.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pt</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">0.4446</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="m">8</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pt</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4446</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -607,7 +638,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(\bar{X} \geq 66.6667) = P(T \geq 0.4446) = 0.3342\)</span>. That is, assuming the claim is true, there is a <span class="math notranslate nohighlight">\(33.42\%\)</span> chance that our sample would have a sample mean of <span class="math notranslate nohighlight">\(66.6667\)</span> or greater.</p>
 </section>
 <section id="id10">
-<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h5>
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#id10" title="Link to this heading">#</a></h5>
 <p>If the claim is true, there is a <span class="math notranslate nohighlight">\(33.42\%\)</span> chance that a random sample of the population has a sample mean as extreme as <span class="math notranslate nohighlight">\(\bar{x} = 66.6667\)</span>. This isn’t a small probability; there is a fairly large chance that we obtain a sample with the sample mean we do given that the claim is true. We usually don’t reject a claim unless we obtain at a probability of at least less than <span class="math notranslate nohighlight">\(10\%\)</span>. So we do not have enough evidence to conclude that the mean exam score is greater than <span class="math notranslate nohighlight">\(65\)</span> points.</p>
 </section>
 </section>
@@ -640,11 +671,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="6.0%20An%20Introduction%20to%20Hypothesis%20Testing.html"
@@ -664,10 +694,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -675,6 +702,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -737,6 +765,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -763,8 +792,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

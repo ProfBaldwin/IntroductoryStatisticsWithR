@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>8.2. Linear Equations &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch8 Correlation and Linear Regression/8.2 Linear Equations';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -390,12 +421,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-equations">
-<h1><span class="section-number">8.2. </span>Linear Equations<a class="headerlink" href="#linear-equations" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8.2. </span>Linear Equations<a class="headerlink" href="#linear-equations" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Identify a linear equation in two variables, including the slope and <span class="math notranslate nohighlight">\(y\)</span>-intercept of the line.</p></li>
 <li><p>Interpret the meaning of the slope and <span class="math notranslate nohighlight">\(y\)</span>-intercept of a linear equation..</p></li>
@@ -403,7 +434,7 @@ document.write(`
 </ul>
 </section>
 <section id="id1">
-<h2>Linear Equations<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Linear Equations<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Linear regression for two variables is based on a linear equation with one independent variable. The equation has the form:</p>
 <div class="math notranslate nohighlight">
 \[y = a + bx, \]</div>
@@ -412,7 +443,7 @@ document.write(`
 <p>The graph of a linear equation of the form <span class="math notranslate nohighlight">\(y = a + bx\)</span> is a straight line. Any line that is not vertical can be described by this equation.</p>
 </section>
 <section id="slope-and-y-intercept-of-a-linear-equation">
-<h2>Slope and Y-Intercept of a Linear Equation<a class="headerlink" href="#slope-and-y-intercept-of-a-linear-equation" title="Permalink to this headline">#</a></h2>
+<h2>Slope and Y-Intercept of a Linear Equation<a class="headerlink" href="#slope-and-y-intercept-of-a-linear-equation" title="Link to this heading">#</a></h2>
 <p>For the linear equation <span class="math notranslate nohighlight">\(y = a + bx\)</span>, the point <span class="math notranslate nohighlight">\((0, a)\)</span> is the <strong><span class="math notranslate nohighlight">\(y\)</span>-intercept</strong> of the line, and <span class="math notranslate nohighlight">\(b\)</span> is the <strong>slope</strong> of the line.</p>
 <p>The <span class="math notranslate nohighlight">\(y\)</span>-intercept <span class="math notranslate nohighlight">\((0, a)\)</span> of a line is the point where the line crosses the <span class="math notranslate nohighlight">\(y\)</span>-axis. In applications, it often represents a starting value or initial value of <span class="math notranslate nohighlight">\(y = a\)</span> when <span class="math notranslate nohighlight">\(x = 0\)</span>.</p>
 <p>The slope of a line describes the steepness and direction of the line. The larger the absolute value of slope <span class="math notranslate nohighlight">\(b\)</span>, the steeper the line. If <span class="math notranslate nohighlight">\(b\)</span> is positive, the line has an “uphill” slope from left to right. If <span class="math notranslate nohighlight">\(b\)</span> is negative, the line has a “downhill” slope from left to right.</p>
@@ -420,24 +451,24 @@ document.write(`
 <figure class="align-default" id="line1">
 <a class="reference internal image-reference" href="../_images/line1.png"><img alt="The graph of the line $y = 1 + 0.5x$, with $y$-intercept (0, 1) and slope 0.5. The line has a gentle uphill slope from left to right." src="../_images/line1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2.1 </span><span class="caption-text">The graph of the line <span class="math notranslate nohighlight">\(y = 1 + 0.5x\)</span>. Since <span class="math notranslate nohighlight">\(a = 1\)</span>, the line crosses the <span class="math notranslate nohighlight">\(y\)</span>-axis as the <span class="math notranslate nohighlight">\(y\)</span>-intercept <span class="math notranslate nohighlight">\((0, 1)\)</span>. Since the slope <span class="math notranslate nohighlight">\(b = 0.5\)</span> is a positive number, the line goes “uphill” from left to right. The slope <span class="math notranslate nohighlight">\(b = 0.5\)</span> isn’t a very big number, so the line isn’t very steep.</span><a class="headerlink" href="#line1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.2.1 </span><span class="caption-text">The graph of the line <span class="math notranslate nohighlight">\(y = 1 + 0.5x\)</span>. Since <span class="math notranslate nohighlight">\(a = 1\)</span>, the line crosses the <span class="math notranslate nohighlight">\(y\)</span>-axis as the <span class="math notranslate nohighlight">\(y\)</span>-intercept <span class="math notranslate nohighlight">\((0, 1)\)</span>. Since the slope <span class="math notranslate nohighlight">\(b = 0.5\)</span> is a positive number, the line goes “uphill” from left to right. The slope <span class="math notranslate nohighlight">\(b = 0.5\)</span> isn’t a very big number, so the line isn’t very steep.</span><a class="headerlink" href="#line1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="line2">
 <a class="reference internal image-reference" href="../_images/line2.png"><img alt="The graph of the line $y = 2 - 2.5x$, with $y$-intercept (0, 2) and slope -2.5. The line has a steep downhill slope from left to right." src="../_images/line2.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2.2 </span><span class="caption-text">The graph of the line <span class="math notranslate nohighlight">\(y = 2 - 2.5x\)</span>. Since <span class="math notranslate nohighlight">\(a = 2\)</span>, the line crosses the <span class="math notranslate nohighlight">\(y\)</span>-axis as the <span class="math notranslate nohighlight">\(y\)</span>-intercept <span class="math notranslate nohighlight">\((0, 2)\)</span>. Since the slope <span class="math notranslate nohighlight">\(b = -2.5\)</span> is a negative number, the line goes “downhill” from left to right. The absolute value of slope <span class="math notranslate nohighlight">\(b = -2.5\)</span> is larger than the slope of the line in <a class="reference internal" href="#line1"><span class="std std-numref">Figure 8.2.1</span></a>, so this line is steeper.</span><a class="headerlink" href="#line2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.2.2 </span><span class="caption-text">The graph of the line <span class="math notranslate nohighlight">\(y = 2 - 2.5x\)</span>. Since <span class="math notranslate nohighlight">\(a = 2\)</span>, the line crosses the <span class="math notranslate nohighlight">\(y\)</span>-axis as the <span class="math notranslate nohighlight">\(y\)</span>-intercept <span class="math notranslate nohighlight">\((0, 2)\)</span>. Since the slope <span class="math notranslate nohighlight">\(b = -2.5\)</span> is a negative number, the line goes “downhill” from left to right. The absolute value of slope <span class="math notranslate nohighlight">\(b = -2.5\)</span> is larger than the slope of the line in <a class="reference internal" href="#line1"><span class="std std-numref">Figure 8.2.1</span></a>, so this line is steeper.</span><a class="headerlink" href="#line2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="line3">
 <a class="reference internal image-reference" href="../_images/line3.png"><img alt="The graph of the line $y = -3$, with $y$-intercept (0, -3) and slope 0. The line is a horizontal line." src="../_images/line3.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2.3 </span><span class="caption-text">The graph of the line <span class="math notranslate nohighlight">\(y = -3\)</span>, which can also be written as <span class="math notranslate nohighlight">\(y = -3 + 0x\)</span>. Since <span class="math notranslate nohighlight">\(a = -3\)</span>, the line crosses the <span class="math notranslate nohighlight">\(y\)</span>-axis as the <span class="math notranslate nohighlight">\(y\)</span>-intercept <span class="math notranslate nohighlight">\((0, -3)\)</span>. Since the slopeof the line is <span class="math notranslate nohighlight">\(b = 0\)</span>, the line is horizontal.</span><a class="headerlink" href="#line3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.2.3 </span><span class="caption-text">The graph of the line <span class="math notranslate nohighlight">\(y = -3\)</span>, which can also be written as <span class="math notranslate nohighlight">\(y = -3 + 0x\)</span>. Since <span class="math notranslate nohighlight">\(a = -3\)</span>, the line crosses the <span class="math notranslate nohighlight">\(y\)</span>-axis as the <span class="math notranslate nohighlight">\(y\)</span>-intercept <span class="math notranslate nohighlight">\((0, -3)\)</span>. Since the slopeof the line is <span class="math notranslate nohighlight">\(b = 0\)</span>, the line is horizontal.</span><a class="headerlink" href="#line3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
 <section id="example-8-2-1">
-<h3>Example 8.2.1<a class="headerlink" href="#example-8-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 8.2.1<a class="headerlink" href="#example-8-2-1" title="Link to this heading">#</a></h3>
 <p>Svetlana tutors to make extra money for college. For each tutoring session, she charges a one-time fee of <span class="math notranslate nohighlight">\(\$25\)</span> plus <span class="math notranslate nohighlight">\(\$15\)</span> per hour of tutoring.</p>
 <ol class="arabic simple">
 <li><p>Find the equation of the line that expresses the total amount Svetlana charges in terms of the number of hours of the tutoring session.</p></li>
@@ -446,9 +477,9 @@ document.write(`
 <li><p>If Svetlana has a tutoring session that lasts <span class="math notranslate nohighlight">\(4.5\)</span> hours, how much will she charge?</p></li>
 </ol>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> be the number of hours of the tutoring session.</p>
 <p>Let <span class="math notranslate nohighlight">\(y\)</span> be the amount Svetlana charges for the tutoring session.</p>
 <p>Svetlana charges a one-time fee of <span class="math notranslate nohighlight">\(\$25\)</span> at the start of a tutoring session; it does not change with the length of the tutoring session. But Svetlana also charges <span class="math notranslate nohighlight">\(\$15\)</span> per hour. We will need to multiply the hourly rate of <span class="math notranslate nohighlight">\(\$15\)</span> by the number of hours <span class="math notranslate nohighlight">\(x\)</span> to find the hourly charge. Combined, we have the total amount Svetlana charges for a tutoring session:</p>
@@ -456,15 +487,15 @@ document.write(`
 \[ y = 25 + 15x. \]</div>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <p>Since <span class="math notranslate nohighlight">\(a = 25\)</span>, the <span class="math notranslate nohighlight">\(y\)</span>-intercept is <span class="math notranslate nohighlight">\((x, y) = (0, 25)\)</span>. If someone hires Svetlana for a tutoring session that lasts <span class="math notranslate nohighlight">\(x = 0\)</span> hours (for example, if the person hires Svetlana but doesn’t show), Svetlana still charges them <span class="math notranslate nohighlight">\(y = 25\)</span> dollars.</p>
 </section>
 <section id="part-3">
-<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h5>
 <p>The slope is <span class="math notranslate nohighlight">\(b = 15\)</span>. Since <span class="math notranslate nohighlight">\(b\)</span> is positive, the line has an “uphill” direction. Also, longer tutoring sessions (bigger <span class="math notranslate nohighlight">\(x\)</span>) mean Svetlana will charge more (bigger <span class="math notranslate nohighlight">\(y\)</span>).</p>
 </section>
 <section id="part-4">
-<h5>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">#</a></h5>
+<h5>Part 4<a class="headerlink" href="#part-4" title="Link to this heading">#</a></h5>
 <p>If Svetlana has a tutoring session that lasts <span class="math notranslate nohighlight">\(4.5\)</span> hours then, mathematically, <span class="math notranslate nohighlight">\(x = 4.5\)</span>. Substituting this into our linear equation will tell us <span class="math notranslate nohighlight">\(y\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ y = 25 + 15(4.5) = 92.5. \]</div>
@@ -474,7 +505,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-8-2-2">
-<h3>Example 8.2.2<a class="headerlink" href="#example-8-2-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 8.2.2<a class="headerlink" href="#example-8-2-2" title="Link to this heading">#</a></h3>
 <p>Belisario made <span class="math notranslate nohighlight">\(36\)</span> cookies. He eats two cookies each day.</p>
 <ol class="arabic simple">
 <li><p>Find an equation that expresses the total number of cookies that Belisario has in terms of the number of days that have passed.</p></li>
@@ -483,9 +514,9 @@ document.write(`
 <li><p>After <span class="math notranslate nohighlight">\(6\)</span> days, how many cookies does Belisario have?</p></li>
 </ol>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <section id="id3">
-<h5>Part 1<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> be the number of days that have passed since Belisario made cookies.</p>
 <p>Let <span class="math notranslate nohighlight">\(y\)</span> be the number of cookies Belisario has left.</p>
 <p>Belisario starts off with <span class="math notranslate nohighlight">\(36\)</span> cookies, but we need to take <span class="math notranslate nohighlight">\(2\)</span> away for each day that has passed. This gives us the equation</p>
@@ -493,15 +524,15 @@ document.write(`
 \[ y = 36 - 2x. \]</div>
 </section>
 <section id="id4">
-<h5>Part 2<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <p>Since <span class="math notranslate nohighlight">\(a = 36\)</span>, the <span class="math notranslate nohighlight">\(y\)</span>-intercept is <span class="math notranslate nohighlight">\((x, y) = (0, 36)\)</span>. That means when <span class="math notranslate nohighlight">\(x = 0\)</span> days have passed, Belisario has <span class="math notranslate nohighlight">\(y = 36\)</span> cookies. Or, even more simply, this is just saying that Belisario starts off with <span class="math notranslate nohighlight">\(36\)</span> cookies.</p>
 </section>
 <section id="id5">
-<h5>Part 3<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
 <p>The slope is <span class="math notranslate nohighlight">\(b = -2\)</span>. Since <span class="math notranslate nohighlight">\(b\)</span> is negative, the line has a “downhill” direction. Also, the more days that pass (bigger <span class="math notranslate nohighlight">\(x\)</span>), the fewer cookies Belisario will have (fewer <span class="math notranslate nohighlight">\(y\)</span>).</p>
 </section>
 <section id="id6">
-<h5>Part 4<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h5>
+<h5>Part 4<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
 <p>To find out how many cookies Belisario has after <span class="math notranslate nohighlight">\(6\)</span> days, we plug in <span class="math notranslate nohighlight">\(x = 6\)</span> into the equation:</p>
 <div class="math notranslate nohighlight">
 \[ y = 36 - 2(6) = 24. \]</div>
@@ -537,11 +568,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="8.1%20Scatter%20Plots.html"
@@ -561,10 +591,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -572,6 +599,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -625,6 +653,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -651,8 +680,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

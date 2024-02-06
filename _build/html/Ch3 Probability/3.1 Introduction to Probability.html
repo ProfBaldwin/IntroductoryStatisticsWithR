@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3.1. Introduction to Probability &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch3 Probability/3.1 Introduction to Probability';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -407,12 +438,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-probability">
-<h1><span class="section-number">3.1. </span>Introduction to Probability<a class="headerlink" href="#introduction-to-probability" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.1. </span>Introduction to Probability<a class="headerlink" href="#introduction-to-probability" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand fundamental terminology used in probability and be able to apply it appropriately.</p></li>
 <li><p>Express an event of a probability experiment as a list of outcomes in set notation.</p></li>
@@ -421,7 +452,7 @@ document.write(`
 </ul>
 </section>
 <section id="experiments-outcomes-and-events">
-<h2>Experiments, Outcomes, and Events<a class="headerlink" href="#experiments-outcomes-and-events" title="Permalink to this headline">#</a></h2>
+<h2>Experiments, Outcomes, and Events<a class="headerlink" href="#experiments-outcomes-and-events" title="Link to this heading">#</a></h2>
 <p>Before we consider probability, we first must define a few key terms. To begin, it will be useful to focus on activities that can be repeated and where all the possible outcomes are known. These kinds of activities are called <strong>experiments</strong>. For example, flipping a fair coin is an experiment because it can be repeated (we can flip the coin again), and all the possible outcomes are known (the coin will land on either heads or tails). Another example of an experiment is drawing two cards from a standard 52 card deck because it can be repeated (we can return the two cards to the deck, shuffle, then take two new cards from the deck) and we know all the possible outcomes (since we know which cards are in the deck, we know all the cards that might be drawn).</p>
 <p>To be precise, we define an <strong>outcome</strong> of an experiment as a possible result of the experiment. Before an experiment takes place, there may be several possible outcomes that have a chance of happening. But after the experiment has concluded, exactly one outcome has happened. For example, if you toss a coin, the coin may come up heads or tails—two possible outcomes. But once the coin has landed, the coin has either come up heads or come up tails—exactly one outcome has actually occurred.</p>
 <p>The <strong>sample space</strong> of an experiment is the <strong>set</strong> or collection of all possible outcomes. The uppercase letter <span class="math notranslate nohighlight">\(S\)</span> is used to denote sample space. We can express the set of all possible outcomes using <strong>set notation</strong>: we list all the outcomes and enclose the list in curly brackets. For example, if you flip one fair coin, the sample space is <span class="math notranslate nohighlight">\(S = \{H, T\}\)</span> where <span class="math notranslate nohighlight">\(H\)</span> = Heads and <span class="math notranslate nohighlight">\(T\)</span> = Tails are the outcomes. As another example, if you roll a six-sided die, the sample space is <span class="math notranslate nohighlight">\(S = \{1, 2, 3, 4, 5, 6\}\)</span>, where each number represents the side of the die that is face up.</p>
@@ -429,13 +460,13 @@ document.write(`
 <p>It is often useful to know how many outcomes are in an event. For any event <span class="math notranslate nohighlight">\(E\)</span>, we let <span class="math notranslate nohighlight">\(n(E)\)</span> represent the number of outcomes in the event. Again, consider rolling a six-sided die, and let <span class="math notranslate nohighlight">\(D = \{2, 3, 5, 6\}\)</span>. There are four outcomes in event <span class="math notranslate nohighlight">\(D\)</span>, so <span class="math notranslate nohighlight">\(n(D) = 4\)</span>. Similarly, <span class="math notranslate nohighlight">\(n(S) = 6\)</span> because <span class="math notranslate nohighlight">\(S\)</span> is the entire sample space, and there are six possible outcomes total when rolling a six-sided die.</p>
 <hr class="docutils" />
 <section id="example-3-1-1">
-<h3>Example 3.1.1<a class="headerlink" href="#example-3-1-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.1.1<a class="headerlink" href="#example-3-1-1" title="Link to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <figure class="align-default" id="d12-die">
 <a class="reference internal image-reference" href="../_images/D12_die.jpeg"><img alt="A 12-sided die." src="../_images/D12_die.jpeg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.1.1 </span><span class="caption-text">A 12-sided die.<a class="footnote-reference brackets" href="#die-attribution" id="id1">1</a></span><a class="headerlink" href="#d12-die" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.1.1 </span><span class="caption-text">A 12-sided die.<a class="footnote-reference brackets" href="#die-attribution" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#d12-die" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </aside>
@@ -445,16 +476,16 @@ document.write(`
 <li><p>Let event <span class="math notranslate nohighlight">\(A = \)</span> rolling an odd number. What outcomes are in <span class="math notranslate nohighlight">\(A\)</span>? Express your answer in set notation. What is <span class="math notranslate nohighlight">\(n(A)\)</span>?</p></li>
 </ol>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <p>The sample space is the set of all possible outcomes. Since we are rolling a twelve-sided die, the die land on any number from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(12\)</span>. In set notation, the sample space is</p>
 <div class="math notranslate nohighlight">
 \[ S = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}. \]</div>
 <p>Clearly, there are twelve possible outcomes, so <span class="math notranslate nohighlight">\(n(S) = 12\)</span>.</p>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <p>Since event <span class="math notranslate nohighlight">\(A\)</span> is rolling an odd number, in set notation,</p>
 <div class="math notranslate nohighlight">
 \[ A = \{1, 3, 5, 7, 9, 11\}. \]</div>
@@ -464,17 +495,17 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-3-1-2">
-<h3>Example 3.1.2<a class="headerlink" href="#example-3-1-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.1.2<a class="headerlink" href="#example-3-1-2" title="Link to this heading">#</a></h3>
 <div class="full-width docutils">
 <figure class="align-default" id="playingcards">
 <a class="reference internal image-reference" href="../_images/playingcards.svg"><img alt="A standard deck of 52 playing cards." src="../_images/playingcards.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.1.2 </span><span class="caption-text">A standard deck of <span class="math notranslate nohighlight">\(52\)</span> playing cards.<a class="footnote-reference brackets" href="#cards-attribution" id="id2">2</a> <br/>
+<p><span class="caption-number">Fig. 3.1.2 </span><span class="caption-text">A standard deck of <span class="math notranslate nohighlight">\(52\)</span> playing cards.<a class="footnote-reference brackets" href="#cards-attribution" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <br/>
 A deck is divided into 4 suits: Spades (<span class="math notranslate nohighlight">\(♠\)</span>), Hearts (<span class="math notranslate nohighlight">\(\color{red} ♥\)</span>), Diamonds (<span class="math notranslate nohighlight">\(\color{red} ♦\)</span>), and Clubs (<span class="math notranslate nohighlight">\(♣\)</span>). <br/>
 Spades (<span class="math notranslate nohighlight">\(♠\)</span>) and Clubs (<span class="math notranslate nohighlight">\(♣\)</span>) are black. Hearts (<span class="math notranslate nohighlight">\(\color{red} ♥\)</span>) and Diamonds (<span class="math notranslate nohighlight">\(\color{red} ♦\)</span>) are red.<br/>
 There are 13 ranks in each suit:
 <strong>A</strong>ce, <strong>2</strong>, <strong>3</strong>, <strong>4</strong>, <strong>5</strong>, <strong>6</strong>, <strong>7</strong>, <strong>8</strong>, <strong>9</strong>, <strong>10</strong>, <strong>J</strong>ack, <strong>Q</strong>ueen, and <strong>K</strong>ing.<br/>
-The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="headerlink" href="#playingcards" title="Permalink to this image">#</a></p>
+The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="headerlink" href="#playingcards" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -485,13 +516,13 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 <li><p>Let event <span class="math notranslate nohighlight">\(♠ = \)</span> drawing a spade. What is <span class="math notranslate nohighlight">\(n(♠)\)</span>?</p></li>
 </ol>
 <section id="id3">
-<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <section id="id4">
-<h5>Part 1<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <p>The sample space <span class="math notranslate nohighlight">\(S\)</span> is the set of all possible outcomes. Each card that Prudence can draw represents one possible outcome. Since Prudence draws from a deck containing 52 different cards, <span class="math notranslate nohighlight">\(n(S) = 52\)</span>.</p>
 </section>
 <section id="id5">
-<h5>Part 2<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
 <p>In set notation, <span class="math notranslate nohighlight">\(F = \{J♠, Q♠, K♠, J♣, Q♣, K♣\}\)</span>. Since there are six black face cards, <span class="math notranslate nohighlight">\(n(F) = 6\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -505,7 +536,7 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 </div>
 </section>
 <section id="part-3">
-<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h5>
 <p>Looking at the deck pictured above, we can see that thirteen of the cards are spades. So <span class="math notranslate nohighlight">\(n(♠) = 13\)</span>.</p>
 </section>
 </section>
@@ -513,7 +544,7 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 </section>
 <hr class="docutils" />
 <section id="basic-probability">
-<h2>Basic Probability<a class="headerlink" href="#basic-probability" title="Permalink to this headline">#</a></h2>
+<h2>Basic Probability<a class="headerlink" href="#basic-probability" title="Link to this heading">#</a></h2>
 <p><strong>Probability</strong> is a measure of how likely it is that some event occurs when an experiment is performed. For example, if we flip a fair coin, there is a <span class="math notranslate nohighlight">\(50\%\)</span> probability that the coin comes up heads and a <span class="math notranslate nohighlight">\(50\%\)</span> probability that the coin comes up tails. This means that the coin is equally as likely to come up heads as it is to come up tails. Probabilities are always between <span class="math notranslate nohighlight">\(0\%\)</span> and <span class="math notranslate nohighlight">\(100\%\)</span> because an event cannot have less than a <span class="math notranslate nohighlight">\(0\%\)</span> chance of happening or more than a <span class="math notranslate nohighlight">\(100\%\)</span> chance of happening.</p>
 <p>While it is common to use percentages when speaking of probabilities, it is more convenient mathematically to express probabilities in decimal form. In decimal form, the probability that a flipped coin comes up heads is <span class="math notranslate nohighlight">\(0.5\)</span> (since <span class="math notranslate nohighlight">\(0.5 = 50\%\)</span>). Similarly, in decimal form, probabilities are always between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>. If a probability is in percentage form, it must first be converted to decimal form before it can be used in calculations.</p>
 <p>We denote the probability of an event <span class="math notranslate nohighlight">\(E\)</span> as <span class="math notranslate nohighlight">\(P(E)\)</span>. For example, if we toss a fair coin and <span class="math notranslate nohighlight">\(H = \)</span> the coin comes up heads, then <span class="math notranslate nohighlight">\(P(H) = 0.5\)</span>.</p>
@@ -523,7 +554,7 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 <figure class="align-default" id="observed-coin-flips">
 <a class="reference internal image-reference" href="../_images/observed_coin_flips.png"><img alt="A graph relating the propotion of heads to the number of coin tosses." src="../_images/observed_coin_flips.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.1.3 </span><span class="caption-text">A computer was used to simulate 1,000 coin tosses. The graph relates the proportion of heads that have come up to the number of times the coin has been tossed. Notice that when the coin has been tossed only a few times, the graph looks wild, and the proportion of heads can be quite different than the probability of tossing a head, <span class="math notranslate nohighlight">\(0.5\)</span>. As the number of coin tosses increases, the graph grows less erratic, and the proportion of heads tends to get closer to <span class="math notranslate nohighlight">\(0.5\)</span>.</span><a class="headerlink" href="#observed-coin-flips" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.1.3 </span><span class="caption-text">A computer was used to simulate 1,000 coin tosses. The graph relates the proportion of heads that have come up to the number of times the coin has been tossed. Notice that when the coin has been tossed only a few times, the graph looks wild, and the proportion of heads can be quite different than the probability of tossing a head, <span class="math notranslate nohighlight">\(0.5\)</span>. As the number of coin tosses increases, the graph grows less erratic, and the proportion of heads tends to get closer to <span class="math notranslate nohighlight">\(0.5\)</span>.</span><a class="headerlink" href="#observed-coin-flips" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>When all the outcomes of an experiment are <strong>equally likely</strong>—that is, when each outcome in the sample space has the same probability of occuring—the probability of an event <span class="math notranslate nohighlight">\(E\)</span> can be calculated using the formula</p>
@@ -541,7 +572,7 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 <p>When the outcomes of an experiment are not equally likely, we cannot use the above formula to calculate an event’s probability. We will learn techniques for working with outcomes that are not equally likely later.</p>
 <hr class="docutils" />
 <section id="example-3-1-3">
-<h3>Example 3.1.3<a class="headerlink" href="#example-3-1-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.1.3<a class="headerlink" href="#example-3-1-3" title="Link to this heading">#</a></h3>
 <p>Imagine you draw a card from a well-shuffled standard <span class="math notranslate nohighlight">\(52\)</span>-card deck. (See <a class="reference internal" href="#playingcards"><span class="std std-numref">Figure 3.1.2</span></a>.)</p>
 <ol class="arabic simple">
 <li><p>Let event <span class="math notranslate nohighlight">\(N = \)</span> drawing a <span class="math notranslate nohighlight">\(7\)</span>. Find <span class="math notranslate nohighlight">\(P(N)\)</span>.</p></li>
@@ -550,31 +581,31 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 <li><p>Let <span class="math notranslate nohighlight">\(S\)</span> be the sample space. Find <span class="math notranslate nohighlight">\(P(S)\)</span>.</p></li>
 </ol>
 <section id="id6">
-<h4>Solution<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <p>First, note that all outcomes are equally likely because each card has the same chance of being drawn. Also, since there are <span class="math notranslate nohighlight">\(52\)</span> cards in the deck that could possibly be drawn, <span class="math notranslate nohighlight">\(n(S) = 52\)</span>.</p>
 <section id="id7">
-<h5>Part 1<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
 <p>A deck of cards contains four <span class="math notranslate nohighlight">\(7\)</span>s, so <span class="math notranslate nohighlight">\(n(N) = 4\)</span>. Thus, the probability of drawing a <span class="math notranslate nohighlight">\(7\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[ P(N) = \frac{n(N)}{n(S)} = \frac{4}{52} = 0.0769. \]</div>
 <p>There is a <span class="math notranslate nohighlight">\(7.69\%\)</span> chance that the card you draw is a <span class="math notranslate nohighlight">\(7\)</span>.</p>
 </section>
 <section id="id8">
-<h5>Part 2<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id8" title="Link to this heading">#</a></h5>
 <p>There are thirteen clubs in a deck, so <span class="math notranslate nohighlight">\(n(♣) = 13\)</span>. The probability of drawing a club is</p>
 <div class="math notranslate nohighlight">
 \[ P(♣) = \frac{n(♣)}{n(S)} = \frac{13}{52} = 0.25. \]</div>
 <p>There is a <span class="math notranslate nohighlight">\(25\%\)</span> chance that the card you draw is a club.</p>
 </section>
 <section id="id9">
-<h5>Part 3<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#id9" title="Link to this heading">#</a></h5>
 <p>Each of the four suits has three face cards (Jack, Queen, and King), so there are twelve face cards altogether. That means <span class="math notranslate nohighlight">\(n(F) = 12\)</span>. So the probability of drawing a face card is</p>
 <div class="math notranslate nohighlight">
 \[ P(F) = \frac{n(F)}{n(S)} = \frac{12}{52} = 0.2308. \]</div>
 <p>There is a <span class="math notranslate nohighlight">\(23.07\%\)</span> chance that the card you draw is a face card.</p>
 </section>
 <section id="part-4">
-<h5>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">#</a></h5>
+<h5>Part 4<a class="headerlink" href="#part-4" title="Link to this heading">#</a></h5>
 <p>We already know <span class="math notranslate nohighlight">\(n(S) = 52\)</span>, so the probability of drawing a card in the sample space is</p>
 <div class="math notranslate nohighlight">
 \[ P(S) = \frac{n(S)}{n(S)} = \frac{52}{52} = 1. \]</div>
@@ -584,16 +615,10 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 </section>
 <hr class="docutils" />
 <section id="example-3-1-4">
-<h3>Example 3.1.4<a class="headerlink" href="#example-3-1-4" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.1.4<a class="headerlink" href="#example-3-1-4" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#abortion-table"><span class="std std-numref">Table 3.1.1</span></a> describes the distribution of a random sample of <span class="math notranslate nohighlight">\(466\)</span> individuals from the U.S., organized by political party and views on the circumstances under which abortion should be legal. One individual from the sample is selected at random.</p>
 <table class="table" id="abortion-table">
-<caption><span class="caption-number">Table 3.1.1 </span><span class="caption-text">The political party identification and views on the circumstances under which abortion should be legal of a sample of <span class="math notranslate nohighlight">\(466\)</span> individuals.</span><a class="headerlink" href="#abortion-table" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
+<caption><span class="caption-number">Table 3.1.1 </span><span class="caption-text">The political party identification and views on the circumstances under which abortion should be legal of a sample of <span class="math notranslate nohighlight">\(466\)</span> individuals.</span><a class="headerlink" href="#abortion-table" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head stub"></th>
 <th class="head"><p>Legal under any circumstances</p></th>
@@ -624,10 +649,10 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 <li><p>Let event <span class="math notranslate nohighlight">\(C = \)</span> the probability that the individual believes abortion should be legal only under certain circumstances. Find <span class="math notranslate nohighlight">\(P(C)\)</span>.</p></li>
 </ol>
 <section id="id10">
-<h4>Solution<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>Note that since the individual is selected randomly, each individual has an equal probability of being chosen. So the outcomes are equally likely. And since there are <span class="math notranslate nohighlight">\(466\)</span> individuals in the sample that could be selected, <span class="math notranslate nohighlight">\(n(S) = 466\)</span>.</p>
 <section id="id11">
-<h5>Part 1<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id11" title="Link to this heading">#</a></h5>
 <p>To find the probability that the randomly chosen individual is a Democrat, we must first determine how many Democrats are in the sample. Looking at <a class="reference internal" href="#abortion-table"><span class="std std-numref">Table 3.1.1</span></a>, we see that <span class="math notranslate nohighlight">\(76\)</span> Democrats believe abortion should be legal under any circumstances, <span class="math notranslate nohighlight">\(62\)</span> Democrats believe abortion should be legal only under certain circumstances, and <span class="math notranslate nohighlight">\(12\)</span> Democrats believe abortion should be illegal under all circumstances. Adding these together, we see that the total number of Democrats in the sample is</p>
 <div class="math notranslate nohighlight">
 \[ n(D) = 76 + 62 + 12 = 150. \]</div>
@@ -637,7 +662,7 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 <p>There is a <span class="math notranslate nohighlight">\(32.19\%\)</span> chance that the individual we randomly choose from the sample is a Democrat.</p>
 </section>
 <section id="id12">
-<h5>Part 2<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id12" title="Link to this heading">#</a></h5>
 <p>To find the probability that the randomly chosen individual believes abortion should be legal only under certain circumstances, we must first determine how many individuals with this belief are in the sample. Looking at <a class="reference internal" href="#abortion-table"><span class="std std-numref">Table 3.1.1</span></a>, we see <span class="math notranslate nohighlight">\(66\)</span> Republicans have this belief, <span class="math notranslate nohighlight">\(96\)</span> Independents have this belief, and <span class="math notranslate nohighlight">\(62\)</span> Democrats have this belief. Then the total number of individuals in the sample who believe abortion should be legal only under certain circumstances is</p>
 <div class="math notranslate nohighlight">
 \[ n(C) = 66 + 96 + 62 = 224. \]</div>
@@ -646,14 +671,16 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 \[ P(C) = \frac{n(C)}{n(S)} = \frac{224}{466} = 0.4807. \]</div>
 <p>There is a <span class="math notranslate nohighlight">\(48.07\%\)</span> chance that the individual we randomly choose will believe that abortion should be legal in certain circumstances.</p>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="die-attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><a class="reference internal" href="#d12-die"><span class="std std-numref">Figure 3.1.1</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:D12_regular_dodecahedron.JPG">created by Saharasav</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
-</dd>
-<dt class="label" id="cards-attribution"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p><a class="reference internal" href="#playingcards"><span class="std std-numref">Figure 3.1.2</span></a> was adapted from an image <a class="reference external" href="https://commons.wikimedia.org/wiki/File:English_pattern_playing_cards_deck.svg">created by Dmitry Fomin</a> made available under the <a class="reference external" href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">Creative Commons CC0 1.0 Universal Public Domain Dedication</a>.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="die-attribution" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference internal" href="#d12-die"><span class="std std-numref">Figure 3.1.1</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:D12_regular_dodecahedron.JPG">created by Saharasav</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+</aside>
+<aside class="footnote brackets" id="cards-attribution" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference internal" href="#playingcards"><span class="std std-numref">Figure 3.1.2</span></a> was adapted from an image <a class="reference external" href="https://commons.wikimedia.org/wiki/File:English_pattern_playing_cards_deck.svg">created by Dmitry Fomin</a> made available under the <a class="reference external" href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">Creative Commons CC0 1.0 Universal Public Domain Dedication</a>.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -685,11 +712,10 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="3.0%20Probability.html"
@@ -709,10 +735,7 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -720,6 +743,7 @@ F = \{&amp;\textrm{Jack of Spades, Queen of Spades, King of Spades,} \\
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -790,6 +814,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -816,8 +841,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

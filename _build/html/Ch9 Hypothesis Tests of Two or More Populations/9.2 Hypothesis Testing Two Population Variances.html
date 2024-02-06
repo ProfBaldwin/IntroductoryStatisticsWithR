@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>9.2. Hypothesis Testing Two Population Variances &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch9 Hypothesis Tests of Two or More Populations/9.2 Hypothesis Testing Two Population Variances';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -380,34 +411,34 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing-two-population-variances">
-<h1><span class="section-number">9.2. </span>Hypothesis Testing Two Population Variances<a class="headerlink" href="#hypothesis-testing-two-population-variances" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">9.2. </span>Hypothesis Testing Two Population Variances<a class="headerlink" href="#hypothesis-testing-two-population-variances" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Calculate probabilities using the <span class="math notranslate nohighlight">\(F\)</span>-distribution.</p></li>
 <li><p>Conduct hypothesis tests comparing the variances of two populations.</p></li>
 </ul>
 </section>
 <section id="the-f-distribution">
-<h2>The <span class="math notranslate nohighlight">\(F\)</span>-Distribution<a class="headerlink" href="#the-f-distribution" title="Permalink to this headline">#</a></h2>
+<h2>The <span class="math notranslate nohighlight">\(F\)</span>-Distribution<a class="headerlink" href="#the-f-distribution" title="Link to this heading">#</a></h2>
 <p>We can compare two independent <span class="math notranslate nohighlight">\(\chi^2\)</span>-distributed random variables by considering a fraction involving the two random variables. This fraction is a new random variable, and we say that it has an <span class="math notranslate nohighlight">\(F\)</span>-distribution. The shape of an <span class="math notranslate nohighlight">\(F\)</span>-distribution is determined by the degrees of freedom of the <span class="math notranslate nohighlight">\(\chi^2\)</span>-distribution of the numerator <span class="math notranslate nohighlight">\(df_1\)</span> and the degrees of freedom of the <span class="math notranslate nohighlight">\(\chi^2\)</span>-distribution of the denominator <span class="math notranslate nohighlight">\(df_2\)</span>.</p>
 <figure class="align-default" id="f-dist">
 <a class="reference internal image-reference" href="../_images/f_dist.png"><img alt="The plots of F-distributions with different values for df1 and df2." src="../_images/f_dist.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.2.1 </span><span class="caption-text">The plots of <span class="math notranslate nohighlight">\(F\)</span>-distributions with various values for <span class="math notranslate nohighlight">\(df_1\)</span> and <span class="math notranslate nohighlight">\(df_2\)</span>.</span><a class="headerlink" href="#f-dist" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.2.1 </span><span class="caption-text">The plots of <span class="math notranslate nohighlight">\(F\)</span>-distributions with various values for <span class="math notranslate nohighlight">\(df_1\)</span> and <span class="math notranslate nohighlight">\(df_2\)</span>.</span><a class="headerlink" href="#f-dist" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To find the probability to the left of a value when using the <span class="math notranslate nohighlight">\(F\)</span>-distribution, we will use the R function</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">pf</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">pf</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">df1</span><span class="p">,</span><span class="w"> </span><span class="n">df2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>where we want the probability to the left of <code>q</code>, the numerator degrees of freedom is <code>df1</code>, and the denominator degrees of freedom is <code>df2</code>.</p>
 </section>
 <section id="testing-two-population-variances">
-<h2>Testing Two Population Variances<a class="headerlink" href="#testing-two-population-variances" title="Permalink to this headline">#</a></h2>
+<h2>Testing Two Population Variances<a class="headerlink" href="#testing-two-population-variances" title="Link to this heading">#</a></h2>
 <p>You may recall that we use a <span class="math notranslate nohighlight">\(\chi^2\)</span>-distribution when performing a hypothesis test on the variance of a population. When comparing two population variances, we have one <span class="math notranslate nohighlight">\(\chi^2\)</span>-distribution for each of the two populations, so we compare the population variances using an <span class="math notranslate nohighlight">\(F\)</span>-distribution. When the populations are independent from each other and normally distributed, the test statistic for the hypothesis test is given by</p>
 <div class="math notranslate nohighlight">
 \[ F = \frac{s_1^2}{s_2^2}, \]</div>
@@ -421,7 +452,7 @@ document.write(`
 </ol>
 <hr class="docutils" />
 <section id="example-9-2-1">
-<h3>Example 9.2.1<a class="headerlink" href="#example-9-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 9.2.1<a class="headerlink" href="#example-9-2-1" title="Link to this heading">#</a></h3>
 <p>A researcher believes that there is less variance in the heights of <span class="math notranslate nohighlight">\(10\)</span>-year-old males compared to adult males. She measures the heights of <span class="math notranslate nohighlight">\(22\)</span> <span class="math notranslate nohighlight">\(10\)</span>-year-old males and <span class="math notranslate nohighlight">\(27\)</span> adult males with the following results (in centimeters):</p>
 <p><span class="math notranslate nohighlight">\(10\)</span> Year-Old Males (Sample A):</p>
 <p>148.8, 141.4, 144.9, 140.2, 140.7, 139.6, 148.5, 136.9, 147.5, 148.5, 131.8, 127.9, 132.2, 138.6, 148.5, 141.1, 130.9, 139.2, 137.5, 151.9, 135, 142.6</p>
@@ -429,9 +460,9 @@ document.write(`
 <p>168.8, 186.4, 172.1, 180.1, 163.7, 185.2, 173.2, 174, 165.9, 169.2, 175.7, 181.3, 172.7, 172.1, 168.3, 171.8, 195, 186.4, 179, 168.3, 171.3, 182.9, 164.4, 169, 186.8, 178.3, 191.1</p>
 <p>Conduct a hypothesis test with a <span class="math notranslate nohighlight">\(7\%\)</span> level of significance to test her claim.</p>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <section id="step-1-state-the-null-and-alternative-hypotheses">
-<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#step-1-state-the-null-and-alternative-hypotheses" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#step-1-state-the-null-and-alternative-hypotheses" title="Link to this heading">#</a></h5>
 <p>We want to test if the heights of 10 year-old males has a smaller variance than the heights of adult males. Written mathematically, this means that one of our hypotheses is that <span class="math notranslate nohighlight">\(\sigma_A^2 &lt; \sigma_B^2\)</span>. We can rewrite this in a form that is consistent with the sampling distribution by dividing both sides by <span class="math notranslate nohighlight">\(\sigma_B^2\)</span> to get</p>
 <div class="math notranslate nohighlight">
 \[\frac{\sigma_A^2}{\sigma_B^2} &lt; 1.\]</div>
@@ -443,20 +474,20 @@ H_a:&amp; \frac{\sigma_A^2}{\sigma_B^2} &lt; 1.
 \end{align*}\]</div>
 </section>
 <section id="step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">
-<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Permalink to this headline">#</a></h5>
+<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Link to this heading">#</a></h5>
 <p>Since we are testing two population variances, we will find the <span class="math notranslate nohighlight">\(p\)</span>-value using an <span class="math notranslate nohighlight">\(F\)</span>-distribution. The numerator degrees of freedom is <span class="math notranslate nohighlight">\(df_A = n_A - 1 = 22 - 1 = 21\)</span> and the denominator degrees of freedom is <span class="math notranslate nohighlight">\(df_B = n_B - 1 = 27 - 1 = 26\)</span>.</p>
 </section>
 <section id="step-3-find-the-p-value">
-<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#step-3-find-the-p-value" title="Permalink to this headline">#</a></h5>
+<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#step-3-find-the-p-value" title="Link to this heading">#</a></h5>
 <p>Our test statistic is <span class="math notranslate nohighlight">\(F = \frac{s_A^2}{s_B^2}\)</span>, so we need to find the standard deviation <span class="math notranslate nohighlight">\(s_A\)</span> of sample A and the standard deviation <span class="math notranslate nohighlight">\(s_B\)</span> of sample B. Let’s start by finding <span class="math notranslate nohighlight">\(s_A\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xA</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">148.8</span><span class="p">,</span> <span class="m">141.4</span><span class="p">,</span> <span class="m">144.9</span><span class="p">,</span> <span class="m">140.2</span><span class="p">,</span> <span class="m">140.7</span><span class="p">,</span> <span class="m">139.6</span><span class="p">,</span> <span class="m">148.5</span><span class="p">,</span> <span class="m">136.9</span><span class="p">,</span> <span class="m">147.5</span><span class="p">,</span> <span class="m">148.5</span><span class="p">,</span> <span class="m">131.8</span><span class="p">,</span> <span class="m">127.9</span><span class="p">,</span> <span class="m">132.2</span><span class="p">,</span> <span class="m">138.6</span><span class="p">,</span> <span class="m">148.5</span><span class="p">,</span> <span class="m">141.1</span><span class="p">,</span> <span class="m">130.9</span><span class="p">,</span> <span class="m">139.2</span><span class="p">,</span> <span class="m">137.5</span><span class="p">,</span> <span class="m">151.9</span><span class="p">,</span> <span class="m">135</span><span class="p">,</span> <span class="m">142.6</span><span class="p">)</span>
-<span class="n">nA</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">xA</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">148.8</span><span class="p">,</span><span class="w"> </span><span class="m">141.4</span><span class="p">,</span><span class="w"> </span><span class="m">144.9</span><span class="p">,</span><span class="w"> </span><span class="m">140.2</span><span class="p">,</span><span class="w"> </span><span class="m">140.7</span><span class="p">,</span><span class="w"> </span><span class="m">139.6</span><span class="p">,</span><span class="w"> </span><span class="m">148.5</span><span class="p">,</span><span class="w"> </span><span class="m">136.9</span><span class="p">,</span><span class="w"> </span><span class="m">147.5</span><span class="p">,</span><span class="w"> </span><span class="m">148.5</span><span class="p">,</span><span class="w"> </span><span class="m">131.8</span><span class="p">,</span><span class="w"> </span><span class="m">127.9</span><span class="p">,</span><span class="w"> </span><span class="m">132.2</span><span class="p">,</span><span class="w"> </span><span class="m">138.6</span><span class="p">,</span><span class="w"> </span><span class="m">148.5</span><span class="p">,</span><span class="w"> </span><span class="m">141.1</span><span class="p">,</span><span class="w"> </span><span class="m">130.9</span><span class="p">,</span><span class="w"> </span><span class="m">139.2</span><span class="p">,</span><span class="w"> </span><span class="m">137.5</span><span class="p">,</span><span class="w"> </span><span class="m">151.9</span><span class="p">,</span><span class="w"> </span><span class="m">135</span><span class="p">,</span><span class="w"> </span><span class="m">142.6</span><span class="p">)</span>
+<span class="n">nA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">xA</span><span class="p">)</span>
 
-<span class="n">xbarA</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">xA</span><span class="p">)</span><span class="o">/</span><span class="n">nA</span>
+<span class="n">xbarA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">xA</span><span class="p">)</span><span class="o">/</span><span class="n">nA</span>
 
-<span class="n">sA</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">xA</span> <span class="o">-</span> <span class="n">xbarA</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">nA</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">sA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">xA</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbarA</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">nA</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 <span class="n">sA</span>
 </pre></div>
 </div>
@@ -467,12 +498,12 @@ H_a:&amp; \frac{\sigma_A^2}{\sigma_B^2} &lt; 1.
 <p>So the standard deviation of sample A is <span class="math notranslate nohighlight">\(s_A = 6.613\)</span>. The process is the same to find <span class="math notranslate nohighlight">\(s_B\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xB</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">168.8</span><span class="p">,</span> <span class="m">186.4</span><span class="p">,</span> <span class="m">172.1</span><span class="p">,</span> <span class="m">180.1</span><span class="p">,</span> <span class="m">163.7</span><span class="p">,</span> <span class="m">185.2</span><span class="p">,</span> <span class="m">173.2</span><span class="p">,</span> <span class="m">174</span><span class="p">,</span> <span class="m">165.9</span><span class="p">,</span> <span class="m">169.2</span><span class="p">,</span> <span class="m">175.7</span><span class="p">,</span> <span class="m">181.3</span><span class="p">,</span> <span class="m">172.7</span><span class="p">,</span> <span class="m">172.1</span><span class="p">,</span> <span class="m">168.3</span><span class="p">,</span> <span class="m">171.8</span><span class="p">,</span> <span class="m">195</span><span class="p">,</span> <span class="m">186.4</span><span class="p">,</span> <span class="m">179</span><span class="p">,</span> <span class="m">168.3</span><span class="p">,</span> <span class="m">171.3</span><span class="p">,</span> <span class="m">182.9</span><span class="p">,</span> <span class="m">164.4</span><span class="p">,</span> <span class="m">169</span><span class="p">,</span> <span class="m">186.8</span><span class="p">,</span> <span class="m">178.3</span><span class="p">,</span> <span class="m">191.1</span><span class="p">)</span>
-<span class="n">nB</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">xB</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">168.8</span><span class="p">,</span><span class="w"> </span><span class="m">186.4</span><span class="p">,</span><span class="w"> </span><span class="m">172.1</span><span class="p">,</span><span class="w"> </span><span class="m">180.1</span><span class="p">,</span><span class="w"> </span><span class="m">163.7</span><span class="p">,</span><span class="w"> </span><span class="m">185.2</span><span class="p">,</span><span class="w"> </span><span class="m">173.2</span><span class="p">,</span><span class="w"> </span><span class="m">174</span><span class="p">,</span><span class="w"> </span><span class="m">165.9</span><span class="p">,</span><span class="w"> </span><span class="m">169.2</span><span class="p">,</span><span class="w"> </span><span class="m">175.7</span><span class="p">,</span><span class="w"> </span><span class="m">181.3</span><span class="p">,</span><span class="w"> </span><span class="m">172.7</span><span class="p">,</span><span class="w"> </span><span class="m">172.1</span><span class="p">,</span><span class="w"> </span><span class="m">168.3</span><span class="p">,</span><span class="w"> </span><span class="m">171.8</span><span class="p">,</span><span class="w"> </span><span class="m">195</span><span class="p">,</span><span class="w"> </span><span class="m">186.4</span><span class="p">,</span><span class="w"> </span><span class="m">179</span><span class="p">,</span><span class="w"> </span><span class="m">168.3</span><span class="p">,</span><span class="w"> </span><span class="m">171.3</span><span class="p">,</span><span class="w"> </span><span class="m">182.9</span><span class="p">,</span><span class="w"> </span><span class="m">164.4</span><span class="p">,</span><span class="w"> </span><span class="m">169</span><span class="p">,</span><span class="w"> </span><span class="m">186.8</span><span class="p">,</span><span class="w"> </span><span class="m">178.3</span><span class="p">,</span><span class="w"> </span><span class="m">191.1</span><span class="p">)</span>
+<span class="n">nB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">xB</span><span class="p">)</span>
 
-<span class="n">xbarB</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">xB</span><span class="p">)</span><span class="o">/</span><span class="n">nB</span>
+<span class="n">xbarB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">xB</span><span class="p">)</span><span class="o">/</span><span class="n">nB</span>
 
-<span class="n">sB</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">xB</span> <span class="o">-</span> <span class="n">xbarB</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">nB</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">sB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">xB</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbarB</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">nB</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 <span class="n">sB</span>
 </pre></div>
 </div>
@@ -484,7 +515,7 @@ H_a:&amp; \frac{\sigma_A^2}{\sigma_B^2} &lt; 1.
 <p>We can now calculate our test statistic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Fscore</span> <span class="o">=</span> <span class="n">sA</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="n">sB</span><span class="o">^</span><span class="m">2</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Fscore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sA</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="n">sB</span><span class="o">^</span><span class="m">2</span>
 <span class="n">Fscore</span>
 </pre></div>
 </div>
@@ -497,7 +528,7 @@ $<span class="math notranslate nohighlight">\( F = \frac{s_A^2}{s_B^2} = \frac{6
 <p>We are now prepared to calculate the <span class="math notranslate nohighlight">\(p\)</span>-value using the numerator degrees of freedom and denominator degrees of freedom we calculated in step 2. Since the alternative hypothesis uses a “less-than” symbol, we perform a left-tailed test.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pf</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="n">Fscore</span><span class="p">,</span> <span class="n">df1</span> <span class="o">=</span> <span class="m">21</span><span class="p">,</span> <span class="n">df2</span> <span class="o">=</span> <span class="m">26</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pf</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Fscore</span><span class="p">,</span><span class="w"> </span><span class="n">df1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">21</span><span class="p">,</span><span class="w"> </span><span class="n">df2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">26</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -507,7 +538,7 @@ $<span class="math notranslate nohighlight">\( F = \frac{s_A^2}{s_B^2} = \frac{6
 <p>So the <span class="math notranslate nohighlight">\(p\)</span>-value is <span class="math notranslate nohighlight">\(P(F &lt; 0.611) = 0.126\)</span>. In other words, assuming the null hypothesis is true, there is a <span class="math notranslate nohighlight">\(12.6\%\)</span> chance of the variance from a sample from population A being at least as small as the variance we actually obtained relative to the variance from a sample from population B.</p>
 </section>
 <section id="step-4-draw-a-conclusion">
-<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Permalink to this headline">#</a></h5>
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Link to this heading">#</a></h5>
 <p>Since <span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(= 0.126 \geq 0.07 = \alpha\)</span>, we do <em>not</em> reject the null hypothesis. There is not enough evidence to conclude that the variance of heights of <span class="math notranslate nohighlight">\(10\)</span> year-old males is lower than the variance of heights of adult males.</p>
 </section>
 </section>
@@ -540,11 +571,10 @@ $<span class="math notranslate nohighlight">\( F = \frac{s_A^2}{s_B^2} = \frac{6
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="9.1%20Hypothesis%20Testing%20Two%20Population%20Means.html"
@@ -564,10 +594,7 @@ $<span class="math notranslate nohighlight">\( F = \frac{s_A^2}{s_B^2} = \frac{6
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -575,6 +602,7 @@ $<span class="math notranslate nohighlight">\( F = \frac{s_A^2}{s_B^2} = \frac{6
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -618,6 +646,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -644,8 +673,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

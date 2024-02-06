@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3.7. Continuous Probability Distributions &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch3 Probability/3.7 Continuous Probability Distributions';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -397,19 +428,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="continuous-probability-distributions">
-<h1><span class="section-number">3.7. </span>Continuous Probability Distributions<a class="headerlink" href="#continuous-probability-distributions" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.7. </span>Continuous Probability Distributions<a class="headerlink" href="#continuous-probability-distributions" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Identify continuous probability density functions.</p></li>
 <li><p>Calculate probabilities by finding the areas under probability density functions.</p></li>
 </ul>
 </section>
 <section id="id1">
-<h2>Continuous Probability Distributions<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Continuous Probability Distributions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>If the outcome of an experiment can take on take on the value of any fraction, decimal, or irrational number within the range of allowed values, we say the experiment has a <strong>continuous probability distribution</strong>. For example, if we conduct an experiment where we measure the height of a randomly chosen person, the outcome could be that the individual is <span class="math notranslate nohighlight">\(64.41\)</span> inches tall, or maybe <span class="math notranslate nohighlight">\(72.683\)</span> inches tall, or it could be any decimal value in between.</p>
 <p>A continuous probability distribution can be described using a <strong>probability density function</strong>. The graph of a probability density function can be used to tell us how likely any range of outcomes is likely to be. Specifically, the area under the curve within a range of values is the probability that the outcome will be within that range of values. In short, when dealing with probability density functions,</p>
 <div class="math notranslate nohighlight">
@@ -418,7 +449,7 @@ document.write(`
 <figure class="align-default" id="pdf-example">
 <a class="reference internal image-reference" href="../_images/pdf_example.png"><img alt="A curve is plotted on the xy-plane. It starts at height zero at x=0, is highest at about x=6, then slowly drops off to nearly zero at x=30." src="../_images/pdf_example.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.1 </span><span class="caption-text">An example of a continuous probability density function. The area under the curve between <span class="math notranslate nohighlight">\(x = 4\)</span> and <span class="math notranslate nohighlight">\(x = 8\)</span> (the shaded region on the left) is <span class="math notranslate nohighlight">\(P(4 &lt; X &lt; 8)\)</span>. The area under the curve between <span class="math notranslate nohighlight">\(x = 14\)</span> and <span class="math notranslate nohighlight">\(x = 18\)</span> (the shaded region on the right) is <span class="math notranslate nohighlight">\(P(14 &lt; X &lt; 18)\)</span>. Since the area of the left region is clearly larger than the area of the right region, an outcome between <span class="math notranslate nohighlight">\(x = 4\)</span> and <span class="math notranslate nohighlight">\(x = 8\)</span> is more likely than an outcome between <span class="math notranslate nohighlight">\(x = 14\)</span> and <span class="math notranslate nohighlight">\(x = 18\)</span>.</span><a class="headerlink" href="#pdf-example" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.1 </span><span class="caption-text">An example of a continuous probability density function. The area under the curve between <span class="math notranslate nohighlight">\(x = 4\)</span> and <span class="math notranslate nohighlight">\(x = 8\)</span> (the shaded region on the left) is <span class="math notranslate nohighlight">\(P(4 &lt; X &lt; 8)\)</span>. The area under the curve between <span class="math notranslate nohighlight">\(x = 14\)</span> and <span class="math notranslate nohighlight">\(x = 18\)</span> (the shaded region on the right) is <span class="math notranslate nohighlight">\(P(14 &lt; X &lt; 18)\)</span>. Since the area of the left region is clearly larger than the area of the right region, an outcome between <span class="math notranslate nohighlight">\(x = 4\)</span> and <span class="math notranslate nohighlight">\(x = 8\)</span> is more likely than an outcome between <span class="math notranslate nohighlight">\(x = 14\)</span> and <span class="math notranslate nohighlight">\(x = 18\)</span>.</span><a class="headerlink" href="#pdf-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In this section, we will deal only with calculating the area for regions with shapes we are familiar with from geometry, like rectangles, circles, and triangles. We will learn how to calculate the areas of some regions with more complex shapes later.</p>
@@ -429,16 +460,16 @@ document.write(`
 </div>
 <hr class="docutils" />
 <section id="example-3-7-1">
-<h3>Example 3.7.1<a class="headerlink" href="#example-3-7-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.7.1<a class="headerlink" href="#example-3-7-1" title="Link to this heading">#</a></h3>
 <p>Does the function pictured in <a class="reference internal" href="#pdf-rect1"><span class="std std-numref">Figure 3.7.2</span></a> represent a probability density function? Why or why not?</p>
 <figure class="align-default" id="pdf-rect1">
 <a class="reference internal image-reference" href="../_images/pdf_rect1.png"><img alt="A horizontal line segment of height y = 0.2 from x = -1 to x = 4." src="../_images/pdf_rect1.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.2 </span><span class="caption-text">A horizontal line segment of height <span class="math notranslate nohighlight">\(y = 0.2\)</span> from <span class="math notranslate nohighlight">\(x = -1\)</span> to <span class="math notranslate nohighlight">\(x = 4\)</span>.</span><a class="headerlink" href="#pdf-rect1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.2 </span><span class="caption-text">A horizontal line segment of height <span class="math notranslate nohighlight">\(y = 0.2\)</span> from <span class="math notranslate nohighlight">\(x = -1\)</span> to <span class="math notranslate nohighlight">\(x = 4\)</span>.</span><a class="headerlink" href="#pdf-rect1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <p>For a graph or function to be a probability density function, it needs to satisfy two criteria.</p>
 <p>First, is the graph entirely above the <span class="math notranslate nohighlight">\(x\)</span>-axis so no probabilities are less than zero? Yes, we can see that the graph is entirely above the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
 <p>Second, is the total area under the graph equal to one? The region under the graph is a rectangle. We can calculate the area of a rectangle by multiplying the length of the base with the height. We can see from the graph that the height of the rectangle is <span class="math notranslate nohighlight">\(y = 0.2\)</span>. Since the rectangle ranges from <span class="math notranslate nohighlight">\(x = -1\)</span> to <span class="math notranslate nohighlight">\(x = 4\)</span>, the length of the base is <span class="math notranslate nohighlight">\(4 - (-1) = 5\)</span>. So the total area under the graph is</p>
@@ -449,32 +480,32 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-3-7-2">
-<h3>Example 3.7.2<a class="headerlink" href="#example-3-7-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.7.2<a class="headerlink" href="#example-3-7-2" title="Link to this heading">#</a></h3>
 <p>Does the function pictured in <a class="reference internal" href="#pdf-tri1"><span class="std std-numref">Figure 3.7.3</span></a> represent a probability density function? Why or why not?</p>
 <figure class="align-default" id="pdf-tri1">
 <a class="reference internal image-reference" href="../_images/pdf_tri1.png"><img alt="A line segment from (-4, 0.4) to (2, -0.2)." src="../_images/pdf_tri1.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.3 </span><span class="caption-text">A line segment from <span class="math notranslate nohighlight">\((x, y) = (-4, 0.4)\)</span> to <span class="math notranslate nohighlight">\((x, y) = (2, -0.2)\)</span>.</span><a class="headerlink" href="#pdf-tri1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.3 </span><span class="caption-text">A line segment from <span class="math notranslate nohighlight">\((x, y) = (-4, 0.4)\)</span> to <span class="math notranslate nohighlight">\((x, y) = (2, -0.2)\)</span>.</span><a class="headerlink" href="#pdf-tri1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>For a graph or function to be a probability density function, it needs to satisfy two criteria.</p>
 <p>First, is the graph entirely above the <span class="math notranslate nohighlight">\(x\)</span>-axis so no probabilities are less than zero? No, we can see on that the graph is below the <span class="math notranslate nohighlight">\(x\)</span>-axis between <span class="math notranslate nohighlight">\(x = 0\)</span> and <span class="math notranslate nohighlight">\(x = 2\)</span>. Since the function fails this first criterion, we know it is not a probability density function. We do not need to check the second criterion.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="example-3-7-3">
-<h3>Example 3.7.3<a class="headerlink" href="#example-3-7-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.7.3<a class="headerlink" href="#example-3-7-3" title="Link to this heading">#</a></h3>
 <p>Does the function pictured in <a class="reference internal" href="#pdf-circle"><span class="std std-numref">Figure 3.7.4</span></a> represent a probability density function? Why or why not?</p>
 <figure class="align-default" id="pdf-circle">
 <a class="reference internal image-reference" href="../_images/pdf_circle.png"><img alt="The upper half-circle of radius 2 centered at the origin." src="../_images/pdf_circle.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.4 </span><span class="caption-text">The upper half of a circle of radius <span class="math notranslate nohighlight">\(2\)</span>.</span><a class="headerlink" href="#pdf-circle" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.4 </span><span class="caption-text">The upper half of a circle of radius <span class="math notranslate nohighlight">\(2\)</span>.</span><a class="headerlink" href="#pdf-circle" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id3">
-<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>For a graph or function to be a probability density function, it needs to satisfy two criteria.</p>
 <p>First, is the graph entirely above the <span class="math notranslate nohighlight">\(x\)</span>-axis so no probabilities are less than zero? Yes, we can see that the graph is entirely above the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
 <p>Second, is the total area under the graph equal to one? We can calculate the area of the entire region under the graph using the formula for the area of a full circle:</p>
@@ -488,30 +519,30 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-3-7-4">
-<h3>Example 3.7.4<a class="headerlink" href="#example-3-7-4" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.7.4<a class="headerlink" href="#example-3-7-4" title="Link to this heading">#</a></h3>
 <p>Consider the probability density function <span class="math notranslate nohighlight">\(y = 0.5\)</span> from <span class="math notranslate nohighlight">\(x = 1\)</span> to <span class="math notranslate nohighlight">\(x = 3\)</span>.</p>
 <ol class="arabic simple">
 <li><p>Find <span class="math notranslate nohighlight">\(P(X &gt; 1.5)\)</span>.</p></li>
 <li><p>Find <span class="math notranslate nohighlight">\(P(2 &lt; X &lt; 2.5)\)</span>.</p></li>
 </ol>
 <section id="id4">
-<h4>Solution<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>First, let’s graph the probability density function. In this case, it is a horizontal line of height <span class="math notranslate nohighlight">\(y = 0.5\)</span> that stretches from <span class="math notranslate nohighlight">\(x = 1\)</span> to <span class="math notranslate nohighlight">\(x = 3\)</span>, as shown in <a class="reference internal" href="#pdf-rect2"><span class="std std-numref">Figure 3.7.5</span></a>. Note that it really is a probability density function since the area under the graph is</p>
 <div class="math notranslate nohighlight">
 \[ A = \text{Base} \cdot \text{Height} = 2 \cdot 0.5 = 1. \]</div>
 <figure class="align-default" id="pdf-rect2">
 <a class="reference internal image-reference" href="../_images/pdf_rect2.png"><img alt="A horizontal line segment of height y = 0.5 from x = 1 to x = 3." src="../_images/pdf_rect2.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.5 </span><span class="caption-text">A horizontal line segment of height <span class="math notranslate nohighlight">\(y = 0.5\)</span> from <span class="math notranslate nohighlight">\(x = 1\)</span> to <span class="math notranslate nohighlight">\(x = 3\)</span>.</span><a class="headerlink" href="#pdf-rect2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.5 </span><span class="caption-text">A horizontal line segment of height <span class="math notranslate nohighlight">\(y = 0.5\)</span> from <span class="math notranslate nohighlight">\(x = 1\)</span> to <span class="math notranslate nohighlight">\(x = 3\)</span>.</span><a class="headerlink" href="#pdf-rect2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <p>To find <span class="math notranslate nohighlight">\(P(X &gt; 1.5)\)</span>, we need to calculate the area under the graph over the range where <span class="math notranslate nohighlight">\(x &gt; 1.5\)</span>. (See <a class="reference internal" href="#pdf-rect2-area1"><span class="std std-numref">Figure 3.7.6</span></a>.)</p>
 <figure class="align-default" id="pdf-rect2-area1">
 <a class="reference internal image-reference" href="../_images/pdf_rect2_area1.png"><img alt="A horizontal line segment of height y = 0.5 from x = 1 to x = 3. The area under the line segment from x = 1.5 to x = 3 is shaded blue." src="../_images/pdf_rect2_area1.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.6 </span><span class="caption-text">A horizontal line segment of height <span class="math notranslate nohighlight">\(y = 0.5\)</span> from <span class="math notranslate nohighlight">\(x = 1\)</span> to <span class="math notranslate nohighlight">\(x = 3\)</span>. The area of the region shaded blue is <span class="math notranslate nohighlight">\(P(X &gt; 1.5)\)</span>.</span><a class="headerlink" href="#pdf-rect2-area1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.6 </span><span class="caption-text">A horizontal line segment of height <span class="math notranslate nohighlight">\(y = 0.5\)</span> from <span class="math notranslate nohighlight">\(x = 1\)</span> to <span class="math notranslate nohighlight">\(x = 3\)</span>. The area of the region shaded blue is <span class="math notranslate nohighlight">\(P(X &gt; 1.5)\)</span>.</span><a class="headerlink" href="#pdf-rect2-area1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This region has a rectangular shape, so we can find the area by multiplying the base of the region times its height. The height is <span class="math notranslate nohighlight">\(y = 0.5\)</span>. The length of the base from <span class="math notranslate nohighlight">\(x = 1.5\)</span> to <span class="math notranslate nohighlight">\(x = 3.0\)</span> is <span class="math notranslate nohighlight">\(3.0 - 1.5 = 1.5\)</span>. So the area of the region is</p>
@@ -520,12 +551,12 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(X &gt; 1.5) = 0.75\)</span>.</p>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <p>To find <span class="math notranslate nohighlight">\(P(2 &lt; X &lt; 2.5)\)</span>, we need to calculate the area under the graph over the range between <span class="math notranslate nohighlight">\(x = 2\)</span> and <span class="math notranslate nohighlight">\(x = 2.5\)</span>. (See <a class="reference internal" href="#pdf-rect2-area2"><span class="std std-numref">Figure 3.7.7</span></a>.)</p>
 <figure class="align-default" id="pdf-rect2-area2">
 <a class="reference internal image-reference" href="../_images/pdf_rect2_area2.png"><img alt="A horizontal line segment of height y = 0.5 from x = 1 to x = 3. The area under the line segment from x = 2 to x = 2.5 is shaded blue." src="../_images/pdf_rect2_area2.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.7 </span><span class="caption-text">A horizontal line segment of height <span class="math notranslate nohighlight">\(y = 0.5\)</span> from <span class="math notranslate nohighlight">\(x = 1\)</span> to <span class="math notranslate nohighlight">\(x = 3\)</span>. The area of the region shaded blue is <span class="math notranslate nohighlight">\(P(2 &lt; X &lt; 2.5)\)</span>.</span><a class="headerlink" href="#pdf-rect2-area2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.7 </span><span class="caption-text">A horizontal line segment of height <span class="math notranslate nohighlight">\(y = 0.5\)</span> from <span class="math notranslate nohighlight">\(x = 1\)</span> to <span class="math notranslate nohighlight">\(x = 3\)</span>. The area of the region shaded blue is <span class="math notranslate nohighlight">\(P(2 &lt; X &lt; 2.5)\)</span>.</span><a class="headerlink" href="#pdf-rect2-area2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This region has a rectangular shape, so we can find the area by multiplying the base of the region times its height. The height is <span class="math notranslate nohighlight">\(y = 0.5\)</span>. The length of the base from <span class="math notranslate nohighlight">\(x = 2\)</span> to <span class="math notranslate nohighlight">\(x = 2.5\)</span> is <span class="math notranslate nohighlight">\(2.5 - 2 = 0.5\)</span>. So the area of the region is</p>
@@ -537,14 +568,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-3-7-5">
-<h3>Example 3.7.5<a class="headerlink" href="#example-3-7-5" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.7.5<a class="headerlink" href="#example-3-7-5" title="Link to this heading">#</a></h3>
 <p>Consider the probability density function <span class="math notranslate nohighlight">\(y = \frac{1}{8}x + \frac{3}{8}\)</span> from <span class="math notranslate nohighlight">\(x = -3\)</span> to <span class="math notranslate nohighlight">\(x = 1\)</span>.</p>
 <ol class="arabic simple">
 <li><p>Find <span class="math notranslate nohighlight">\(P(X &lt; -1.5)\)</span>.</p></li>
 <li><p>Find <span class="math notranslate nohighlight">\(P(X &gt; -1.5)\)</span>.</p></li>
 </ol>
 <section id="id5">
-<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p>Begin by plotting the probability density function. If you remember algebra, you may recall that <span class="math notranslate nohighlight">\(y = \frac{1}{8}x + \frac{3}{8}\)</span> is the equation of a line. We know this line only goes from <span class="math notranslate nohighlight">\(x = -3\)</span> to <span class="math notranslate nohighlight">\(x = 1\)</span>. If we plug <span class="math notranslate nohighlight">\(x = -3\)</span> into the equation, we get</p>
 <div class="math notranslate nohighlight">
 \[ y = \frac{1}{8}(-3) + \frac{3}{8} = 0, \]</div>
@@ -555,7 +586,7 @@ document.write(`
 <figure class="align-default" id="pdf-tri2">
 <a class="reference internal image-reference" href="../_images/pdf_tri2.png"><img alt="A line segment of from (x, y) = (-3, 0) to (x, y) = (1, 0.5)." src="../_images/pdf_tri2.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.8 </span><span class="caption-text">A line segment of from <span class="math notranslate nohighlight">\((x, y) = (-3, 0)\)</span> to <span class="math notranslate nohighlight">\((x, y) = (1, 0.5)\)</span>.</span><a class="headerlink" href="#pdf-tri2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.8 </span><span class="caption-text">A line segment of from <span class="math notranslate nohighlight">\((x, y) = (-3, 0)\)</span> to <span class="math notranslate nohighlight">\((x, y) = (1, 0.5)\)</span>.</span><a class="headerlink" href="#pdf-tri2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Note the total area under the function has a triangular shape. Since the length of the base of the triangle is <span class="math notranslate nohighlight">\(1 - (-3) = 4\)</span>, and the height is <span class="math notranslate nohighlight">\(0.5\)</span>, the area of the triangle is</p>
@@ -563,12 +594,12 @@ document.write(`
 \[ A = \frac{1}{2} \cdot \text{Base} \cdot \text{Height} = \frac{1}{2} \cdot 4 \cdot 0.5 = 1, \]</div>
 <p>which means the function really is a probability density function, as the problem statement claims.</p>
 <section id="id6">
-<h5>Part 1<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
 <p>To find <span class="math notranslate nohighlight">\(P(X &lt; -1.5)\)</span>, we need to calculate the area under the graph over the range where <span class="math notranslate nohighlight">\(x &lt; 1.5\)</span>. (See <a class="reference internal" href="#pdf-tri2-area1"><span class="std std-numref">Figure 3.7.9</span></a>.)</p>
 <figure class="align-default" id="pdf-tri2-area1">
 <a class="reference internal image-reference" href="../_images/pdf_tri2_area1.png"><img alt="A line segment of from (x, y) = (-3, 0) to (x, y) = (1, 0.5). The area under the line segment from x = -3 to x = -1.5 is shaded blue." src="../_images/pdf_tri2_area1.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.9 </span><span class="caption-text">A line segment of from <span class="math notranslate nohighlight">\((x, y) = (-3, 0)\)</span> to <span class="math notranslate nohighlight">\((x, y) = (1, 0.5)\)</span>. The area of the shaded blue region is <span class="math notranslate nohighlight">\(P(X &lt; -1.5)\)</span>.</span><a class="headerlink" href="#pdf-tri2-area1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.9 </span><span class="caption-text">A line segment of from <span class="math notranslate nohighlight">\((x, y) = (-3, 0)\)</span> to <span class="math notranslate nohighlight">\((x, y) = (1, 0.5)\)</span>. The area of the shaded blue region is <span class="math notranslate nohighlight">\(P(X &lt; -1.5)\)</span>.</span><a class="headerlink" href="#pdf-tri2-area1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This region has a triangular shape, so we can find the area using the formula for the area of a triangle. The length of the base of the triangle is <span class="math notranslate nohighlight">\((-1.5) - (-3.0) = 1.5\)</span>. To find the height of the triangle, we can plug the <span class="math notranslate nohighlight">\(x\)</span>-value at which the triangle is highest, <span class="math notranslate nohighlight">\(x = -1.5\)</span>, into the probability density function:</p>
@@ -580,12 +611,12 @@ document.write(`
 <p>That is, <span class="math notranslate nohighlight">\(P(X &lt; -1.5) = 0.1406\)</span>.</p>
 </section>
 <section id="id7">
-<h5>Part 2<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
 <p>To find <span class="math notranslate nohighlight">\(P(X &gt; -1.5)\)</span>, we need to calculate the area under the graph over the range where <span class="math notranslate nohighlight">\(x &gt; 1.5\)</span>. (See <a class="reference internal" href="#pdf-tri2-area2"><span class="std std-numref">Figure 3.7.10</span></a>.)</p>
 <figure class="align-default" id="pdf-tri2-area2">
 <a class="reference internal image-reference" href="../_images/pdf_tri2_area2.png"><img alt="A line segment of from (x, y) = (-3, 0) to (x, y) = (1, 0.5). The area under the line segment from x = -1.5 to x = 1 is shaded blue." src="../_images/pdf_tri2_area2.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.7.10 </span><span class="caption-text">A line segment of from <span class="math notranslate nohighlight">\((x, y) = (-3, 0)\)</span> to <span class="math notranslate nohighlight">\((x, y) = (1, 0.5)\)</span>. The area of the shaded blue region is <span class="math notranslate nohighlight">\(P(X &gt; -1.5)\)</span>.</span><a class="headerlink" href="#pdf-tri2-area2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.7.10 </span><span class="caption-text">A line segment of from <span class="math notranslate nohighlight">\((x, y) = (-3, 0)\)</span> to <span class="math notranslate nohighlight">\((x, y) = (1, 0.5)\)</span>. The area of the shaded blue region is <span class="math notranslate nohighlight">\(P(X &gt; -1.5)\)</span>.</span><a class="headerlink" href="#pdf-tri2-area2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This region has the shape of a trapezoid. The formula for calculating the area of a trapezoid isn’t too hard, but you probably don’t remember it. In this particular case, there is an easier way to calculate the area of the region. We just need to observe that the area over <span class="math notranslate nohighlight">\(x &lt; -1.5\)</span> and the area over <span class="math notranslate nohighlight">\(x &gt; -1.5\)</span> are complementary, since together they cover the total area under the probability density function. That means</p>
@@ -626,11 +657,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="3.6%20The%20Binomial%20Distribution.html"
@@ -650,10 +680,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -661,6 +688,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -721,6 +749,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -747,8 +776,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

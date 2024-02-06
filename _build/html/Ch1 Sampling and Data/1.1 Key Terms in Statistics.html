@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.1. Key Terms in Statistics &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch1 Sampling and Data/1.1 Key Terms in Statistics';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -393,12 +424,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="key-terms-in-statistics">
-<h1><span class="section-number">1.1. </span>Key Terms in Statistics<a class="headerlink" href="#key-terms-in-statistics" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1.1. </span>Key Terms in Statistics<a class="headerlink" href="#key-terms-in-statistics" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Distinguish the difference between a population and a sample.</p></li>
 <li><p>Distinguish between a parameter and a statistic.</p></li>
@@ -406,13 +437,13 @@ document.write(`
 </ul>
 </section>
 <section id="the-definition-of-statistics">
-<h2>The Definition of Statistics<a class="headerlink" href="#the-definition-of-statistics" title="Permalink to this headline">#</a></h2>
+<h2>The Definition of Statistics<a class="headerlink" href="#the-definition-of-statistics" title="Link to this heading">#</a></h2>
 <p>The science of <strong>statistics</strong> deals with the collection, analysis, interpretation, and presentation of <strong>data</strong>. We see and use data in our everyday lives.</p>
 <p>In this course, you will learn how to organize and summarize data. Organizing and summarizing data is called <strong>descriptive statistics</strong>. Two ways to summarize data are by graphing and by using numbers (for example, by finding an average). After you have studied probability and probability distributions, you will use formal methods for drawing conclusions from “good” data. The formal methods are called <strong>inferential statistics</strong>. Statistical inference uses probability to determine how confident we can be that our conclusions are correct.</p>
 <p>Effective interpretation of data (inference) is based on good procedures for producing data and thoughtful examination of the data. You will encounter what will seem to be too many mathematical formulas for interpreting data. The goal of statistics is not to perform numerous calculations using the formulas, but to gain an understanding of your data. The calculations can be done using a calculator or a computer. The understanding must come from you. If you can thoroughly grasp the basics of statistics, you can be more confident in the decisions you make in life.</p>
 <hr class="docutils" />
 <section id="example-1-1-1">
-<h3>Example 1.1.1<a class="headerlink" href="#example-1-1-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.1.1<a class="headerlink" href="#example-1-1-1" title="Link to this heading">#</a></h3>
 <p>We asked <span class="math notranslate nohighlight">\(14\)</span> people chosen randomly from a statistics class how many hours they sleep per night. We obtained the following data:</p>
 <div style="text-align:center">5, 5.5, 6, 6, 6, 6.5, 6.5, 6.5, 6.5, 7, 7, 8, 8, 9</div>
 <br/>
@@ -420,7 +451,7 @@ document.write(`
 <figure class="align-default" id="intro-histogram">
 <a class="reference internal image-reference" href="../_images/intro_histogram.png"><img alt="A histogram of the data in this example. The histogram shows most people surveyed sleep less than 7 hours per night." src="../_images/intro_histogram.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.1.1 </span><span class="caption-text">A histogram of the data above. The height of each bar in the histogram tells us how many data values we have in the range covered by the histogram. For example, we can see that 5 of the individuals surveyed sleep between 5 and 6 hours per night.</span><a class="headerlink" href="#intro-histogram" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.1.1 </span><span class="caption-text">A histogram of the data above. The height of each bar in the histogram tells us how many data values we have in the range covered by the histogram. For example, we can see that 5 of the individuals surveyed sleep between 5 and 6 hours per night.</span><a class="headerlink" href="#intro-histogram" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>By looking at the histogram, we can see that most people we surveyed got no more than <span class="math notranslate nohighlight">\(7\)</span> hours of sleep per night.</p>
@@ -432,12 +463,12 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
 </section>
 <hr class="docutils" />
 <section id="key-terms">
-<h2>Key Terms<a class="headerlink" href="#key-terms" title="Permalink to this headline">#</a></h2>
+<h2>Key Terms<a class="headerlink" href="#key-terms" title="Link to this heading">#</a></h2>
 <p>In statistics, we generally want to study a <strong>population</strong>. You can think of a population as a collection of persons, things, or objects under study. To study the population, we select a <strong>sample</strong>. The idea of <strong>sampling</strong> is to select a portion (or subset) of the larger population and study that smaller portion (the sample) to infer information about the population.</p>
 <figure class="align-default" id="sampling-image">
 <a class="reference internal image-reference" href="../_images/Simple_random_sampling.png"><img alt="A sample of four individuals is chosen from a population of twelve individuals." src="../_images/Simple_random_sampling.png" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.1.2 </span><span class="caption-text">A sample of four individuals is chosen from a population of twelve individuals.<a class="footnote-reference brackets" href="#attribution" id="id1">1</a></span><a class="headerlink" href="#sampling-image" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.1.2 </span><span class="caption-text">A sample of four individuals is chosen from a population of twelve individuals.<a class="footnote-reference brackets" href="#attribution" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#sampling-image" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Because it usually takes a lot of time and money to examine an entire population, sampling is a very practical technique. For example:</p>
@@ -447,10 +478,10 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
 </ul>
 <hr class="docutils" />
 <section id="example-1-1-2">
-<h3>Example 1.1.2<a class="headerlink" href="#example-1-1-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.1.2<a class="headerlink" href="#example-1-1-2" title="Link to this heading">#</a></h3>
 <p>An advertising company has created two ads for an American restaurant chain, one featuring a burger and one featuring a salad. They want to know which of the two ads Americans would find more appealing. To find out, the advertising company surveys <span class="math notranslate nohighlight">\(50\)</span> people and asks them which of the two ads they prefer. What is the population and what is the sample in this example?</p>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Population: All Americans</p></li>
 <li><p>Sample: The 50 people that were surveyed</p></li>
@@ -468,10 +499,10 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
 </section>
 <hr class="docutils" />
 <section id="example-1-1-4">
-<h3>Example 1.1.4<a class="headerlink" href="#example-1-1-4" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.1.4<a class="headerlink" href="#example-1-1-4" title="Link to this heading">#</a></h3>
 <p>The Bureau of Labor Statistics (BLS) wants to know the average annual income of statisticians. To find out, they ask 150 statisticians across the country what their annual income is, then average their results. What is the parameter and the statistic of interest in this example?</p>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Population Parameter: The average annual income of all statisticians</p></li>
 <li><p>Sample Statistic: The average annual income of the 150 statisticians that were surveyed</p></li>
@@ -484,17 +515,17 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In practice, the word <em>data</em> is sometimes treated as a plural noun, in which case plural verbs and pronouns are used, and at other times <em>data</em> is treated as a singular collective noun, in which case singular verbs and pronouns are used. In most cases, either form is acceptable: “The data <em>are</em> accurate” or “The data <em>is</em> accurate” have the same meaning.<a class="footnote-reference brackets" href="#websterref" id="id3">2</a> This is similar to how <em>people</em> is a plural noun (“The people <em>are</em> happy”) but <em>population</em> is a singular collective noun (“The population <em>is</em> happy), even though both words indicate a group of several individuals.</p>
+<p>In practice, the word <em>data</em> is sometimes treated as a plural noun, in which case plural verbs and pronouns are used, and at other times <em>data</em> is treated as a singular collective noun, in which case singular verbs and pronouns are used. In most cases, either form is acceptable: “The data <em>are</em> accurate” or “The data <em>is</em> accurate” have the same meaning.<a class="footnote-reference brackets" href="#websterref" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> This is similar to how <em>people</em> is a plural noun (“The people <em>are</em> happy”) but <em>population</em> is a singular collective noun (“The population <em>is</em> happy), even though both words indicate a group of several individuals.</p>
 <p>In formal writing, the plural form of <em>data</em> is often preferred, and several writing style guides, such as MLA and APA, only allow the plural form.</p>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="example-1-1-5">
-<h3>Example 1.1.5<a class="headerlink" href="#example-1-1-5" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.1.5<a class="headerlink" href="#example-1-1-5" title="Link to this heading">#</a></h3>
 <p>A medical doctor wishes to know the average time a laproscopic gallbladder removal surgery takes at her hospital. To find out, she samples 14 gallbladder removal surgeries to find out and notes how long each surgery takes. Three of the surgeries sampled respectively took 1.5 hours, 2.25 hours, and 1.25 hours. What is the variable and what is the data in this example?</p>
 <section id="id4">
-<h4>Solution<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Variable: <span class="math notranslate nohighlight">\(X\)</span> = The time it takes to perform one gallbladder surgery.</p></li>
 <li><p>Data: 1.5 hours, 2.25 hours, 1.25 hours</p></li>
@@ -503,11 +534,11 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
 </section>
 <hr class="docutils" />
 <section id="example-1-1-6">
-<h3>Example 1.1.6<a class="headerlink" href="#example-1-1-6" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.1.6<a class="headerlink" href="#example-1-1-6" title="Link to this heading">#</a></h3>
 <p>We want to know the average (mean) amount of money first year college students spend at ABC College on school supplies that do not include books. We randomly surveyed 100 first year students at the college. Three of those students spent $150, $200, and $225, respectively.</p>
 <p>Identify the population, sample, parameter, statistic, variable, and data in this example.</p>
 <section id="id5">
-<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Population: First year college students at ABC College</p></li>
 <li><p>Sample: The 100 first year students surveyed</p></li>
@@ -520,11 +551,11 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
 </section>
 <hr class="docutils" />
 <section id="example-1-1-7">
-<h3>Example 1.1.7<a class="headerlink" href="#example-1-1-7" title="Permalink to this headline">#</a></h3>
+<h3>Example 1.1.7<a class="headerlink" href="#example-1-1-7" title="Link to this heading">#</a></h3>
 <p>An insurance company would like to determine the proportion of all medical doctors who have been involved in one or more malpractice lawsuits. The company selects 500 doctors at random from a professional directory and determines the number in the sample who have been involved in a malpractice lawsuit.</p>
 <p>Identify the population, sample, parameter, statistic, variable, and data in this example.</p>
 <section id="id6">
-<h4>Solution<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Population: All medical doctors</p></li>
 <li><p>Sample: The 500 doctors selected at random from the professional directory</p></li>
@@ -534,14 +565,16 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
 <li><p>Data: Either “Yes, was involved in one or more malpractice suits,” or “No, was not involved in one or more malpractice suits”</p></li>
 </ul>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><a class="reference internal" href="#sampling-image"><span class="std std-numref">Figure 1.1.2</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Simple_random_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
-</dd>
-<dt class="label" id="websterref"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
-<dd><p>See <a class="reference external" href="https://www.merriam-webster.com/dictionary/data#usage-1">Merriam-Webster’s entry for <em>data</em></a> for more information.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="attribution" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference internal" href="#sampling-image"><span class="std std-numref">Figure 1.1.2</span></a> was <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Simple_random_sampling.PNG">created by Dan Kernler</a> and is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-Share Alike 4.0 International</a> license.</p>
+</aside>
+<aside class="footnote brackets" id="websterref" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>See <a class="reference external" href="https://www.merriam-webster.com/dictionary/data#usage-1">Merriam-Webster’s entry for <em>data</em></a> for more information.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -572,11 +605,10 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="1.0%20Sampling%20and%20Data.html"
@@ -596,10 +628,7 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -607,6 +636,7 @@ infer that the average amount of sleep of <em>all</em> statistics students is cl
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -663,6 +693,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -689,8 +720,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

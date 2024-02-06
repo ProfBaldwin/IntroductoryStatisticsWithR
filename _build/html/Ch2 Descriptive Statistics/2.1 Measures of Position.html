@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2.1. Measures of Position &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch2 Descriptive Statistics/2.1 Measures of Position';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -391,44 +422,44 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="measures-of-position">
-<h1><span class="section-number">2.1. </span>Measures of Position<a class="headerlink" href="#measures-of-position" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2.1. </span>Measures of Position<a class="headerlink" href="#measures-of-position" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Calculate percentiles and quartiles and interpret the results.</p></li>
 <li><p>Construct and interpret box plots.</p></li>
 </ul>
 </section>
 <section id="percentiles">
-<h2>Percentiles<a class="headerlink" href="#percentiles" title="Permalink to this headline">#</a></h2>
+<h2>Percentiles<a class="headerlink" href="#percentiles" title="Link to this heading">#</a></h2>
 <p>A common measure of position is <strong>percentiles</strong>. Percentiles are values that divide ordered data into 100 equally sized groups. To score in the 90th percentile of an exam does not mean, necessarily, that you received 90% on a test. It means that 90% of test scores are the same or less than your score and 10% of the test scores are the same or greater than your test score.</p>
 <p>Percentiles are useful for comparing values. For this reason, universities and colleges use percentiles extensively. One instance in which colleges and universities use percentiles is when SAT results are used to determine a minimum testing score that will be used as an acceptance factor. For example, suppose Duke accepts SAT scores at or above the 75th percentile. This means Duke will only accept students with an SAT scores higher than at least 75% of all SAT scores.</p>
 <p>Percentiles are mostly used with very large populations. Therefore, if you were to say that 90% of the test scores are less (and not the same or less) than your score, it would be acceptable because removing one particular data value is not significant in a very large population.</p>
 <p>To calculate percentiles by hand, the data must be ordered from smallest to largest. But we can use R to quickly find percentiles without ordering the data using the <code>quantile</code> function. <strong>Quantiles</strong> are values that divide ordered data into any number of equally-sized groups, so a percentile is a type of <strong>quantile</strong>.</p>
 <p>The syntax for the <code>quantile</code> function is:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">probs</span><span class="p">)</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In this case, <code>x</code> is the list of data that we want the percentiles of and <code>probs</code> is the percentage or list of percentages, converted to decimal form, corresponding to our percentiles. The name <code>probs</code> is an abbreviation for ‘probabilities.’ We will learn more about why that abbreviation is appropriate later.</p>
 <p>The following example illustrates how to use the <code>quantile</code> function to find a percentile.</p>
 <hr class="docutils" />
 <section id="example-2-1-1">
-<h3>Example 2.1.1<a class="headerlink" href="#example-2-1-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.1.1<a class="headerlink" href="#example-2-1-1" title="Link to this heading">#</a></h3>
 <p>Listed are 29 ages for Academy Award winning best actors. Find the 73rd percentile. Explain, in words, what this value represents.</p>
 <center>
 18, 21, 22, 25, 26, 27, 29, 30, 31, 33, 36, 37, 41, 42, 47, 52, 55, 57, 58, 59, 62, 65, 67, 71, 72, 73, 74, 76, 77
 </center>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <p>We will use the <code>quantile</code> function in R with <code>probs = 0.73</code>, since 73% = 0.73. Note that it is important to use the decimal form of the percentage; if we use <code>probs = 73</code>, we will get an error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">18</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">22</span><span class="p">,</span> <span class="m">25</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">27</span><span class="p">,</span> <span class="m">29</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">31</span><span class="p">,</span> <span class="m">33</span><span class="p">,</span> <span class="m">36</span><span class="p">,</span> <span class="m">37</span><span class="p">,</span> <span class="m">41</span><span class="p">,</span> <span class="m">42</span><span class="p">,</span> <span class="m">47</span><span class="p">,</span> <span class="m">52</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">57</span><span class="p">,</span> <span class="m">58</span><span class="p">,</span> <span class="m">59</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">76</span><span class="p">,</span> <span class="m">77</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">18</span><span class="p">,</span><span class="w"> </span><span class="m">21</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="m">26</span><span class="p">,</span><span class="w"> </span><span class="m">27</span><span class="p">,</span><span class="w"> </span><span class="m">29</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="m">31</span><span class="p">,</span><span class="w"> </span><span class="m">33</span><span class="p">,</span><span class="w"> </span><span class="m">36</span><span class="p">,</span><span class="w"> </span><span class="m">37</span><span class="p">,</span><span class="w"> </span><span class="m">41</span><span class="p">,</span><span class="w"> </span><span class="m">42</span><span class="p">,</span><span class="w"> </span><span class="m">47</span><span class="p">,</span><span class="w"> </span><span class="m">52</span><span class="p">,</span><span class="w"> </span><span class="m">55</span><span class="p">,</span><span class="w"> </span><span class="m">57</span><span class="p">,</span><span class="w"> </span><span class="m">58</span><span class="p">,</span><span class="w"> </span><span class="m">59</span><span class="p">,</span><span class="w"> </span><span class="m">62</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">74</span><span class="p">,</span><span class="w"> </span><span class="m">76</span><span class="p">,</span><span class="w"> </span><span class="m">77</span><span class="p">)</span>
 
-<span class="nf">quantile</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.73</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.73</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -441,7 +472,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="quartiles">
-<h2>Quartiles<a class="headerlink" href="#quartiles" title="Permalink to this headline">#</a></h2>
+<h2>Quartiles<a class="headerlink" href="#quartiles" title="Link to this heading">#</a></h2>
 <p><strong>Quartiles</strong> are values that divide ordered data into 4 equally sized groups, called <strong>quarters</strong>. A quartile is another kind of quantile.</p>
 <ul class="simple">
 <li><p>The first quartile, <span class="math notranslate nohighlight">\(Q_1\)</span>, is the same as the 25th percentile.</p></li>
@@ -458,7 +489,7 @@ document.write(`
 <figure class="align-default" id="quartiles-and-quarters">
 <a class="reference internal image-reference" href="../_images/quartiles_and_quarters.png"><img alt="An illustration of quartiles and quarters for 100 random values." src="../_images/quartiles_and_quarters.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.1.1 </span><span class="caption-text">Quartiles and quarters for 100 random data values. The quartiles (<span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, and <span class="math notranslate nohighlight">\(Q_3\)</span>) divide the data into quarters. Note that each quarter of the data contains 25% of data values. The data is more spread out in larger quarters and more squished together in smaller quarters, but both large quarters and small quarters contain the same number of data values.</span><a class="headerlink" href="#quartiles-and-quarters" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.1.1 </span><span class="caption-text">Quartiles and quarters for 100 random data values. The quartiles (<span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, and <span class="math notranslate nohighlight">\(Q_3\)</span>) divide the data into quarters. Note that each quarter of the data contains 25% of data values. The data is more spread out in larger quarters and more squished together in smaller quarters, but both large quarters and small quarters contain the same number of data values.</span><a class="headerlink" href="#quartiles-and-quarters" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The second quartile, <span class="math notranslate nohighlight">\(Q_2\)</span>, is more often called the <strong>median</strong> and represented by the variable <span class="math notranslate nohighlight">\(M\)</span>. It is a number that measures the “center” of the data. You can think of the median as the “middle value,” but it does not actually have to be one of the observed values. It is a number that separates ordered data into halves. Half the values are the same value or smaller than the median, and half the values are the same value or larger than the median. For example, consider the following data.</p>
@@ -476,9 +507,9 @@ document.write(`
 <p>Let’s confirm the median is 7 using R. Since the median is the 50th percentile, we will use <code>probs = 0.50</code>, since 50% = 0.50.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">11.5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">7.2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">6.8</span><span class="p">,</span> <span class="m">8.3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">11.5</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">7.2</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">6.8</span><span class="p">,</span><span class="w"> </span><span class="m">8.3</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
 
-<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.50</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -493,13 +524,13 @@ document.write(`
 </div>
 <hr class="docutils" />
 <section id="example-2-1-2">
-<h3>Example 2.1.2<a class="headerlink" href="#example-2-1-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.1.2<a class="headerlink" href="#example-2-1-2" title="Link to this heading">#</a></h3>
 <p>For the following 13 real estate prices, calculate the quartiles.</p>
 <center>
 $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000; $659,000; $529,000; $575,000; $488,800; $1,095,000
 </center>
 <section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>We will use the <code>quantile</code> function to calculate our quartiles.</p>
 <ul class="simple">
 <li><p>To calculate our first quartile <span class="math notranslate nohighlight">\(Q_1\)</span>, we will use <code>probs = 0.25</code>.</p></li>
@@ -516,16 +547,16 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">389950</span><span class="p">,</span> <span class="m">230500</span><span class="p">,</span> <span class="m">158000</span><span class="p">,</span> <span class="m">479000</span><span class="p">,</span> <span class="m">639000</span><span class="p">,</span> <span class="m">114950</span><span class="p">,</span> <span class="m">5500000</span><span class="p">,</span> <span class="m">387000</span><span class="p">,</span> <span class="m">659000</span><span class="p">,</span> <span class="m">529000</span><span class="p">,</span> <span class="m">575000</span><span class="p">,</span> <span class="m">488800</span><span class="p">,</span> <span class="m">1095000</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">389950</span><span class="p">,</span><span class="w"> </span><span class="m">230500</span><span class="p">,</span><span class="w"> </span><span class="m">158000</span><span class="p">,</span><span class="w"> </span><span class="m">479000</span><span class="p">,</span><span class="w"> </span><span class="m">639000</span><span class="p">,</span><span class="w"> </span><span class="m">114950</span><span class="p">,</span><span class="w"> </span><span class="m">5500000</span><span class="p">,</span><span class="w"> </span><span class="m">387000</span><span class="p">,</span><span class="w"> </span><span class="m">659000</span><span class="p">,</span><span class="w"> </span><span class="m">529000</span><span class="p">,</span><span class="w"> </span><span class="m">575000</span><span class="p">,</span><span class="w"> </span><span class="m">488800</span><span class="p">,</span><span class="w"> </span><span class="m">1095000</span><span class="p">)</span>
 
 <span class="c1">#First Quartile</span>
-<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.25</span><span class="p">)</span>
 
 <span class="c1">#Median/Second Quartile</span>
-<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.50</span><span class="p">)</span>
 
 <span class="c1">#Third Quartile</span>
-<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.75</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -546,7 +577,7 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 </section>
 <hr class="docutils" />
 <section id="box-plots">
-<h2>Box Plots<a class="headerlink" href="#box-plots" title="Permalink to this headline">#</a></h2>
+<h2>Box Plots<a class="headerlink" href="#box-plots" title="Link to this heading">#</a></h2>
 <p><strong>Box plots</strong> (also called <strong>box-and-whisker plots</strong> or <strong>box-whisker plots</strong>) give a good graphical image of the concentration of the data. They also show how far the extreme values are from most of the data. A box plot is constructed from five values: the minimum value, the first quartile, the second quartile or median, the third quartile, and the maximum value. The box plot illustrates the four quarters of the data and how squished together or spread out the data in each quarter is.</p>
 <p>To construct a box plot, use a horizontal or vertical number line and a rectangular box. The smallest and largest data values label the endpoints of the axis. The first quartile marks one end of the box and the third quartile marks the other end of the box. <strong>Approximately the middle 50 percent of the data fall inside the box.</strong> The “whiskers” extend from the ends of the box to the smallest and largest data values. The box plot gives a good, quick picture of how the data is spread out.</p>
 <p>To illustrate a box plot, consider this small dataset.</p>
@@ -556,11 +587,11 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 <p>We can easily find the quartiles for this data using R:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">)</span>
 
-<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span>
-<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
-<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.25</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.50</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.75</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -571,7 +602,7 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 <figure class="align-default" id="labeled-boxplot">
 <a class="reference internal image-reference" href="../_images/labeled_boxplot.png"><img alt="A boxplot labeled with the minimum and maximum values, the quartile values, and the quarters." src="../_images/labeled_boxplot.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.1.2 </span><span class="caption-text">The locations of the quartiles (<span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, and <span class="math notranslate nohighlight">\(Q_3\)</span>) and the minimum and maximum values of the data are indicated with horizontal lines. While the data itself is not plotted, we can see how spread out the data is in each quarter. Note that each quarter of the data contains 25% of data values. The data is more spread out in larger quarters and more squished together in smaller quarters, but both large quarters and small quarters contain the same number of data values.</span><a class="headerlink" href="#labeled-boxplot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.1.2 </span><span class="caption-text">The locations of the quartiles (<span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, and <span class="math notranslate nohighlight">\(Q_3\)</span>) and the minimum and maximum values of the data are indicated with horizontal lines. While the data itself is not plotted, we can see how spread out the data is in each quarter. Note that each quarter of the data contains 25% of data values. The data is more spread out in larger quarters and more squished together in smaller quarters, but both large quarters and small quarters contain the same number of data values.</span><a class="headerlink" href="#labeled-boxplot" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Note that box plots are different than other graphs like bar graphs. In a bar graph, the height of a bar tells us how many data values are in a particular category. The higher the bar is, the more data values are in that category. But each quarter of a box plot contains the same number of data values. The size of a quarter tells us how spread out the data values in that quarter are. The larger the quarter is, the more spread out the data values are in that quarter.</p>
@@ -581,7 +612,7 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 <figure class="align-default" id="outlier-boxplot">
 <a class="reference internal image-reference" href="../_images/outlier_boxplot.png"><img alt="A box plot with one extreme value excluded from the main box plot and instead plotted as a separate point." src="../_images/outlier_boxplot.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.1.3 </span><span class="caption-text">A box plot with one extreme value excluded from the main box plot and instead plotted as a separate point.</span><a class="headerlink" href="#outlier-boxplot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.1.3 </span><span class="caption-text">A box plot with one extreme value excluded from the main box plot and instead plotted as a separate point.</span><a class="headerlink" href="#outlier-boxplot" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -596,17 +627,17 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 </div>
 <hr class="docutils" />
 <section id="example-2-1-3">
-<h3>Example 2.1.3<a class="headerlink" href="#example-2-1-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.1.3<a class="headerlink" href="#example-2-1-3" title="Link to this heading">#</a></h3>
 <p>The following data are the heights of <span class="math notranslate nohighlight">\(40\)</span> students in a statistics class. Construct a box plot using R. In which quarter is the data spread out the least? In which quarter is the data spread out the most?</p>
 <center>
 60, 60, 61, 62, 62, 63, 63, 64, 64, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 66, 67, 67, 68, 68, 69, 70, 70, 70, 70, 70, 71, 71, 72, 72, 73, 74, 74, 75, 77
     </center>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>Simply construct a box plot of the data.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">heights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span> <span class="m">60</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">77</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">heights</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">61</span><span class="p">,</span><span class="w"> </span><span class="m">62</span><span class="p">,</span><span class="w"> </span><span class="m">62</span><span class="p">,</span><span class="w"> </span><span class="m">63</span><span class="p">,</span><span class="w"> </span><span class="m">63</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">68</span><span class="p">,</span><span class="w"> </span><span class="m">68</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">74</span><span class="p">,</span><span class="w"> </span><span class="m">74</span><span class="p">,</span><span class="w"> </span><span class="m">75</span><span class="p">,</span><span class="w"> </span><span class="m">77</span><span class="p">)</span>
 
 <span class="nf">boxplot</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
 </pre></div>
@@ -616,7 +647,7 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 <figure class="align-default" id="boxplot-example">
 <a class="reference internal image-reference" href="../_images/boxplot_example.png"><img alt="A box plot of the example data." src="../_images/boxplot_example.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.1.4 </span><span class="caption-text">A box plot of the example data.</span><a class="headerlink" href="#boxplot-example" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.1.4 </span><span class="caption-text">A box plot of the example data.</span><a class="headerlink" href="#boxplot-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the box plot, we can see that the region between the first quartile <span class="math notranslate nohighlight">\(Q_1\)</span> and the median <span class="math notranslate nohighlight">\(M = Q_2\)</span> has the smallest spread of data, and the region between the third quartile <span class="math notranslate nohighlight">\(Q_3\)</span> and the maximum value has the largest spread of data.</p>
@@ -626,21 +657,21 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 </section>
 <hr class="docutils" />
 <section id="example-2-1-4">
-<h3>Example 2.1.4<a class="headerlink" href="#example-2-1-4" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.1.4<a class="headerlink" href="#example-2-1-4" title="Link to this heading">#</a></h3>
 <p>Use R to construct side-by-side boxplots for the two sets of data below. Which data set has the larger spread of data?</p>
 <p>Data set 1:
 64, 73, 101.3, 71.1, 94, 85.5, 99.9, 42, 92.4, 103, 54.7, 72.5, 101.9, 86.4, 47.2, 71.5, 71</p>
 <p>Data set 2:
 56.8, 71, 49, 69.4, 67.6, 71, 68.5, 61.1, 50.9, 71, 71, 71, 72, 72, 71, 64, 67.2, 52.5, 71, 69, 72, 71.3, 58.3, 71, 71</p>
 <section id="id3">
-<h4>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>We will create two box plots side-by-side, one for each set of data.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">64</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">101.3</span><span class="p">,</span> <span class="m">71.1</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">85.5</span><span class="p">,</span> <span class="m">99.9</span><span class="p">,</span> <span class="m">42</span><span class="p">,</span> <span class="m">92.4</span><span class="p">,</span> <span class="m">103</span><span class="p">,</span> <span class="m">54.7</span><span class="p">,</span> <span class="m">72.5</span><span class="p">,</span> <span class="m">101.9</span><span class="p">,</span> <span class="m">86.4</span><span class="p">,</span> <span class="m">47.2</span><span class="p">,</span> <span class="m">71.5</span><span class="p">,</span> <span class="m">71</span><span class="p">)</span>
-<span class="n">data2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">56.8</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">69.4</span><span class="p">,</span> <span class="m">67.6</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">68.5</span><span class="p">,</span> <span class="m">61.1</span><span class="p">,</span> <span class="m">50.9</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">67.2</span><span class="p">,</span> <span class="m">52.5</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">71.3</span><span class="p">,</span> <span class="m">58.3</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">71</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">101.3</span><span class="p">,</span><span class="w"> </span><span class="m">71.1</span><span class="p">,</span><span class="w"> </span><span class="m">94</span><span class="p">,</span><span class="w"> </span><span class="m">85.5</span><span class="p">,</span><span class="w"> </span><span class="m">99.9</span><span class="p">,</span><span class="w"> </span><span class="m">42</span><span class="p">,</span><span class="w"> </span><span class="m">92.4</span><span class="p">,</span><span class="w"> </span><span class="m">103</span><span class="p">,</span><span class="w"> </span><span class="m">54.7</span><span class="p">,</span><span class="w"> </span><span class="m">72.5</span><span class="p">,</span><span class="w"> </span><span class="m">101.9</span><span class="p">,</span><span class="w"> </span><span class="m">86.4</span><span class="p">,</span><span class="w"> </span><span class="m">47.2</span><span class="p">,</span><span class="w"> </span><span class="m">71.5</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">)</span>
+<span class="n">data2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">56.8</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">49</span><span class="p">,</span><span class="w"> </span><span class="m">69.4</span><span class="p">,</span><span class="w"> </span><span class="m">67.6</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">68.5</span><span class="p">,</span><span class="w"> </span><span class="m">61.1</span><span class="p">,</span><span class="w"> </span><span class="m">50.9</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">67.2</span><span class="p">,</span><span class="w"> </span><span class="m">52.5</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">71.3</span><span class="p">,</span><span class="w"> </span><span class="m">58.3</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">)</span>
 
-<span class="nf">boxplot</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">)</span>
+<span class="nf">boxplot</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span><span class="w"> </span><span class="n">data2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -648,7 +679,7 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 <figure class="align-default" id="side-by-side-boxplots">
 <a class="reference internal image-reference" href="../_images/side_by_side_boxplots.png"><img alt="Two box plots side-by-side." src="../_images/side_by_side_boxplots.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.1.5 </span><span class="caption-text">Two box plots side-by-side makes it easy to compare how different data sets are distributed.</span><a class="headerlink" href="#side-by-side-boxplots" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.1.5 </span><span class="caption-text">Two box plots side-by-side makes it easy to compare how different data sets are distributed.</span><a class="headerlink" href="#side-by-side-boxplots" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>By examining the box plots, we quickly see that the data in data set 1 is much more spread out than the data in data set 2.</p>
@@ -682,11 +713,10 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="2.0%20Descriptive%20Statistics.html"
@@ -706,10 +736,7 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -717,6 +744,7 @@ $389,950; $230,500; $158,000; $479,000; $639,000; $114,950; $5,500,000; $387,000
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -771,6 +799,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -797,8 +826,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

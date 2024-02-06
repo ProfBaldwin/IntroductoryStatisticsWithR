@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>9.3. ANOVA &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch9 Hypothesis Tests of Two or More Populations/9.3 ANOVA';</script>
@@ -77,7 +82,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -112,11 +125,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,6 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -139,10 +156,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -315,20 +344,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -383,18 +414,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="anova">
-<h1><span class="section-number">9.3. </span>ANOVA<a class="headerlink" href="#anova" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">9.3. </span>ANOVA<a class="headerlink" href="#anova" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Conduct an ANOVA test to compare the means of many populations.</p></li>
 </ul>
 </section>
 <section id="introduction-to-anova">
-<h2>Introduction to ANOVA<a class="headerlink" href="#introduction-to-anova" title="Permalink to this headline">#</a></h2>
+<h2>Introduction to ANOVA<a class="headerlink" href="#introduction-to-anova" title="Link to this heading">#</a></h2>
 <p>ANOVA stands for ANalysis Of VAriance. An ANOVA test is a hypothesis test used to compare the means among several populations. The test uses variances to help determine if the population means are equal or not. To perform a one-way ANOVA test, the following basic assumptions must be fulfilled:</p>
 <ul class="simple">
 <li><p>Each population is normally distributed.</p></li>
@@ -411,14 +442,14 @@ document.write(`
 <figure class="align-default" id="anova-illustration">
 <a class="reference internal image-reference" href="../_images/anova_illustration.png"><img alt="Two groups of box plots are pictures, with four box plots in group A and four box plots in group B. There is little variation between the box plots in group A. There is significant variation between the box plots in group B." src="../_images/anova_illustration.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.3.1 </span><span class="caption-text">The four box plots in group A represent four populations. There is little variation between the box plots in group A. It might be reasonable to expect the populations in group A to all have the same mean. Compare this to the four populations represented by the four box plots in group B. There is significant variation between the box plots in group B. We might expect the populations in group B to have different means.</span><a class="headerlink" href="#anova-illustration" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.3.1 </span><span class="caption-text">The four box plots in group A represent four populations. There is little variation between the box plots in group A. It might be reasonable to expect the populations in group A to all have the same mean. Compare this to the four populations represented by the four box plots in group B. There is significant variation between the box plots in group B. We might expect the populations in group B to have different means.</span><a class="headerlink" href="#anova-illustration" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To better understand the principles behind ANOVA, consider the two groups of populations represented by the box plots in <a class="reference internal" href="#anova-illustration"><span class="std std-numref">Figure 9.3.1</span></a>. In group A, notice that there is little variation between the box plots of the different samples. It is reasonable to think that the underlying population means may be equal.</p>
 <p>In comparison, there is considerable variation in group B. In fact, there is so much variation between these samples that it is very unlikely that the underlying population means between these samples are all equal.</p>
 </section>
 <section id="notation">
-<h2>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">#</a></h2>
+<h2>Notation<a class="headerlink" href="#notation" title="Link to this heading">#</a></h2>
 <p>An ANOVA test can involve several populations and samples. To make our meaning clear, we will use the following notation in this section.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x_j\)</span> are the data values in the <span class="math notranslate nohighlight">\(j\)</span>th sample.</p></li>
@@ -436,7 +467,7 @@ document.write(`
 <p>A simple example may help to clarify the notation.</p>
 <hr class="docutils" />
 <section id="example-9-3-1">
-<h3>Example 9.3.1<a class="headerlink" href="#example-9-3-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 9.3.1<a class="headerlink" href="#example-9-3-1" title="Link to this heading">#</a></h3>
 <p>Three small samples were drawn from three populations. The sample data obtained is:</p>
 <p>Sample <span class="math notranslate nohighlight">\(1\)</span>:  18, 21, 20, 20, 17 <br/>
 Sample <span class="math notranslate nohighlight">\(2\)</span>:  22, 19, 18, 21, 19, 16, 18 <br/>
@@ -444,10 +475,10 @@ Sample <span class="math notranslate nohighlight">\(3\)</span>:  20, 19, 17, 21<
 <p>The data values <span class="math notranslate nohighlight">\(x_1\)</span> in sample <span class="math notranslate nohighlight">\(1\)</span> are 18, 21, 20, 20, 17. There are <span class="math notranslate nohighlight">\(5\)</span> data values in sample <span class="math notranslate nohighlight">\(1\)</span>, so <span class="math notranslate nohighlight">\(n_1 = 5\)</span>. We can use R to calculate the mean <span class="math notranslate nohighlight">\(\bar{x}_1\)</span> of sample <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">18</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">17</span><span class="p">)</span>
-<span class="n">n1</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">18</span><span class="p">,</span><span class="w"> </span><span class="m">21</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">)</span>
+<span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 
-<span class="n">xbar1</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">n1</span>
+<span class="n">xbar1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">n1</span>
 <span class="n">xbar1</span>
 </pre></div>
 </div>
@@ -459,10 +490,10 @@ Sample <span class="math notranslate nohighlight">\(3\)</span>:  20, 19, 17, 21<
 <p>The data values <span class="math notranslate nohighlight">\(x_2\)</span> in sample <span class="math notranslate nohighlight">\(2\)</span> are 22, 19, 18, 21, 19, 16, 18. There are <span class="math notranslate nohighlight">\(7\)</span> data values in sample <span class="math notranslate nohighlight">\(2\)</span>, so <span class="math notranslate nohighlight">\(n_2 = 7\)</span>. We can use R to calculate the mean <span class="math notranslate nohighlight">\(\bar{x}_2\)</span> of sample <span class="math notranslate nohighlight">\(2\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">22</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">18</span><span class="p">)</span>
-<span class="n">n2</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">18</span><span class="p">,</span><span class="w"> </span><span class="m">21</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">18</span><span class="p">)</span>
+<span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
 
-<span class="n">xbar2</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="n">n2</span>
+<span class="n">xbar2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="n">n2</span>
 <span class="n">xbar2</span>
 </pre></div>
 </div>
@@ -474,10 +505,10 @@ Sample <span class="math notranslate nohighlight">\(3\)</span>:  20, 19, 17, 21<
 <p>The data values <span class="math notranslate nohighlight">\(x_3\)</span> in sample <span class="math notranslate nohighlight">\(3\)</span> are 20, 19, 17, 21. There are <span class="math notranslate nohighlight">\(4\)</span> data values in sample <span class="math notranslate nohighlight">\(3\)</span>, so <span class="math notranslate nohighlight">\(n_3 = 4\)</span>. We can use R to calculate the mean <span class="math notranslate nohighlight">\(\bar{x}_3\)</span> of sample <span class="math notranslate nohighlight">\(3\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x3</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">20</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">21</span><span class="p">)</span>
-<span class="n">n3</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">21</span><span class="p">)</span>
+<span class="n">n3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
 
-<span class="n">xbar3</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="n">n3</span>
+<span class="n">xbar3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="n">n3</span>
 <span class="n">xbar3</span>
 </pre></div>
 </div>
@@ -489,7 +520,7 @@ Sample <span class="math notranslate nohighlight">\(3\)</span>:  20, 19, 17, 21<
 <p>Now we can use R to calculate the grand mean <span class="math notranslate nohighlight">\(\bar{\bar{x}}\)</span> of these three samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">grandx</span> <span class="o">=</span> <span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span> <span class="o">+</span> <span class="n">n3</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">grandx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n3</span><span class="p">)</span>
 <span class="n">grandx</span>
 </pre></div>
 </div>
@@ -502,7 +533,7 @@ Sample <span class="math notranslate nohighlight">\(3\)</span>:  20, 19, 17, 21<
 </section>
 <hr class="docutils" />
 <section id="the-test-statistic-for-an-anova-test">
-<h2>The Test Statistic For an ANOVA Test<a class="headerlink" href="#the-test-statistic-for-an-anova-test" title="Permalink to this headline">#</a></h2>
+<h2>The Test Statistic For an ANOVA Test<a class="headerlink" href="#the-test-statistic-for-an-anova-test" title="Link to this heading">#</a></h2>
 <p>To calculate the test statistic for an ANOVA test with <span class="math notranslate nohighlight">\(k\)</span> samples (one sample from each population), we calculate two estimates of the variance.</p>
 <p>The first estimate of the variance is <span class="math notranslate nohighlight">\(MST\)</span>, which is the <strong>m</strong>ean <strong>s</strong>quare estimate of the variance among <strong>t</strong>reatments. <span class="math notranslate nohighlight">\(MST\)</span> is the variance <em>between</em> the sample means of the different samples. We calculate <span class="math notranslate nohighlight">\(MST\)</span> using the formula</p>
 <div class="math notranslate nohighlight">
@@ -542,7 +573,7 @@ DFE &amp;= (n_1 - 1) + (n_2 - 1) + \cdots + (n_k - 1).
 </ol>
 <hr class="docutils" />
 <section id="example-9-3-2">
-<h3>Example 9.3.2<a class="headerlink" href="#example-9-3-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 9.3.2<a class="headerlink" href="#example-9-3-2" title="Link to this heading">#</a></h3>
 <p>A meteorologist wishes to test if the average daily high temperature is the same for each of the past four years. She randomly selects a number of days from each year and records the daily high temperature on each selected day (in °F):</p>
 <p>Year 1: <br/>
 82, 104, 119, 56, 85, 94, 81, 106, 82, 92, 109, 71, 95, 86, 34, 89, 80, 53, 78, 99, 57, 87, 69, 98, 75, 88, 59, 104, 65, 66, 74, 73, 73, 106, 91, 89, 85, 84, 53, 81</p>
@@ -554,9 +585,9 @@ DFE &amp;= (n_1 - 1) + (n_2 - 1) + \cdots + (n_k - 1).
 92, 68, 74, 82, 94, 44, 63, 61, 99, 71, 85, 42, 90, 94, 48, 97, 89, 65, 81, 45, 93, 81, 73, 69, 93, 75, 76, 61, 75, 102</p>
 <p>Use an ANOVA test with a level of significance of <span class="math notranslate nohighlight">\(6\%\)</span> to test if the average daily high temperature is the same for all four years.</p>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <section id="step-1-state-the-null-and-alternative-hypotheses">
-<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#step-1-state-the-null-and-alternative-hypotheses" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#step-1-state-the-null-and-alternative-hypotheses" title="Link to this heading">#</a></h5>
 <p>For an ANOVA test, the null hypothesis is always that the means of all the populations are equal. The alternative hypothesis for an ANOVA test is always that at least one of the population means is not equal to the others. That is,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -565,22 +596,22 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 \end{align*}\]</div>
 </section>
 <section id="step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">
-<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Permalink to this headline">#</a></h5>
+<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Link to this heading">#</a></h5>
 <p>To perform an ANOVA test, we use an <span class="math notranslate nohighlight">\(F\)</span>-distribution. The numerator degrees of freedom is the degrees of freedom for treatments, <span class="math notranslate nohighlight">\(DFT\)</span>. It is one less than the number of samples. In this example, we have <span class="math notranslate nohighlight">\(k = 4\)</span> samples, so the numerator degrees of freedom is</p>
 <div class="math notranslate nohighlight">
 \[ DFT = k - 1 = 4 - 1 = 3. \]</div>
 <p>The denominator degrees of freedom is the degrees of freedom for errors, <span class="math notranslate nohighlight">\(DFE\)</span>. To calculate <span class="math notranslate nohighlight">\(DFE\)</span>, we first must know the size of each of the four samples. We will use R to count the size of each sample.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">82</span><span class="p">,</span> <span class="m">104</span><span class="p">,</span> <span class="m">119</span><span class="p">,</span> <span class="m">56</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">106</span><span class="p">,</span> <span class="m">82</span><span class="p">,</span> <span class="m">92</span><span class="p">,</span> <span class="m">109</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">95</span><span class="p">,</span> <span class="m">86</span><span class="p">,</span> <span class="m">34</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">53</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">99</span><span class="p">,</span> <span class="m">57</span><span class="p">,</span> <span class="m">87</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">59</span><span class="p">,</span> <span class="m">104</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">106</span><span class="p">,</span> <span class="m">91</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">84</span><span class="p">,</span> <span class="m">53</span><span class="p">,</span> <span class="m">81</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">80</span><span class="p">,</span> <span class="m">52</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">43</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">58</span><span class="p">,</span> <span class="m">118</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">76</span><span class="p">,</span> <span class="m">64</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">83</span><span class="p">,</span> <span class="m">104</span><span class="p">,</span> <span class="m">54</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">38</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">92</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">86</span><span class="p">,</span> <span class="m">51</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">85</span><span class="p">)</span>
-<span class="n">x3</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">75</span><span class="p">,</span> <span class="m">87</span><span class="p">,</span> <span class="m">79</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">84</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">95</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">56</span><span class="p">,</span> <span class="m">83</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">54</span><span class="p">,</span> <span class="m">106</span><span class="p">,</span> <span class="m">66</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">77</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">113</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">44</span><span class="p">)</span>
-<span class="n">x4</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">92</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">82</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">44</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">99</span><span class="p">,</span> <span class="m">71</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">42</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">48</span><span class="p">,</span> <span class="m">97</span><span class="p">,</span> <span class="m">89</span><span class="p">,</span> <span class="m">65</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">45</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">81</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">93</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">76</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">102</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">82</span><span class="p">,</span><span class="w"> </span><span class="m">104</span><span class="p">,</span><span class="w"> </span><span class="m">119</span><span class="p">,</span><span class="w"> </span><span class="m">56</span><span class="p">,</span><span class="w"> </span><span class="m">85</span><span class="p">,</span><span class="w"> </span><span class="m">94</span><span class="p">,</span><span class="w"> </span><span class="m">81</span><span class="p">,</span><span class="w"> </span><span class="m">106</span><span class="p">,</span><span class="w"> </span><span class="m">82</span><span class="p">,</span><span class="w"> </span><span class="m">92</span><span class="p">,</span><span class="w"> </span><span class="m">109</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">95</span><span class="p">,</span><span class="w"> </span><span class="m">86</span><span class="p">,</span><span class="w"> </span><span class="m">34</span><span class="p">,</span><span class="w"> </span><span class="m">89</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">53</span><span class="p">,</span><span class="w"> </span><span class="m">78</span><span class="p">,</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="m">57</span><span class="p">,</span><span class="w"> </span><span class="m">87</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">98</span><span class="p">,</span><span class="w"> </span><span class="m">75</span><span class="p">,</span><span class="w"> </span><span class="m">88</span><span class="p">,</span><span class="w"> </span><span class="m">59</span><span class="p">,</span><span class="w"> </span><span class="m">104</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">74</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">106</span><span class="p">,</span><span class="w"> </span><span class="m">91</span><span class="p">,</span><span class="w"> </span><span class="m">89</span><span class="p">,</span><span class="w"> </span><span class="m">85</span><span class="p">,</span><span class="w"> </span><span class="m">84</span><span class="p">,</span><span class="w"> </span><span class="m">53</span><span class="p">,</span><span class="w"> </span><span class="m">81</span><span class="p">)</span>
+<span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">52</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">43</span><span class="p">,</span><span class="w"> </span><span class="m">61</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">58</span><span class="p">,</span><span class="w"> </span><span class="m">118</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">76</span><span class="p">,</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">81</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">63</span><span class="p">,</span><span class="w"> </span><span class="m">78</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">83</span><span class="p">,</span><span class="w"> </span><span class="m">104</span><span class="p">,</span><span class="w"> </span><span class="m">54</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">63</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">38</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">92</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">86</span><span class="p">,</span><span class="w"> </span><span class="m">51</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">89</span><span class="p">,</span><span class="w"> </span><span class="m">74</span><span class="p">,</span><span class="w"> </span><span class="m">85</span><span class="p">)</span>
+<span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">75</span><span class="p">,</span><span class="w"> </span><span class="m">87</span><span class="p">,</span><span class="w"> </span><span class="m">79</span><span class="p">,</span><span class="w"> </span><span class="m">96</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">75</span><span class="p">,</span><span class="w"> </span><span class="m">93</span><span class="p">,</span><span class="w"> </span><span class="m">84</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">95</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">56</span><span class="p">,</span><span class="w"> </span><span class="m">83</span><span class="p">,</span><span class="w"> </span><span class="m">98</span><span class="p">,</span><span class="w"> </span><span class="m">96</span><span class="p">,</span><span class="w"> </span><span class="m">54</span><span class="p">,</span><span class="w"> </span><span class="m">106</span><span class="p">,</span><span class="w"> </span><span class="m">66</span><span class="p">,</span><span class="w"> </span><span class="m">120</span><span class="p">,</span><span class="w"> </span><span class="m">77</span><span class="p">,</span><span class="w"> </span><span class="m">88</span><span class="p">,</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="m">75</span><span class="p">,</span><span class="w"> </span><span class="m">98</span><span class="p">,</span><span class="w"> </span><span class="m">113</span><span class="p">,</span><span class="w"> </span><span class="m">55</span><span class="p">,</span><span class="w"> </span><span class="m">44</span><span class="p">)</span>
+<span class="n">x4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">92</span><span class="p">,</span><span class="w"> </span><span class="m">68</span><span class="p">,</span><span class="w"> </span><span class="m">74</span><span class="p">,</span><span class="w"> </span><span class="m">82</span><span class="p">,</span><span class="w"> </span><span class="m">94</span><span class="p">,</span><span class="w"> </span><span class="m">44</span><span class="p">,</span><span class="w"> </span><span class="m">63</span><span class="p">,</span><span class="w"> </span><span class="m">61</span><span class="p">,</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">85</span><span class="p">,</span><span class="w"> </span><span class="m">42</span><span class="p">,</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="m">94</span><span class="p">,</span><span class="w"> </span><span class="m">48</span><span class="p">,</span><span class="w"> </span><span class="m">97</span><span class="p">,</span><span class="w"> </span><span class="m">89</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">81</span><span class="p">,</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="m">93</span><span class="p">,</span><span class="w"> </span><span class="m">81</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">93</span><span class="p">,</span><span class="w"> </span><span class="m">75</span><span class="p">,</span><span class="w"> </span><span class="m">76</span><span class="p">,</span><span class="w"> </span><span class="m">61</span><span class="p">,</span><span class="w"> </span><span class="m">75</span><span class="p">,</span><span class="w"> </span><span class="m">102</span><span class="p">)</span>
 
-<span class="n">n1</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
-<span class="n">n2</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
-<span class="n">n3</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
-<span class="n">n4</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span>
+<span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">n3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+<span class="n">n4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span>
 
 <span class="n">n1</span>
 <span class="n">n2</span>
@@ -597,23 +628,23 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 \[ DFE = (n_1 - 1) + (n_2 - 1) + (n_3 - 1) + (n_4 - 1) = (40 - 1) + (34 - 1) + (27 - 1) + (30 - 1) = 127.\]</div>
 </section>
 <section id="step-3-find-the-p-value">
-<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#step-3-find-the-p-value" title="Permalink to this headline">#</a></h5>
+<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#step-3-find-the-p-value" title="Link to this heading">#</a></h5>
 <p>To find the test statistic, we first need to calculate the sample mean of each of the four samples as well as the grand mean <span class="math notranslate nohighlight">\(\bar{\bar{x}}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar1</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">n1</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">n1</span>
 <span class="n">xbar1</span>
 
-<span class="n">xbar2</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="n">n2</span>
+<span class="n">xbar2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="n">n2</span>
 <span class="n">xbar2</span>
 
-<span class="n">xbar3</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="n">n3</span>
+<span class="n">xbar3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="n">n3</span>
 <span class="n">xbar3</span>
 
-<span class="n">xbar4</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span><span class="o">/</span><span class="n">n4</span>
+<span class="n">xbar4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span><span class="o">/</span><span class="n">n4</span>
 <span class="n">xbar4</span>
 
-<span class="n">grandx</span> <span class="o">=</span> <span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x4</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span> <span class="o">+</span> <span class="n">n3</span> <span class="o">+</span> <span class="n">n4</span><span class="p">)</span>
+<span class="n">grandx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x4</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n4</span><span class="p">)</span>
 <span class="n">grandx</span>
 </pre></div>
 </div>
@@ -627,7 +658,7 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 \[SST = n_1(\bar{x}_1 - \bar{\bar{x}})^2 + n_2(\bar{x}_2 - \bar{\bar{x}})^2 + n_3(\bar{x}_3 - \bar{\bar{x}})^2 + n_4(\bar{x}_4 - \bar{\bar{x}})^2.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">SST</span> <span class="o">=</span> <span class="n">n1</span><span class="o">*</span><span class="p">(</span><span class="n">xbar1</span> <span class="o">-</span> <span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="n">n2</span><span class="o">*</span><span class="p">(</span><span class="n">xbar2</span> <span class="o">-</span> <span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="n">n3</span><span class="o">*</span><span class="p">(</span><span class="n">xbar3</span> <span class="o">-</span> <span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="n">n4</span><span class="o">*</span><span class="p">(</span><span class="n">xbar4</span> <span class="o">-</span> <span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">SST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n1</span><span class="o">*</span><span class="p">(</span><span class="n">xbar1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n2</span><span class="o">*</span><span class="p">(</span><span class="n">xbar2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n3</span><span class="o">*</span><span class="p">(</span><span class="n">xbar3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n4</span><span class="o">*</span><span class="p">(</span><span class="n">xbar4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">grandx</span><span class="p">)</span><span class="o">^</span><span class="m">2</span>
 <span class="n">SST</span>
 </pre></div>
 </div>
@@ -640,9 +671,9 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 \[ MST = \frac{SST}{DFT}. \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">DFT</span> <span class="o">=</span> <span class="m">3</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">DFT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
 
-<span class="n">MST</span> <span class="o">=</span> <span class="n">SST</span><span class="o">/</span><span class="n">DFT</span>
+<span class="n">MST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SST</span><span class="o">/</span><span class="n">DFT</span>
 <span class="n">MST</span>
 </pre></div>
 </div>
@@ -656,7 +687,7 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 \[SSE = \sum (x_1 - \bar{x}_1)^2 + \sum (x_2 - \bar{x}_2)^2 + \sum (x_3 - \bar{x}_3)^2 + \sum(x_4 - \bar{x}_4)^2.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">SSE</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">xbar1</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">xbar2</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x3</span> <span class="o">-</span> <span class="n">xbar3</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x4</span> <span class="o">-</span> <span class="n">xbar4</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">SSE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbar1</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbar2</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbar3</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbar4</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span>
 <span class="n">SSE</span>
 </pre></div>
 </div>
@@ -669,9 +700,9 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 \[ MSE = \frac{SSE}{DSE}. \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">DFE</span> <span class="o">=</span> <span class="m">127</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">DFE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">127</span>
 
-<span class="n">MSE</span> <span class="o">=</span> <span class="n">SSE</span><span class="o">/</span><span class="n">DFE</span>
+<span class="n">MSE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SSE</span><span class="o">/</span><span class="n">DFE</span>
 <span class="n">MSE</span>
 </pre></div>
 </div>
@@ -685,7 +716,7 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 \[ F = \frac{MST}{MSE}. \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="bp">F</span> <span class="o">=</span> <span class="n">MST</span><span class="o">/</span><span class="n">MSE</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="bp">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MST</span><span class="o">/</span><span class="n">MSE</span>
 <span class="bp">F</span>
 </pre></div>
 </div>
@@ -695,14 +726,7 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 </div>
 <p>Because an ANOVA test involves so many calculations, statisticians often organize the data into a table like in <a class="reference internal" href="#anova-table"><span class="std std-numref">Table 9.3.1</span></a>.</p>
 <table class="table" id="anova-table">
-<caption><span class="caption-number">Table 9.3.1 </span><span class="caption-text">A table summarizing the important calculations for the ANOVA test in this example.</span><a class="headerlink" href="#anova-table" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
+<caption><span class="caption-number">Table 9.3.1 </span><span class="caption-text">A table summarizing the important calculations for the ANOVA test in this example.</span><a class="headerlink" href="#anova-table" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head stub"></th>
 <th class="head"><p>SS</p></th>
@@ -729,7 +753,7 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 <p>Now that we have our test statistic, we are ready to find the <span class="math notranslate nohighlight">\(p\)</span>-value. Remember that an ANOVA test is always a right-tailed test.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pf</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">DFT</span><span class="p">,</span> <span class="n">df2</span> <span class="o">=</span> <span class="n">DFE</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pf</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">F</span><span class="p">,</span><span class="w"> </span><span class="n">df1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DFT</span><span class="p">,</span><span class="w"> </span><span class="n">df2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DFE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -739,7 +763,7 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 <p>So the <span class="math notranslate nohighlight">\(p\)</span>-value is <span class="math notranslate nohighlight">\(P(F &gt; 2.511) = 0.062\)</span>. That is, there is about a <span class="math notranslate nohighlight">\(6.2\%\)</span> chance that we would randomly sample data with this much variation between samples relative to the variation within samples if the population means were all actually equal.</p>
 </section>
 <section id="step-4-draw-a-conclusion">
-<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Permalink to this headline">#</a></h5>
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Link to this heading">#</a></h5>
 <p>Since the <span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(= 0.062 \geq 0.06 = \alpha\)</span>, we do <em>not</em> reject the null hypothesis. There is not enough evidence to conclude that the average daily high temperature for at least one year is different than average in the other years sampled.</p>
 </section>
 </section>
@@ -772,11 +796,10 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="9.2%20Hypothesis%20Testing%20Two%20Population%20Variances.html"
@@ -787,10 +810,7 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
         <p class="prev-next-title"><span class="section-number">9.2. </span>Hypothesis Testing Two Population Variances</p>
       </div>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -798,6 +818,7 @@ H_a:&amp;\ \text{At least one mean isn't equal to the other means}
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -845,6 +866,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -871,8 +893,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

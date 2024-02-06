@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4.1. Properties of The Normal Distribution &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch4 The Normal Distribution and the Central Limit Theorem/4.1 Properties of the Normal Distribution';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -381,23 +412,23 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="properties-of-the-normal-distribution">
-<h1><span class="section-number">4.1. </span>Properties of The Normal Distribution<a class="headerlink" href="#properties-of-the-normal-distribution" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.1. </span>Properties of The Normal Distribution<a class="headerlink" href="#properties-of-the-normal-distribution" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Recognize the structure of the normal distribution, including the roles of the mean and standard deviation.</p></li>
 <li><p>Use the properties of the normal distribution, such as symmetry, to infer probability.</p></li>
 </ul>
 </section>
 <section id="the-normal-distribution">
-<h2>The Normal Distribution<a class="headerlink" href="#the-normal-distribution" title="Permalink to this headline">#</a></h2>
+<h2>The Normal Distribution<a class="headerlink" href="#the-normal-distribution" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="normal1">
 <a class="reference internal image-reference" href="../_images/normal1.png"><img alt="The probability density function of a normal distribution. The mean, the left tail, and the right tail of the distribution are labeled." src="../_images/normal1.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1.1 </span><span class="caption-text">The probability density function of a normal distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span>. A normal distribution has two tails: the lower tail or left tail, and the upper tail or right tail. Also, note that a normal distribution is symmetric about the mean: the vertical line through <span class="math notranslate nohighlight">\(\mu\)</span> acts like a mirror.</span><a class="headerlink" href="#normal1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1.1 </span><span class="caption-text">The probability density function of a normal distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span>. A normal distribution has two tails: the lower tail or left tail, and the upper tail or right tail. Also, note that a normal distribution is symmetric about the mean: the vertical line through <span class="math notranslate nohighlight">\(\mu\)</span> acts like a mirror.</span><a class="headerlink" href="#normal1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The <strong>normal distribution</strong> is a continuous probability distribution, and it is the most important of all probability distributions. The graph of its probability density function is a classic bell-shaped curve with its mean at the center. Many real-world variables have bell-shaped distributions, such as birth weight, IQ score, annual income, and real estate prices. Because the bell-shaped curve is so prevalent, the normal distribution is used in almost all disciplines, including psychology, business, economics, the sciences, nursing, and mathematics.</p>
@@ -411,25 +442,25 @@ document.write(`
 <figure class="align-default" id="normals-diff-means">
 <a class="reference internal image-reference" href="../_images/normals_diff_means.png"><img alt="The graphs of three different normal distributions. Each of the distributions have different means, but they have the same standard deviation." src="../_images/normals_diff_means.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1.2 </span><span class="caption-text">The graphs of three different normal distributions. Each of the distributions have different means, but they have the same standard deviation. The peak of a normal distribution is always positioned above the distribution mean, so normal distributions with different means will have different positions.</span><a class="headerlink" href="#normals-diff-means" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1.2 </span><span class="caption-text">The graphs of three different normal distributions. Each of the distributions have different means, but they have the same standard deviation. The peak of a normal distribution is always positioned above the distribution mean, so normal distributions with different means will have different positions.</span><a class="headerlink" href="#normals-diff-means" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="normals-diff-sd">
 <a class="reference internal image-reference" href="../_images/normals_diff_sd.png"><img alt="The graphs of three different normal distributions. Each of the distributions has the same mean, but they have different standard deviations." src="../_images/normals_diff_sd.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1.3 </span><span class="caption-text">The graphs of three different normal distributions. Each of the distributions has the same mean, but they have different standard deviations. A normal distribution with a larger standard deviation is more spread out with a shorter peak. A normal distribution with a smaller standard deviation is more squished together with a taller peak.</span><a class="headerlink" href="#normals-diff-sd" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1.3 </span><span class="caption-text">The graphs of three different normal distributions. Each of the distributions has the same mean, but they have different standard deviations. A normal distribution with a larger standard deviation is more spread out with a shorter peak. A normal distribution with a smaller standard deviation is more squished together with a taller peak.</span><a class="headerlink" href="#normals-diff-sd" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
 <section id="example-4-1-1">
-<h3>Example 4.1.1<a class="headerlink" href="#example-4-1-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.1.1<a class="headerlink" href="#example-4-1-1" title="Link to this heading">#</a></h3>
 <p>Kelsey tells you that <span class="math notranslate nohighlight">\(P(X &gt; 3.5) = 0.691\)</span> for some normally distributed random variable <span class="math notranslate nohighlight">\(X\)</span>. Can you find <span class="math notranslate nohighlight">\(P(X &lt; 3.5)\)</span>?</p>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <figure class="align-default" id="normal-ex1">
 <a class="reference internal image-reference" href="../_images/normal_ex1.png"><img alt="The graph of a normal distribution split into two regions. The region left of x = 3.5 is labeled P(X &lt; 3.5). The region right of x = 3.5 is labeled P(X &gt; 3.5)." src="../_images/normal_ex1.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1.4 </span><span class="caption-text">This graph of a normal distribution illustrates how the graph of the distribution of <span class="math notranslate nohighlight">\(X\)</span> might look. The area of the region under the curve to the right of <span class="math notranslate nohighlight">\(x = 3.5\)</span> is equal to <span class="math notranslate nohighlight">\(P(X &gt; 3.5)\)</span>. The area of the region to the left of <span class="math notranslate nohighlight">\(x = 3.5\)</span> is equal to <span class="math notranslate nohighlight">\(P(X &lt; 3.5)\)</span>. In particular, note that the regions corresponding to <span class="math notranslate nohighlight">\(P(X &lt; 3.5)\)</span> and <span class="math notranslate nohighlight">\(P(X &gt; 3.5)\)</span> together account for the entire area under the curve. Since the entire area under the curve is equal to <span class="math notranslate nohighlight">\(1\)</span>, this means <span class="math notranslate nohighlight">\(P(X &lt; 3.5) + P(X &gt; 3.5) = 1\)</span>.</span><a class="headerlink" href="#normal-ex1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1.4 </span><span class="caption-text">This graph of a normal distribution illustrates how the graph of the distribution of <span class="math notranslate nohighlight">\(X\)</span> might look. The area of the region under the curve to the right of <span class="math notranslate nohighlight">\(x = 3.5\)</span> is equal to <span class="math notranslate nohighlight">\(P(X &gt; 3.5)\)</span>. The area of the region to the left of <span class="math notranslate nohighlight">\(x = 3.5\)</span> is equal to <span class="math notranslate nohighlight">\(P(X &lt; 3.5)\)</span>. In particular, note that the regions corresponding to <span class="math notranslate nohighlight">\(P(X &lt; 3.5)\)</span> and <span class="math notranslate nohighlight">\(P(X &gt; 3.5)\)</span> together account for the entire area under the curve. Since the entire area under the curve is equal to <span class="math notranslate nohighlight">\(1\)</span>, this means <span class="math notranslate nohighlight">\(P(X &lt; 3.5) + P(X &gt; 3.5) = 1\)</span>.</span><a class="headerlink" href="#normal-ex1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Kelsey has left out some pretty important information. Kelsey told us <span class="math notranslate nohighlight">\(X\)</span> has a normal distribution, but she didn’t say what the mean or the standard deviation of the distribution is, which means we don’t know the position or exact shape of the distribution.</p>
@@ -443,14 +474,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-4-1-2">
-<h3>Example 4.1.2<a class="headerlink" href="#example-4-1-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.1.2<a class="headerlink" href="#example-4-1-2" title="Link to this heading">#</a></h3>
 <p>Suppose <span class="math notranslate nohighlight">\(X\)</span> is a normally distributed random variable with mean <span class="math notranslate nohighlight">\(\mu = -2\)</span>. If <span class="math notranslate nohighlight">\(P(X &lt; -5) = 0.274\)</span>, what is <span class="math notranslate nohighlight">\(P(X &gt; 1)\)</span>?</p>
 <section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <figure class="align-default" id="normal-ex2">
 <a class="reference internal image-reference" href="../_images/normal_ex2.png"><img alt="The graph of a normal distribution with x = -5, x = -2, and x = 1 labeled on the horizontal axis. The region left of x = -5 is shaded and labeled P(X &lt; -5). The region right of x = 1 is shaded and labeled P(X &gt; 1). The boundaries of both shaded regions are 3 units away from the center of the distribution at x = -2." src="../_images/normal_ex2.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1.5 </span><span class="caption-text">This graph of a normal distribution illustrates how the graph of the distribution of <span class="math notranslate nohighlight">\(X\)</span> might look. The area of the shaded region to the left of <span class="math notranslate nohighlight">\(x = -5\)</span> is equal to <span class="math notranslate nohighlight">\(P(X &lt; -5)\)</span>. The area of the shaded region to the right of <span class="math notranslate nohighlight">\(x = 1\)</span> is equal to <span class="math notranslate nohighlight">\(P(X &gt; 1)\)</span>. Note that the boundaries of both shaded regions are the same distance away from the mean at <span class="math notranslate nohighlight">\(\mu = -2\)</span>. Because a normal distribution is symmetric about the mean, these two regions are mirror images of each other, so they have equal areas.</span><a class="headerlink" href="#normal-ex2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1.5 </span><span class="caption-text">This graph of a normal distribution illustrates how the graph of the distribution of <span class="math notranslate nohighlight">\(X\)</span> might look. The area of the shaded region to the left of <span class="math notranslate nohighlight">\(x = -5\)</span> is equal to <span class="math notranslate nohighlight">\(P(X &lt; -5)\)</span>. The area of the shaded region to the right of <span class="math notranslate nohighlight">\(x = 1\)</span> is equal to <span class="math notranslate nohighlight">\(P(X &gt; 1)\)</span>. Note that the boundaries of both shaded regions are the same distance away from the mean at <span class="math notranslate nohighlight">\(\mu = -2\)</span>. Because a normal distribution is symmetric about the mean, these two regions are mirror images of each other, so they have equal areas.</span><a class="headerlink" href="#normal-ex2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We don’t have all the information we need to fully characterize this normal distribution. We know that the mean is <span class="math notranslate nohighlight">\(\mu = -2\)</span>, but we don’t know the standard deviation.</p>
@@ -462,16 +493,16 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-4-1-3">
-<h3>Example 4.1.3<a class="headerlink" href="#example-4-1-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.1.3<a class="headerlink" href="#example-4-1-3" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#normal-ex3"><span class="std std-numref">Figure 4.1.6</span></a> shows the graphs of two different normal distributions, labeled <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. Which distribution has the greater mean? Which distribution has the greater standard deviation?</p>
 <figure class="align-default" id="normal-ex3">
 <a class="reference internal image-reference" href="../_images/normal_ex3.png"><img alt="The graphs of two normal distributions, labeled A and B. Normal distribution A is thinner with a higher peak. The horizontal position of the tip of the peak is between x = 1 and x = 2. Normal distribution B is more spread out with a shorter peak. The horizontal position of the tip of peak B is between x = 0 and x = 1." src="../_images/normal_ex3.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1.6 </span><span class="caption-text">Two normal distributions, labeled A and B, with different means and standard deviations.</span><a class="headerlink" href="#normal-ex3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1.6 </span><span class="caption-text">Two normal distributions, labeled A and B, with different means and standard deviations.</span><a class="headerlink" href="#normal-ex3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>The mean of a normal distribution tells us the position of the distribution. The tip of the peak of a normal distribution is always directly over the mean. With this in mind, we can see that the mean of distribution <span class="math notranslate nohighlight">\(A\)</span> is between <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(2\)</span>, while the mean of distribution <span class="math notranslate nohighlight">\(B\)</span> is between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>. So distribution <span class="math notranslate nohighlight">\(A\)</span> has a greater mean than distribution <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <p>The standard deviation of a normal distribution determines the shape of the distribution. It tells us how spread out a distribution is. In this case, distribution <span class="math notranslate nohighlight">\(B\)</span> is more spread out than distribution <span class="math notranslate nohighlight">\(A\)</span>. This means distribution <span class="math notranslate nohighlight">\(B\)</span> has a greater standard deviation than distribution <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </section>
@@ -504,11 +535,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="4.0%20The%20Normal%20Distribution%20and%20the%20Central%20Limit%20Theorem.html"
@@ -528,10 +558,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -539,6 +566,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -583,6 +611,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -609,8 +638,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2.3. Measures of Dispersion &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch2 Descriptive Statistics/2.3 Measures of Dispersion';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -401,12 +432,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="measures-of-dispersion">
-<h1><span class="section-number">2.3. </span>Measures of Dispersion<a class="headerlink" href="#measures-of-dispersion" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2.3. </span>Measures of Dispersion<a class="headerlink" href="#measures-of-dispersion" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Calculate the standard deviation of a data set.</p></li>
 <li><p>Distinguish between the population standard deviation and sample standard deviation.</p></li>
@@ -414,7 +445,7 @@ document.write(`
 </ul>
 </section>
 <section id="the-standard-deviation">
-<h2>The Standard Deviation<a class="headerlink" href="#the-standard-deviation" title="Permalink to this headline">#</a></h2>
+<h2>The Standard Deviation<a class="headerlink" href="#the-standard-deviation" title="Link to this heading">#</a></h2>
 <p>An important characteristic of any set of data is the variation in the data. In some data sets, the data values are concentrated closely near the mean; in other data sets, the data values are more widely spread out from the mean. The most common measure of variation is the standard deviation. The <strong>standard deviation</strong> is a number that measures the average distance of data values from their mean.</p>
 <p>Because distance is never a negative value, the standard deviation is always positive or zero. The standard deviation is small when the data are all concentrated close to the mean, exhibiting little variation. The standard deviation is larger when the data values are more spread out from the mean, exhibiting more variation.</p>
 <p>Suppose that we are studying the amount of time customers wait in line at the checkout at supermarket A and supermarket B. the average wait time at both supermarkets is five minutes. At supermarket A, the standard deviation for the wait time is two minutes; at supermarket B the standard deviation for the wait time is four minutes.</p>
@@ -422,12 +453,12 @@ document.write(`
 <figure class="align-default" id="sd-example">
 <a class="reference internal image-reference" href="../_images/sd_example.png"><img alt="Two data sets side-by-side. The first data set has data more squashed close to the mean and a small standard deviation. The second data set has data more spread out from the mean and a larger standard deviation." src="../_images/sd_example.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.3.1 </span><span class="caption-text">The standard deviation is a measure of the average distance of data values from their mean. If we compare the two data sets in the figure, the values of data set 1 are squashed closer to the mean, so data set 1 has a smaller standard deviation. The values of data set 2 are more spread out from the mean, so data set 2 has a larger standard deviation.</span><a class="headerlink" href="#sd-example" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.3.1 </span><span class="caption-text">The standard deviation is a measure of the average distance of data values from their mean. If we compare the two data sets in the figure, the values of data set 1 are squashed closer to the mean, so data set 1 has a smaller standard deviation. The values of data set 2 are more spread out from the mean, so data set 2 has a larger standard deviation.</span><a class="headerlink" href="#sd-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="calculating-the-population-standard-deviation">
-<h2>Calculating the Population Standard Deviation<a class="headerlink" href="#calculating-the-population-standard-deviation" title="Permalink to this headline">#</a></h2>
+<h2>Calculating the Population Standard Deviation<a class="headerlink" href="#calculating-the-population-standard-deviation" title="Link to this heading">#</a></h2>
 <p>We will first look at calculating the standard deviation for a population. If <span class="math notranslate nohighlight">\(x\)</span> is a data value, then the difference “<span class="math notranslate nohighlight">\(x – \text{mean}\)</span>” is called its <strong>deviation</strong>; it’s a measure of the distance from the value <span class="math notranslate nohighlight">\(x\)</span> to the mean of the data. There is a deviation for each value in a data set. The deviations are used to calculate the standard deviation. For a population, the deviation for a data value <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(x – \mu\)</span>.</p>
 <p>For example, suppose a population has mean <span class="math notranslate nohighlight">\(\mu = 5\)</span>, and consider two data values of the population: <span class="math notranslate nohighlight">\(x = 2\)</span> and <span class="math notranslate nohighlight">\(x = 8\)</span>. The deviation of the value <span class="math notranslate nohighlight">\(x = 2\)</span> from the mean is</p>
 <div class="math notranslate nohighlight">
@@ -467,8 +498,8 @@ document.write(`
 </div>
 <hr class="docutils" />
 <section id="example-2-3-1">
-<h3>Example 2.3.1<a class="headerlink" href="#example-2-3-1" title="Permalink to this headline">#</a></h3>
-<p>The Cook Political Report scores the partisan lean of each state in the U.S. based on the results of recent elections. The Partisan Voting Index (PVI) for each of the 50 states (as of April 2021) is below, where more negative values means the state leans more toward the Democratic party, and more positive values means the state leans more toward the Republican party.<a class="footnote-reference brackets" href="#attribution" id="id1">1</a></p>
+<h3>Example 2.3.1<a class="headerlink" href="#example-2-3-1" title="Link to this heading">#</a></h3>
+<p>The Cook Political Report scores the partisan lean of each state in the U.S. based on the results of recent elections. The Partisan Voting Index (PVI) for each of the 50 states (as of April 2021) is below, where more negative values means the state leans more toward the Democratic party, and more positive values means the state leans more toward the Republican party.<a class="footnote-reference brackets" href="#attribution" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <center>
     15, 9, 3, 16, -14, -3, -7, -6, 3, 3, -15, 19, -7, 11, 6, 11, 16, 12, -1, -14, -14, 1, -1, 10, 11, 11, 13, 0, 0, -6, -3, -10, 3, 20, 6, 20, -6, 2, -8, 8, 16, 14, 5, 13, -15, -2, -8, 23, 2, 26
 </center>
@@ -478,18 +509,18 @@ document.write(`
 <li><p>Calculate the standard deviation of the state PVIs.</p></li>
 </ol>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <p>Note that this list includes the PVIs for the entire <em>population</em> of 50 states, so we will be calculating the <em>population</em> mean and the <em>population</em> standard deviation.</p>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">-14</span><span class="p">,</span> <span class="m">-3</span><span class="p">,</span> <span class="m">-7</span><span class="p">,</span> <span class="m">-6</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">-15</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">-7</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">-1</span><span class="p">,</span> <span class="m">-14</span><span class="p">,</span> <span class="m">-14</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">-1</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">-6</span><span class="p">,</span> <span class="m">-3</span><span class="p">,</span> <span class="m">-10</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">-6</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">-8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">-15</span><span class="p">,</span> <span class="m">-2</span><span class="p">,</span> <span class="m">-8</span><span class="p">,</span> <span class="m">23</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">26</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">-14</span><span class="p">,</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="m">-7</span><span class="p">,</span><span class="w"> </span><span class="m">-6</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">-15</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">-7</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">-14</span><span class="p">,</span><span class="w"> </span><span class="m">-14</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">13</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">-6</span><span class="p">,</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">-6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">-8</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">13</span><span class="p">,</span><span class="w"> </span><span class="m">-15</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">-8</span><span class="p">,</span><span class="w"> </span><span class="m">23</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">26</span><span class="p">)</span>
 
 <span class="c1"># Calculate the Mean</span>
-<span class="n">N</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">mu</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
 <span class="n">mu</span>
 </pre></div>
 </div>
@@ -500,11 +531,11 @@ document.write(`
 <p>The mean PVI is <span class="math notranslate nohighlight">\(\mu = 3.76\)</span>. This means that states on average lean Republican.</p>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Standard Deviation</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="n">N</span> <span class="p">)</span>
+<span class="n">sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mu</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="w"> </span><span class="p">)</span>
 <span class="n">sigma</span>
 </pre></div>
 </div>
@@ -523,7 +554,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="calculating-the-sample-standard-deviation">
-<h2>Calculating the Sample Standard Deviation<a class="headerlink" href="#calculating-the-sample-standard-deviation" title="Permalink to this headline">#</a></h2>
+<h2>Calculating the Sample Standard Deviation<a class="headerlink" href="#calculating-the-sample-standard-deviation" title="Link to this heading">#</a></h2>
 <p>In many real-life situations, it is impractical to collect the data needed to calculate the standard deviation for an entire population. Instead, statisticians estimate the standard deviation of a population by calculating the standard deviation of a sample. The formula for the sample standard deviation is almost the same as the formula for the population standard deviation.</p>
 <p><strong>Formula for the Sample Standard Deviation:</strong></p>
 <div class="math notranslate nohighlight">
@@ -541,7 +572,7 @@ document.write(`
 </div>
 <hr class="docutils" />
 <section id="example-2-3-2">
-<h3>Example 2.3.2<a class="headerlink" href="#example-2-3-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.3.2<a class="headerlink" href="#example-2-3-2" title="Link to this heading">#</a></h3>
 <p>The data below represents students’ scores on the first exam from one of Susan Dean’s precalculus classes.</p>
 <p>33, 42, 49, 49, 53, 55, 55, 61, 63, 67, 68, 68, 69, 69, 72, 73, 74, 78, 80, 83, 88, 88, 88, 90, 92, 94, 94, 94, 94, 96, 100</p>
 <ol class="arabic simple">
@@ -549,17 +580,17 @@ document.write(`
 <li><p>Calculate the sample standard deviation.</p></li>
 </ol>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <section id="id3">
-<h5>Part 1<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">33</span><span class="p">,</span> <span class="m">42</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">53</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">61</span><span class="p">,</span> <span class="m">63</span><span class="p">,</span> <span class="m">67</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">68</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">73</span><span class="p">,</span> <span class="m">74</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">83</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">92</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">94</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">33</span><span class="p">,</span><span class="w"> </span><span class="m">42</span><span class="p">,</span><span class="w"> </span><span class="m">49</span><span class="p">,</span><span class="w"> </span><span class="m">49</span><span class="p">,</span><span class="w"> </span><span class="m">53</span><span class="p">,</span><span class="w"> </span><span class="m">55</span><span class="p">,</span><span class="w"> </span><span class="m">55</span><span class="p">,</span><span class="w"> </span><span class="m">61</span><span class="p">,</span><span class="w"> </span><span class="m">63</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="p">,</span><span class="w"> </span><span class="m">68</span><span class="p">,</span><span class="w"> </span><span class="m">68</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">69</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">73</span><span class="p">,</span><span class="w"> </span><span class="m">74</span><span class="p">,</span><span class="w"> </span><span class="m">78</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">83</span><span class="p">,</span><span class="w"> </span><span class="m">88</span><span class="p">,</span><span class="w"> </span><span class="m">88</span><span class="p">,</span><span class="w"> </span><span class="m">88</span><span class="p">,</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="m">92</span><span class="p">,</span><span class="w"> </span><span class="m">94</span><span class="p">,</span><span class="w"> </span><span class="m">94</span><span class="p">,</span><span class="w"> </span><span class="m">94</span><span class="p">,</span><span class="w"> </span><span class="m">94</span><span class="p">,</span><span class="w"> </span><span class="m">96</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
 
 <span class="c1"># Calculate the Sample Mean</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -570,11 +601,11 @@ document.write(`
 <p>The mean score is <span class="math notranslate nohighlight">\(\bar{x} = 73.5161\)</span>.</p>
 </section>
 <section id="id4">
-<h5>Part 2<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Sample Standard Deviation</span>
-<span class="n">s</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 <span class="n">s</span>
 </pre></div>
 </div>
@@ -589,7 +620,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="outliers">
-<h2>Outliers<a class="headerlink" href="#outliers" title="Permalink to this headline">#</a></h2>
+<h2>Outliers<a class="headerlink" href="#outliers" title="Link to this heading">#</a></h2>
 <p><strong>Outliers</strong> are data values that deviate from the mean much greater than the standard amount for the data. Statisticians are interested in identifying outliers because they may indicate an error in the data. For example, suppose we collect the following data for the price of a cup of coffee at several local coffee shops:</p>
 <center>
     2.69, 2.79, 2.99, 3.00, 2.69, 3.15, 2.89, 2.69, 2.90, <b>259</b>, 2.79, 2.80, 3.10, 2.59, 2.75
@@ -602,12 +633,12 @@ document.write(`
 <figure class="align-default" id="outlier-example">
 <a class="reference internal image-reference" href="../_images/outlier_example.png"><img alt="The values of a data set are shown, and the outliers of the data set are indicated." src="../_images/outlier_example.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.3.2 </span><span class="caption-text">Given a set of data, most data values are within two standard deviations from their mean, either above or below the mean. In this text, we consider outliers to be data values that are more than two standard deviations away from the mean.</span><a class="headerlink" href="#outlier-example" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.3.2 </span><span class="caption-text">Given a set of data, most data values are within two standard deviations from their mean, either above or below the mean. In this text, we consider outliers to be data values that are more than two standard deviations away from the mean.</span><a class="headerlink" href="#outlier-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
 <section id="example-2-3-3">
-<h3>Example 2.3.3<a class="headerlink" href="#example-2-3-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.3.3<a class="headerlink" href="#example-2-3-3" title="Link to this heading">#</a></h3>
 <p>A dating website surveyed 50 of their recently-married customers to see how many long-term relationships they had before they were married. The results are below.</p>
 <center>
     1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 10, 11, 11, 13, 13, 14, 15
@@ -619,18 +650,18 @@ document.write(`
 <li><p>Does the data contain any outliers? If so, what are they?</p></li>
 </ol>
 <section id="id5">
-<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p>Note that the 50 customers surveyed are only a small <em>sample</em> of all the dating website’s customers, so we will calculate the <em>sample</em> mean and <em>sample</em> standard deviation.</p>
 <section id="id6">
-<h5>Part 1<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">13</span><span class="p">,</span><span class="w"> </span><span class="m">13</span><span class="p">,</span><span class="w"> </span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">)</span>
 
 <span class="c1"># Calculate the Mean</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -641,10 +672,10 @@ document.write(`
 <p>On average, those surveyed had <span class="math notranslate nohighlight">\(\bar{x} = 5.42\)</span> relationships before they were married.</p>
 </section>
 <section id="id7">
-<h5>Part 2<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span> <span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 <span class="n">s</span>
 </pre></div>
 </div>
@@ -655,12 +686,12 @@ document.write(`
 <p>The sample standard deviation is <span class="math notranslate nohighlight">\(s = 3.558\)</span> relationships.</p>
 </section>
 <section id="part-3">
-<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h5>
 <p>To find any outliers, we will calculate two standard deviations above the mean (<span class="math notranslate nohighlight">\(\bar{x} + 2s\)</span>) and two standard deviations below the mean (<span class="math notranslate nohighlight">\(\bar{x} - 2s\)</span>). Any data values above <span class="math notranslate nohighlight">\(\bar{x} + 2s\)</span> or below <span class="math notranslate nohighlight">\(\bar{x} - 2s\)</span> are outliers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span> <span class="o">+</span> <span class="m">2</span><span class="o">*</span><span class="n">s</span>
-<span class="n">xbar</span> <span class="o">-</span> <span class="m">2</span><span class="o">*</span><span class="n">s</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="n">s</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="n">s</span>
 </pre></div>
 </div>
 </div>
@@ -670,11 +701,12 @@ document.write(`
 <p>Returning to the original list of data values, we can see that <span class="math notranslate nohighlight">\(13\)</span>, <span class="math notranslate nohighlight">\(13\)</span>, <span class="math notranslate nohighlight">\(14\)</span>, and <span class="math notranslate nohighlight">\(15\)</span> are greater than <span class="math notranslate nohighlight">\(\bar{x} + 2s = 12.5353\)</span>. Any values smaller than <span class="math notranslate nohighlight">\(\bar{x} - 2s = -1.6953\)</span> would also be outliers, but there aren’t any values this small in the data.</p>
 <p>So our data contains a total of four outliers: <span class="math notranslate nohighlight">\(13\)</span>, <span class="math notranslate nohighlight">\(13\)</span>, <span class="math notranslate nohighlight">\(14\)</span>, and <span class="math notranslate nohighlight">\(15\)</span>.</p>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Wasserman, David; Flinn, Ally (April 15, 2021). “<a class="reference external" href="https://cookpolitical.com/analysis/national/pvi/introducing-2021-cook-political-report-partisan-voter-index">Introducing the 2021 Cook Political Report Partisan Voter Index</a>”. The Cook Political Report. Retrieved April 15, 2021.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="attribution" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Wasserman, David; Flinn, Ally (April 15, 2021). “<a class="reference external" href="https://cookpolitical.com/analysis/national/pvi/introducing-2021-cook-political-report-partisan-voter-index">Introducing the 2021 Cook Political Report Partisan Voter Index</a>”. The Cook Political Report. Retrieved April 15, 2021.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -706,11 +738,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="2.2%20Measures%20of%20Central%20Tendency.html"
@@ -730,10 +761,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -741,6 +769,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -805,6 +834,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -831,8 +861,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

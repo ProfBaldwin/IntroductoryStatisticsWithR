@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4.5. The Central Limit Theorem for Proportions &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch4 The Normal Distribution and the Central Limit Theorem/4.5 The Central Limit Theorem for Proportions';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -383,19 +414,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-central-limit-theorem-for-proportions">
-<h1><span class="section-number">4.5. </span>The Central Limit Theorem for Proportions<a class="headerlink" href="#the-central-limit-theorem-for-proportions" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.5. </span>The Central Limit Theorem for Proportions<a class="headerlink" href="#the-central-limit-theorem-for-proportions" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Apply the central limit theorem for proportions to identify sampling distributions of sample proportions.</p></li>
 <li><p>Computer probabilities involving sampling distributions of proportions.</p></li>
 </ul>
 </section>
 <section id="population-proportions">
-<h2>Population Proportions<a class="headerlink" href="#population-proportions" title="Permalink to this headline">#</a></h2>
+<h2>Population Proportions<a class="headerlink" href="#population-proportions" title="Link to this heading">#</a></h2>
 <p>A <strong>population proportion</strong> is the fraction, ratio, or percentage of the population that possesses a certain characteristic. For example, in 2006, the <strong>proportion</strong> of adult Americans that were married was <span class="math notranslate nohighlight">\(55.7\%\)</span>. Note a few important properties about proportions:</p>
 <ul class="simple">
 <li><p>For each member of the population, there are only two options: either the member possesses the characteristic or the member doesn’t possess the characteristic. In the above example, since <span class="math notranslate nohighlight">\(55.7\%\)</span> of U.S. adults were married in 2006, we can conclude that <span class="math notranslate nohighlight">\(100\% - 55.7\% = 44.3\%\)</span> of U.S. adults were not married in 2006.</p></li>
@@ -412,7 +443,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(26.87\%\)</span> of all Menifee High School students are freshmen.</p>
 </section>
 <section id="id1">
-<h2>The Central Limit Theorem for Proportions<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>The Central Limit Theorem for Proportions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>We can also find the proportion of a sample, denoted by <span class="math notranslate nohighlight">\(\hat{p}\)</span> (which is read “<em>p</em>-hat”). The formula for a sample proportion is</p>
 <div class="math notranslate nohighlight">
 \[ \hat{p} = \frac{x}{n}, \]</div>
@@ -442,7 +473,7 @@ document.write(`
 \[ z = \frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}}, \hspace{0.5in} \hat{p} = p + z\sqrt{\frac{p(1-p)}{n}}. \]</div>
 <hr class="docutils" />
 <section id="example-4-4-1">
-<h3>Example 4.4.1<a class="headerlink" href="#example-4-4-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.4.1<a class="headerlink" href="#example-4-4-1" title="Link to this heading">#</a></h3>
 <p>A poll is conducted of <span class="math notranslate nohighlight">\(1{,}000\)</span> Americans to determine whether or not they approve of the President of the United States. Suppose that, in reality, <span class="math notranslate nohighlight">\(54\%\)</span> of all Americans approve of the President.</p>
 <ol class="arabic simple">
 <li><p>What is the probability that fewer than <span class="math notranslate nohighlight">\(50\%\)</span> of those polled approve of the President?</p></li>
@@ -450,7 +481,7 @@ document.write(`
 <li><p>What is the probability that between <span class="math notranslate nohighlight">\(50\%\)</span> and <span class="math notranslate nohighlight">\(56\%\)</span> of those polled approve of the President?</p></li>
 </ol>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <p>First, note that the sample size is <span class="math notranslate nohighlight">\(n = 1{,}000\)</span> and the population proportion is <span class="math notranslate nohighlight">\(p = 0.54\)</span>. Then by the central limit theorem, we know that the sample proportions are normally distributed with mean</p>
 <div class="math notranslate nohighlight">
 \[ p = 0.54 \]</div>
@@ -459,14 +490,14 @@ document.write(`
 \[ \sqrt{\frac{p(1 - p)}{n}} = \sqrt{\frac{0.54(1 - 0.54)}{1000}} = 0.0158. \]</div>
 <p>So <span class="math notranslate nohighlight">\(\hat{P} \sim N(0.54, 0.0158)\)</span>.</p>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <p>We want to find <span class="math notranslate nohighlight">\(P(\hat{p} &lt; 0.50)\)</span>. First find the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(\hat{p} = 0.50\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ z = \frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} = \frac{0.50 - 0.54}{0.0158} = -2.5316. \]</div>
 <p>So <span class="math notranslate nohighlight">\(P(\hat{p} &lt; 0.50) = P(z &lt; -2.5316)\)</span>. Let’s use R to calculate the probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.5316</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-2.5316</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -476,14 +507,14 @@ document.write(`
 <p>Then <span class="math notranslate nohighlight">\(P(\hat{p} &lt; 0.50) = P(z &lt; -2.5316) = 0.0057\)</span>. There is a <span class="math notranslate nohighlight">\(0.57\%\)</span> chance that a sample of <span class="math notranslate nohighlight">\(1{,}000\)</span> Americans will yield a sample proportion less than <span class="math notranslate nohighlight">\(50\%\)</span>.</p>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <p>We want to find <span class="math notranslate nohighlight">\(P(\hat{p} &gt; 0.56)\)</span>. First find the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(\hat{p} = 0.56\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ z = \frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} = \frac{0.56 - 0.54}{0.0158} = 1.2658. \]</div>
 <p>So <span class="math notranslate nohighlight">\(P(\hat{p} &gt; 0.56) = P(z &gt; 1.2658)\)</span>. Let’s use R to calculate the probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">1.2658</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.2658</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -493,12 +524,12 @@ document.write(`
 <p>Then <span class="math notranslate nohighlight">\(P(\hat{p} &gt; 0.56) = P(z &gt; 1.2658) = 0.1028\)</span>. There is a <span class="math notranslate nohighlight">\(10.28\%\)</span> chance that a sample of <span class="math notranslate nohighlight">\(1{,}000\)</span> Americans will yield a sample proportion more than <span class="math notranslate nohighlight">\(56\%\)</span>.</p>
 </section>
 <section id="part-3">
-<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h5>
 <p>We want <span class="math notranslate nohighlight">\(P(0.50 &lt; \hat{p} &lt; 0.56)\)</span>. We know from parts 1 and 2 that the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(\hat{p} = 0.50\)</span> is <span class="math notranslate nohighlight">\(z = -2.5316\)</span> and the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(\hat{p} = 0.56\)</span> is <span class="math notranslate nohighlight">\(z = 1.2658\)</span>. So <span class="math notranslate nohighlight">\(P(0.50 &lt; p' &lt; 0.56) = P(-2.5316 &lt; z &lt; 1.2658)\)</span>.</p>
 <p>The probability is the entire area under the normal density function between <span class="math notranslate nohighlight">\(z = -2.5316\)</span> and <span class="math notranslate nohighlight">\(z = 1.2658\)</span>. To find this, we will use R to first find all the area to the left of the larger <span class="math notranslate nohighlight">\(z\)</span>-score, <span class="math notranslate nohighlight">\(z = 1.2658\)</span>, then subtract off the excess area to the left of the smaller <span class="math notranslate nohighlight">\(z\)</span>-score, <span class="math notranslate nohighlight">\(z = -2.5316\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">1.2658</span><span class="p">)</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.5316</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.2658</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-2.5316</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -511,10 +542,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-4-4-2">
-<h3>Example 4.4.2<a class="headerlink" href="#example-4-4-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.4.2<a class="headerlink" href="#example-4-4-2" title="Link to this heading">#</a></h3>
 <p>Apparently having nothing better to do, Yan flips <span class="math notranslate nohighlight">\(20\)</span> coins, calculates the proportion of heads that come up, then repeats the process. We would expect <span class="math notranslate nohighlight">\(25\%\)</span> of the time the proportion of heads Yan gets will be smaller than what value?</p>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>Let’s start by calculating the properties of the sampling distribution according to the central limit theorem. We know the mean of the sampling distribution is the population proportion. We are not directly told what the population proportion is, but we know coins come up heads <span class="math notranslate nohighlight">\(50\%\)</span> of the time, so the proportion of heads in the population is</p>
 <div class="math notranslate nohighlight">
 \[ p = 0.50. \]</div>
@@ -526,7 +557,7 @@ document.write(`
 <p>We start by using R to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with the probability we are given.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -568,11 +599,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="4.4%20The%20Central%20Limit%20Theorem%20for%20Means.html"
@@ -592,10 +622,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -603,6 +630,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -649,6 +677,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -675,8 +704,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

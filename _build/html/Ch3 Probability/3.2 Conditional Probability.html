@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3.2. Conditional Probability &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch3 Probability/3.2 Conditional Probability';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -395,46 +426,46 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="conditional-probability">
-<h1><span class="section-number">3.2. </span>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.2. </span>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Construct composite events using <span class="math notranslate nohighlight">\(\text{AND}\)</span> and <span class="math notranslate nohighlight">\(\text{OR}\)</span> and calculate their probability.</p></li>
 <li><p>Calculate conditional probability.</p></li>
 </ul>
 </section>
 <section id="text-and-and-text-or-events">
-<h2><span class="math notranslate nohighlight">\(\text{AND}\)</span> and <span class="math notranslate nohighlight">\(\text{OR}\)</span> Events<a class="headerlink" href="#text-and-and-text-or-events" title="Permalink to this headline">#</a></h2>
+<h2><span class="math notranslate nohighlight">\(\text{AND}\)</span> and <span class="math notranslate nohighlight">\(\text{OR}\)</span> Events<a class="headerlink" href="#text-and-and-text-or-events" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be any two events. Then <span class="math notranslate nohighlight">\(A \text{ AND } B\)</span> is an event with all the outcomes that are both in <span class="math notranslate nohighlight">\(A\)</span> and in <span class="math notranslate nohighlight">\(B\)</span>. For example, suppose <span class="math notranslate nohighlight">\(A = \{1, 2, 3, 4\}\)</span> and <span class="math notranslate nohighlight">\(B = \{3, 4, 5, 6\}\)</span>. Then event <span class="math notranslate nohighlight">\(A \text{ AND } B = \{3, 4\}\)</span> since those two outcomes are the only outcomes in both event <span class="math notranslate nohighlight">\(A\)</span> and event <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <figure class="align-default" id="vennand">
 <a class="reference internal image-reference" href="../_images/vennAND.svg"><img alt="A venn diagram of two events A and B. The intersection of the two events is shaded representing the composite event (A AND B)." src="../_images/vennAND.svg" width="40%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.2.1 </span><span class="caption-text">A venn diagram of two events A and B. The shaded portion of the diagram represents event <span class="math notranslate nohighlight">\(A \text{ AND } B\)</span>. It is the portion of the diagram that is both in <span class="math notranslate nohighlight">\(A\)</span> and in <span class="math notranslate nohighlight">\(B\)</span>.</span><a class="headerlink" href="#vennand" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.2.1 </span><span class="caption-text">A venn diagram of two events A and B. The shaded portion of the diagram represents event <span class="math notranslate nohighlight">\(A \text{ AND } B\)</span>. It is the portion of the diagram that is both in <span class="math notranslate nohighlight">\(A\)</span> and in <span class="math notranslate nohighlight">\(B\)</span>.</span><a class="headerlink" href="#vennand" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Similarly, <span class="math notranslate nohighlight">\(A \text{ OR } B\)</span> is an event with all outcomes that are either in <span class="math notranslate nohighlight">\(A\)</span> or in <span class="math notranslate nohighlight">\(B\)</span> (or both). If <span class="math notranslate nohighlight">\(A = \{1, 2, 3, 4\}\)</span> and <span class="math notranslate nohighlight">\(B = \{3, 4, 5, 6\}\)</span>, then event <span class="math notranslate nohighlight">\(A \text{ OR } B = \{1, 2, 3, 4, 5, 6\}\)</span> since each of these outcomes are in <span class="math notranslate nohighlight">\(A\)</span> or in <span class="math notranslate nohighlight">\(B\)</span>. Note that when an outcome is in both <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, it is still only listed once in <span class="math notranslate nohighlight">\(A \text{ OR } B\)</span>.</p>
 <figure class="align-default" id="vennor">
 <a class="reference internal image-reference" href="../_images/vennOR.svg"><img alt="A venn diagram of two events A and B. The entirety of circle A together with the entirety of circle B is shaded representing the composite event (A OR B)." src="../_images/vennOR.svg" width="40%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.2.2 </span><span class="caption-text">A venn diagram of two events A and B. The shaded portion of the diagram represents event <span class="math notranslate nohighlight">\(A \text{ OR } B\)</span>. It is the portion of the diagram that is in any part of <span class="math notranslate nohighlight">\(A\)</span> or in any part of <span class="math notranslate nohighlight">\(B\)</span>.</span><a class="headerlink" href="#vennor" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.2.2 </span><span class="caption-text">A venn diagram of two events A and B. The shaded portion of the diagram represents event <span class="math notranslate nohighlight">\(A \text{ OR } B\)</span>. It is the portion of the diagram that is in any part of <span class="math notranslate nohighlight">\(A\)</span> or in any part of <span class="math notranslate nohighlight">\(B\)</span>.</span><a class="headerlink" href="#vennor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
 <section id="example-3-2-1">
-<h3>Example 3.2.1<a class="headerlink" href="#example-3-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.2.1<a class="headerlink" href="#example-3-2-1" title="Link to this heading">#</a></h3>
 <div class="full-width docutils">
 <figure class="align-default" id="playingcards2">
 <a class="reference internal image-reference" href="../_images/playingcards.svg"><img alt="A standard deck of 52 playing cards." src="../_images/playingcards.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3.2.3 </span><span class="caption-text">A standard deck of <span class="math notranslate nohighlight">\(52\)</span> playing cards.<a class="footnote-reference brackets" href="#cards-attribution" id="id1">1</a> <br/>
+<p><span class="caption-number">Fig. 3.2.3 </span><span class="caption-text">A standard deck of <span class="math notranslate nohighlight">\(52\)</span> playing cards.<a class="footnote-reference brackets" href="#cards-attribution" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> <br/>
 A deck is divided into 4 suits: Spades (<span class="math notranslate nohighlight">\(♠\)</span>), Hearts (<span class="math notranslate nohighlight">\(\color{red} ♥\)</span>), Diamonds (<span class="math notranslate nohighlight">\(\color{red} ♦\)</span>), and Clubs (<span class="math notranslate nohighlight">\(♣\)</span>). <br/>
 Spades (<span class="math notranslate nohighlight">\(♠\)</span>) and Clubs (<span class="math notranslate nohighlight">\(♣\)</span>) are black. Hearts (<span class="math notranslate nohighlight">\(\color{red} ♥\)</span>) and Diamonds (<span class="math notranslate nohighlight">\(\color{red} ♦\)</span>) are red.<br/>
 There are 13 ranks in each suit:
 <strong>A</strong>ce, <strong>2</strong>, <strong>3</strong>, <strong>4</strong>, <strong>5</strong>, <strong>6</strong>, <strong>7</strong>, <strong>8</strong>, <strong>9</strong>, <strong>10</strong>, <strong>J</strong>ack, <strong>Q</strong>ueen, and <strong>K</strong>ing.<br/>
-The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="headerlink" href="#playingcards2" title="Permalink to this image">#</a></p>
+The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="headerlink" href="#playingcards2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -444,10 +475,10 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 <li><p>What is the probability that Gloriana’s card is a Queen or a Heart?</p></li>
 </ol>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <p>Let <span class="math notranslate nohighlight">\(Q = \)</span> the event where Gloriana draws a Queen and <span class="math notranslate nohighlight">\({\color{red}♥} = \)</span> the event where Gloriana draws a Heart. Note that since each card has an equal probability of being chosen, all outcomes are equally likely. And since there are <span class="math notranslate nohighlight">\(52\)</span> cards in the deck, <span class="math notranslate nohighlight">\(n(S) = 52\)</span>.</p>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <p>We can express the probability that Gloriana’s card is both a Queen and a Heart mathematically as <span class="math notranslate nohighlight">\(P(Q \text{ AND } {\color{red}♥})\)</span>. Since all the outcomes are equally likely, we can calculate the probability using the formula</p>
 <div class="math notranslate nohighlight">
 \[ P(Q \text{ AND } {\color{red}♥}) = \frac{n(Q \text{ AND } {\color{red}♥})}{n(S)}. \]</div>
@@ -456,7 +487,7 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 \[ P(Q \text{ AND } {\color{red}♥}) = \frac{n(Q \text{ AND } {\color{red}♥})}{n(S)} = 1/52 = 0.0192. \]</div>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <p>The probability that Gloriana’s card is a Queen or a Heart can be found using the formula</p>
 <div class="math notranslate nohighlight">
 \[ P(Q \text{ OR } {\color{red}♥}) = \frac{n(Q \text{ OR } {\color{red}♥})}{n(S)}. \]</div>
@@ -472,7 +503,7 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 </section>
 <hr class="docutils" />
 <section id="conditional-probability-when-outcomes-are-equally-likely">
-<h2>Conditional Probability When Outcomes are Equally Likely<a class="headerlink" href="#conditional-probability-when-outcomes-are-equally-likely" title="Permalink to this headline">#</a></h2>
+<h2>Conditional Probability When Outcomes are Equally Likely<a class="headerlink" href="#conditional-probability-when-outcomes-are-equally-likely" title="Link to this heading">#</a></h2>
 <p>The <strong>conditional probability</strong> of <span class="math notranslate nohighlight">\(A\)</span> given <span class="math notranslate nohighlight">\(B\)</span> is written <span class="math notranslate nohighlight">\(P(A|B)\)</span>. <span class="math notranslate nohighlight">\(P(A|B)\)</span> is the probability that event <span class="math notranslate nohighlight">\(A\)</span> is true given that we already know event <span class="math notranslate nohighlight">\(B\)</span> is true.</p>
 <p>For example, imagine you roll a six-sided die, and it rolls where you can’t see it. You want to calculate the probability that the die came up a <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, or <span class="math notranslate nohighlight">\(6\)</span>. Let <span class="math notranslate nohighlight">\(D = \{4, 5, 6\}\)</span>. Since you can’t see the die, the probability of that you rolled a <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, or <span class="math notranslate nohighlight">\(6\)</span> is</p>
 <div class="math notranslate nohighlight">
@@ -489,16 +520,10 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 </div>
 <hr class="docutils" />
 <section id="example-3-2-2">
-<h3>Example 3.2.2<a class="headerlink" href="#example-3-2-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.2.2<a class="headerlink" href="#example-3-2-2" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#abortion-table2"><span class="std std-numref">Table 3.2.1</span></a> describes the distribution of a random sample of <span class="math notranslate nohighlight">\(466\)</span> individuals from the U.S., organized by political party and views on the circumstances under which abortion should be legal. One individual from the sample is selected at random.</p>
 <table class="table" id="abortion-table2">
-<caption><span class="caption-number">Table 3.2.1 </span><span class="caption-text">The political party identification and views on the circumstances under which abortion should be legal of a sample of <span class="math notranslate nohighlight">\(466\)</span> individuals.</span><a class="headerlink" href="#abortion-table2" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
+<caption><span class="caption-number">Table 3.2.1 </span><span class="caption-text">The political party identification and views on the circumstances under which abortion should be legal of a sample of <span class="math notranslate nohighlight">\(466\)</span> individuals.</span><a class="headerlink" href="#abortion-table2" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head stub"></th>
 <th class="head"><p>Legal under any circumstances</p></th>
@@ -529,10 +554,10 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 <li><p>Find the probability that the individual is a Republican given that they believe abortion should be illegal in all circumstances.</p></li>
 </ol>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>Note that since the individual is selected randomly, each individual has an equal probability of being chosen. So the outcomes are equally likely. Let <span class="math notranslate nohighlight">\(I\)</span> be the event where the individual believes abortion should be illegal in all circumstances, and let <span class="math notranslate nohighlight">\(R\)</span> be the event where the individual is a Republican.</p>
 <section id="id3">
-<h5>Part 1<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
 <p>We want to find <span class="math notranslate nohighlight">\(P(I|R)\)</span>. The formula for this conditional probability is</p>
 <div class="math notranslate nohighlight">
 \[ P(I|R) = \frac{n(I\text{ AND } R)}{n(R)}. \]</div>
@@ -541,7 +566,7 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 \[ P(I|R) = \frac{n(I\text{ AND } R)}{n(R)} = \frac{38}{122} = 0.3115. \]</div>
 </section>
 <section id="id4">
-<h5>Part 2<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <p>We want to find <span class="math notranslate nohighlight">\(P(R|I)\)</span>. The formula for this conditional probability is</p>
 <div class="math notranslate nohighlight">
 \[P(R|I) = \frac{n(R \text{ AND } I)}{n(I)}. \]</div>
@@ -554,26 +579,27 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 </section>
 <hr class="docutils" />
 <section id="conditional-probability-when-outcomes-are-not-equally-likely">
-<h2>Conditional Probability When Outcomes are Not Equally Likely<a class="headerlink" href="#conditional-probability-when-outcomes-are-not-equally-likely" title="Permalink to this headline">#</a></h2>
+<h2>Conditional Probability When Outcomes are Not Equally Likely<a class="headerlink" href="#conditional-probability-when-outcomes-are-not-equally-likely" title="Link to this heading">#</a></h2>
 <p>When calculating conditional probability when outcomes are not all equally likely, we need to adapt the formula we learned above. The generalized formula for calculating conditional probability is</p>
 <div class="math notranslate nohighlight">
 \[ P(A|B) = \frac{P(A \text{ AND } B)}{P(B)}. \]</div>
 <p>The formula we learned in the previous section for equally likely events is actually a special case of this more general formula. While the formula in the previous section only works when the outcomes are all equally likely, this formula works <em>always</em> in <em>all</em> circumstances.</p>
 <hr class="docutils" />
 <section id="example-3-2-3">
-<h3>Example 3.2.3<a class="headerlink" href="#example-3-2-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 3.2.3<a class="headerlink" href="#example-3-2-3" title="Link to this heading">#</a></h3>
 <p>Kristina plays basketball. Sometimes she must take two free throw shots. She makes the first shot <span class="math notranslate nohighlight">\(59\%\)</span> of the time, and she makes both free throw shots <span class="math notranslate nohighlight">\(32\%\)</span> of the time. What is the probability that she makes the second shot given that she made the first shot?</p>
 <section id="id5">
-<h4>Solution<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p>Let <span class="math notranslate nohighlight">\(F_1\)</span> be the event where Kristina makes the first free throw shot, and let <span class="math notranslate nohighlight">\(F_2\)</span> be the event where Kristina makes the second free throw shot. According to the problem statement, the probability that Kristina makes the first free throw shot is <span class="math notranslate nohighlight">\(P(F_1) = 0.59\)</span>, and the probability that she makes both free throw shots is <span class="math notranslate nohighlight">\(P(F_1 \text{ AND } F_2) = 0.32\)</span>. Then the probability that Kristina makes the second shot given that she made the first shot is</p>
 <div class="math notranslate nohighlight">
 \[ P(F_2|F_1) = \frac{P(F_2 \text{ AND } F_1)}{P(F_1)} = \frac{0.32}{0.59} = 0.5424. \]</div>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="cards-attribution"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><a class="reference internal" href="#playingcards2"><span class="std std-numref">Figure 3.2.3</span></a> was adapted from an image <a class="reference external" href="https://commons.wikimedia.org/wiki/File:English_pattern_playing_cards_deck.svg">created by Dmitry Fomin</a>, which is made available under the <a class="reference external" href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">Creative Commons CC0 1.0 Universal Public Domain Dedication</a>.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="cards-attribution" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference internal" href="#playingcards2"><span class="std std-numref">Figure 3.2.3</span></a> was adapted from an image <a class="reference external" href="https://commons.wikimedia.org/wiki/File:English_pattern_playing_cards_deck.svg">created by Dmitry Fomin</a>, which is made available under the <a class="reference external" href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">Creative Commons CC0 1.0 Universal Public Domain Dedication</a>.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -604,11 +630,10 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="3.1%20Introduction%20to%20Probability.html"
@@ -628,10 +653,7 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -639,6 +661,7 @@ The Jacks, Queens, and Kings in a deck are called face cards.</span><a class="he
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -697,6 +720,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -723,8 +747,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

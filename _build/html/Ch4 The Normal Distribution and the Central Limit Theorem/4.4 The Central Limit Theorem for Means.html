@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4.4. The Central Limit Theorem for Means &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch4 The Normal Distribution and the Central Limit Theorem/4.4 The Central Limit Theorem for Means';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -386,19 +417,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-central-limit-theorem-for-means">
-<h1><span class="section-number">4.4. </span>The Central Limit Theorem for Means<a class="headerlink" href="#the-central-limit-theorem-for-means" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.4. </span>The Central Limit Theorem for Means<a class="headerlink" href="#the-central-limit-theorem-for-means" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Apply the central limit theorem for means to identify sampling distributions of sample means.</p></li>
 <li><p>Compute probabilities involving sampling distributions of means.</p></li>
 </ul>
 </section>
 <section id="the-central-limit-theorem">
-<h2>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Permalink to this headline">#</a></h2>
+<h2>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Link to this heading">#</a></h2>
 <p>Suppose we want to find the average hourly wage of workers in Brazil. There are millions of workers in Brazil, so we can’t practically survey all Brazilian workers to find the true population mean of their hourly wages. Instead, we can approximate the population mean by surveying a random sample of, say, <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers and calculating the mean of this smaller sample. This sample mean would probably not be <em>exactly</em> equal to the population mean, but the sample mean would likely be a good <em>approximation</em> of the population mean.</p>
 <p>But our random sample of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers is only one particular sample of many random samples that are possible. Because there are millions of Brazilian workers, there are many possible ways a sample of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers might be randomly chosen. For instance, if we were to collect a second random sample of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers, this second sample would almost certainly include <span class="math notranslate nohighlight">\(500\)</span> different workers than those workers which were selected for our first sample. The sample mean from this new second sample would probably be a little different than the sample mean from our first sample, though both sample means would probably give a good approximation of the population mean.</p>
 <p>So far, we’ve imagined taking just two different samples of <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers from the population. Now imagine <em>all</em> the possible ways we can sample <span class="math notranslate nohighlight">\(500\)</span> Brazilian workers from the population. How would the different sample means from all those samples be distributed? Well, like with the two sample means we considered above, we would expect most of the possible sample means to be close to the population mean. In fact, the further we get from the population mean, the fewer sample means we will to find.</p>
@@ -428,7 +459,7 @@ document.write(`
 \[ z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}, \hspace{0.5in} \bar{x} = \mu + z\frac{\sigma}{\sqrt{n}}. \]</div>
 <hr class="docutils" />
 <section id="example-4-4-1">
-<h3>Example 4.4.1<a class="headerlink" href="#example-4-4-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.4.1<a class="headerlink" href="#example-4-4-1" title="Link to this heading">#</a></h3>
 <p>The expected value of a fair six-sided die roll is <span class="math notranslate nohighlight">\(\mu = 3.5\)</span>. The standard deviation is <span class="math notranslate nohighlight">\(\sigma = 1.7078\)</span>.</p>
 <ol class="arabic simple">
 <li><p>If we roll the die <span class="math notranslate nohighlight">\(50\)</span> times, what is the likelihood that the sample mean is smaller than <span class="math notranslate nohighlight">\(3.0\)</span>?</p></li>
@@ -436,9 +467,9 @@ document.write(`
 <li><p>Is it more likely that our sample mean is smaller than <span class="math notranslate nohighlight">\(3.0\)</span> if we roll the die <span class="math notranslate nohighlight">\(50\)</span> times or <span class="math notranslate nohighlight">\(100\)</span> times? Why?</p></li>
 </ol>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <section id="part-1">
-<h5>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h5>
+<h5>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h5>
 <p>By the central limit theorem, we know that the distribution of sample means of samples of size <span class="math notranslate nohighlight">\(n = 50\)</span> are normally distributed with population mean</p>
 <div class="math notranslate nohighlight">
 \[\mu = 3.5\]</div>
@@ -451,7 +482,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0) = P(Z &lt; -2.0704)\)</span>. We use R to find the probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.0704</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-2.0704</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -461,7 +492,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0) = P(Z &lt; -2.0704) = 0.0192\)</span>. That is, there is only a <span class="math notranslate nohighlight">\(1.92\%\)</span> chance that our <span class="math notranslate nohighlight">\(50\)</span> die rolls have an average of less than <span class="math notranslate nohighlight">\(3.0\)</span>.</p>
 </section>
 <section id="part-2">
-<h5>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h5>
+<h5>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h5>
 <p>By the central limit theorem, we know that the distribution of sample means of samples of size <span class="math notranslate nohighlight">\(n = 100\)</span> are normally distributed with population mean</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 3.5 \]</div>
@@ -474,7 +505,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0) = P(Z &lt; -2.9274)\)</span>. We use R to find the probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-2.9274</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-2.9274</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -484,7 +515,7 @@ document.write(`
 <p>So <span class="math notranslate nohighlight">\(P(\bar{X} &lt; 3.0) = P(Z &lt; -2.9274) = 0.0017\)</span>. That is, there is only a <span class="math notranslate nohighlight">\(0.17\%\)</span> chance that our <span class="math notranslate nohighlight">\(100\)</span> die rolls have an average of less than <span class="math notranslate nohighlight">\(3.0\)</span>.</p>
 </section>
 <section id="part-3">
-<h5>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h5>
+<h5>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h5>
 <p>The probability of getting a sample mean of less than <span class="math notranslate nohighlight">\(3.0\)</span> after <span class="math notranslate nohighlight">\(50\)</span> die rolls is <span class="math notranslate nohighlight">\(1.92\%\)</span>. But the probability of getting a sample mean of less than <span class="math notranslate nohighlight">\(3.0\)</span> after <span class="math notranslate nohighlight">\(100\)</span> die rolls is only <span class="math notranslate nohighlight">\(0.17\%\)</span>, more than <span class="math notranslate nohighlight">\(10\)</span> times smaller. While both are unlikely, we are much more likely to have a sample mean of less than <span class="math notranslate nohighlight">\(3.0\)</span> after only <span class="math notranslate nohighlight">\(50\)</span> die rolls than we are after <span class="math notranslate nohighlight">\(100\)</span> die rolls.</p>
 <p>This is because the larger the sample size is, the smaller the standard error is, and, therefore, the more likely the sample mean from a randomly selected sample will be close to the population mean or expected value.</p>
 </section>
@@ -492,10 +523,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-4-4-2">
-<h3>Example 4.4.2<a class="headerlink" href="#example-4-4-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.4.2<a class="headerlink" href="#example-4-4-2" title="Link to this heading">#</a></h3>
 <p>The length of time taken on the SAT for a group of students is normally distributed with a mean of <span class="math notranslate nohighlight">\(2.5\)</span> hours and a standard deviation of <span class="math notranslate nohighlight">\(0.85\)</span> hours. A sample size of <span class="math notranslate nohighlight">\(n = 30\)</span> is drawn randomly from the population. Find the probability that the sample mean is between <span class="math notranslate nohighlight">\(2.3\)</span> hours and <span class="math notranslate nohighlight">\(2.7\)</span> hours.</p>
 <section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>By the central limit theorem, sample means of samples of size <span class="math notranslate nohighlight">\(n = 30\)</span> are normally distributed with</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 2.5 \]</div>
@@ -511,7 +542,7 @@ document.write(`
 <p>Then <span class="math notranslate nohighlight">\(P(2.3 &lt; \bar{X} &lt; 2.7) = P(-1.2887 &lt; Z &lt; 1.2887)\)</span>. We will use R to find the probability. We will first find <em>all</em> the area to the left of <span class="math notranslate nohighlight">\(z = 1.2887\)</span>, then subtract off the excess area to the left of <span class="math notranslate nohighlight">\(z = -1.2887\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">1.2887</span><span class="p">)</span> <span class="o">-</span> <span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">-1.2887</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.2887</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pnorm</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1.2887</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -523,10 +554,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-4-4-3">
-<h3>Example 4.4.3<a class="headerlink" href="#example-4-4-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 4.4.3<a class="headerlink" href="#example-4-4-3" title="Link to this heading">#</a></h3>
 <p>A statistics instructor at Mt. San Jacinto College assigns each student in his class to randomly sample <span class="math notranslate nohighlight">\(40\)</span> other students at the college and find out how far they travel to get to campus, then calculate the sample mean. If the population mean is <span class="math notranslate nohighlight">\(26\)</span> miles with a standard deviation of <span class="math notranslate nohighlight">\(32\)</span> miles, then the top <span class="math notranslate nohighlight">\(10\%\)</span> of sample means submitted by the instrutor’s students should be greater than what value?</p>
 <section id="id2">
-<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>We will need to approach this problem a little differently than the way we approached the last two examples, but we start off the same way: by using the central limit theorem to find the properties of the sampling distribution of sample means. Since we are looking at samples of size <span class="math notranslate nohighlight">\(n = 40\)</span>, the central limit theorem tells us that the sampling distribution is normally distributed with mean</p>
 <div class="math notranslate nohighlight">
 \[ \mu = 26 \]</div>
@@ -537,7 +568,7 @@ document.write(`
 <p>In this problem, we are given a probability (<span class="math notranslate nohighlight">\(10\% = 0.10\)</span>), and we need to find an <span class="math notranslate nohighlight">\(\bar{x}\)</span>-value associated with it. We start by using R to find the <span class="math notranslate nohighlight">\(z\)</span>-score associated with the probability:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">-</span> <span class="m">0.10</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -579,11 +610,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="4.3%20The%20Normal%20Distribution%20and%20z-scores.html"
@@ -603,10 +633,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -614,6 +641,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -663,6 +691,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -689,8 +718,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

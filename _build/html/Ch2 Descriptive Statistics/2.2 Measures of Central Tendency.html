@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2.2. Measures of Central Tendency &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch2 Descriptive Statistics/2.2 Measures of Central Tendency';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -378,18 +409,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="measures-of-central-tendency">
-<h1><span class="section-number">2.2. </span>Measures of Central Tendency<a class="headerlink" href="#measures-of-central-tendency" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2.2. </span>Measures of Central Tendency<a class="headerlink" href="#measures-of-central-tendency" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Calculate the mean and median for a given data set.</p></li>
 </ul>
 </section>
 <section id="mean-and-median">
-<h2>Mean and Median<a class="headerlink" href="#mean-and-median" title="Permalink to this headline">#</a></h2>
+<h2>Mean and Median<a class="headerlink" href="#mean-and-median" title="Link to this heading">#</a></h2>
 <p>The “center” of a data set is also a way of describing location. The two most widely used measures of the “center” of the data are the <strong>mean</strong> (average) and the <strong>median</strong>. To calculate the mean weight of 50 people, add the 50 weights together and divide by 50. In the last section, we learned that the median is the second quartile <span class="math notranslate nohighlight">\(Q_2\)</span> or the 50th percentile. To find the median weight of the 50 people, order the data and find the number that splits the data into two equal parts. The median is generally a better measure of the center when there are extreme values or outliers because it is not affected by the precise numerical values of the outliers. The mean is the most common measure of the center.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -411,7 +442,7 @@ document.write(`
 <p>In R, these calculations look like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span> <span class="o">=</span> <span class="p">(</span><span class="m">1</span> <span class="o">+</span> <span class="m">1</span> <span class="o">+</span> <span class="m">1</span> <span class="o">+</span> <span class="m">2</span> <span class="o">+</span> <span class="m">2</span> <span class="o">+</span> <span class="m">3</span> <span class="o">+</span> <span class="m">4</span> <span class="o">+</span> <span class="m">4</span> <span class="o">+</span> <span class="m">4</span> <span class="o">+</span> <span class="m">4</span> <span class="o">+</span> <span class="m">4</span><span class="p">)</span><span class="o">/</span><span class="m">11</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="o">/</span><span class="m">11</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -421,7 +452,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span> <span class="o">=</span> <span class="p">(</span><span class="m">3</span><span class="o">*</span><span class="m">1</span> <span class="o">+</span> <span class="m">2</span><span class="o">*</span><span class="m">2</span> <span class="o">+</span> <span class="m">1</span><span class="o">*</span><span class="m">3</span> <span class="o">+</span> <span class="m">5</span><span class="o">*</span><span class="m">4</span><span class="p">)</span><span class="o">/</span><span class="m">11</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="o">*</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="o">*</span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span><span class="o">*</span><span class="m">4</span><span class="p">)</span><span class="o">/</span><span class="m">11</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -451,10 +482,10 @@ document.write(`
 <p>So for the above sample data, we can calculate the sample mean using R as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -465,10 +496,10 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We will usually store a list of data in variable <code>x</code> to make the computer code as similar as possible to the formula. For example, <code>xbar = sum(x)/n</code> has an obviously similar structure to <span class="math notranslate nohighlight">\(\bar{x} = \sum x/n\)</span>. However, any variable name would work. For example, the following code calculates the mean just as well as the code above:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -476,9 +507,9 @@ document.write(`
 <p>We’ve already discussed the median: the median <span class="math notranslate nohighlight">\(M\)</span> is the same as <span class="math notranslate nohighlight">\(Q_2\)</span>, the second quartile, or the 50th percentile. The median is the ‘middle value’ of the data: exactly half the data are greater than the median, and exactly half the data are less than the median. We’ve seen that we can find the median in R using <code>quantile(x, probs=0.50)</code>, where <code>x</code> is the list of data values we want the median of. For example, to find the median of the data above, we would type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
 
-<span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.50</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -488,25 +519,25 @@ document.write(`
 <p>The median is <span class="math notranslate nohighlight">\(M = 3\)</span>. Exactly half the values in the data are less than the median, and exactly half the values is the data are greater than the median.</p>
 <hr class="docutils" />
 <section id="example-2-2-1">
-<h3>Example 2.2.1<a class="headerlink" href="#example-2-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.2.1<a class="headerlink" href="#example-2-2-1" title="Link to this heading">#</a></h3>
 <p>The following data show the number of months patients wait on a transplant list before getting surgery. The data are ordered from smallest to largest. Calculate the mean and median.</p>
 <center>
     3, 4, 5, 7, 7, 7, 7, 8, 8, 9, 9, 10, 10, 10, 10, 10, 11, 12, 12, 13, 14, 14, 15, 15, 17, 17, 18, 19, 19, 19, 21, 21, 22, 22, 23, 24, 24, 24, 24
 </center>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">22</span><span class="p">,</span> <span class="m">22</span><span class="p">,</span> <span class="m">23</span><span class="p">,</span> <span class="m">24</span><span class="p">,</span> <span class="m">24</span><span class="p">,</span> <span class="m">24</span><span class="p">,</span> <span class="m">24</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">13</span><span class="p">,</span><span class="w"> </span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">18</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">21</span><span class="p">,</span><span class="w"> </span><span class="m">21</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">23</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">)</span>
 
 <span class="c1"># Find the Mean</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
 <span class="n">xbar</span>
 
 <span class="c1"># Find the Median</span>
-<span class="n">M</span> <span class="o">=</span> <span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
+<span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.50</span><span class="p">)</span>
 <span class="n">M</span>
 </pre></div>
 </div>
@@ -520,22 +551,22 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-2-2-2">
-<h3>Example 2.2.2<a class="headerlink" href="#example-2-2-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.2.2<a class="headerlink" href="#example-2-2-2" title="Link to this heading">#</a></h3>
 <p>All exam scores from a Calculus class are shown below. Find the mean score and the median score.</p>
 <center>
     42, 24, 35, 31.5, 32.5, 32, 48.5, 35.5, 38, 40, 20.5, 37, 34, 41.5, 43, 49, 48, 28, 35, 48.5, 22, 35.5, 44.5, 39, 21.5, 34.5, 40
 </center><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">42</span><span class="p">,</span> <span class="m">24</span><span class="p">,</span> <span class="m">35</span><span class="p">,</span> <span class="m">31.5</span><span class="p">,</span> <span class="m">32.5</span><span class="p">,</span> <span class="m">32</span><span class="p">,</span> <span class="m">48.5</span><span class="p">,</span> <span class="m">35.5</span><span class="p">,</span> <span class="m">38</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">20.5</span><span class="p">,</span> <span class="m">37</span><span class="p">,</span> <span class="m">34</span><span class="p">,</span> <span class="m">41.5</span><span class="p">,</span> <span class="m">43</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="m">48</span><span class="p">,</span> <span class="m">28</span><span class="p">,</span> <span class="m">35</span><span class="p">,</span> <span class="m">48.5</span><span class="p">,</span> <span class="m">22</span><span class="p">,</span> <span class="m">35.5</span><span class="p">,</span> <span class="m">44.5</span><span class="p">,</span> <span class="m">39</span><span class="p">,</span> <span class="m">21.5</span><span class="p">,</span> <span class="m">34.5</span><span class="p">,</span> <span class="m">40</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">42</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">35</span><span class="p">,</span><span class="w"> </span><span class="m">31.5</span><span class="p">,</span><span class="w"> </span><span class="m">32.5</span><span class="p">,</span><span class="w"> </span><span class="m">32</span><span class="p">,</span><span class="w"> </span><span class="m">48.5</span><span class="p">,</span><span class="w"> </span><span class="m">35.5</span><span class="p">,</span><span class="w"> </span><span class="m">38</span><span class="p">,</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="m">20.5</span><span class="p">,</span><span class="w"> </span><span class="m">37</span><span class="p">,</span><span class="w"> </span><span class="m">34</span><span class="p">,</span><span class="w"> </span><span class="m">41.5</span><span class="p">,</span><span class="w"> </span><span class="m">43</span><span class="p">,</span><span class="w"> </span><span class="m">49</span><span class="p">,</span><span class="w"> </span><span class="m">48</span><span class="p">,</span><span class="w"> </span><span class="m">28</span><span class="p">,</span><span class="w"> </span><span class="m">35</span><span class="p">,</span><span class="w"> </span><span class="m">48.5</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">35.5</span><span class="p">,</span><span class="w"> </span><span class="m">44.5</span><span class="p">,</span><span class="w"> </span><span class="m">39</span><span class="p">,</span><span class="w"> </span><span class="m">21.5</span><span class="p">,</span><span class="w"> </span><span class="m">34.5</span><span class="p">,</span><span class="w"> </span><span class="m">40</span><span class="p">)</span>
 
 <span class="c1"># Find the Mean</span>
-<span class="n">N</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">mu</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
 <span class="n">mu</span>
 
 <span class="c1"># Find the Median</span>
-<span class="n">M</span> <span class="o">=</span> <span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="m">0.50</span><span class="p">)</span>
+<span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.50</span><span class="p">)</span>
 <span class="n">M</span>
 </pre></div>
 </div>
@@ -548,15 +579,15 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="example-2-2-3">
-<h3>Example 2.2.3<a class="headerlink" href="#example-2-2-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 2.2.3<a class="headerlink" href="#example-2-2-3" title="Link to this heading">#</a></h3>
 <p>Suppose that we sample 50 people in one city. One person earns $5,000,000 per year and the other 49 each earn $30,000. Find the mean and the median of the data. Which is the better measure of the “center,” the mean or the median?</p>
 <section id="id1">
-<h4>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>The data in this example includes lots of large numbers. We could calculate the mean and median of the data the same way we have in the previous examples, but it would take a long time to list out all 50 numbers. Instead, we can take advantage of the fact that many of the values are repeated to perform the calcualtions more quickly.</p>
 <p>Since there is one person who earns $5,000,000 per year and 49 people who earn $30,000 per year, we calculate the mean as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span> <span class="o">=</span> <span class="p">(</span><span class="m">1</span><span class="o">*</span><span class="m">5000000</span> <span class="o">+</span> <span class="m">49</span><span class="o">*</span><span class="m">30000</span><span class="p">)</span><span class="o">/</span><span class="m">50</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="o">*</span><span class="m">5000000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">49</span><span class="o">*</span><span class="m">30000</span><span class="p">)</span><span class="o">/</span><span class="m">50</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -569,7 +600,7 @@ document.write(`
 <figure class="align-default" id="visual-median">
 <a class="reference internal image-reference" href="../_images/visual_median.png"><img alt="An illustration of where the median lies in the example data." src="../_images/visual_median.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.2.1 </span><span class="caption-text">If we imagine lining up the data values, we see that the median must be <span class="math notranslate nohighlight">\(M = \$30,000\)</span>.</span><a class="headerlink" href="#visual-median" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.2.1 </span><span class="caption-text">If we imagine lining up the data values, we see that the median must be <span class="math notranslate nohighlight">\(M = \$30,000\)</span>.</span><a class="headerlink" href="#visual-median" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The median is a better measure of the “center” than the mean in this case because 49 of the values are $30,000 and one is $5,000,000. The $5,000,000 value is an outlier and significantly skews the mean. The median of <span class="math notranslate nohighlight">\(M = \$30,000\)</span> gives us a better sense of the income of an ordinary person in the city than the mean of <span class="math notranslate nohighlight">\(\bar{x} = \$129,400\)</span>.</p>
@@ -603,11 +634,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="2.1%20Measures%20of%20Position.html"
@@ -627,10 +657,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -638,6 +665,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -679,6 +707,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -705,8 +734,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

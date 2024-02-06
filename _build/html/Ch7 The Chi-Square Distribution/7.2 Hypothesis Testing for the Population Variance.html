@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7.2. Hypothesis Testing for the Population Variance &#8212; Introductory Statistics with R</title>
   
@@ -19,49 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=817b6f83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=5eb1bb1e"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Ch7 The Chi-Square Distribution/7.2 Hypothesis Testing for the Population Variance';</script>
@@ -78,7 +83,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -140,10 +157,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Introductory Statistics with R</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch1%20Sampling%20and%20Data/1.0%20Sampling%20and%20Data.html">1. Sampling and Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -316,20 +345,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -379,18 +410,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing-for-the-population-variance">
-<h1><span class="section-number">7.2. </span>Hypothesis Testing for the Population Variance<a class="headerlink" href="#hypothesis-testing-for-the-population-variance" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7.2. </span>Hypothesis Testing for the Population Variance<a class="headerlink" href="#hypothesis-testing-for-the-population-variance" title="Link to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Conduct a hypothesis test on the variance of a population.</p></li>
 </ul>
 </section>
 <section id="variance-and-the-test-statistic">
-<h2>Variance and the Test Statistic<a class="headerlink" href="#variance-and-the-test-statistic" title="Permalink to this headline">#</a></h2>
+<h2>Variance and the Test Statistic<a class="headerlink" href="#variance-and-the-test-statistic" title="Link to this heading">#</a></h2>
 <p>In the previous chapter, we learned how we test a claim about the mean or the proportion of a population. The process for testing a claim about the variance of a population is very similar.</p>
 <p>Recall that the <strong>variance</strong> of a population is simply the square of the population standard deviation; that is, if <span class="math notranslate nohighlight">\(\sigma\)</span> is the population standard deviation, then <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the population variance. While the variance and the standard deviation are not quite the same, the two parameters both measure how far data is from the mean. Testing the population variance is the same as testing the population standard deviation.</p>
 <p>Unlike hypothesis tests for the population mean or the population proportion, we do not directly use a point estimate when testing the population variance. Instead, we use a <strong>test statistic</strong>. A test statistic is a quantity that summarizes the data in a sample and can be used in hypothesis testing. The <span class="math notranslate nohighlight">\(z\)</span>-scores and <span class="math notranslate nohighlight">\(t\)</span>-scores we calculated when testing population means and population proportions in the previous chapter are test statistics.</p>
@@ -408,14 +439,14 @@ document.write(`
 </ol>
 <hr class="docutils" />
 <section id="example-7-2-1">
-<h3>Example 7.2.1<a class="headerlink" href="#example-7-2-1" title="Permalink to this headline">#</a></h3>
+<h3>Example 7.2.1<a class="headerlink" href="#example-7-2-1" title="Link to this heading">#</a></h3>
 <p>A beverage company wants to make sure that the amount of soda in their two-liter bottles doesn’t differ significantly bottle-to-bottle. Specifically, they want the population standard deviation to be no larger than <span class="math notranslate nohighlight">\(1.5\)</span> milliliters. The quality control division of the company carefully measures the amount of soda in <span class="math notranslate nohighlight">\(13\)</span> bottles and obtains the following results (in milliliters):</p>
 <p>2002.08, 1999.25, 2002, 1996.51, 1998.99, 2000.06, 1999.73, 2001.16, 2001.19, 2002.14, 2000.21, 2002.15, 2000.06</p>
 <p>Conduct a hypothesis test at the <span class="math notranslate nohighlight">\(10\%\)</span> significance level to determine is the beverage company’s criterion is satisfied.</p>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <section id="step-1-state-the-null-and-alternative-hypotheses">
-<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#step-1-state-the-null-and-alternative-hypotheses" title="Permalink to this headline">#</a></h5>
+<h5>Step 1: State the null and alternative hypotheses.<a class="headerlink" href="#step-1-state-the-null-and-alternative-hypotheses" title="Link to this heading">#</a></h5>
 <p>The beverage company doesn’t want the population standard deviation to be larger than <span class="math notranslate nohighlight">\(1.5\)</span> milliliters; that is, the company wants <span class="math notranslate nohighlight">\(\sigma \leq 1.5\)</span>. Since the symbol has an ‘equal’ in it, this is the null hypothesis. The alternative hypothesis is the opposite of the null hypothesis.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -431,18 +462,18 @@ H_a:&amp;\ \sigma^2 &gt; 2.25
 <p>These two ways of writing the hypotheses are equivalent and either is acceptable.</p>
 </section>
 <section id="step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution">
-<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Permalink to this headline">#</a></h5>
+<h5>Step 2: Assuming the null hypothesis is true, identify the sampling distribution.<a class="headerlink" href="#step-2-assuming-the-null-hypothesis-is-true-identify-the-sampling-distribution" title="Link to this heading">#</a></h5>
 <p>Because we are testing the population standard deviation, we will use a <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution with <span class="math notranslate nohighlight">\(df = n - 1 = 13 - 1 = 12\)</span> degrees of freedom.</p>
 </section>
 <section id="step-3-find-the-p-value">
-<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#step-3-find-the-p-value" title="Permalink to this headline">#</a></h5>
+<h5>Step 3: Find the <span class="math notranslate nohighlight">\(p\)</span>-value.<a class="headerlink" href="#step-3-find-the-p-value" title="Link to this heading">#</a></h5>
 <p>To calculate the test statistic, we first need to find the sample standard deviation. To begin, we calculate the sample mean:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2002.08</span><span class="p">,</span> <span class="m">1999.25</span><span class="p">,</span> <span class="m">2002</span><span class="p">,</span> <span class="m">1996.51</span><span class="p">,</span> <span class="m">1998.99</span><span class="p">,</span> <span class="m">2000.06</span><span class="p">,</span> <span class="m">1999.73</span><span class="p">,</span> <span class="m">2001.16</span><span class="p">,</span> <span class="m">2001.19</span><span class="p">,</span> <span class="m">2002.14</span><span class="p">,</span> <span class="m">2000.21</span><span class="p">,</span> <span class="m">2002.15</span><span class="p">,</span> <span class="m">2000.06</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2002.08</span><span class="p">,</span><span class="w"> </span><span class="m">1999.25</span><span class="p">,</span><span class="w"> </span><span class="m">2002</span><span class="p">,</span><span class="w"> </span><span class="m">1996.51</span><span class="p">,</span><span class="w"> </span><span class="m">1998.99</span><span class="p">,</span><span class="w"> </span><span class="m">2000.06</span><span class="p">,</span><span class="w"> </span><span class="m">1999.73</span><span class="p">,</span><span class="w"> </span><span class="m">2001.16</span><span class="p">,</span><span class="w"> </span><span class="m">2001.19</span><span class="p">,</span><span class="w"> </span><span class="m">2002.14</span><span class="p">,</span><span class="w"> </span><span class="m">2000.21</span><span class="p">,</span><span class="w"> </span><span class="m">2002.15</span><span class="p">,</span><span class="w"> </span><span class="m">2000.06</span><span class="p">)</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">xbar</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">xbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
 <span class="n">xbar</span>
 </pre></div>
 </div>
@@ -453,7 +484,7 @@ H_a:&amp;\ \sigma^2 &gt; 2.25
 <p>The sample mean is about <span class="math notranslate nohighlight">\(\bar{x} = 2000.4254\)</span>. Next, we calculate the sample standard deviation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="m">1</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xbar</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
 <span class="n">s</span>
 </pre></div>
 </div>
@@ -467,7 +498,7 @@ H_a:&amp;\ \sigma^2 &gt; 2.25
 <p>Noting that the alternative hypothesis uses a “greater-than” symbol, we will be performing a right-tailed test. Therefore, the <span class="math notranslate nohighlight">\(p\)</span>-value is equal to <span class="math notranslate nohighlight">\(P(\chi^2 &gt; 14.1443)\)</span>. We use R to calculate this probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="o">-</span> <span class="nf">pchisq</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="m">14.1443</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pchisq</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14.1443</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -477,7 +508,7 @@ H_a:&amp;\ \sigma^2 &gt; 2.25
 <p>So the <span class="math notranslate nohighlight">\(p\)</span>-value is <span class="math notranslate nohighlight">\(P(\chi^2 &gt; 14.1443) = 0.2916\)</span>. That means that, assuming the null hypothesis is true, there is a <span class="math notranslate nohighlight">\(29.16\%\)</span> chance that a random sample of <span class="math notranslate nohighlight">\(13\)</span> bottles would have a sample standard deviation as extreme as <span class="math notranslate nohighlight">\(s = 1.6285\)</span>.</p>
 </section>
 <section id="step-4-draw-a-conclusion">
-<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Permalink to this headline">#</a></h5>
+<h5>Step 4: Draw a conclusion.<a class="headerlink" href="#step-4-draw-a-conclusion" title="Link to this heading">#</a></h5>
 <p>The level of significance is <span class="math notranslate nohighlight">\(10\%\)</span>, so <span class="math notranslate nohighlight">\(\alpha = 0.10\)</span>. But since</p>
 <div class="math notranslate nohighlight">
 \[p\text{-value} = 0.2916 \geq 0.10 = \alpha, \]</div>
@@ -514,11 +545,10 @@ H_a:&amp;\ \sigma^2 &gt; 2.25
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="7.1%20The%20Chi-Square%20Distribution.html"
@@ -538,10 +568,7 @@ H_a:&amp;\ \sigma^2 &gt; 2.25
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -549,6 +576,7 @@ H_a:&amp;\ \sigma^2 &gt; 2.25
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -591,6 +619,7 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -617,8 +646,8 @@ By Taylor Baldwin <br/><br/><small>This work is licensed under the <a href="http
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
