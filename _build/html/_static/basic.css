@@ -921,5 +921,9 @@ div.math:hover a.headerlink {
     div.footer,
     #top-link {
         display: none;
-    }
+	} 
+	
+	.skip-link {
+		display: none !important;
+	}
 }
