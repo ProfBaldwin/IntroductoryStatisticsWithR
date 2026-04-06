@@ -442,7 +442,7 @@ document.write(`
 </section>
 <section id="simple-random-sampling">
 <h2>Simple Random Sampling<a class="headerlink" href="#simple-random-sampling" title="Link to this heading">#</a></h2>
-<p>The easiest method to describe is called a <strong>simple random sample</strong>. In simple random sampling, each member of the population has an equal chance of being chosen for the sample and is chosen independent of any other member in the population.</p>
+<p>The easiest method to illustrate is called a <strong>simple random sample</strong>. A simple random sample can be assembled by randomly selecting members from the population one by one using a random process.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/Simple_random_sampling.png"><img alt="A simple random sample of four individuals is chosen from a population of twelve individuals." src="../_images/Simple_random_sampling.png" style="width: 60%;" />
 </a>
@@ -450,7 +450,7 @@ document.write(`
 <p><span class="caption-number">Fig. 1.3.1 </span><span class="caption-text">A simple random sample of four individuals is chosen from a population of twelve individuals.<a class="footnote-reference brackets" href="#simple-random-attribution" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>For example, suppose Professor Baldwin wants to form a six-person study group from the students in his precalculus class, which has 30 students. To choose a simple random sample of size six from the students of his class, Professor Baldwin could put all 30 names in a hat, shake the hat, close his eyes, and pick out six names. A more technological way is for Professor Baldwin to first list the last names of the members of his class together with a number, as in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>.</p>
+<p>For example, suppose Professor Baldwin wants to form a six-person study group from the students in his precalculus class, which has 30 students. To choose a simple random sample of size six from the students of his class, Professor Baldwin could put all 30 names in a hat, shake the hat, close his eyes, and pick out six names. A more high-tech way for Professor Baldwin to select the simple random sample is to first list the last names of the members of his class together with a number, as in <a class="reference internal" href="#name-table"><span class="std std-numref">Table 1.3.1</span></a>.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="name-table">
 <caption><span class="caption-number">Table 1.3.1 </span><span class="caption-text">Professor Baldwin’s Class Roster.</span><a class="headerlink" href="#name-table" title="Link to this table">#</a></caption>
 <thead>
@@ -536,7 +536,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Professor Baldwin could now use a computer to generate six random numbers and choose the individuals on the table matching the numbers. We can do this in R with the <code>sample</code> function:</p>
+<p>With each student’s name associated with a number, Professor Baldwin could now use a computer to generate six random numbers and choose the individuals on the table matching the numbers. We can do this in R with the <code>sample</code> function:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sample(x, size)
 </pre></div>
 </div>

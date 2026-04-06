@@ -756,10 +756,10 @@ document.write(`
 <p><span class="caption-number">Fig. 4.2.12 </span><span class="caption-text">The standard normal distribution. The area under the curve to the left of some unknown value <span class="math notranslate nohighlight">\(z\)</span> is shaded. We want to find <span class="math notranslate nohighlight">\(z\)</span> so that <span class="math notranslate nohighlight">\(P(Z &lt; z) = 0.34\)</span>.</span><a class="headerlink" href="#stdnormal-ex6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Recall that the <span class="math notranslate nohighlight">\(34\)</span>th percentile of the standard normal distribution would be the <span class="math notranslate nohighlight">\(z\)</span>-value larger than <span class="math notranslate nohighlight">\(34\%\)</span> of the possible values in the distribution. In the language of probability, we want to find <span class="math notranslate nohighlight">\(z\)</span> so that <span class="math notranslate nohighlight">\(P(Z &lt; z) = 0.34\)</span>. Then since we know the probability, we can use the <code>qnorm</code> function to find the corresponding <span class="math notranslate nohighlight">\(z\)</span>-value.</p>
+<p>Recall that the <span class="math notranslate nohighlight">\(34\)</span>th percentile of the standard normal distribution would be the <span class="math notranslate nohighlight">\(z\)</span>-value larger than <span class="math notranslate nohighlight">\(34\%\)</span> of the possible values in the distribution. In the language of probability, we want to find <span class="math notranslate nohighlight">\(z\)</span> so that <span class="math notranslate nohighlight">\(P(Z &lt; z) = 0.34\)</span>. Since we know the probability, we can use the <code>qnorm</code> function to find the corresponding <span class="math notranslate nohighlight">\(z\)</span>-value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="n">.</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qnorm</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.34</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
